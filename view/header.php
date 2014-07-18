@@ -1,9 +1,9 @@
 <?php
 
 require_once '../smartyHeader.php';
-$title= 'Restaurentes - Pedidos pela internet';
-$msg = 'Hello World';
+$title= 'Restaureates - Pedidos pela internet';
+$siteName = 'Restaurantes';
 
 $smarty->assign('title',$title);
-$smarty->assign('msg', $msg);
+$smarty->assign('siteName', $siteName);
 $smarty->display('../templates/header.tpl');
