@@ -3,9 +3,11 @@
     <head>
         <title>{$title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
         <link href= "../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/header.css" rel="stylesheet">
         <link href= "../css/styles.css" rel="stylesheet">
+        {* Move this scrpt tags *}
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
     </head>
@@ -26,7 +28,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="./index.php">Home</a></li>
                             <li><a href="#">Cadastro</a></li>
-                             {* Creating Dropdown menu and form *}
+                                {* Creating Dropdown menu and form *}
                             <li class="dropdown" id="menuLogin">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
                                 <div class="dropdown-menu">
@@ -38,13 +40,14 @@
                                 </div>
                             </li>
                             <li><a href="#">Sobre</a></li>
+                            <li><a href="#contact" data-toggle="modal">Contato</a></li>
                         </ul>
 
                     </div>
 
                 </div>
             </div>
-{*
-        </header>
-    </body>
-</html>*}
+            {*
+            </header>
+            </body>
+            </html>*}

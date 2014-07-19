@@ -1,5 +1,23 @@
+<link href= "../css/index.css" rel="stylesheet">
 <div class="container">
     <div class="jumbotron">
         <h1>Bem vindo ao site</h1>
+        <p>Faça pedidos aos seus restaurantes favoritos de forma fácil, rápida e descomplicada</p>
+    </div>
+</div>
+
+<div class="container">
+    <h3 id="destaques">Destaques</h3>
+    <div class="row">
+        {foreach from = $highlights key = dishName item = img}
+            <div class="col-md-3 colunaDestaque">
+                <h4 class="">{$dishName}</h4>
+                <div class="well-sm imgDiv">
+                    <img src="{$img}" class="img-responsive">
+                </div>
+                <p>Nome do restaurante</p>
+                <a heref="#" class="btn btn-warning">Peça agora</a>
+            </div> 
+        {/foreach}
     </div>
 </div>

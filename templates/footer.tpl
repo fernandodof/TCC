@@ -1,3 +1,4 @@
+<link href= "../css/footer.css" rel="stylesheet">
 {*Creating botton navbar*}
 <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
