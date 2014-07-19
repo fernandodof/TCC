@@ -12,20 +12,19 @@
     <body>
         <header>
             {* Creating a navigation bar *}
-            <div class="navbar navbar-default navbar-static-top">
+            <div class="navbar navbar-custom navbar-static-top">
                 <div class="container">
-                    <a href="../" class="navbar-brand">{$siteName}</a>
+                    <a href="./index.php" class="navbar-brand">{$siteName}</a>
                     {* Creating toggle button for navigation bar *}
-                    <button class="navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+                    <button class="navbar-toggle" data-toggle = "collapse" data-target = ".custonNavHeaderCollapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    {* Creating Navigation bar*}
-                    <div class="collapse navbar-collapse navHeaderCollapse">
+                    <div class="collapse navbar-collapse custonNavHeaderCollapse">
                         {* Creating list for Navigation bar options *}
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="../index.php">Home</a></li>
+                            <li><a href="./index.php">Home</a></li>
                             <li><a href="#">Cadastro</a></li>
                              {* Creating Dropdown menu and form *}
                             <li class="dropdown" id="menuLogin">
@@ -45,7 +44,7 @@
 
                 </div>
             </div>
-
+{*
         </header>
     </body>
-</html>
+</html>*}
