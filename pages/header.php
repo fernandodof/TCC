@@ -1,6 +1,6 @@
 <?php
 
-require_once '../smartyHeader.php';
+require_once './smartyHeader.php';
 $title= 'Restaureates - Pedidos pela internet';
 $siteName = 'Restaurantes';
 

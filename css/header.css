@@ -1,0 +1,76 @@
+.navbar-default {
+	background-color: #3c3c3c;
+	border-color: #949494;
+}
+.navbar-default .navbar-brand {
+	color: #f5f5f5;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+	color: #eeeeee;
+}
+.navbar-default .navbar-text {
+	color: #f5f5f5;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #f5f5f5;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #eeeeee;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #eeeeee;
+	background-color: #949494;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	color: #eeeeee;
+	background-color: #949494;
+}
+.navbar-default .navbar-toggle {
+	border-color: #949494;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+	background-color: #949494;
+}
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #f5f5f5;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+	border-color: #f5f5f5;
+}
+.navbar-default .navbar-link {
+	color: #f5f5f5;
+}
+.navbar-default .navbar-link:hover {
+	color: #eeeeee;
+}
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+		color: #f5f5f5;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color: #eeeeee;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+		color: #eeeeee;
+		background-color: #949494;
+	}
+}
+
+#loginForm{
+    padding: 12px;
+    width: 270px;
+}
+
+#loginForm .btn{
+    margin-top: 5px;
+}
+
+#emailLogin,#senhaLogin{
+    width: 240px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 3px 6px 6px 3px;
+}
+
