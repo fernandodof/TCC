@@ -60,17 +60,5 @@
 
 #loginForm{
     padding: 12px;
-    width: 270px;
+    width: 300px;
 }
-
-#loginForm .btn{
-    margin-top: 5px;
-}
-
-#emailLogin,#senhaLogin{
-    width: 240px;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    padding: 3px 6px 6px 3px;
-}
-
