@@ -21,3 +21,13 @@
     color: crimson;
 }
 
+.pecaAgora{
+    margin-bottom: 15px;
+}
+
+.dishName{
+    height: 45px;
+    display : table-cell;
+    vertical-align : middle;
+    float:none;
+}

@@ -62,3 +62,7 @@
     padding: 12px;
     width: 300px;
 }
+
+#contactForm label{
+    text-align: left;
+}
