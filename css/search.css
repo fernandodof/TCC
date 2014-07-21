@@ -1,0 +1,28 @@
+.opened{
+    border-left-color: red;
+    border-left-width: 8px;
+}
+
+.closed{
+    border-left-color: green;
+    border-left-width: 8px;
+}
+
+.well-sm{
+    padding: 0;
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+h3{
+    margin-left: 15px; 
+}
+
+.statusIndicatioClosed{
+    margin-left: 15px;
+}
+
+.statusIndicationOpened{
+    margin-right: 15px;
+}

@@ -44,7 +44,7 @@
                                                 <input name="senhaLogin" id="senhaLogin" class="form-control" type="password" placeholder="Senha" required>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-info">Login</button>
+                                        <button type="submit" class="btn btn-info pull-right">Login</button>
                                     </form>
                                 </div>
                             </li>
@@ -88,7 +88,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
-                                <button class="btn btn-primary" type="submit">Enviar</button>
+                                <button class="btn btn-primary" type="submit">Enviar <span class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </form>
                     </div>

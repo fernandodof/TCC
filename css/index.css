@@ -1,5 +1,16 @@
 .colunaDestaque{
-    margin-left: -7px;
+    margin-left: -4px;
+}
+
+@media screen and (max-width: 991px){
+    .colunaDestaque{
+        margin-left:40px; 
+    }
+    @media screen and (max-width: 768px){
+        .colunaDestaque{
+            margin-left:0px; 
+        }
+    }
 }
 
 .imgDiv{
@@ -26,7 +37,7 @@
 }
 
 .dishName{
-    height: 45px;
+    height: 55px;
     display : table-cell;
     vertical-align : middle;
     float:none;
