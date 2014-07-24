@@ -17,9 +17,9 @@
             <div class="collapse navbar-collapse sidebarCollapse">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a>Todas</a></li>
-                            {foreach from = $kindsOfFood item = kindOfFood}
+                        {foreach from = $kindsOfFood item = kindOfFood}
                         <li><a>{$kindOfFood}</a></li>
-                            {/foreach}
+                        {/foreach}
                 </ul>
             </div>
         </div>
@@ -38,14 +38,28 @@
                     </div>
                     {foreach from = $restaurants key = restaurant item = status}
                         {if $status}
-                            <div class="well closed">
+                            <div class="well closed col-xs-12">
                                 <h4>{$restaurant} <small> Tipo de cozinha</small></h4>
-                                <p>Endereço</p>
+                                <div class="row col-xs-12">
+                                    <img class="img pull-left" src="../images/icons/rsz_location.png"/>
+                                    <p class="col-xs-10">Endereço</p>                                    
+                                </div>
+                                <div class="row col-xs-12 pull-right">
+                                    <img class="img pull-right moneyImg" src="../images/icons/money59.png"/>
+                                    <img class="img pull-right cardImg" src="../images/icons/card25.png"/>
+                                </div>
                             </div>       
                         {else}
-                            <div class="well opened">
+                            <div class="well opened col-xs-12">
                                 <h4>{$restaurant} <small> Tipo de cozinha</small></h4>
-                                <p>Endereço</p>
+                                <div class="row col-xs-12">
+                                    <img class="img pull-left locationImg" src="../images/icons/rsz_location.png"/>
+                                    <p class="col-xs-10">Endereço</p>                                    
+                                </div>
+                                <div class="row col-xs-12 pull-right">
+                                    <img class="img pull-right moneyImg" src="../images/icons/money59.png"/>
+                                    <img class="img pull-right cardImg" src="../images/icons/card25.png"/>
+                                </div>
                             </div>      
                         {/if}
                     {/foreach}

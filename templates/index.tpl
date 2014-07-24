@@ -3,11 +3,29 @@
     <div class="jumbotron">
         <h1>Bem vindo ao site</h1>
         <p>Faça pedidos aos seus restaurantes favoritos de forma fácil, rápida e descomplicada</p>
-        <form method="POST" class="form-horizontal" action="../pages/search.php">
-            <div class="input-group">
-                <input type="text" class="form-control input-lg" placeholder="Pesquise aqui" id="search" name="search">
-                <div class="input-group-btn">
-                    <button type="submit" class="btn btn-lg btn-success"><span class="glyphicon glyphicon-search"></span></button>
+        <form method="POST" class="form-horizontal searchForm" action="../pages/search.php">
+            <div class="input-group col-md-12 pull-left">
+                <div class="col-md-7 col-xs-12 searchDiv pull-left">
+                    <input type="text" class="form-control input-lg pull-left searchField" placeholder="Pesquise aqui" id="search" name="search">
+                </div>
+                <div class="row col-md-5 col-xs-12">
+                    <div class="form-group col-xs-12 col-md-11 pull-left kindOfFoodDiv">
+                        <select class="form-control input-lg kindOfFoodSelect">
+                            {foreach from = $kindsOfFood item = kindOfFood}
+                                <option class="">{$kindOfFood}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="col-md-1 visible-lg visible-md">        
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-lg btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-xs-12 visible-sm visible-xs btSearchDiv" style="border: 1px solid red">        
+                    <div class="input-group-btn">
+                        <button type="submit" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                    </div>
                 </div>
             </div>
         </form>

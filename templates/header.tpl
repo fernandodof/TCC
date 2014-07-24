@@ -3,6 +3,7 @@
     <head>
         <title>{$title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta charset="UTF-8">
         <link href= "../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/header.css" rel="stylesheet">
@@ -10,6 +11,7 @@
         {* Move this script tags *}
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
+        {*<script src="../bootstrap/js/jquery.min.js"></script>*}
     </head>
     <body>
         <header>
