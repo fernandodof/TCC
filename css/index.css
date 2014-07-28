@@ -43,14 +43,8 @@
     float:none;
 }
 
-/*.kindOfFood{
-    border-radius: 0px;
-    margin-left:0;
-    margin-right: 0;
-    padding: 0;
-}
-*/
-.searchDiv, .kindOfFoodDiv, .kindOfFoodDivButton{
+
+.kindOfFoodDiv, .kindOfFoodDivButton{
     padding: 0;
 }
 
@@ -59,7 +53,15 @@
 }
 
 @media screen and (max-width: 992px){
+    .jumbotron{
+        padding-bottom: 180px;
+    }
+    
     .kindOfFoodSelect{
-        margin-left: 14px;
+        margin-left: 30px;
+    }
+    
+    .btSearchDiv{
+        margin-left: 3px;
     }
 }

@@ -31,7 +31,7 @@
                             <li><a href="./index.php">Home</a></li>
                             <li><a href="#">Cadastro</a></li>
                                 {* Creating Dropdown menu and form *}
-                            
+
                             <li class="dropdown" id="menuLogin">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
                                 <div class="dropdown-menu">
@@ -50,7 +50,7 @@
                                     </form>
                                 </div>
                             </li>
-                           
+
                             <li><a href="#">Sobre</a></li>
                             <li><a href="#contact" data-toggle="modal">Contato</a></li>
                         </ul>
@@ -96,7 +96,6 @@
                     </div>
                 </div>
             </div>
-            {*
-            </header>
-            </body>
-            </html>*}
+        </header>
+        {*</body>
+        </html>*}

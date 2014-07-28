@@ -9,20 +9,20 @@
                     <input type="text" class="form-control input-lg pull-left searchField" placeholder="Pesquise aqui" id="search" name="search">
                 </div>
                 <div class="row col-md-5 col-xs-12">
-                    <div class="form-group col-xs-12 col-md-11 pull-left kindOfFoodDiv">
-                        <select class="form-control input-lg kindOfFoodSelect">
+                    <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
+                        <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12 ">
                             {foreach from = $kindsOfFood item = kindOfFood}
                                 <option class="">{$kindOfFood}</option>
                             {/foreach}
                         </select>
                     </div>
-                    <div class="col-md-1 visible-lg visible-md">        
+                    <div class="col-md-1 visible-lg visible-md btSearchDiv">        
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-lg btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
                         </div>
                     </div>
                 </div>
-                <div class="row col-xs-12 visible-sm visible-xs btSearchDiv" style="border: 1px solid red">        
+                <div class="row col-xs-12 visible-sm visible-xs btSearchDiv">        
                     <div class="input-group-btn">
                         <button type="submit" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
                     </div>
