@@ -12,7 +12,7 @@
 
         <div class="collapse navbar-collapse bottomNavHeaderCollapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Area restrita</a></li>
+                <li><a href="../pages/areaRestrita.php">Area restrita</a></li>
             </ul>
         </div>
     </div>
