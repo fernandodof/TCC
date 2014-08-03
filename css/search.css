@@ -34,3 +34,12 @@ h3{
 .cardImg{
     margin-top: 5px;
 }
+
+.formaPagamentoDiv p{
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+.btVerCardapio{
+    margin-right: -10px;
+}

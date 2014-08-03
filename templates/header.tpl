@@ -9,7 +9,7 @@
         <link href="../css/header.css" rel="stylesheet">
         <link href= "../css/styles.css" rel="stylesheet">
         {* Move this script tags *}
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="../bootstrap/js/jquery.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
         {*<script src="../bootstrap/js/jquery.min.js"></script>*}
     </head>

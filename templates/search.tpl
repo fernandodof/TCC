@@ -19,7 +19,7 @@
                     <li><a>Todas</a></li>
                         {foreach from = $kindsOfFood item = kindOfFood}
                         <li><a>{$kindOfFood}</a></li>
-                        {/foreach}
+                            {/foreach}
                 </ul>
             </div>
         </div>
@@ -44,10 +44,12 @@
                                     <img class="img pull-left" src="../images/icons/rsz_location.png"/>
                                     <p class="col-xs-10">Endereço</p>                                    
                                 </div>
-                                <div class="row col-xs-12 pull-right">
+                                <div class="row col-xs-12 pull-right formaPagamentoDiv">
                                     <img class="img pull-right moneyImg" src="../images/icons/money59.png"/>
                                     <img class="img pull-right cardImg" src="../images/icons/card25.png"/>
+                                    <p class="pull-right">Formas de Pagamento: </p>
                                 </div>
+                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
                             </div>       
                         {else}
                             <div class="well opened col-xs-12">
@@ -56,10 +58,12 @@
                                     <img class="img pull-left locationImg" src="../images/icons/rsz_location.png"/>
                                     <p class="col-xs-10">Endereço</p>                                    
                                 </div>
-                                <div class="row col-xs-12 pull-right">
+                                <div class="row col-xs-12 pull-right formaPagamentoDiv">
                                     <img class="img pull-right moneyImg" src="../images/icons/money59.png"/>
                                     <img class="img pull-right cardImg" src="../images/icons/card25.png"/>
+                                    <p class="pull-right">Formas de Pagamento: </p>
                                 </div>
+                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
                             </div>      
                         {/if}
                     {/foreach}
