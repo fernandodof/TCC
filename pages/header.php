@@ -1,8 +1,8 @@
 <?php
 
 require_once './smartyHeader.php';
-$title= 'Restaurates - Pedidos pela internet';
-$siteName = 'Restaurantes';
+$title= 'FomeOnline - Pedidos pela internet';
+$siteName = 'FomeOnline';
 
 $smarty->assign('title',$title);
 $smarty->assign('siteName', $siteName);
