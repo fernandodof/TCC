@@ -6,10 +6,11 @@
     .colunaDestaque{
         margin-left:40px; 
     }
-    @media screen and (max-width: 768px){
-        .colunaDestaque{
-            margin-left:0px; 
-        }
+}
+
+@media screen and (max-width: 768px){
+    .colunaDestaque{
+        margin-left:0px; 
     }
 }
 
