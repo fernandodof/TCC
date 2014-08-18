@@ -12,14 +12,14 @@
     height: 25px;
 }
 
-#location{
+/*#location{
     height: 220px;
-}
+}*/
 
-#map{
+/*#map{
     height: 100%;
     max-width:none;
-}
+}*/
 
 .menu div{
     padding: 0;
@@ -132,4 +132,18 @@
     .collapsing {
         overflow: hidden!important;
     }
+}
+
+#map{
+    width: 200px;
+    height:200px;
+}
+
+#map2{
+    width: 570px;
+    height: 400px;
+}
+
+.modal-body{
+    height: 440px;
 }

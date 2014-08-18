@@ -7,17 +7,19 @@
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng(-6.887496, -38.560768),
-            zoom: 15
+            zoom:15
         };
         var map = new google.maps.Map(document.getElementById("map"),
                 mapOptions);
+
         var map2 = new google.maps.Map(document.getElementById("map2"),
                 mapOptions);
     }
-    google.maps.event.addDomListener(window, 'load', initialize);
 
+    google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.trigger(map, 'resize');
 </script>
-<div class="container" onload="setTimeout('initialize()', 2000);">
+<div class="container">
     <div class="visible-sm visible-xs">
         <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target=".restaurant">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -27,12 +29,12 @@
     <div class="restauntContainer col-md-3">
         <div class="restaurant collapse navbar-collapse">
             <img src="../images/logos/pizza_place.png" class="img img-thumbnail img-responsive restaurantLogo"/>
-            <p> Nome da Pizzaria</p>
+            <p>Pizza Place</p>
             <img src="../images/icons/rsz_location.png" class="pull-left addressIcon">
-            <address>Rua: Nome da Rua, Numero: 10, Cidade: Cajazeiras, Estado: PB, CEP: 58.900-000</address>
+            <address>Rua: José Antônio da Silva, 300, Bairro Jardim Oásis, CEP: 58.900-000, Cajazeiras PB.</address>
 
             <div id="location">
-                <div id="map" class="col-xs-12" style="width:100%;height:100%;">
+                <div id="map">
                 </div>
             </div>
         </div>
@@ -69,7 +71,7 @@
                 </div>
                 <div class="modal-body">
                     <div id="location">
-                        <div id="map2" class="col-xs-12" style="height: 400px;">
+                        <div id="map2" class="col-xs-12">
                         </div>
                     </div>
                 </div>
