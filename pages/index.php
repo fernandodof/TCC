@@ -9,11 +9,15 @@ $highlights['Penne ao Pepperoni'] = '../images/dishes/penne-ao-molho-de-linguica
 $highlights['Vaca Atolada'] = '../images/dishes/vacaAtolada.jpg';
 
 $restaurants = array();
-$restaurants[] = 'Sapore D\'Itália';
+$restaurants[] = 'Pizza Place';
 $restaurants[] = 'Sapore D\'Itália';
 $restaurants[] = 'Sabores da Toscana';
 $restaurants[] = 'Sabores do Brasil';
 
+$links[] = './restaurant.php';
+$links[] = '#';
+$links[] = '#';
+$links[] = '#';
 
 $kindsOfFood = array();
 $kindsOfFood[] = 'Churrascaria';
@@ -30,5 +34,8 @@ array_unshift($kindsOfFood,"Tipo de Cozinha (todas)");
 $smarty->assign('kindsOfFood',$kindsOfFood);
 $smarty->assign('highlights', $highlights);
 $smarty->assign('restaurants', $restaurants);
+$smarty->assign('links', $links);
+
 $smarty->display('../templates/index.tpl');
+
 include_once '../pages/footer.php';

@@ -2,6 +2,10 @@
     margin-left: -4px;
 }
 
+.restaurantName{
+    margin-bottom: 25px;
+}
+
 @media screen and (max-width: 992px){
     .colunaDestaque{
         margin-left:40px; 

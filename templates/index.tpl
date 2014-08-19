@@ -6,7 +6,7 @@
         <form method="POST" class="form-horizontal searchForm" action="../pages/search.php">
             <div class="row input-group col-md-12 pull-left search">
                 <div class="col-md-7 col-xs-12 searchDiv pull-left">
-                    <input type="text" class="form-control input-lg pull-left searchField" placeholder="Pesquise aqui" id="search" name="search">
+                    <input type="text" class="form-control input-lg pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
                 </div>
                 <div class="row col-md-5 col-xs-12">
                     <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
@@ -43,7 +43,7 @@
                 <div class="well-sm imgDiv">
                     <img src="{$img}" class="img-responsive">
                 </div>
-                <p class="restaurantName">{$restaurants[$count]}</p>
+                    <a class="restaurantName" href="{$links[$count]}">{$restaurants[$count]}</a>
                 <a heref="#" class="btn btn-danger col-xs-12 pecaAgora">Peça agora</a>
             </div> 
                 {$count = $count+1}

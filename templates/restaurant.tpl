@@ -44,10 +44,10 @@
     <div class="menu col-md-9 col-sm-12">
         <h2>Cardápio</h2>
         <div class="col-sm-12">
-            <div class="col-sm-6"><p class="header">Ítem</p></div>
+            <div class="col-sm-6"><p class="header">Item</p></div>
             <div class="col-sm-6 visible-lg visible-md">
                 <p class="header">Tamanho</p>
-                <div class="col-sm-4"><p>Péquena</p></div>
+                <div class="col-sm-4"><p>Pequena</p></div>
                 <div class="col-sm-4"><p>Média</p></div>
                 <div class="col-sm-4"><p>Grande</p></div>
             </div>
