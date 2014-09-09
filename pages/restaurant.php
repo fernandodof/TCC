@@ -2,7 +2,7 @@
 require_once './smartyHeader.php';
 include_once '../pages/header.php';
 
-$size = 13;
+$size = 14;
 
 $itens = array();
 $itens[] = 'Brasileira';
@@ -53,6 +53,7 @@ $precoP[] =  36.00;
 $precoP[] =  36.00;
 $precoP[] =  36.00;
 $precoP[] =  36.00;
+$precoP[] =  36.00;
 
 $precoM = array();
 $precoM[] =  38.00;
@@ -69,6 +70,7 @@ $precoM[] =  40.00;
 $precoM[] =  40.00;
 $precoM[] =  40.00;
 $precoM[] =  40.00;
+$precoM[] =  40.00;
 
 $precoG = array();
 $precoG[] =  42.00;
@@ -81,6 +83,7 @@ $precoG[] =  40.00;
 $precoG[] =  40.00;
 $precoG[] =  40.00;
 $precoG[] =  40.00;
+$precoG[] =  44.00;
 $precoG[] =  44.00;
 $precoG[] =  44.00;
 $precoG[] =  44.00;
