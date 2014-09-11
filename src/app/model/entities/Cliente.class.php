@@ -75,6 +75,10 @@ class Cliente extends Pessoa {
     public function setTelefones($telefones) {
         $this->telefones = $telefones;
     }
+    
+    public function addTelefone(Telefone $telefone){
+        $this->telefones->add($telefone);
+    }
 
     public function __toString() {
         return parent::getId() + " " + parent::getNome() + " " + parent::getSenha() + " " + parent::getStatus() + " " + $this->getEmail() + " " + $this->getTelefones();
