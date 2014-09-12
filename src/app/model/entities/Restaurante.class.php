@@ -66,6 +66,12 @@ class Restaurantes {
      * */
     private $avaliacoes;
 
+    /**
+     * @OneToOne(targetEntity="TipoRestaurante")
+     * @JoinColumn(name="id_tipo", referencedColumnName="id")
+     * */
+    private $tipoRestaurante;
+
     public function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
@@ -149,6 +155,14 @@ class Restaurantes {
 
     public function addAvaliacao(Avaliacao $avaliacao) {
         $this->avaliacoes->add($avaliacao);
+    }
+
+    public function getTipoRestaurante() {
+        return $this->tipoRestaurante;
+    }
+
+    public function setTipoRestaurante($tipoRestaurante) {
+        $this->tipoRestaurante = $tipoRestaurante;
     }
 
 }
