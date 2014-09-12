@@ -38,7 +38,7 @@ class Cardapio {
     private $produtos;
 
     public function __construct() {
-        $this->produtos= new Doctrine\Common\Collections\ArrayCollection();
+        $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {

@@ -43,6 +43,19 @@ class Produto {
      * * */
     private $ingredientes;
 
+    /**
+     * @ManyToMany(targetEntity="Tamanho", cascade={"all"})
+     * @JoinTable(name="Produto_Tamanho",
+     *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_tamanho", referencedColumnName="id", unique=true)}
+     *      )
+     * */
+    private $tamanhos;
+
+    public function __construct() {
+        $this->tamanhos = new Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function getId() {
         return $this->id;
     }
@@ -91,4 +104,15 @@ class Produto {
         $this->ingredientes = $ingredientes;
     }
 
+    public function getTamanhos() {
+        return $this->tamanhos;
+    }
+
+    public function setTamanhos($tamanhos) {
+        $this->tamanhos = $tamanhos;
+    }
+
+    public function addTamanho(Tamanho $tamaho){
+        $this->tamanhos->add($tamaho);
+    }
 }
