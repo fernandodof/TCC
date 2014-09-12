@@ -8,6 +8,7 @@
 require_once 'Telefone.class.php';
 require_once 'Cliente.class.php';
 require_once 'Avaliacao.class.php';
+require_once 'FormaPagamento.class.php';
 
 /**
  * @Entity
@@ -72,9 +73,19 @@ class Restaurantes {
      * */
     private $tipoRestaurante;
 
+    /**
+     * @ManyToMany(targetEntity="FormaPagamento", cascade={"all"})
+     * @JoinTable(name="Restaurante_FormaPagamento",
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_formaPagamento", referencedColumnName="id", unique=true)}
+     *      )
+     * */
+    private $formasPagamento;
+
     public function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
+        $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -165,4 +176,16 @@ class Restaurantes {
         $this->tipoRestaurante = $tipoRestaurante;
     }
 
+    public function getFormasPagamento() {
+        return $this->formasPagamento;
+    }
+
+    public function setFormasPagamento($formasPagamento) {
+        $this->formasPagamento = $formasPagamento;
+    }
+
+    public function addFormaPagamento(FormaPagamento $formaPagamento){
+        $this->formasPagamento->add($formaPagamento);
+    }
+    
 }
