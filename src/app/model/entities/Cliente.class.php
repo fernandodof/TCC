@@ -24,8 +24,18 @@ class Cliente extends Pessoa {
      * */
     private $telefones;
 
+    /**
+     * @ManyToMany(targetEntity="Endereco", cascade={"all"})
+     * @JoinTable(name="Pessoa_Endereco",
+     *      joinColumns={@JoinColumn(name="id_pessoa", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=true)}
+     *      )
+     * */
+    private $enderecos;
+
     function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
+        $this->enderecos = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -75,13 +85,21 @@ class Cliente extends Pessoa {
     public function setTelefones($telefones) {
         $this->telefones = $telefones;
     }
-    
-    public function addTelefone(Telefone $telefone){
+
+    public function addTelefone(Telefone $telefone) {
         $this->telefones->add($telefone);
     }
 
-    public function __toString() {
-        return parent::getId() + " " + parent::getNome() + " " + parent::getSenha() + " " + parent::getStatus() + " " + $this->getEmail() + " " + $this->getTelefones();
+    public function getEnderecos() {
+        return $this->enderecos;
+    }
+
+    public function setEnderecos($enderecos) {
+        $this->enderecos = $enderecos;
+    }
+
+    public function addEndereco(Endereco $endereco) {
+        $this->enderecos->add($endereco);
     }
 
 }
