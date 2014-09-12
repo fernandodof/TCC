@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of Avaliacao
  *
@@ -6,6 +7,7 @@
  */
 
 require_once 'Cliente.class.php';
+require_once 'Restaurante.class.php';
 
 /**
  * @Entity
@@ -31,9 +33,15 @@ class Avaliacao {
 
     /**
      * @ManyToOne(targetEntity="Cliente", inversedBy="avaliacoes")
-     * @JoinColumn(name="cliente_id", referencedColumnName="id")
+     * @JoinColumn(name="id_cliente", referencedColumnName="id")
      * */
     private $cliente;
+
+    /**
+     * @ManyToOne(targetEntity="Restaurante", inversedBy="avaliacoes")
+     * @JoinColumn(name="id_restaurante", referencedColumnName="id")
+     * */
+    private $restaurante;
 
     public function getId() {
         return $this->id;
@@ -65,6 +73,14 @@ class Avaliacao {
 
     public function setCliente($cliente) {
         $this->cliente = $cliente;
+    }
+
+    public function getRestaurante() {
+        return $this->restaurante;
+    }
+
+    public function setRestaurante($restaurante) {
+        $this->restaurante = $restaurante;
     }
 
 }
