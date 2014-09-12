@@ -82,6 +82,12 @@ class Restaurantes {
      * */
     private $formasPagamento;
 
+    /**
+     * @OneToOne(targetEntity="Cardapio")
+     * @JoinColumn(name="id_cardapio", referencedColumnName="id")
+     * */
+    private $cardapio;
+
     public function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
@@ -184,8 +190,16 @@ class Restaurantes {
         $this->formasPagamento = $formasPagamento;
     }
 
-    public function addFormaPagamento(FormaPagamento $formaPagamento){
+    public function addFormaPagamento(FormaPagamento $formaPagamento) {
         $this->formasPagamento->add($formaPagamento);
     }
-    
+
+    public function getCardapio() {
+        return $this->cardapio;
+    }
+
+    public function setCardapio($cardapio) {
+        $this->cardapio = $cardapio;
+    }
+
 }
