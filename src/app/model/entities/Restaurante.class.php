@@ -88,10 +88,16 @@ class Restaurantes {
      * */
     private $cardapio;
 
+    /**
+     * @OneToMany(targetEntity="Comentario", mappedBy="restaurante")
+     * */
+    private $comentarios;
+
     public function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
+        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -202,4 +208,15 @@ class Restaurantes {
         $this->cardapio = $cardapio;
     }
 
+    public function getComentarios() {
+        return $this->comentarios;
+    }
+
+    public function setComentarios($comentarios) {
+        $this->comentarios = $comentarios;
+    }
+
+    public function addComentario(Comentario $comentario) {
+        $this->comentarios->add($comentario);
+    }
 }

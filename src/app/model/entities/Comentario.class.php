@@ -32,13 +32,19 @@ class Comentario {
      * @Column(type="boolean")
      * * */
     private $disponivel = true;
-    
+
     /**
      * @ManyToOne(targetEntity="Cliente", inversedBy="comentarios")
      * @JoinColumn(name="cliente_id", referencedColumnName="id")
      * */
     private $cliente;
-    
+
+    /**
+     * @ManyToOne(targetEntity="Restaurante", inversedBy="comentarios")
+     * @JoinColumn(name="restaurante_id", referencedColumnName="id")
+     * */
+    private $restaurante;
+
     public function getId() {
         return $this->id;
     }
@@ -79,5 +85,12 @@ class Comentario {
         $this->cliente = $cliente;
     }
 
-    
+    public function getRestaurante() {
+        return $this->restaurante;
+    }
+
+    public function setRestaurante($restaurante) {
+        $this->restaurante = $restaurante;
+    }
+
 }
