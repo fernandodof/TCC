@@ -1,19 +1,28 @@
 <?php
+
+/**
+ * Description of Telefone
+ *
+ * @author Fernando
+ */
+
 /**
  * @Entity
- * **/
+ * * */
 class Telefone {
+
     /**
      * @Id
      * @Column(type="integer")
      * @GeneratedValue
-     * **/
+     * * */
     private $id;
+
     /**
      * @Column(type="string")
-     * **/
+     * * */
     private $numero;
-    
+
     public function getId() {
         return $this->id;
     }

@@ -1,5 +1,12 @@
 <?php
 /**
+ * Description of EnderecoRestaurante
+ *
+ * @author Fernando
+ */
+
+
+/**
  * @Entity
  * **/
 class EnderecoRestaurante extends Endereco {

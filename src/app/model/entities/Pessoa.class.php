@@ -1,5 +1,12 @@
 <?php
 /**
+ * Description of Pessoa
+ *
+ * @author Fernando
+ */
+
+
+/**
  * @MappedSuperclass
  * 
  * **/

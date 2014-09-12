@@ -1,4 +1,9 @@
 <?php
+/**
+ * Description of Funcionario
+ *
+ * @author Fernando
+ */
 
 require_once 'Pessoa.class.php';
 

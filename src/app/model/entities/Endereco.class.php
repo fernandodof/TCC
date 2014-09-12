@@ -1,4 +1,10 @@
 <?php
+/**
+ * Description of Endereco
+ *
+ * @author Fernando
+ */
+
 
 /**
  * @Entity

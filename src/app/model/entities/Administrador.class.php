@@ -1,4 +1,9 @@
 <?php
+/**
+ * Description of Administrador
+ *
+ * @author Fernando
+ */
 
 require_once 'Pessoa.class.php';
 
@@ -14,7 +19,6 @@ class Administrador extends Pessoa {
 
     /**
      * @Column(type="datetime")
-     * 
      * * */
     private $ultimoAcesso;
 
