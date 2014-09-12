@@ -5,7 +5,12 @@
  *
  * @author Fernando
  */
+
 require_once 'Pessoa.class.php';
+require_once 'Telefone.class.php';
+require_once 'Avaliacao.class.php';
+require_once 'Comentario.class.php';
+require_once 'Endereco.class.php';
 
 /**
  * @Entity
@@ -43,10 +48,16 @@ class Cliente extends Pessoa {
      * */
     private $avaliacoes;
 
+    /**
+     * @OneToMany(targetEntity="Comentario", mappedBy="cliente")
+     * */
+    private $comentarios;
+
     function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->enderecos = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
+        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -123,6 +134,18 @@ class Cliente extends Pessoa {
 
     public function addAvaliacao(Avaliacao $avaliacao) {
         $this->avaliacoes->add($avaliacao);
+    }
+    
+    public function getComentarios() {
+        return $this->comentarios;
+    }
+
+    public function setComentarios($comentarios) {
+        $this->comentarios = $comentarios;
+    }
+
+    public function addComentario(Comentario $comentario){
+        $this->comentarios->add($comentario);
     }
 
 }
