@@ -13,7 +13,7 @@ require_once 'FormaPagamento.class.php';
 /**
  * @Entity
  * * */
-class Restaurantes {
+class Restaurante {
 
     /**
      * @Column(type="integer")
@@ -33,7 +33,7 @@ class Restaurantes {
     private $aberto;
 
     /**
-     * @Column(type="string", nullable="true")
+     * @Column(type="string", nullable=true)
      * * */
     private $logo;
 

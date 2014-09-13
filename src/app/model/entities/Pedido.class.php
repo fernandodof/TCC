@@ -19,7 +19,7 @@ class Pedido {
     private $id;
 
     /**
-     * @Column(type="datetimne")
+     * @Column(type="datetime")
      * * */
     private $dataHora;
 
