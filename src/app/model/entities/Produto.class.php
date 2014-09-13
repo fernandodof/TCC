@@ -24,11 +24,6 @@ class Produto {
     private $nome;
 
     /**
-     * @Column(type="string")
-     * * */
-    private $tipo;
-
-    /**
      * @Column(type="boolean")
      * * */
     private $disponivel = true;
@@ -52,6 +47,12 @@ class Produto {
      * */
     private $tamanhos;
 
+    /**
+     * @OneToOne(targetEntity="Categoria")
+     * @JoinColumn(name="id_categoria", referencedColumnName="id")
+     * */
+    private $categoria;
+
     public function __construct() {
         $this->tamanhos = new Doctrine\Common\Collections\ArrayCollection();
     }
@@ -62,10 +63,6 @@ class Produto {
 
     public function getNome() {
         return $this->nome;
-    }
-
-    public function getTipo() {
-        return $this->tipo;
     }
 
     public function getDisponivel() {
@@ -88,10 +85,6 @@ class Produto {
         $this->nome = $nome;
     }
 
-    public function setTipo($tipo) {
-        $this->tipo = $tipo;
-    }
-
     public function setDisponivel($disponivel) {
         $this->disponivel = $disponivel;
     }
@@ -112,7 +105,16 @@ class Produto {
         $this->tamanhos = $tamanhos;
     }
 
-    public function addTamanho(Tamanho $tamaho){
+    public function addTamanho(Tamanho $tamaho) {
         $this->tamanhos->add($tamaho);
     }
+
+    public function getCategoria() {
+        return $this->categoria;
+    }
+
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
+    }
+
 }
