@@ -28,7 +28,7 @@ class Pessoa {
     /**
      * @Column(type="boolean")
      * */
-    private $status;
+    private $status=true;
     
     public function getId() {
         return $this->id;

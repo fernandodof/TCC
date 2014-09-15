@@ -29,7 +29,7 @@
                         {* Creating list for Navigation bar options *}
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="./index.php">Home</a></li>
-                            <li><a href="#">Cadastro</a></li>
+                            <li><a href="./subscribe.php">Cadastro</a></li>
                                 {* Creating Dropdown menu and form *}
 
                             <li class="dropdown" id="menuLogin">

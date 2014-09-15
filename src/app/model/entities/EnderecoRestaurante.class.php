@@ -1,31 +1,36 @@
 <?php
+
 /**
  * Description of EnderecoRestaurante
  *
  * @author Fernando
  */
 
-
 /**
  * @Entity
- * **/
+ * * */
 class EnderecoRestaurante extends Endereco {
 
     /**
      * @Column(type="string")
      * * */
     private $latitude;
+
     /**
      * @Column(type="string")
      * * */
     private $longitude;
-    
+
     public function getBairro() {
         return parent::getBairro();
     }
 
     public function getCep() {
         return parent::getCep();
+    }
+
+    public function getCidade() {
+        return parent::getCidade();
     }
 
     public function getComplemento() {
@@ -60,6 +65,10 @@ class EnderecoRestaurante extends Endereco {
         parent::setCep($cep);
     }
 
+    public function setCidade($cidade) {
+        parent::setCidade($cidade);
+    }
+
     public function setComplemento($complemento) {
         parent::setComplemento($complemento);
     }
@@ -83,20 +92,20 @@ class EnderecoRestaurante extends Endereco {
     public function setNumero($numero) {
         parent::setNumero($numero);
     }
-    
-    function getLatitude() {
+
+    public function getLatitude() {
         return $this->latitude;
     }
 
-    function getLongitude() {
+    public function getLongitude() {
         return $this->longitude;
     }
 
-    function setLatitude($latitude) {
+    public function setLatitude($latitude) {
         $this->latitude = $latitude;
     }
 
-    function setLongitude($longitude) {
+    public function setLongitude($longitude) {
         $this->longitude = $longitude;
     }
 

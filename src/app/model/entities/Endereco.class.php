@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Description of Endereco
  *
  * @author Fernando
  */
-
 
 /**
  * @Entity
@@ -53,71 +53,84 @@ class Endereco {
     private $estado;
 
     /**
+     * @Column(type="string")
+     * * */
+    private $cidade;
+
+    /**
      * @Column(type="string", nullable=true)
      * * */
     private $complemento;
 
-    function getId() {
+    public function getId() {
         return $this->id;
     }
 
-    function getDescricao() {
+    public function getDescricao() {
         return $this->descricao;
     }
 
-    function getLogradouro() {
+    public function getLogradouro() {
         return $this->logradouro;
     }
 
-    function getNumero() {
+    public function getNumero() {
         return $this->numero;
     }
 
-    function getBairro() {
+    public function getBairro() {
         return $this->bairro;
     }
 
-    function getCep() {
+    public function getCep() {
         return $this->cep;
     }
 
-    function getEstado() {
+    public function getEstado() {
         return $this->estado;
     }
 
-    function getComplemento() {
+    public function getCidade() {
+        return $this->cidade;
+    }
+
+    public function getComplemento() {
         return $this->complemento;
     }
 
-    function setId($id) {
+    public function setId($id) {
         $this->id = $id;
     }
 
-    function setDescricao($descricao) {
+    public function setDescricao($descricao) {
         $this->descricao = $descricao;
     }
 
-    function setLogradouro($logradouro) {
+    public function setLogradouro($logradouro) {
         $this->logradouro = $logradouro;
     }
 
-    function setNumero($numero) {
+    public function setNumero($numero) {
         $this->numero = $numero;
     }
 
-    function setBairro($bairro) {
+    public function setBairro($bairro) {
         $this->bairro = $bairro;
     }
 
-    function setCep($cep) {
+    public function setCep($cep) {
         $this->cep = $cep;
     }
 
-    function setEstado($estado) {
+    public function setEstado($estado) {
         $this->estado = $estado;
     }
 
-    function setComplemento($complemento) {
+    public function setCidade($cidade) {
+        $this->cidade = $cidade;
+    }
+
+    public function setComplemento($complemento) {
         $this->complemento = $complemento;
     }
 
