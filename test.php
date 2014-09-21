@@ -43,8 +43,11 @@ $cliente->setEnderecos($enderecos);
 
 $dao->save($cliente);
 
-$cliente1 = $dao->findByKey('cliente', 1);
-echo $cliente1->getNome();
+//$params['email'] = 'fernandodof@gmail.com';
+//$params['senha'] = '123456';
+//
+//$cliente1 = $dao->getResultOfNamedQueryWithParameters("ClienteLogin", $params);
+//print_r($cliente1);
 
-echo EncryptPassword::encrypt("123456");
+//echo EncryptPassword::encrypt("123456");
 //print_r ($cliente->getTelefones()->getValues());

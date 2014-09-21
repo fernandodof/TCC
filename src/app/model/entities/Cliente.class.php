@@ -8,14 +8,12 @@
 require_once 'Pessoa.class.php';
 require_once 'Telefone.class.php';
 require_once 'Avaliacao.class.php';
-require_once 'Comentario.class.php';
 require_once 'Endereco.class.php';
 
 /**
  * @Entity
  * @NamedQueries({
- *     @NamedQuery(name="ClienteLogin", 
- *                 query="SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha")
+ *     @NamedQuery(name="ClienteLogin", query="SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha")
  * })
  * * */
 class Cliente extends Pessoa {
@@ -49,11 +47,6 @@ class Cliente extends Pessoa {
     private $avaliacoes;
 
     /**
-     * @OneToMany(targetEntity="Comentario", mappedBy="cliente")
-     * */
-    private $comentarios;
-
-    /**
      * @ManyToMany(targetEntity="Pedido", cascade={"all"})
      * @JoinTable(name="Pessoa_Pedido",
      *      joinColumns={@JoinColumn(name="id_pessoa", referencedColumnName="id")},
@@ -66,7 +59,6 @@ class Cliente extends Pessoa {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->enderecos = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
-        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
         $this->pedidos = new Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -144,18 +136,6 @@ class Cliente extends Pessoa {
 
     public function addAvaliacao(Avaliacao $avaliacao) {
         $this->avaliacoes->add($avaliacao);
-    }
-
-    public function getComentarios() {
-        return $this->comentarios;
-    }
-
-    public function setComentarios($comentarios) {
-        $this->comentarios = $comentarios;
-    }
-
-    public function addComentario(Comentario $comentario) {
-        $this->comentarios->add($comentario);
     }
 
     public function getPedidos() {

@@ -8,25 +8,25 @@
         <div class="form-group">
             <input type="text" name="email" class="form-control" placeholder="Email" required/>
         </div>
-        <div class="form-group">
-            <input type="password" name="senha1" class="form-control" placeholder="Senha" required/>
-            <input type="password" name="senha2" class="form-control" placeholder="Confirme a Senha" required/>
-        </div>
 
-        <div class="form-group row">
-            <div class="col-sm-4 form-group">
+        <div class="form-group">
+            <div class="col-sm-3" id="dddDiv">
                 <input type="text" name="ddd" id="ddd" class="form-control" placeholder="DDD" required/>
             </div>
-            <div class="col-sm-8 form-group visible-xs">
-                <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Número do Telefone" required/>
-            </div>
 
-            <div class="col-sm-8 form-group pull-right visible-sm visible-md visible-lg">
+            <div class="col-sm-8 col-xs-12 pull-right" id="telefoneDiv">
                 <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Número do Telefone" required/>
             </div>
         </div>
+        <div class="form-group col-sm-6" id="senha1Div">
+            <input type="password" name="senha1" id="senha1" class="form-control" placeholder="Senha" required/>
+        </div>
 
-        <h3 class="pull-left">Endereço</h3>
+        <div class="form-group col-sm-6" id="senha2Div">
+            <input type="password" name="senha2" id="senha2" class="form-control" placeholder="Confirme a Senha" required/>
+        </div>
+
+        <h3 class="pull-left" id="enrececoLabel">Endereço</h3>
         <div class="form-group">
             <input type="text" name="descricaoEndereco" class="form-control" placeholder="Descrição para o endereço (ex: casa, escritório, etc)" required/>
         </div>

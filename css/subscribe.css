@@ -1,0 +1,24 @@
+#telefoneDiv, #dddDiv{
+    padding: 0;    
+}
+
+#dddDiv{
+    margin-bottom: 15px;
+}
+
+#senha1Div, #senha2Div{
+    padding: 0;
+    clear: left;
+}
+
+#enrececoLabel{
+    clear: left;    
+}
+
+/*
+@media (max-width: 768px) {
+    *{
+        padding: 0;
+    }
+}
+*/

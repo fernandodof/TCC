@@ -67,14 +67,12 @@ class Dao {
         return $query->getResult();
     }
 
-    public function getResultOfNamedQueryWithParameters() {
-        
+    public function getResultOfNamedQueryWithParameters($queryName, $params) {
+        $query = $this->em->getRepository('Cliente')->createNamedQuery($queryName);
+        foreach ($params as $key => $value) {
+            $query->setParameter($key, $value);
+        }
+        return $query->getResult();
     }
-
-//    public function getEntityManager() {
-//        return $this->em;
-//        
-//        $this->em->cre
-//    }
 
 }

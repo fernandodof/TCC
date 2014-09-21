@@ -10,17 +10,16 @@ function recieveForm($param) {
     return strip_tags(addslashes($param));
 }
 
-switch (recieveForm($_POST['formSubmit'])) {
+switch (recieveForm(filter_input(INPUT_POST, 'formSubmit'))) {
     case "CadastrarCliente": {
-            cadastrarCliente();
+            cadastrarCLiente();
             break;
         }
 }
 
 function cadastrarCLiente() {
+
     //Cliente
-
-
     $cliente = new Cliente();
     $cliente->setNome(filter_input(INPUT_POST, 'nome'));
     $cliente->setEmail(filter_input(INPUT_POST, 'email'));
@@ -45,11 +44,10 @@ function cadastrarCLiente() {
     $endereco->setCidade(filter_input(INPUT_POST, 'cidade'));
     $endereco->setEstado(filter_input(INPUT_POST, 'estado'));
     $endereco->setComplemento(filter_input(INPUT_POST, 'complemento'));
-
-    echo filter_input(INPUT_POST, 'logradouro').'</br>';
-    echo filter_input(INPUT_POST, 'cep').'</br>';
-    echo filter_input(INPUT_POST, 'cidade').'</br>';
-
+    echo filter_input(INPUT_POST, 'ddd') . '</br>';
+    echo filter_input(INPUT_POST, 'telefone1') . '</br>';
+    echo filter_input(INPUT_POST, 'cidade') . '</br>';
+    
     //Cliente <<- Endereco
     $enderecos[] = $endereco;
     $cliente->setEnderecos($enderecos);

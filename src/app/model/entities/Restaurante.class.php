@@ -83,21 +83,19 @@ class Restaurante {
     private $formasPagamento;
 
     /**
-     * @OneToOne(targetEntity="Cardapio")
-     * @JoinColumn(name="id_cardapio", referencedColumnName="id")
+     * @ManyToMany(targetEntity="Produto", cascade={"all"})
+     * @JoinTable(name="Restaurante_Produto",
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id", unique=true)}
+     *      )
      * */
-    private $cardapio;
-
-    /**
-     * @OneToMany(targetEntity="Comentario", mappedBy="restaurante")
-     * */
-    private $comentarios;
+    private $produtos;
 
     public function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
-        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
+        $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -200,23 +198,12 @@ class Restaurante {
         $this->formasPagamento->add($formaPagamento);
     }
 
-    public function getCardapio() {
-        return $this->cardapio;
+    public function getProdutos() {
+        return $this->produtos;
     }
 
-    public function setCardapio($cardapio) {
-        $this->cardapio = $cardapio;
+    public function setProdutos($produtos) {
+        $this->produtos = $produtos;
     }
 
-    public function getComentarios() {
-        return $this->comentarios;
-    }
-
-    public function setComentarios($comentarios) {
-        $this->comentarios = $comentarios;
-    }
-
-    public function addComentario(Comentario $comentario) {
-        $this->comentarios->add($comentario);
-    }
 }

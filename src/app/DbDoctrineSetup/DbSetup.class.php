@@ -11,7 +11,7 @@ class DbSetup {
         $isDevMode = false;
 
         $conn = array(
-            'dbname' => 'restaurantes',
+            'dbname' => 'restaurantes1',
             'user' => 'root',
             'password' => '',
             'host' => 'localhost',
