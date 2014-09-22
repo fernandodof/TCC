@@ -1,0 +1,15 @@
+.jumbotron{
+    background: #4cae4c; 
+}
+
+.jumbotron h2{
+    font-size: xx-large;
+    text-align: justify;
+}
+
+
+.jumbotron h2 span{
+    font-style: oblique;
+    font-weight: bold;
+}
+

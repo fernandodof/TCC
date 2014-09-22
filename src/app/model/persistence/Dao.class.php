@@ -67,12 +67,16 @@ class Dao {
         return $query->getResult();
     }
 
-    public function getResultOfNamedQueryWithParameters($queryName, $params) {
-        $query = $this->em->getRepository('Cliente')->createNamedQuery($queryName);
-        foreach ($params as $key => $value) {
-            $query->setParameter($key, $value);
-        }
+    public function getListResultOfNamedQueryWithParameters($queryInstruction, $params) {
+        $query = $this->em->createQuery($queryInstruction);
+        $query->setParameters($params);
         return $query->getResult();
+    }
+
+    public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
+        $query = $this->em->createQuery($queryInstruction);
+        $query->setParameters($params);
+        return $query->getSingleResult();
     }
 
 }

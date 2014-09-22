@@ -5,6 +5,9 @@ require_once '../model/entities/Cliente.class.php';
 require_once '../model/entities/Endereco.class.php';
 require_once '../model/entities/Telefone.class.php';
 require_once '../util/EncryptPassword.php';
+require_once '../util/Queries.php';
+
+//require_once '../../../pages/index.php';
 
 function recieveForm($param) {
     return strip_tags(addslashes($param));
@@ -13,6 +16,14 @@ function recieveForm($param) {
 switch (recieveForm(filter_input(INPUT_POST, 'formSubmit'))) {
     case "CadastrarCliente": {
             cadastrarCLiente();
+            break;
+        }
+    case "Login": {
+            login();
+            break;
+        }
+    case "Logout": {
+            logout();
             break;
         }
 }
@@ -47,7 +58,7 @@ function cadastrarCLiente() {
     echo filter_input(INPUT_POST, 'ddd') . '</br>';
     echo filter_input(INPUT_POST, 'telefone1') . '</br>';
     echo filter_input(INPUT_POST, 'cidade') . '</br>';
-    
+
     //Cliente <<- Endereco
     $enderecos[] = $endereco;
     $cliente->setEnderecos($enderecos);
@@ -55,6 +66,34 @@ function cadastrarCLiente() {
     $dao = new Dao();
     $dao->save($cliente);
 
-    header("Location: http://localhost/Restaurantes/pages/index.php");
+    header("Location: ../../../pages/subscriptionConfirmation.php");
     exit();
+}
+
+function login() {
+    $dao = new Dao();
+
+    $params['email'] = filter_input(INPUT_POST, 'emailLogin');
+    $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'senhaLogin'));
+
+    $cliente = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN, $params);
+
+    session_start();
+    $_SESSION['nome'] = $cliente->getNome();
+    $_SESSION['id'] = $cliente->getId();
+    $_SESSION['tipo'] = 'cliente';
+
+    header("Location: ../../../pages/clientePage.php");
+    exit();
+}
+
+function logout() {
+    if (isset($_SESSION['id'])) {
+        session_destroy();
+        unset($_SESSION);
+        setcookie("PHPSESSID", "", time() - 61200, "/");
+        header("location: ../../../pages/index.php");
+    } else {
+        header("location: ../../../pages/index.php");
+    }
 }
