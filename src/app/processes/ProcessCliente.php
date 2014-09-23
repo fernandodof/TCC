@@ -88,12 +88,8 @@ function login() {
 }
 
 function logout() {
-    if (isset($_SESSION['id'])) {
-        session_destroy();
-        unset($_SESSION);
-        setcookie("PHPSESSID", "", time() - 61200, "/");
-        header("location: ../../../pages/index.php");
-    } else {
-        header("location: ../../../pages/index.php");
-    }
+    session_destroy();
+    unset($_SESSION);
+    setcookie("PHPSESSID", "", time() - 61200, "/");
+    header("Location: ../../../pages/index.php");
 }

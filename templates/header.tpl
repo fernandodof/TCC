@@ -11,7 +11,6 @@
         {* Move this script tags *}
         <script src="../bootstrap/js/jquery.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
-        {*<script src="../bootstrap/js/jquery.min.js"></script>*}
     </head>
     <body>
         <header>
@@ -64,57 +63,50 @@
                                         <li><form class="form-horizontal" method="POST" action="../src/app/processes/ProcessCliente.php">
                                                 <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair</button>
                                             </form></li>
-
-                                        <li>{$smarty.session.nome}</li>    
                                     </ul>
                                 </li>
                             {/if}
-
-
-
-
                         </ul>
                     </div>
-                    <div class="modal" id="contact" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form class="navbar-form navbar-left" id="contactForm" method="POST" action="#">
-                                    <div class="modal-header">
-                                        <h4>Fale conosco</h4>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <div class="form-group">
-                                            <label class="col-lg-2 control-label" for="nameContact">Nome:</label>
-                                            <div class="col-lg-10">
-                                                <input type="text" class="form-control" name="nameContact" id="nameContact" placeholder="Nome completo">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-2 control-label" for="emailContact">Email: </label>
-                                            <div class="col-lg-10">
-                                                <input type="email" class="form-control" name="nameContact" id="emailContact" placeholder="você@exemplo.com">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-lg-2 control-label" for="messageContact">Mensagem:</label>
-                                            <div class="col-lg-10">
-                                                <textarea class="form-control" name="messageContact" id="messageContact" rows="8" placeholder="Insira a sua mensagem aqui"></textarea>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
-                                        <button class="btn btn-primary" type="submit">Enviar <span class="glyphicon glyphicon-send"></span></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 </div>
             </nav>
+            <div class="modal" id="contact" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form class="form-horizontal" id="contactForm" method="POST" action="#">
+                            <div class="modal-header">
+                                <h4>Fale conosco</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="nameContact">Nome:</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="nameContact" id="nameContact" placeholder="Nome completo">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="emailContact">Email: </label>
+                                    <div class="col-lg-10">
+                                        <input type="email" class="form-control" name="nameContact" id="emailContact" placeholder="voçe@exemplo.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-2 control-label" for="messageContact">Mensagem:</label>
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control" name="messageContact" id="messageContact" rows="8" placeholder="Insira a sua mensagem aqui"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                                <button class="btn btn-primary" type="submit">Enviar <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </header>
         {*</body>
         </html>*}
