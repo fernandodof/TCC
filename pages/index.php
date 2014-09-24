@@ -1,6 +1,9 @@
 <?php
 require_once './smartyHeader.php';
 include_once '../pages/header.php';
+require_once '../src/app/model/persistence/Dao.class.php';
+
+$dao = new Dao();
 
 $highlights = array();
 $highlights['Pizza de Frango com Catupiry'] = '../images/dishes/francoComCatupiry.jpg';
@@ -19,19 +22,9 @@ $links[] = '#';
 $links[] = '#';
 $links[] = '#';
 
-$kindsOfFood = array();
-$kindsOfFood[] = 'Churrascaria';
-$kindsOfFood[] = 'Lanchonete';
-$kindsOfFood[] = 'Pizzaria';
-$kindsOfFood[] = 'Cozinha Japonesa';
-$kindsOfFood[] = 'Cozinha Chinesa';
-$kindsOfFood[] = 'Saladas';
-$kindsOfFood[] = 'Cozlinha Italiana';
-$kindsOfFood[] = 'Variada';
-sort($kindsOfFood);
-array_unshift($kindsOfFood,"Tipo de Cozinha (todas)");
+$kindsOfFood = $dao->findAll('tipoRestaurante');
 
-$smarty->assign('kindsOfFood',$kindsOfFood);
+$smarty->assignByRef('kindsOfFood',$kindsOfFood);
 $smarty->assign('highlights', $highlights);
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('links', $links);

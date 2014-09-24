@@ -11,8 +11,9 @@
                 <div class="row col-md-5 col-xs-12">
                     <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
                         <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12 ">
-                            {foreach from = $kindsOfFood item = kindOfFood}
-                                <option class="">{$kindOfFood}</option>
+                            <option class="">Tipo de cozinha (todas)</option>
+                            {foreach from = $kindsOfFood key=k item = kind}
+                                <option class="">{$kind->getNome()}</option>
                             {/foreach}
                         </select>
                     </div>
@@ -43,10 +44,10 @@
                 <div class="well-sm imgDiv">
                     <img src="{$img}" class="img-responsive">
                 </div>
-                    <a class="restaurantName" href="{$links[$count]}">{$restaurants[$count]}</a>
+                <a class="restaurantName" href="{$links[$count]}">{$restaurants[$count]}</a>
                 <a heref="#" class="btn btn-danger col-xs-12 pecaAgora">Peça agora</a>
             </div> 
-                {$count = $count+1}
+            {$count = $count+1}
         {/foreach}
     </div>
 </div>

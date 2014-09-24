@@ -57,7 +57,7 @@ class Restaurante {
     private $telefones;
 
     /**
-     * @OneToOne(targetEntity="EnderecoRestaurante")
+     * @OneToOne(targetEntity="EnderecoRestaurante", cascade={"all"})
      * @JoinColumn(name="id_endereco", referencedColumnName="id")
      * */
     private $endereco;

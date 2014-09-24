@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="emailContact">Email: </label>
                                     <div class="col-lg-10">
-                                        <input type="email" class="form-control" name="nameContact" id="emailContact" placeholder="voçe@exemplo.com">
+                                        <input type="email" class="form-control" name="nameContact" id="emailContact" placeholder="você@exemplo.com">
                                     </div>
                                 </div>
                                 <div class="form-group">
