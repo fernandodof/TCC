@@ -60,7 +60,7 @@ class Endereco {
     /**
      * @Column(type="string", nullable=true)
      * * */
-    private $complemento;
+    private $complemento = null;
 
     public function getId() {
         return $this->id;

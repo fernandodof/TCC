@@ -1,18 +1,18 @@
 [
     {
         "name": "symfony/console",
-        "version": "v2.5.4",
-        "version_normalized": "2.5.4.0",
+        "version": "v2.5.5",
+        "version_normalized": "2.5.5.0",
         "target-dir": "Symfony/Component/Console",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/Console.git",
-            "reference": "748beed2a1e73179c3f5154d33fe6ae100c1aeb1"
+            "reference": "ca053eaa031c93afb68a71e4eb1f4168dfd4a661"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Console/zipball/748beed2a1e73179c3f5154d33fe6ae100c1aeb1",
-            "reference": "748beed2a1e73179c3f5154d33fe6ae100c1aeb1",
+            "url": "https://api.github.com/repos/symfony/Console/zipball/ca053eaa031c93afb68a71e4eb1f4168dfd4a661",
+            "reference": "ca053eaa031c93afb68a71e4eb1f4168dfd4a661",
             "shasum": ""
         },
         "require": {
@@ -26,7 +26,7 @@
             "psr/log": "For using the console logger",
             "symfony/event-dispatcher": ""
         },
-        "time": "2014-08-14 16:10:54",
+        "time": "2014-09-25 09:53:56",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -112,17 +112,17 @@
     },
     {
         "name": "doctrine/annotations",
-        "version": "v1.2.0",
-        "version_normalized": "1.2.0.0",
+        "version": "v1.2.1",
+        "version_normalized": "1.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/annotations.git",
-            "reference": "d9b1a37e9351ddde1f19f09a02e3d6ee92e82efd"
+            "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/d9b1a37e9351ddde1f19f09a02e3d6ee92e82efd",
-            "reference": "d9b1a37e9351ddde1f19f09a02e3d6ee92e82efd",
+            "url": "https://api.github.com/repos/doctrine/annotations/zipball/6a6bec0670bb6e71a263b08bc1b98ea242928633",
+            "reference": "6a6bec0670bb6e71a263b08bc1b98ea242928633",
             "shasum": ""
         },
         "require": {
@@ -133,7 +133,7 @@
             "doctrine/cache": "1.*",
             "phpunit/phpunit": "4.*"
         },
-        "time": "2014-07-06 15:52:21",
+        "time": "2014-09-25 16:45:30",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -152,17 +152,6 @@
         ],
         "authors": [
             {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
                 "name": "Roman Borschel",
                 "email": "roman@code-factory.org"
             },
@@ -171,10 +160,16 @@
                 "email": "kontakt@beberlei.de"
             },
             {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
+            },
+            {
                 "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "https://github.com/schmittjoh",
-                "role": "Developer of wrapped JMSSerializerBundle"
+                "email": "schmittjoh@gmail.com"
             }
         ],
         "description": "Docblock Annotations Parser",
@@ -542,17 +537,17 @@
     },
     {
         "name": "doctrine/orm",
-        "version": "v2.4.4",
-        "version_normalized": "2.4.4.0",
+        "version": "v2.4.5",
+        "version_normalized": "2.4.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/doctrine/doctrine2.git",
-            "reference": "fc19c3b53dcd00e6584db40669fdd699c4671f97"
+            "reference": "c0d3cdbdfbf873871167050ab077e49b1ad02ab0"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/fc19c3b53dcd00e6584db40669fdd699c4671f97",
-            "reference": "fc19c3b53dcd00e6584db40669fdd699c4671f97",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c0d3cdbdfbf873871167050ab077e49b1ad02ab0",
+            "reference": "c0d3cdbdfbf873871167050ab077e49b1ad02ab0",
             "shasum": ""
         },
         "require": {
@@ -569,7 +564,7 @@
         "suggest": {
             "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
         },
-        "time": "2014-07-11 03:05:53",
+        "time": "2014-09-22 21:58:51",
         "bin": [
             "bin/doctrine",
             "bin/doctrine.php"
@@ -592,23 +587,20 @@
         ],
         "authors": [
             {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
                 "name": "Roman Borschel",
                 "email": "roman@code-factory.org"
             },
             {
                 "name": "Benjamin Eberlei",
                 "email": "kontakt@beberlei.de"
+            },
+            {
+                "name": "Guilherme Blanco",
+                "email": "guilhermeblanco@gmail.com"
+            },
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com"
             }
         ],
         "description": "Object-Relational-Mapper for PHP",

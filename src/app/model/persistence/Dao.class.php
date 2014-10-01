@@ -2,8 +2,6 @@
 
 require_once 'C:/wamp/www/Restaurantes/vendor/autoload.php';
 
-//require './../entities';
-
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
@@ -69,7 +67,11 @@ class Dao {
 
     public function getListResultOfNamedQueryWithParameters($queryInstruction, $params) {
         $query = $this->em->createQuery($queryInstruction);
-        $query->setParameters($params);
+
+        foreach ($params as $key => $value) {
+            $query->setParameter($key, $value);
+        }
+        
         return $query->getResult();
     }
 

@@ -9,7 +9,7 @@ require_once './src/app/util/EncryptPassword.php';
 require_once './src/app/util/Queries.php';
 
 $dao = new Dao();
-
+//
 //$cliente = new Cliente();
 //$cliente->setEmail("fernnadodof@gmail.com");
 //$cliente->setNome("Fernando");
@@ -44,11 +44,14 @@ $dao = new Dao();
 //
 //$dao->save($cliente);
 
-$params['email'] = 'fernandodof@gmail.com';
-$params['senha'] = EncryptPassword::encrypt("123456");
+//$params['email'] = 'fernandodof@gmail.com';
+//$params['senha'] = EncryptPassword::encrypt("123456");
+//
+//$cliente1 = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN, $params);
+//echo $cliente1->getNome();
 
-$cliente1 = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN, $params);
-echo $cliente1->getNome();
+$c = $dao->findByKey('Cliente', 1);
 
+echo $c->getNome();
 //echo EncryptPassword::encrypt("123456");
 //print_r ($cliente->getTelefones()->getValues());

@@ -4,7 +4,7 @@
         <title>{$title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <link href= "../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/header.css" rel="stylesheet">
         <link href= "../css/styles.css" rel="stylesheet">

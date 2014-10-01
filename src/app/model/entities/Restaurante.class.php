@@ -1,14 +1,16 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
- * Description of Restaurantes
+ * Description of Restaurante
  *
  * @author Fernando
  */
-require_once 'Telefone.class.php';
-require_once 'Cliente.class.php';
-require_once 'Avaliacao.class.php';
-require_once 'FormaPagamento.class.php';
 
 /**
  * @Entity
@@ -16,8 +18,8 @@ require_once 'FormaPagamento.class.php';
 class Restaurante {
 
     /**
-     * @Column(type="integer")
      * @Id
+     * @Column(type="integer")
      * @GeneratedValue
      * * */
     private $id;
@@ -35,12 +37,12 @@ class Restaurante {
     /**
      * @Column(type="string", nullable=true)
      * * */
-    private $logo;
+    private $logo = null;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      * * */
-    private $descricao;
+    private $descricao = null;
 
     /**
      * @Column(type="boolean")
@@ -48,35 +50,45 @@ class Restaurante {
     private $ativo = true;
 
     /**
+     * @ManyToMany(targetEntity="Avaliacao", cascade={"all"})
+     * @JoinTable(name="Restaurante_Avaliacao",
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
+     *      )
+     * */
+    private $avaliacoes;
+
+    /**
      * @ManyToMany(targetEntity="Telefone", cascade={"all"})
      * @JoinTable(name="Restaurante_Telefone",
      *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_telefone", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="id_telefone", referencedColumnName="id")}
      *      )
      * */
     private $telefones;
 
     /**
-     * @OneToOne(targetEntity="EnderecoRestaurante", cascade={"all"})
-     * @JoinColumn(name="id_endereco", referencedColumnName="id")
+     * @ManyToMany(targetEntity="EnderecoRestaurante", cascade={"all"})
+     * @JoinTable(name="RestauranteEndereco",
+     *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=true)}
+     *      )
      * */
     private $endereco;
 
     /**
-     * @OneToMany(targetEntity="Avaliacao", mappedBy="restaurante")
+     * @ManyToMany(targetEntity="TipoRestaurante")
+     * @JoinTable(name="Restaurante_Tipo",
+     *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_tipo", referencedColumnName="id", unique=true)}
+     *      )
      * */
-    private $avaliacoes;
-
-    /**
-     * @OneToOne(targetEntity="TipoRestaurante")
-     * @JoinColumn(name="id_tipo", referencedColumnName="id")
-     * */
-    private $tipoRestaurante;
+    private $tipo;
 
     /**
      * @ManyToMany(targetEntity="FormaPagamento", cascade={"all"})
-     * @JoinTable(name="Restaurante_FormaPagamento",
-     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
+     * @JoinTable(name="Rrestaurante_FormaPagamento",
+     *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_formaPagamento", referencedColumnName="id", unique=true)}
      *      )
      * */
@@ -86,18 +98,20 @@ class Restaurante {
      * @ManyToMany(targetEntity="Produto", cascade={"all"})
      * @JoinTable(name="Restaurante_Produto",
      *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")}
      *      )
      * */
     private $produtos;
 
     public function __construct() {
-        $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
         $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
+        $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
+//        $this->endereco = new Doctrine\Common\Collections\ArrayCollection();
+//        $this->tipo = new Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
     public function getId() {
         return $this->id;
     }
@@ -122,6 +136,10 @@ class Restaurante {
         return $this->ativo;
     }
 
+    public function getAvaliacoes() {
+        return $this->avaliacoes;
+    }
+
     public function getTelefones() {
         return $this->telefones;
     }
@@ -130,8 +148,16 @@ class Restaurante {
         return $this->endereco;
     }
 
-    public function getAvaliacoes() {
-        return $this->avaliacoes;
+    public function getTipo() {
+        return $this->tipo;
+    }
+
+    public function getFormasPagamento() {
+        return $this->formasPagamento;
+    }
+
+    public function getProdutos() {
+        return $this->produtos;
     }
 
     public function setId($id) {
@@ -158,48 +184,24 @@ class Restaurante {
         $this->ativo = $ativo;
     }
 
-    public function setTelefones($telefones) {
-        $this->telefones = $telefones;
+    public function setAvaliacoes($avaliacoes) {
+        $this->avaliacoes = $avaliacoes;
     }
 
-    public function addTelefone(Telefone $telefone) {
-        $this->telefones->add($telefone);
+    public function setTelefones($telefones) {
+        $this->telefones = $telefones;
     }
 
     public function setEndereco($endereco) {
         $this->endereco = $endereco;
     }
 
-    public function setAvaliacoes($avaliacoes) {
-        $this->avaliacoes = $avaliacoes;
-    }
-
-    public function addAvaliacao(Avaliacao $avaliacao) {
-        $this->avaliacoes->add($avaliacao);
-    }
-
-    public function getTipoRestaurante() {
-        return $this->tipoRestaurante;
-    }
-
-    public function setTipoRestaurante($tipoRestaurante) {
-        $this->tipoRestaurante = $tipoRestaurante;
-    }
-
-    public function getFormasPagamento() {
-        return $this->formasPagamento;
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
     }
 
     public function setFormasPagamento($formasPagamento) {
         $this->formasPagamento = $formasPagamento;
-    }
-
-    public function addFormaPagamento(FormaPagamento $formaPagamento) {
-        $this->formasPagamento->add($formaPagamento);
-    }
-
-    public function getProdutos() {
-        return $this->produtos;
     }
 
     public function setProdutos($produtos) {

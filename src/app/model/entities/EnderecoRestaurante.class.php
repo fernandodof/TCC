@@ -5,21 +5,12 @@
  *
  * @author Fernando
  */
+require_once 'Endereco.class.php';
 
 /**
  * @Entity
  * * */
 class EnderecoRestaurante extends Endereco {
-
-    /**
-     * @Column(type="string")
-     * * */
-    private $latitude;
-
-    /**
-     * @Column(type="string")
-     * * */
-    private $longitude;
 
     public function getBairro() {
         return parent::getBairro();
@@ -108,5 +99,15 @@ class EnderecoRestaurante extends Endereco {
     public function setLongitude($longitude) {
         $this->longitude = $longitude;
     }
+
+    /**
+     * @Column(type="string")
+     * * */
+    private $latitude;
+
+    /**
+     * @Column(type="string")
+     * * */
+    private $longitude;
 
 }

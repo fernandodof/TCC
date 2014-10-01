@@ -24,7 +24,7 @@ $links[] = '#';
 
 $kindsOfFood = $dao->findAll('tipoRestaurante');
 
-$smarty->assignByRef('kindsOfFood',$kindsOfFood);
+$smarty->assign('kindsOfFood',$kindsOfFood);
 $smarty->assign('highlights', $highlights);
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('links', $links);
