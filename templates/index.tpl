@@ -19,13 +19,13 @@
                     </div>
                     <div class="col-md-1 visible-lg visible-md btSearchDiv">        
                         <div class="input-group-btn">
-                            <button type="submit" class="btn btn-lg btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
+                            <button type="submit" name="formSubmit" value="SearchRestaurante" class="btn btn-lg btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
                         </div>
                     </div>
                 </div>
                 <div class="row col-xs-12 visible-sm visible-xs btSearchDiv">        
                     <div class="input-group-btn">
-                        <button type="submit" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                        <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
                     </div>
                 </div>
             </div>

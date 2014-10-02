@@ -36,40 +36,52 @@
                             <div class="well well-sm opened col-xs-2 pull-right statusIndicationOpened"><p>Fechado</p></div>
                         </div>
                     </div>
-                    {foreach from = $restaurants key = restaurant item = status}
-                        {if $status}
+                    {foreach from = $restaurants item = restaurante}
+                        {if $restaurante->getAberto()}
                             <div class="well closed col-xs-12">
-                                <h4>{$restaurant} <small> Tipo de cozinha</small></h4>
+                                <h4>{$restaurante->getNome()} <small> Tipo de cozinha</small></h4>
                                 <div class="row col-xs-12">
                                     <img class="img pull-left" src="../images/icons/rsz_location.png"/>
-                                    <p class="col-xs-10">Endereço</p>                                    
-                                </div>
-                                <div class="row col-xs-12 pull-right formaPagamentoDiv">
-                                    <img class="img pull-right moneyImg" src="../images/icons/money59.png"/>
-                                    <img class="img pull-right cardImg" src="../images/icons/card25.png"/>
-                                    <p class="pull-right">Formas de Pagamento: </p>
-                                </div>
-                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
-                            </div>       
-                        {else}
-                            <div class="well opened col-xs-12">
-                                <h4>{$restaurant} <small> Tipo de cozinha</small></h4>
-                                <div class="row col-xs-12">
-                                    <img class="img pull-left locationImg" src="../images/icons/rsz_location.png"/>
-                                    <p class="col-xs-10">Endereço</p>                                    
-                                </div>
-                                <div class="row col-xs-12 pull-right formaPagamentoDiv">
-                                    <img class="img pull-right moneyImg" src="../images/icons/money59.png"/>
-                                    <img class="img pull-right cardImg" src="../images/icons/card25.png"/>
-                                    <p class="pull-right">Formas de Pagamento: </p>
-                                </div>
-                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
-                            </div>      
-                        {/if}
-                    {/foreach}
+                                    <p class="col-xs-10">{foreach from = $restaurante->getEndereco() item=endereco}
+                                        {$endereco->getLogradouro()}, {$endereco->getNumero()}, Bairro: {$endereco->getBairro()}, CEP:
+                                        {$endereco->getCep()}, {$endereco->getCidade()}
+                                        {/foreach}</p>                                    
+                                    </div>
+                                    <div class="row col-xs-12 pull-right formaPagamentoDiv">
+                                        {foreach from = $restaurante->getFormasPagamento() item=forma}
+                                            {if $forma->getNome()=='Dinheiro'}
+                                                <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="../images/icons/money59.png"/>
+                                            {/if}
+                                            {if $forma->getNome()=  ='Cartao'}
+                                                <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="../images/icons/card25.png"/>
+                                            {/if}
+                                        {/foreach}
+                                        <p class="pull-right">Formas de Pagamento: </p>
+                                    </div>
+                                    <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
+                                </div>       
+                                {else}
+                                    <div class="well opened col-xs-12">
+                                        <h4>{$restaurante->getNome()} <small> Tipo de cozinha</small></h4>
+                                        <div class="row col-xs-12">
+                                            <img class="img pull-left locationImg" src="../images/icons/rsz_location.png"/>
+                                            <p class="col-xs-10">{foreach from = $restaurante->getEndereco() item=endereco}
+                                                {$endereco->getLogradouro()}, {$endereco->getNumero()}, Bairro: {$endereco->getBairro()}, CEP:
+                                                {$endereco->getCep()}, {$endereco->getCidade()}
+                                                {/foreach}</p>                                     
+                                            </div>
+                                            <div class="row col-xs-12 pull-right formaPagamentoDiv">
+                                                <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="../images/icons/money59.png"/>
+                                                <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="../images/icons/card25.png"/>
+                                                <p class="pull-right">Formas de Pagamento: </p>
+                                            </div>
+                                            <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
+                                        </div>      
+                                        {/if}
+                                            {/foreach}
 
-                </div>
-            </div>
-        </div>
-    </div>   
-</div>    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>    

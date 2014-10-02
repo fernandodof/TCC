@@ -10,7 +10,7 @@ require_once './src/app/util/Queries.php';
 $dao = new Dao();
 //
 //$formaPagamento = new FormaPagamento();
-//$formaPagamento->setNome("Á vista");
+//$formaPagamento->setNome("Dinheiro");
 //$dao->save($formaPagamento);
 //
 //$tipoRestaurante = new TipoRestaurante();
@@ -55,7 +55,8 @@ $params['nome'] = '%tar%';
 
 $restaurantes = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST, $params);
 
-echo $restaurantes[0]->getNome();
+print_r($restaurantes[0]->getEndereco()[0]);
+
 //
 //$r = $dao->findAll('Restaurante');
 //
