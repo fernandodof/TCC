@@ -20,11 +20,11 @@
                 <h1 class="text-center login-title">ÁREA RESTRITA</h1>
                 <div class="account-wall">
                     <img class="profile-img img-rounded" src="../images/icons/tray.png"
-                         alt="">
-                    <form class="form-signin">
-                        <input type="text" class="form-control" placeholder="Login" required autofocus>
-                        <input type="password" class="form-control" placeholder="Senha" required>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                         alt="Imagem Usuário" title="Imagem Usuário">
+                    <form class="form-signin" action="../src/app/processes/ProcessFuncionario.php" method="POST">
+                        <input type="text" name="funcLogin" class="form-control" placeholder="Login" required autofocus>
+                        <input type="password" name="funcSenha" class="form-control" placeholder="Senha" required>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" name="formSubmit" value="Login">Entrar</button>
                     </form>
                 </div>
                 <a href="../pages/index.php" class="text-center index-page">Página Inicial</a>

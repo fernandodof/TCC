@@ -12,9 +12,6 @@ require_once 'Endereco.class.php';
 
 /**
  * @Entity
- * @NamedQueries({
- *     @NamedQuery(name="ClienteLogin", query="SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha")
- * })
  * * */
 class Cliente extends Pessoa {
 

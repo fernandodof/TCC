@@ -8,7 +8,7 @@ require_once './src/app/model/persistence/Dao.class.php';
 require_once './src/app/util/Queries.php';
 
 $dao = new Dao();
-//
+
 //$formaPagamento = new FormaPagamento();
 //$formaPagamento->setNome("Dinheiro");
 //$dao->save($formaPagamento);
@@ -50,7 +50,7 @@ $dao = new Dao();
 //$restaurante->setEndereco($enderecoArray);
 //
 //$dao->save($restaurante);
-//
+
 $params['nome'] = '%tar%';
 
 $restaurantes = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST, $params);

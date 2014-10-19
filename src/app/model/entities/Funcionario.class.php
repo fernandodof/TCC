@@ -1,11 +1,12 @@
 <?php
+
 /**
  * Description of Funcionario
  *
  * @author Fernando
  */
-
 require_once 'Pessoa.class.php';
+require_once 'Restaurante.class.php';
 
 /**
  * @Entity
@@ -21,6 +22,15 @@ class Funcionario extends Pessoa {
      * @Column(type="string", unique=true)
      * * */
     private $login;
+
+    /**
+     * @ManyToMany(targetEntity="Restaurante", cascade={"all"})
+     * @JoinTable(name="Funcionario_Restaurante",
+     *      joinColumns={@JoinColumn(name="id_funcionario", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id", unique=true)}
+     *      )
+     * */
+    private $restaurante;
 
     public function getId() {
         return parent::getId();
@@ -62,12 +72,20 @@ class Funcionario extends Pessoa {
         return $this->login;
     }
 
+    public function getRestaurante() {
+        return $this->restaurante;
+    }
+
     public function setCargo($cargo) {
         $this->cargo = $cargo;
     }
 
     public function setLogin($login) {
         $this->login = $login;
+    }
+
+    public function setRestaurante($restaurante) {
+        $this->restaurante = $restaurante;
     }
 
 }

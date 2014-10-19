@@ -5,7 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+require_once '../model/persistence/Dao.class.php';
+require_once '../util/EncryptPassword.php';;
+require_once '../util/Queries.php';
 
 function recieveForm($param) {
     return strip_tags(addslashes($param));
@@ -22,17 +24,18 @@ function login() {
     $dao = new Dao();
 
     $params['login'] = filter_input(INPUT_POST, 'funcLogin');
-    $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'senhaLogin'));
+    $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'funcSenha'));
 
-    $cliente = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_FUNCIONARIO, $params);
+    $funcionario = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_FUNCIONARIO, $params);
 
     session_start();
     
-    $_SESSION['nome'] = $cliente->getNome();
-    $_SESSION['id'] = $cliente->getId();
+    $_SESSION['nome'] = $funcionario->getNome();
+    $_SESSION['id'] = $funcionario->getId();
+    $_SESSION['funcRestaurante'] = $funcionario->getRestaurante()[0]->getNome();
     $_SESSION['tipo'] = 'funcionario';
     
-    echo "YES";
-//    header("Location: ../../../pages/clientePage.php");
+
+    header("Location: ../../../pages/funcionarioPage.php");
     exit();
 }

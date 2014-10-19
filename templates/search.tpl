@@ -18,8 +18,8 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li><a>Todas</a></li>
                         {foreach from = $kindsOfFood item = kindOfFood}
-                        <li><a>{$kindOfFood}</a></li>
-                            {/foreach}
+                            <li><a>{$kindOfFood}</a></li>
+                        {/foreach}
                 </ul>
             </div>
         </div>

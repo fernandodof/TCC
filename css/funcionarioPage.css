@@ -1,0 +1,13 @@
+.sidebar a span{
+    float: right;
+    font-size: 1.5em;
+    color: #101010;
+}
+
+.sidebar .active span{
+    color: #f0c040;
+}
+
+h3{
+    margin-top: 0;
+}

@@ -30,7 +30,9 @@
                         {* Creating list for Navigation bar options *} 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="./index.php">Home</a></li>
+                            {if !isset($smarty.session.id)}
                             <li><a href="./subscribe.php">Cadastro</a></li>
+                            {/if}
                                 {* Creating Dropdown menu and form *}
                             <li class="dropdown" id="menuLogin">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
