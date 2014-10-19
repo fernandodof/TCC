@@ -52,13 +52,13 @@
                                             {if $forma->getNome()=='Dinheiro'}
                                                 <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="../images/icons/money59.png"/>
                                             {/if}
-                                            {if $forma->getNome()=  ='Cartao'}
+                                            {if $forma->getNome()=='Cartao'}
                                                 <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="../images/icons/card25.png"/>
                                             {/if}
                                         {/foreach}
                                         <p class="pull-right">Formas de Pagamento: </p>
                                     </div>
-                                    <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
+                                    <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php?res={$restaurante->getId()}">Visualizar Cardápio</a>
                                 </div>       
                                 {else}
                                     <div class="well opened col-xs-12">
@@ -75,7 +75,7 @@
                                                 <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="../images/icons/card25.png"/>
                                                 <p class="pull-right">Formas de Pagamento: </p>
                                             </div>
-                                            <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php">Visualizar Cardápio</a>
+                                            <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php?res={$restaurante->getId()}">Visualizar Cardápio</a>
                                         </div>      
                                         {/if}
                                             {/foreach}
