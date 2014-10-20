@@ -69,7 +69,7 @@ class Restaurante {
 
     /**
      * @ManyToMany(targetEntity="EnderecoRestaurante", cascade={"all"})
-     * @JoinTable(name="RestauranteEndereco",
+     * @JoinTable(name="Restaurante_endereco",
      *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=true)}
      *      )

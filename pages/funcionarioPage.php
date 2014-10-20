@@ -7,8 +7,9 @@ include_once '../pages/header.php';
 $dao = new Dao();
 
 $categorias = $dao->findAll('Categoria');
+$tamanhos = $dao->findAll('Tamanho');
 
-$smarty->assign('categorias',$categorias);
+$smarty->assign('categorias', $categorias);
 $smarty->display('../templates/funcionarioPage.tpl');
 
 include_once '../pages/footer.php';

@@ -51,13 +51,28 @@ $dao = new Dao();
 //
 //$dao->save($restaurante);
 
-$params['nome'] = '%tar%';
-
-$restaurantes = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST, $params);
-
-print_r($restaurantes[0]->getEndereco()[0]);
+//$params['nome'] = '%tar%';
+//
+//$restaurantes = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST, $params);
+//
+//print_r($restaurantes[0]->getEndereco()[0]);
 
 //
 //$r = $dao->findAll('Restaurante');
 //
 //print_r($r[0]);
+
+
+$tamanhos = $dao->findAll('Tamanho');
+
+
+
+foreach ($tamanhos as $key => $tamanho){
+    if($tamanho->get>gCategoria()[0]->getNome()=='Comida'){
+        unset($tamanhos[$key]);
+    }
+}
+
+foreach ($tamanhos as $tamanho){
+    echo $tamanho->getCategoria()[0]->getNome();
+}

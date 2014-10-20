@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 require_once '../model/persistence/Dao.class.php';
-require_once '../util/EncryptPassword.php';;
+require_once '../util/EncryptPassword.php';
 require_once '../util/Queries.php';
 
 function recieveForm($param) {

@@ -25,6 +25,20 @@ class Tamanho {
      * **/
     private $preco;
     
+    /**
+     * @ManyToMany(targetEntity="Categoria", cascade={"all"})
+     * @JoinTable(name="Tamanho_Categoria",
+     *      joinColumns={@JoinColumn(name="id_tamanho", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_categoria", referencedColumnName="id", unique=false)}
+     *      )
+     * */
+    private $categoria;
+
+
+    public function __construct() {
+        $this->categoria = new Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     public function getId() {
         return $this->id;
     }
@@ -47,6 +61,14 @@ class Tamanho {
 
     public function setPreco($preco) {
         $this->preco = $preco;
+    }
+    
+    public function getCategoria() {
+        return $this->categoria;
+    }
+
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
     }
     
 }

@@ -11,3 +11,11 @@
 h3{
     margin-top: 0;
 }
+
+#wait{
+    display: nome;
+}
+
+.checkboxTamanho, .labelTamanho{
+    margin-right: 12px;
+}
