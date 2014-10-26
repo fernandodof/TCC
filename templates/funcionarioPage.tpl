@@ -40,21 +40,28 @@
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">
-        <li class="active"><a href="#tab_a" data-toggle="pill">Pedidos<span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#tab_b" data-toggle="pill">Cardápio<span class="glyphicon glyphicon-list-alt"></span></a></li>
+        <li class=""><a href="#tab_a" data-toggle="pill">Pedidos<span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_b" data-toggle="pill">Cardápio<span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
     <div class="tab-content col-md-10">
-        <div class="tab-pane active" id="tab_a">
+        <div class="tab-pane" id="tab_a">
             <h4>Pedidos</h4>
             <p></p>
         </div>
 
-        <div class="tab-pane" id="tab_b">
+        <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_b">
             <h4>Cardápio</h4>
-            <form class="form-horizontal col-md-10" method="POST" name="addProduto">
+            {if isset($smarty.get.produtoCadastrado)}
+                <div class="alert alert-success alert-dismissible col-md-10" role="alert">
+                      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                    Produto cadastrado com sucesso
+                </div>
+            {/if}
+            <form class="form-horizontal col-md-10" method="POST" name="addProduto" action="../src/app/processes/ProcessProduto.php">
                 <h4>Inserir Novo Produto <i class="glyphicon glyphicon-plus-sign"></i></h4>
+                <input type="hidden" name="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                 <div class="form-group">
-                    <select name="categoia" class="form-control" onchange="window.callFilter(this.value);" required>
+                    <select name="categoria" class="form-control" onchange="window.callFilter(this.value);" required>
                         <option value="">Escolha a categria</option>
                         {foreach from = $categorias item = categoria}
                             <option value="{$categoria->getId()}">{$categoria->getNome()}</option>
@@ -66,7 +73,7 @@
                 </div>
 
                 <div class="form-group">
-                    <textarea class="form-control" rows="3" placeholder="Ingredientes"></textarea>
+                    <textarea class="form-control" rows="3" name="ingredientes" placeholder="Ingredientes"></textarea>
                 </div>
 
                 <div class="form-group">   

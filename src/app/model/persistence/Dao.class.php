@@ -71,7 +71,7 @@ class Dao {
         foreach ($params as $key => $value) {
             $query->setParameter($key, $value);
         }
-        
+
         return $query->getResult();
     }
 
@@ -79,6 +79,11 @@ class Dao {
         $query = $this->em->createQuery($queryInstruction);
         $query->setParameters($params);
         return $query->getSingleResult();
+    }
+
+    public function getListResultOfNamedQuery($queryInstruction) {
+        $query = $this->em->createQuery($queryInstruction);
+        return $query->getResult();
     }
 
 }

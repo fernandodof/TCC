@@ -71,7 +71,7 @@ class Restaurante {
      * @ManyToMany(targetEntity="EnderecoRestaurante", cascade={"all"})
      * @JoinTable(name="Restaurante_endereco",
      *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=false)}
      *      )
      * */
     private $endereco;
@@ -80,7 +80,7 @@ class Restaurante {
      * @ManyToMany(targetEntity="TipoRestaurante")
      * @JoinTable(name="Restaurante_Tipo",
      *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_tipo", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="id_tipo", referencedColumnName="id", unique=false)}
      *      )
      * */
     private $tipo;
@@ -89,7 +89,7 @@ class Restaurante {
      * @ManyToMany(targetEntity="FormaPagamento", cascade={"all"})
      * @JoinTable(name="Restaurante_FormaPagamento",
      *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_formaPagamento", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="id_formaPagamento", referencedColumnName="id", unique=false)}
      *      )
      * */
     private $formasPagamento;
@@ -207,5 +207,8 @@ class Restaurante {
     public function setProdutos($produtos) {
         $this->produtos = $produtos;
     }
-
+    
+    public function addProduto(Produto $produto){
+        $this->produtos->add($produto);
+    }
 }

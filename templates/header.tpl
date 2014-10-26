@@ -30,9 +30,9 @@
                         {* Creating list for Navigation bar options *} 
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="./index.php">Home</a></li>
-                            {if !isset($smarty.session.id)}
-                            <li><a href="./subscribe.php">Cadastro</a></li>
-                            {/if}
+                                {if !isset($smarty.session.id)}
+                                <li><a href="./subscribe.php">Cadastro</a></li>
+                                {/if}
                                 {* Creating Dropdown menu and form *}
                             <li class="dropdown" id="menuLogin">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
@@ -60,7 +60,11 @@
                                         </span> Minha Conta <span class="caret"></span></a>
 
                                     <ul class="dropdown-menu" id="dropdownBar" role="menu">
-                                        <li><a href="./clientePage.php">Minha Conta</a></li>
+                                        {if {$smarty.session.tipo == 'funcionario'}}
+                                            <li><a href="./funcionarioPage.php">Minha Conta</a></li>
+                                        {else}
+                                            <li><a href="./clientePage.php">Minha Conta</a></li>
+                                        {/if}
                                         <li class="divider"></li>
                                         <li><form class="form-horizontal" method="POST" action="../src/app/processes/ProcessCliente.php">
                                                 <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair</button>

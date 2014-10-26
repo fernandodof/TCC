@@ -33,6 +33,7 @@ function login() {
     $_SESSION['nome'] = $funcionario->getNome();
     $_SESSION['id'] = $funcionario->getId();
     $_SESSION['funcRestaurante'] = $funcionario->getRestaurante()[0]->getNome();
+    $_SESSION['idRestaurante'] = $funcionario->getRestaurante()[0]->getId();
     $_SESSION['tipo'] = 'funcionario';
     
 

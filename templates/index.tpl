@@ -12,8 +12,8 @@
                     <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
                         <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12 ">
                             <option class="" value="">Tipo de cozinha (todas)</option>
-                            {foreach from = $kindsOfFood key=k item = kind}
-                                <option class="" value={$kind->getNome()}>{$kind->getNome()}</option>
+                            {foreach from = $kindsOfFood kind}
+                                <option class="" value={$kind.nome}>{$kind.nome}</option>
                             {/foreach}
                         </select>
                     </div>
