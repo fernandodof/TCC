@@ -70,7 +70,7 @@ class Restaurante {
     /**
      * @ManyToMany(targetEntity="EnderecoRestaurante", cascade={"all"})
      * @JoinTable(name="Restaurante_endereco",
-     *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=false)}
      *      )
      * */
@@ -79,7 +79,7 @@ class Restaurante {
     /**
      * @ManyToMany(targetEntity="TipoRestaurante")
      * @JoinTable(name="Restaurante_Tipo",
-     *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_tipo", referencedColumnName="id", unique=false)}
      *      )
      * */
@@ -88,7 +88,7 @@ class Restaurante {
     /**
      * @ManyToMany(targetEntity="FormaPagamento", cascade={"all"})
      * @JoinTable(name="Restaurante_FormaPagamento",
-     *      joinColumns={@JoinColumn(name="id_restaurnate", referencedColumnName="id")},
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_formaPagamento", referencedColumnName="id", unique=false)}
      *      )
      * */
@@ -108,8 +108,9 @@ class Restaurante {
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
         $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
+        $this->tipo = new Doctrine\Common\Collections\ArrayCollection();
 //        $this->endereco = new Doctrine\Common\Collections\ArrayCollection();
-//        $this->tipo = new Doctrine\Common\Collections\ArrayCollection();
+
     }
     
     public function getId() {

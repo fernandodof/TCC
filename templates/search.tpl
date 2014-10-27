@@ -39,7 +39,7 @@
                     {foreach from = $restaurants item = restaurante}
                         {if $restaurante->getAberto()}
                             <div class="well closed col-xs-12">
-                                <h4>{$restaurante->getNome()} <small> Tipo de cozinha</small></h4>
+                                <h4>{$restaurante->getNome()} <small> {foreach from = $restaurante->getTipo() item = tipo}{$tipo->getNome()}{/foreach}</small></h4>
                                 <div class="row col-xs-12">
                                     <img class="img pull-left" src="../images/icons/rsz_location.png"/>
                                     <p class="col-xs-10">{foreach from = $restaurante->getEndereco() item=endereco}

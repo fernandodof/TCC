@@ -12,3 +12,10 @@ class Queries {
     const LOGIN_FUNCIONARIO = 'SELECT f FROM funcionario f WHERE f.login = :login and f.senha = :senha';
     const TIPOS_RESTAURANTE_DISTINCT = 'SELECT DISTINCT t.nome FROM tiporestaurante t';
 }
+
+
+//SELECT * FROM restaurante r 
+//INNER JOIN restaurante_tipo rt ON r.id = rt.id_restaurante
+//INNER JOIN tipoRestaurante t ON rt.id_tipo = t.id
+//WHERE r.nome = 'Tarandela 3' AND
+//t.nome = 'Pizzaria';

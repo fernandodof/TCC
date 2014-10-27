@@ -20,18 +20,17 @@ $kindsOfFood[] = 'Variada';
 sort($kindsOfFood); 
 
 $params['nome'] = '%'.filter_input(INPUT_POST, 'search').'%';
+ $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST, $params);
 
-$restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST, $params);
-//$restaurants['Nome restaurante 1'] = true;
-//$restaurants['Nome restaurante 2'] = false;
-//$restaurants['Nome restaurante maior 3'] = true;
-//$restaurants['Nome restaurante 4'] = true;
-//$restaurants['Nome restaurante bem maior 5'] = true;
-//$restaurants['Nome restaurante 6'] = false;
-//$restaurants['Nome menor 7'] = false;
-//$restaurants['Nome restaurante 8'] = false;
-//$restaurants['Nome menor 9'] = true;
-//$restaurants['Nome restaurante 10 bem maior'] = true;
+$kindOfFood = filter_input(INPUT_POST, 'kindOfFood');
+
+if($kindOfFood !== ""){
+    foreach ($restaurants as $key => $value){
+        if($value->getTipo()[0]->getNome() != $kindOfFood){
+            unset($restaurants[$key]);
+        }
+    }
+}
 
 $smarty->assign('restaurants',$restaurants);
 $smarty->assign('kindsOfFood',$kindsOfFood);

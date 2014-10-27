@@ -10,10 +10,10 @@
                 </div>
                 <div class="row col-md-5 col-xs-12">
                     <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
-                        <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12 ">
+                        <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
                             <option class="" value="">Tipo de cozinha (todas)</option>
                             {foreach from = $kindsOfFood kind}
-                                <option class="" value={$kind.nome}>{$kind.nome}</option>
+                                <option class="" value='{$kind.nome}'>{$kind.nome}</option>
                             {/foreach}
                         </select>
                     </div>
