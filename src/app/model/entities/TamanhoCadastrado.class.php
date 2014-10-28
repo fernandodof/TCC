@@ -1,30 +1,28 @@
 <?php
+
 /**
- * Description of Tamanho
+ * Description of TamanhosCadastrados
  *
  * @author Fernando
  */
 
 /**
  * @Entity
- * **/
-class Tamanho {
-    
+ * * */
+class TamanhoCadastrado {
+
     /**
      * @Column(type="integer")
      * @Id
      * @GeneratedValue
-     * **/
+     * * */
     private $id;
+
     /**
      * @Column(type="string")
-     * **/
+     * * */
     private $descricao;
-    /**
-     * @Column(type="float")
-     * **/
-    private $preco;
-    
+
     /**
      * @ManyToOne(targetEntity="Categoria")
      * @JoinColumn(name="id_categoria", referencedColumnName="id")
@@ -39,10 +37,6 @@ class Tamanho {
         return $this->descricao;
     }
 
-    public function getPreco() {
-        return $this->preco;
-    }
-
     public function setId($id) {
         $this->id = $id;
     }
@@ -51,10 +45,6 @@ class Tamanho {
         $this->descricao = $descricao;
     }
 
-    public function setPreco($preco) {
-        $this->preco = $preco;
-    }
-    
     public function getCategoria() {
         return $this->categoria;
     }
@@ -62,5 +52,5 @@ class Tamanho {
     public function setCategoria($categoria) {
         $this->categoria = $categoria;
     }
-    
+
 }

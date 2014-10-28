@@ -13,9 +13,9 @@ $dao = new Dao();
 //$formaPagamento->setNome("Dinheiro");
 //$dao->save($formaPagamento);
 
-//$tipoRestaurante = new TipoRestaurante();
-//$tipoRestaurante->setNome("Pizzaria");
-//$dao->save($tipoRestaurante);
+$tipoRestaurante = new TipoRestaurante();
+$tipoRestaurante->setNome("Pizzaria");
+$dao->save($tipoRestaurante);
 
 $forma = $dao->findByKey('FormaPagamento', 1);
 $formas[] = $forma;
@@ -23,23 +23,28 @@ $formas[] = $forma;
 $tipo = $dao->findByKey('TipoRestaurante', 2);
 
 $restaurante = new Restaurante();
-$restaurante->setNome("Teste Pizzaria");
+$restaurante->setNome("Pizzaria Tarandela 3");
 $restaurante->setAtivo(true);
-$restaurante->setAberto(false);
+$restaurante->setAberto(true);
 $restaurante->setFormasPagamento($formas);
 $restaurante->setTipo($tipo);
-$restaurante->setDescricao("A Pizzaria Tarandela 3 conta com diversos sabores de pizza que agrada a todos os paladares");
+$restaurante->setDescricao("A Pizzaria Tarandela 3 oferece os mais variados tipos de pizza que vão agradar a todos os paladeres");
+//$restaurante->setDescricao("O Restaurante China Mania tem oferece os mais variados prados de comida Chinesa e Japonesa");
 
 $endereco = new Endereco();
-$endereco->setBairro("Jardim Oásis");
+$endereco->setBairro("Oásis");
 $endereco->setCep("58900-000");
 $endereco->setCidade("Cajazeiras");
-$endereco->setDescricao("Pizzaria");
+$endereco->setDescricao("Endereço Tarandela 3");
 $endereco->setEstado("Paraíba");
-$endereco->setLatitude("-6.8888144");
+//$endereco->setLatitude("-6.888228");
+//$endereco->setLongitude("-38.552894");
+
+$endereco->setLatitude("6.8888144");
 $endereco->setLongitude("-38.5469936");
+
 $endereco->setLogradouro("Rua João Alves da Silva");
-$endereco->setNumero("000");
+$endereco->setNumero("138");
 $endereco->setComplemento(null);
 
 $dao->save($endereco);

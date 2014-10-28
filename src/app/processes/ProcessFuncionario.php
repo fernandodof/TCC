@@ -25,7 +25,6 @@ function login() {
 
     $params['login'] = filter_input(INPUT_POST, 'funcLogin');
     $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'funcSenha'));
-
     $funcionario = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_FUNCIONARIO, $params);
 
     session_start();
