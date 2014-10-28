@@ -38,19 +38,16 @@ class Produto {
      * * */
     private $ingredientes;
 
-    /**
-     * @ManyToMany(targetEntity="Tamanho", cascade={"all"})
-     * @JoinTable(name="Produto_Tamanho",
-     *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_tamanho", referencedColumnName="id", unique=true)}
-     *      )
-     * */
+     /**
+     * @OneToOne(targetEntity="Tamanho", mappedBy="Produto")
+     * @JoinColumn(name="id_Tamanho", referencedColumnName="id")
+     */
     private $tamanhos;
 
-    /**
-     * @OneToOne(targetEntity="Categoria")
+   /**
+     * @OneToOne(targetEntity="Categoria", mappedBy="Produto")
      * @JoinColumn(name="id_categoria", referencedColumnName="id")
-     * */
+     */
     private $categoria;
 
     public function __construct() {

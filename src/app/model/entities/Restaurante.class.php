@@ -15,6 +15,10 @@
 /**
  * @Entity
  * * */
+
+require_once 'Endereco.class.php';
+require_once 'TipoRestaurante.class.php';
+
 class Restaurante {
 
     /**
@@ -68,21 +72,15 @@ class Restaurante {
     private $telefones;
 
     /**
-     * @ManyToMany(targetEntity="EnderecoRestaurante", cascade={"all"})
-     * @JoinTable(name="Restaurante_endereco",
-     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_endereco", referencedColumnName="id", unique=false)}
-     *      )
-     * */
+     * @OneToOne(targetEntity="Endereco", mappedBy="Restaurante")
+     * @JoinColumn(name="id_endereco", referencedColumnName="id")
+     */
     private $endereco;
 
     /**
-     * @ManyToMany(targetEntity="TipoRestaurante")
-     * @JoinTable(name="Restaurante_Tipo",
-     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_tipo", referencedColumnName="id", unique=false)}
-     *      )
-     * */
+     * @ManyToOne(targetEntity="TipoRestaurante")
+     * @JoinColumn(name="id_tipo", referencedColumnName="id")
+     */
     private $tipo;
 
     /**
@@ -102,15 +100,12 @@ class Restaurante {
      *      )
      * */
     private $produtos;
-
+    
     public function __construct() {
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
         $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
-        $this->tipo = new Doctrine\Common\Collections\ArrayCollection();
-//        $this->endereco = new Doctrine\Common\Collections\ArrayCollection();
-
     }
     
     public function getId() {

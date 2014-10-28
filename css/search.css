@@ -1,10 +1,10 @@
 .opened{
-    border-left-color: red;
+    border-left-color: black;
     border-left-width: 8px;
 }
 
 .closed{
-    border-left-color: green;
+    border-left-color: black;
     border-left-width: 8px;
 }
 

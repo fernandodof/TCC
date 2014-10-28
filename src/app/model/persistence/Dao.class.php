@@ -4,6 +4,7 @@ require_once 'C:/wamp/www/Restaurantes/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Collections\Criteria;
 
 class Dao {
 
@@ -11,17 +12,18 @@ class Dao {
 
     public function __construct() {
         //$paths = array("../entities");
-        $isDevMode = false;
+        $isDevMode = true;
 
         // the connection configuration
         $dbParams = array(
             'dbname' => 'restaurantes',
             'user' => 'root',
             'password' => '',
-            'host' => 'localhost',
+            'host' => '127.0.0.1',
             'driver' => 'pdo_mysql',
         );
 
+        
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
 
@@ -71,7 +73,7 @@ class Dao {
         foreach ($params as $key => $value) {
             $query->setParameter($key, $value);
         }
-
+        echo $query->getSQL();
         return $query->getResult();
     }
 
@@ -86,4 +88,17 @@ class Dao {
         return $query->getResult();
     }
 
+    public function test(){
+        
+        $qb = $this->em->createQueryBuilder();
+        $qb->select('r')
+            ->from('restaurante', 'r')
+            ->where('r.endereco.cep = :cep')
+            ->setParameter('cep', '58900-000');
+        
+        $query = $qb->getQuery();
+        
+        $query->getResult();
+    }
+    
 }

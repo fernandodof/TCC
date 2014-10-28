@@ -7,9 +7,6 @@
  */
 require_once 'Endereco.class.php';
 
-/**
- * @Entity
- * * */
 class EnderecoRestaurante extends Endereco {
 
     public function getBairro() {

@@ -82,7 +82,10 @@ function login() {
     $_SESSION['nome'] = $cliente->getNome();
     $_SESSION['id'] = $cliente->getId();
     $_SESSION['tipo'] = 'cliente';
-
+    $_SESSION['logged_in'] = true;
+    $_SESSION['last_activity'] = time();
+    $_SESSION['expire_time'] = 30 * 60;
+    
     header("Location: ../../../pages/clientePage.php");
     exit();
 }

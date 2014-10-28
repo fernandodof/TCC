@@ -23,13 +23,10 @@ class Funcionario extends Pessoa {
      * * */
     private $login;
 
-    /**
-     * @ManyToMany(targetEntity="Restaurante", cascade={"all"})
-     * @JoinTable(name="Funcionario_Restaurante",
-     *      joinColumns={@JoinColumn(name="id_funcionario", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id", unique=true)}
-     *      )
-     * */
+   /**
+     * @OneToOne(targetEntity="Restaurante", mappedBy="Funcionario")
+     * @JoinColumn(name="id_restaurante", referencedColumnName="id")
+     */
     private $restaurante;
 
     public function getId() {

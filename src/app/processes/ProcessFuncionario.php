@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -29,13 +29,15 @@ function login() {
     $funcionario = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_FUNCIONARIO, $params);
 
     session_start();
-    
+
     $_SESSION['nome'] = $funcionario->getNome();
     $_SESSION['id'] = $funcionario->getId();
-    $_SESSION['funcRestaurante'] = $funcionario->getRestaurante()[0]->getNome();
-    $_SESSION['idRestaurante'] = $funcionario->getRestaurante()[0]->getId();
+    $_SESSION['funcRestaurante'] = $funcionario->getRestaurante()->getNome();
+    $_SESSION['idRestaurante'] = $funcionario->getRestaurante()->getId();
     $_SESSION['tipo'] = 'funcionario';
-    
+    $_SESSION['logged_in'] = true;
+    $_SESSION['last_activity'] = time();
+    $_SESSION['expire_time'] = 30 * 60;
 
     header("Location: ../../../pages/funcionarioPage.php");
     exit();

@@ -8,9 +8,6 @@
 
 /**
  * @Entity
- * @InheritanceType("JOINED")
- * @DiscriminatorColumn(name="TipoEndereco", type="string")
- * @DiscriminatorMap({"endereco" = "Endereco", "enderecoRestaurante" = "EnderecoRestaurante"})
  * * */
 class Endereco {
 
@@ -61,6 +58,16 @@ class Endereco {
      * @Column(type="string", nullable=true)
      * * */
     private $complemento = null;
+
+    /**
+     * @Column(type="string")
+     * * */
+    private $latitude;
+
+    /**
+     * @Column(type="string")
+     * * */
+    private $longitude;
 
     public function getId() {
         return $this->id;
@@ -134,4 +141,22 @@ class Endereco {
         $this->complemento = $complemento;
     }
 
+    public function getLatitude() {
+        return $this->latitude;
+    }
+
+    public function getLongitude() {
+        return $this->longitude;
+    }
+
+    public function setLatitude($latitude) {
+        $this->latitude = $latitude;
+    }
+
+    public function setLongitude($longitude) {
+        $this->longitude = $longitude;
+    }
+
+
+    
 }

@@ -66,7 +66,7 @@
                                             <li><a href="./clientePage.php">Minha Conta</a></li>
                                         {/if}
                                         <li class="divider"></li>
-                                        <li><form class="form-horizontal" method="POST" action="../src/app/processes/ProcessCliente.php">
+                                        <li><form class="form-horizontal" method="POST" action="../pages/logout.php">
                                                 <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair</button>
                                             </form></li>
                                     </ul>
