@@ -9,6 +9,8 @@ $dao = new Dao();
 $categorias = $dao->findAll('Categoria');
 $tamanhos = $dao->findAll('TamanhoCadastrado');
 
+$produtos;
+
 $smarty->assign('categorias', $categorias);
 $smarty->display('../templates/funcionarioPage.tpl');
 

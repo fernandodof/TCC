@@ -79,8 +79,8 @@
                     Produto cadastrado com sucesso
                 </div>
             {/if}
-            <form class="form-horizontal col-md-10" method="POST" name="addProduto" action="../src/app/processes/ProcessProduto.php">
-                <h4>Inserir Novo Produto <i class="glyphicon glyphicon-plus-sign"></i></h4>
+            <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle">Inserir Novo Produto <i class="glyphicon glyphicon-plus-sign"></i></h4>
+            <form class="form-horizontal col-md-10 collapse" method="POST" name="addProduto" id="addProduto" action="../src/app/processes/ProcessProduto.php">
                 <input type="hidden" name="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                 <div class="form-group">
                     <select name="categoria" class="form-control" onchange="window.callFilter(this.value);" required>

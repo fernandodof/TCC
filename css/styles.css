@@ -15,3 +15,7 @@ body {
 .navbar ul{
     clear: right;
 }
+
+.elementToggle{
+    cursor: pointer;
+}
