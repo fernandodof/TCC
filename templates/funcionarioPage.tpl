@@ -2,7 +2,7 @@
     <script>
         function callFilter(str) {
             $('#wait').show();
-            setTimeout("filter(" + str + ")", 250);
+            filter(str);
         }
 
         function filter(str) {
@@ -10,7 +10,15 @@
 
             if (str === '') {
                 $('#lbTamanho').removeClass("visible").addClass("invisible");
+                $('#ingredientes').remove();
+                $('.checkboxes').remove();
                 return;
+            }
+
+            if (str === '2') {
+                $('#ingredientes').remove();
+            } else {
+                $('#ingDiv').append("<textarea class='form-control' rows='3' name='ingredientes' id='ingredientes' placeholder='Ingredientes'></textarea>");
             }
 
             if (window.XMLHttpRequest) {
@@ -30,10 +38,24 @@
                         $('#lbTamanho').removeClass("invisible").addClass("visilble");
                     }
                 };
-                $('#wait').hide();
                 xmlhttp.send();
+                $('#wait').hide();
             }
         }
+
+        function checkCreatePrice(checkbox) {
+            var checkboxVal = checkbox.value;
+            if (checkbox.checked) {
+                $(checkbox).parent().append("<input type='text' class='price' name='price[]' placeholder='Preço' id='price" + checkboxVal + "'/>");
+            } else {
+                $("#price" + checkboxVal).remove();
+            }
+
+        }
+    </script>
+    <script>
+
+
     </script>
 </head>
 <link href="../css/funcionarioPage.css" rel="stylesheet" type="text/css">
@@ -53,7 +75,7 @@
             <h4>Cardápio</h4>
             {if isset($smarty.get.produtoCadastrado)}
                 <div class="alert alert-success alert-dismissible col-md-10" role="alert">
-                      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
                     Produto cadastrado com sucesso
                 </div>
             {/if}
@@ -72,18 +94,18 @@
                     <input type="text" placeholder="Nome do produto" name="nomeProduto" class="form-control"/>
                 </div>
 
-                <div class="form-group">
-                    <textarea class="form-control" rows="3" name="ingredientes" placeholder="Ingredientes"></textarea>
+                <div class="form-group" id="ingDiv">
+                    {*                    <textarea class="form-control" rows="3" name="ingredientes" id="ingredientes" placeholder="Ingredientes"></textarea>*}
                 </div>
 
                 <div class="form-group">   
                     <label id="lbTamanho" class="invisible col-sm-2">Tamanho(s):</label>
-                    <div id="tamanhosDiv" class="col-sm-8 form-group">
-                        <span id="wait" style="display: none;"><img src="../images/ajax-loader.gif" alt = "Aguarde..."></span>
+                    <div id="tamanhosDiv" class="col-xs-12 form-group">
+                        <span id="wait" style="display: none;"><img src="../images/ajax-loader1.gif" alt = "Aguarde..."></span>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-lg btn-success pull-right" name="formSubmit" value="cadastrarProduto"> Cadastrar </button>
             </form>
         </div>
     </div>
-</div> <!-- tab content --
+</div> <!-- tab content -->

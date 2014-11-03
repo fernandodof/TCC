@@ -34,14 +34,17 @@ class Produto {
     private $imagem;
 
     /**
-     * @Column(type="text")
+     * @Column(type="text", nullable=true)
      * * */
     private $ingredientes;
 
-     /**
-     * @OneToOne(targetEntity="Tamanho", mappedBy="Produto")
-     * @JoinColumn(name="id_Tamanho", referencedColumnName="id")
-     */
+    /**
+     * @ManyToMany(targetEntity="Tamanho", cascade={"all"})
+     * @JoinTable(name="Produto_Tamanho",
+     *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_tamanho", referencedColumnName="id", unique=false)}
+     *      )
+     * */
     private $tamanhos;
 
    /**

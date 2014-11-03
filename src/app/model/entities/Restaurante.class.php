@@ -96,7 +96,7 @@ class Restaurante {
      * @ManyToMany(targetEntity="Produto", cascade={"all"})
      * @JoinTable(name="Restaurante_Produto",
      *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")}
+     *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id", unique=false)}
      *      )
      * */
     private $produtos;

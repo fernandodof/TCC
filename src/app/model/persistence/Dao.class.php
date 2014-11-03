@@ -4,7 +4,6 @@ require_once 'C:/wamp/www/Restaurantes/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-use Doctrine\Common\Collections\Criteria;
 
 class Dao {
 
