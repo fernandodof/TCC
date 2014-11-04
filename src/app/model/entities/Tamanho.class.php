@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of Tamanho
  *
@@ -7,27 +8,29 @@
 
 /**
  * @Entity
- * **/
+ * * */
 class Tamanho {
-    
+
     /**
      * @Column(type="integer")
      * @Id
      * @GeneratedValue
-     * **/
+     * * */
     private $id;
+
     /**
      * @Column(type="string")
-     * **/
+     * * */
     private $descricao;
+
     /**
      * @Column(type="float")
-     * **/
+     * * */
     private $preco;
-    
+
     /**
      * @ManyToOne(targetEntity="Categoria")
-     * @JoinColumn(name="id_categoria", referencedColumnName="id")
+     * @JoinColumn(name="id_categoria", referencedColumnName="id", unique=false)
      */
     private $categoria;
 
@@ -40,7 +43,10 @@ class Tamanho {
     }
 
     public function getPreco() {
-        return $this->preco;
+        setlocale(LC_ALL, ''); // Locale will be different on each system.
+        $locale = localeconv();
+        return $locale['currency_symbol'].number_format($this->preco, 2, $locale['decimal_point'], $locale['thousands_sep']);
+
     }
 
     public function setId($id) {
@@ -54,7 +60,7 @@ class Tamanho {
     public function setPreco($preco) {
         $this->preco = $preco;
     }
-    
+
     public function getCategoria() {
         return $this->categoria;
     }
@@ -62,5 +68,5 @@ class Tamanho {
     public function setCategoria($categoria) {
         $this->categoria = $categoria;
     }
-    
+
 }

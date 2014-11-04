@@ -14,7 +14,6 @@ class Queries {
     const SEARCH_REST_CEP_TIPO = 'SELECT r FROM restaurante r JOIN r.endereco e JOIN r.tipo t WHERE e.cep LIKE :nome AND t.nome LIKE :tipo';
     const LOGIN_FUNCIONARIO = 'SELECT f FROM funcionario f WHERE f.login = :login and f.senha = :senha';
     const TIPOS_RESTAURANTE_DISTINCT = 'SELECT DISTINCT t.nome FROM tiporestaurante t';
-    const PRODUTOS_RESTAURANTE = '';
 }
 
 

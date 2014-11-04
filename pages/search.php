@@ -30,7 +30,6 @@ if (is_numeric($params['nome'])) {
     } else {
         $params['tipo'] = $tipo;
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_CEP_TIPO, $params);
-        print_r($params);
         
     }
 } else {

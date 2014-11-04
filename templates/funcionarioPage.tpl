@@ -52,6 +52,10 @@
             }
 
         }
+
+        {*        jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+        });*}
     </script>
     <script>
 
@@ -72,14 +76,56 @@
         </div>
 
         <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_b">
-            <h4>Cardápio</h4>
-            {if isset($smarty.get.produtoCadastrado)}
+            <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle">Cardápio</h4>
+            <div id="cardapio" class="collapse">
+                <ul class="nav nav-tabs nav-justified" data-tabs="tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#comida" data-toggle="tab">Comida</a></li>
+                    <li role="presentation"><a href="#bebida" data-toggle="tab">Bebida</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="comida" class="tab-pane active fade in">
+                        {foreach from=$produtosComida item=produto}
+                            <div class="produto">
+                                <p class="nome">{$produto->getNome()}</p>
+                                {foreach from = $produto->getTamanhos() item=tamanho}
+                                    <div class="tamanho row col-xs-12">
+                                        <div class="tam">
+                                            <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
+                                            <p class="pull-right precoTamanho">R$ {$tamanho->getPreco()}</p>
+                                        </div>
+                                    </div>
+                                {/foreach}
+                                <h6 data-toggle="collapse" ata-toggle="tooltip" data-placement="right" title="Clique para ver os ingredientes" data-target="#ingredientes{$produto->getId()}" class="elementToggle ingredientesLabel">Ingredientes</h6>
+                                <div id="ingredientes{$produto->getId()}" class="collapse ingredientes fade">
+                                    <p>{$produto->getIngredientes()}</p>
+                                </div>
+                            </div>
+                        {/foreach}
+                    </div>
+                    <div id="bebida" class="tab-pane fade">
+                        {foreach from=$produtosBebida item=produto}
+                            <div class="produto">
+                                <p class="nome">{$produto->getNome()}</p>
+                                {foreach from = $produto->getTamanhos() item=tamanho}
+                                    <div class="tamanho row col-xs-12">
+                                        <div class="tam">
+                                            <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
+                                            <p class="pull-right precoTamanho">R$ {$tamanho->getPreco()}</p>
+                                        </div>
+                                    </div>
+                                {/foreach}
+                            </div>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle">Inserir Novo Produto <i class="glyphicon glyphicon-plus-sign"></i></h4>
+                {if isset($smarty.get.produtoCadastrado)}
                 <div class="alert alert-success alert-dismissible col-md-10" role="alert">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
                     Produto cadastrado com sucesso
                 </div>
             {/if}
-            <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle">Inserir Novo Produto <i class="glyphicon glyphicon-plus-sign"></i></h4>
             <form class="form-horizontal col-md-10 collapse" method="POST" name="addProduto" id="addProduto" action="../src/app/processes/ProcessProduto.php">
                 <input type="hidden" name="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                 <div class="form-group">

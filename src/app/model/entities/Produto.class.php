@@ -47,14 +47,24 @@ class Produto {
      * */
     private $tamanhos;
 
-   /**
-     * @OneToOne(targetEntity="Categoria", mappedBy="Produto")
+    /**
+     * @ManyToOne(targetEntity="Categoria")
      * @JoinColumn(name="id_categoria", referencedColumnName="id")
      */
     private $categoria;
 
+    /**
+     * @ManyToMany(targetEntity="Avaliacao", cascade={"all"})
+     * @JoinTable(name="Produto_Avaliacao",
+     *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
+     *      )
+     * */
+    private $avaliacoes;
+
     public function __construct() {
         $this->tamanhos = new Doctrine\Common\Collections\ArrayCollection();
+        $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -115,6 +125,18 @@ class Produto {
 
     public function setCategoria($categoria) {
         $this->categoria = $categoria;
+    }
+    
+    public function getAvaliacoes() {
+        return $this->avaliacoes;
+    }
+
+    public function setAvaliacoes($avaliacoes) {
+        $this->avaliacoes = $avaliacoes;
+    }
+
+    public function addAvaliacao(Avaliacao $avaliacao){
+        $this->avaliacoes->add($avaliacao);
     }
 
 }

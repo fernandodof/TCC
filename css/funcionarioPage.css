@@ -55,3 +55,76 @@ h3{
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+.produto .nome{
+    font-size: large;
+    font-weight: bold;
+}
+
+.tamanho, .ingredientes{
+    padding: 0 15px 0 35px;
+}
+
+.tamanho{
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+}
+
+.tamanho:before{
+    position: absolute;
+    width: 0;
+    white-space: nowrap;
+    margin-left: 35px;
+    display: block;
+    z-index: 0;
+    overflow-wrap: inherit;
+    content:
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+} 
+
+.tamanho .precoTamanho, .descricaoTamanho{
+    position: relative;
+    margin-left: 35px;
+    background: white;
+    z-index: 1;
+}
+
+.tamanho .descricaoTamanho{
+    padding-right: 5px;
+}
+
+.tamanho .precoTamanho{
+    padding-left: 10px;
+}
+
+.ingredientesLabel{
+    color: #1569C7;
+}
+
+.ingredientesLabel:hover{
+    color: #099E56;
+}
+
+.ingredientes p{
+    color: #245269;
+}
+
+.carousel-fade .item {
+    -webkit-transition: opacity 3s; 
+    -moz-transition: opacity 3s; 
+    -ms-transition: opacity 3s; 
+    -o-transition: opacity 3s; 
+    transition: opacity 3s;
+} 
+
+.carousel-fade .active.left {
+    left:0;opacity:0;z-index:2;
+} 
+
+.carousel-fade .next {
+    left:0;opacity:1;z-index:1;
+} 
