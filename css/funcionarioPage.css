@@ -56,6 +56,18 @@ h3{
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+#cardapio{
+    margin-bottom:35px;
+}
+
+#cardapio .tab-content{
+    margin-top: 15px;
+}
+
+#openCardapio:hover, #openInserir:hover{
+    color: #888888;
+}
+
 .produto .nome{
     font-size: large;
     font-weight: bold;
@@ -84,6 +96,8 @@ h3{
         ". . . . . . . . . . . . . . . . . . . . . . "
         ". . . . . . . . . . . . . . . . . . . . . . "
         ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . ";
 } 
 
 .tamanho .precoTamanho, .descricaoTamanho{
@@ -112,19 +126,3 @@ h3{
 .ingredientes p{
     color: #245269;
 }
-
-.carousel-fade .item {
-    -webkit-transition: opacity 3s; 
-    -moz-transition: opacity 3s; 
-    -ms-transition: opacity 3s; 
-    -o-transition: opacity 3s; 
-    transition: opacity 3s;
-} 
-
-.carousel-fade .active.left {
-    left:0;opacity:0;z-index:2;
-} 
-
-.carousel-fade .next {
-    left:0;opacity:1;z-index:1;
-} 

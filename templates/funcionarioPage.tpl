@@ -76,7 +76,7 @@
         </div>
 
         <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_b">
-            <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle">Cardápio</h4>
+            <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle" id="openCardapio">Cardápio <b class="caret"></b></h4>
             <div id="cardapio" class="collapse">
                 <ul class="nav nav-tabs nav-justified" data-tabs="tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#comida" data-toggle="tab">Comida</a></li>
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                 {/foreach}
-                                <h6 data-toggle="collapse" ata-toggle="tooltip" data-placement="right" title="Clique para ver os ingredientes" data-target="#ingredientes{$produto->getId()}" class="elementToggle ingredientesLabel">Ingredientes</h6>
+                                <h6 data-toggle="collapse" data-toggle="tooltip" data-placement="right" title="Clique para ver os ingredientes" data-target="#ingredientes{$produto->getId()}" class="elementToggle ingredientesLabel">Ingredientes</h6>
                                 <div id="ingredientes{$produto->getId()}" class="collapse ingredientes fade">
                                     <p>{$produto->getIngredientes()}</p>
                                 </div>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle">Inserir Novo Produto <i class="glyphicon glyphicon-plus-sign"></i></h4>
+            <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle" id="openInserir">Inserir Novo Produto <b class="caret"></b></h4>
                 {if isset($smarty.get.produtoCadastrado)}
                 <div class="alert alert-success alert-dismissible col-md-10" role="alert">
                     <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>

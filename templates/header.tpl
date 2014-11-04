@@ -32,27 +32,26 @@
                             <li><a href="./index.php">Home</a></li>
                                 {if !isset($smarty.session.id)}
                                 <li><a href="./subscribe.php">Cadastro</a></li>
-                                {/if}
-                                {* Creating Dropdown menu and form *}
-                            <li class="dropdown" id="menuLogin">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
-                                <div class="dropdown-menu">
-                                    <form class="form-horizontal" id="loginForm" method="POST" action="../src/app/processes/ProcessCliente.php">
-                                        <div class="form-group">
-                                            <div class="col-lg-12">
-                                                <input name="emailLogin" id="emailLogin" class="form-control" type="email" placeholder="Email" required> 
+                                <li class="dropdown" id="menuLogin">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
+                                    <div class="dropdown-menu">
+                                        <form class="form-horizontal" id="loginForm" method="POST" action="../src/app/processes/ProcessCliente.php">
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input name="emailLogin" id="emailLogin" class="form-control" type="email" placeholder="Email" required> 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-lg-12">
-                                                <input name="senhaLogin" id="senhaLogin" class="form-control" type="password" placeholder="Senha" required>
+                                            <div class="form-group">
+                                                <div class="col-lg-12">
+                                                    <input name="senhaLogin" id="senhaLogin" class="form-control" type="password" placeholder="Senha" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <button type="submit" name="formSubmit" value="Login" class="btn btn-info pull-right">Login</button>
-                                    </form>
-                                </div>
-                            </li>
-
+                                            <button type="submit" name="formSubmit" value="Login" class="btn btn-info pull-right">Login</button>
+                                        </form>
+                                    </div>
+                                </li>
+                            {/if}
+                            {* Creating Dropdown menu and form *}
                             <li><a href="#">Sobre</a></li>
                             <li><a href="#contact" data-toggle="modal">Contato</a></li>
                                 {if isset($smarty.session.id)}
@@ -62,9 +61,9 @@
                                     <ul class="dropdown-menu" id="dropdownBar" role="menu">
                                         {if {$smarty.session.tipo == 'funcionario'}}
                                             <li><a href="./funcionarioPage.php">Minha Conta</a></li>
-                                        {else}
+                                            {else}
                                             <li><a href="./clientePage.php">Minha Conta</a></li>
-                                        {/if}
+                                            {/if}
                                         <li class="divider"></li>
                                         <li><form class="form-horizontal" method="POST" action="../pages/logout.php">
                                                 <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair</button>
