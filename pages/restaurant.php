@@ -1,5 +1,7 @@
 <?php
+
 require_once './smartyHeader.php';
+require_once '../src/app/model/persistence/Dao.class.php';
 include_once '../pages/header.php';
 
 $size = 14;
@@ -39,56 +41,74 @@ $ingedients[] = 'Queijo, presunto, calabresa, tomate em cubos, tiras de queijo P
 $ingedients[] = 'Frango desfiado, catupiry, milho verde, tomate e azeitona';
 
 $precoP = array();
-$precoP[] =  34.00;
-$precoP[] =  34.00;
-$precoP[] =  34.00;
-$precoP[] =  34.00;
-$precoP[] =  34.00;
-$precoP[] =  32.00;
-$precoP[] =  32.00;
-$precoP[] =  32.00;
-$precoP[] =  32.00;
-$precoP[] =  32.00;
-$precoP[] =  36.00;
-$precoP[] =  36.00;
-$precoP[] =  36.00;
-$precoP[] =  36.00;
-$precoP[] =  36.00;
+$precoP[] = 34.00;
+$precoP[] = 34.00;
+$precoP[] = 34.00;
+$precoP[] = 34.00;
+$precoP[] = 34.00;
+$precoP[] = 32.00;
+$precoP[] = 32.00;
+$precoP[] = 32.00;
+$precoP[] = 32.00;
+$precoP[] = 32.00;
+$precoP[] = 36.00;
+$precoP[] = 36.00;
+$precoP[] = 36.00;
+$precoP[] = 36.00;
+$precoP[] = 36.00;
 
 $precoM = array();
-$precoM[] =  38.00;
-$precoM[] =  38.00;
-$precoM[] =  38.00;
-$precoM[] =  38.00;
-$precoM[] =  38.00;
-$precoM[] =  35.00;
-$precoM[] =  35.00;
-$precoM[] =  35.00;
-$precoM[] =  35.00;
-$precoM[] =  35.00;
-$precoM[] =  40.00;
-$precoM[] =  40.00;
-$precoM[] =  40.00;
-$precoM[] =  40.00;
-$precoM[] =  40.00;
+$precoM[] = 38.00;
+$precoM[] = 38.00;
+$precoM[] = 38.00;
+$precoM[] = 38.00;
+$precoM[] = 38.00;
+$precoM[] = 35.00;
+$precoM[] = 35.00;
+$precoM[] = 35.00;
+$precoM[] = 35.00;
+$precoM[] = 35.00;
+$precoM[] = 40.00;
+$precoM[] = 40.00;
+$precoM[] = 40.00;
+$precoM[] = 40.00;
+$precoM[] = 40.00;
 
 $precoG = array();
-$precoG[] =  42.00;
-$precoG[] =  42.00;
-$precoG[] =  42.00;
-$precoG[] =  42.00;
-$precoG[] =  42.00;
-$precoG[] =  40.00;
-$precoG[] =  40.00;
-$precoG[] =  40.00;
-$precoG[] =  40.00;
-$precoG[] =  40.00;
-$precoG[] =  44.00;
-$precoG[] =  44.00;
-$precoG[] =  44.00;
-$precoG[] =  44.00;
-$precoG[] =  44.00;
+$precoG[] = 42.00;
+$precoG[] = 42.00;
+$precoG[] = 42.00;
+$precoG[] = 42.00;
+$precoG[] = 42.00;
+$precoG[] = 40.00;
+$precoG[] = 40.00;
+$precoG[] = 40.00;
+$precoG[] = 40.00;
+$precoG[] = 40.00;
+$precoG[] = 44.00;
+$precoG[] = 44.00;
+$precoG[] = 44.00;
+$precoG[] = 44.00;
+$precoG[] = 44.00;
 
+$dao = new Dao();
+$restaurante = $dao->findByKey('Restaurante', filter_input(INPUT_GET, 'res'));
+$produtos = $restaurante->getProdutos();
+
+$produtosComida;
+$produtosBebida;
+
+foreach ($produtos as $p) {
+    if ($p->getCategoria()->getNome() == 'Comida') {
+        $produtosComida[] = $p;
+    } else if ($p->getCategoria()->getNome() == 'Bebida') {
+        $produtosBebida[] = $p;
+    }
+}
+
+$smarty->assign('produtosComida', $produtosComida);
+$smarty->assign('produtosBebida', $produtosBebida);
+$smarty->assign('restaurante', $restaurante);
 $smarty->assign('size', $size);
 $smarty->assign('itens', $itens);
 $smarty->assign('ingredients', $ingedients);

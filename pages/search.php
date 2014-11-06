@@ -42,15 +42,6 @@ if (is_numeric($params['nome'])) {
     }
 }
 
-//$kindOfFood = filter_input(INPUT_POST, 'kindOfFood');
-//
-//if ($kindOfFood !== "") {
-//    foreach ($restaurants as $key => $value) {
-//        if ($value->getTipo()->getNome() != $kindOfFood) {
-//            unset($restaurants[$key]);
-//        }
-//    }
-//}
 
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);

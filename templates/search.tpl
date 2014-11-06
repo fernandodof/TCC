@@ -42,9 +42,9 @@
                                 <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
                                 <div class="row col-xs-12">
                                     <img class="img pull-left" src="../images/icons/rsz_location.png"/>
-                                    <p class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
-                                        {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}
-                                    </p>                                    
+                                    <address class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
+                                        {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()}
+                                    </address>                                    
                                 </div>
                                 <div class="row col-xs-12 pull-right formaPagamentoDiv">
                                     {foreach from = $restaurante->getFormasPagamento() item=forma}
@@ -64,8 +64,9 @@
                                 <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
                                 <div class="row col-xs-12">
                                     <img class="img pull-left locationImg" src="../images/icons/rsz_location.png"/>
-                                    <p class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
-                                        {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}</p>                                     
+                                    <address class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
+                                        {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}
+                                    </address>                                     
                                 </div>
                                 <div class="row col-xs-12 pull-right formaPagamentoDiv">
                                     <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="../images/icons/money59.png"/>

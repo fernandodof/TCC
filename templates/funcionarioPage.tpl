@@ -63,6 +63,7 @@
     </script>
 </head>
 <link href="../css/funcionarioPage.css" rel="stylesheet" type="text/css">
+<link href="../css/cardapio.css" rel="stylesheet" type="text/css">
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">

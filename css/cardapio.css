@@ -1,0 +1,110 @@
+#cardapio, #bebida{
+    margin-bottom:35px;
+}
+
+#cardapio .tab-content{
+    margin-top: 15px;
+}
+
+#openCardapio:hover, #openInserir:hover{
+    color: #888888;
+}
+
+.produto .nome{
+    font-size: large;
+    font-weight: bold;
+}
+
+.tamanho, .ingredientes{
+    padding: 0 15px 0 35px;
+}
+
+.tamanho{
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+}
+
+.tamanho:before{
+    position: absolute;
+    width: 0;
+    white-space: nowrap;
+    margin-left: 35px;
+    margin-top: 20px;
+    display: block;
+    z-index: 0;
+    overflow-wrap: inherit;
+    content:
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . "
+        ". . . . . . . . . . . . . . . . . . . . . . ";
+} 
+
+.tamanho .precoTamanho, .descricaoTamanho{
+    position: relative;
+    margin-left: 35px;
+    background: white;
+    z-index: 1;
+}
+
+.tamanho .descricaoTamanho{
+    padding-right: 5px;
+}
+
+.tamanho .precoTamanho{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.precoTamanho{
+    padding-right: 30px;
+}
+
+.tamanho .tam, .precoTamanho, .descricaoTamanho{
+    margin-top: 10px;
+}
+
+.tamanho form{
+    margin-top: 0px;
+}
+
+.ingredientesLabel{
+    color: #1569C7;
+}
+
+.ingredientesLabel:hover{
+    color: #099E56;
+}
+
+.ingredientes p{
+    color: #245269;
+}
+
+.imgAddCart{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background: white;
+    border-radius: 30px;
+    border: 3px solid #1569C7;
+}
+
+.imgAddCart:hover{
+    border-color: green;
+}
+
+.quantidade{
+    width: 45px;
+    padding: 0;
+    padding-left: 2px;
+    position: relative;
+    margin-right: 25px;
+    background: white;
+    z-index: 1;
+
+}
+
+
