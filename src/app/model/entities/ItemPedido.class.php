@@ -49,7 +49,9 @@ class ItemPedido {
     }
 
     public function getSubtotal() {
-        return $this->subtotal;
+        setlocale(LC_ALL, ''); // Locale will be different on each system.
+        $locale = localeconv();
+        return $locale['currency_symbol'] . number_format($this->subtotal, 2, $locale['decimal_point'], $locale['thousands_sep']);
     }
 
     public function setId($id) {
@@ -68,7 +70,7 @@ class ItemPedido {
         return $this->produto;
     }
 
-    public function setProduto($produto) {
+    public function setProduto(Produto $produto) {
         $this->produto = $produto;
     }
 
@@ -76,7 +78,7 @@ class ItemPedido {
         return $this->tamanho;
     }
 
-    public function setTamanho($tamanho) {
+    public function setTamanho(Tamanho $tamanho) {
         $this->tamanho = $tamanho;
     }
 

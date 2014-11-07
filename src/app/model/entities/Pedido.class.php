@@ -59,7 +59,9 @@ class Pedido {
     }
 
     public function getValorTotal() {
-        return $this->valorTotal;
+        setlocale(LC_ALL, ''); // Locale will be different on each system.
+        $locale = localeconv();
+        return $locale['currency_symbol'].number_format($this->valorTotal, 2, $locale['decimal_point'], $locale['thousands_sep']);
     }
 
     public function getObservacoes() {

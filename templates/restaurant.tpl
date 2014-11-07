@@ -57,7 +57,8 @@
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState === 4) {
-                    alert(this.responseText);
+                    alert("Novo item adicionado com sucesso ao seu pedido");
+                    $('#pedidoDropdown').html(this.responseText);
                 }
             };
             xmlhttp.send();
@@ -98,62 +99,47 @@
         <div id="cardapioHeader" class="row col-md-12">
             <h2>Cardápio</h2>
             <ul>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle btn btn-primary" id="togglePedido" data-toggle="dropdown">Pedido <b class="caret"></b></a>
-                    <ul class="dropdown-menu col-xs-12 col-sm-6">
-                        <li>
-                            <div class="row produtoDropdown">
-                                <p class="pull-left noreProdutoDropdown">Arroz de carne</p>
-                                <p class="pull-right">R$ 15.00</p>
-                            </div>
-                            <div class="row qutidadeDropdown">
-                                <p class="pull-left">Quantidade</p>
-                                <p class="pull-right">2</p> 
-                            </div>
-                            <div class="row subtotalDropdown">
-                                <p class="pull-left subtotal">Subtotal</p>
-                                <p class="pull-right">R$ 30.00</p> 
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="row produtoDropdown">
-                                <p class="pull-left noreProdutoDropdown">Arroz de carne</p>
-                                <p class="pull-right">R$ 15.00</p>
-                            </div>
-                            <div class="row qutidadeDropdown">
-                                <p class="pull-left">Quantidade</p>
-                                <p class="pull-right">2</p> 
-                            </div>
-                            <div class="row subtotalDropdown">
-                                <p class="pull-left subtotal">Subtotal</p>
-                                <p class="pull-right">R$ 30.00</p> 
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="row produtoDropdown">
-                                <p class="pull-left noreProdutoDropdown">Arroz de carne ao molho</p>
-                                <p class="pull-right">R$ 15.00</p>
-                            </div>
-                            <div class="row qutidadeDropdown">
-                                <p class="pull-left">Quantidade</p>
-                                <p class="pull-right">2</p> 
-                            </div>
-                            <div class="row subtotalDropdown">
-                                <p class="pull-left subtotal">Subtotal</p>
-                                <p class="pull-right">R$ 30.00</p> 
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="row totalDropdown">
-                                <p class="pull-left total">TOTAL</p>
-                                <p class="pull-right">R$ 90.00</p> 
-                            </div>
-                        </li>
-
-
+                <li class="dropdown" id="pedidoDropdown">
+                    {if isset($smarty.session.pedido)}
+                        <a href="#" class="dropdown-toggle btn btn-primary" id="togglePedido" data-toggle="dropdown">Resumo do Pedido 
+                            <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span> <b class="caret"></b></a>
+                            <a href="../pages/confirmOrder.php" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido 
+                            <img class="img" src='../images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></a>
+                        <ul class="dropdown-menu col-xs-12 col-sm-6">
+                            {$count1=0}
+                            {foreach from=$smarty.session.pedido->getItensPedido() item=it}
+                                {$count1=$count1+1}
+                                <li>
+                                    <div class="row produtoDropdown">
+                                        <p class="pull-left noreProdutoDropdown">{$it->getProduto()->getNome()}</p>
+                                        <p class="pull-right">R$ {$it->getTamanho()->getPreco()}</p>
+                                    </div>
+                                    <div class="row qutidadeDropdown">
+                                        <p class="pull-left">Quantidade</p>
+                                        <p class="pull-right">{$it->getQuantidade()}</p> 
+                                    </div>
+                                    <div class="row tamanhoDropdown">
+                                        <p class ="pull-left">Tamanho:</p>
+                                        <p class = "pull-right">{$it->getTamanho()->getDescricao()} </p>
+                                    </div>
+                                    <div class="row subtotalDropdown">
+                                        <p class="pull-left subtotal">Subtotal</p>
+                                        <p class="pull-right">{$it->getSubtotal()}</p> 
+                                    </div>
+                                </li>
+                                {*                                <p>{$count1}</p>
+                                <p>{$smarty.session.pedido->getItensPedido()|@count}</p>*}
+                                {if ($count1 < $smarty.session.pedido->getItensPedido()|@count)}
+                                    <li class="divider"></li>
+                                    {/if}
+                                {/foreach}
+                            <li class="totalLi">
+                                <div class="row totalDropdown">
+                                    <p class="pull-left total">TOTAL</p>
+                                    <p class="pull-right">R$ {$smarty.session.pedido->getValorTotal()}</p> 
+                                </div>
+                            </li>
+                        {/if}
                     </ul>
                 </li>
             </ul>
@@ -180,7 +166,9 @@
                                         <input type="hidden" class="idProduto" value="{$produto->getId()}">
                                         <input type="hidden" class="idTamanho" value="{$tamanho->getId()}">
                                     </form>
+
                                     <p class="pull-right precoTamanho">R$ {$tamanho->getPreco()}</p>
+
                                 </div>
                             </div>
                         {/foreach}

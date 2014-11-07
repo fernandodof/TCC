@@ -149,7 +149,8 @@
     margin-left: 0px;
 }
 
-#cardapioHeader ul .dropdown ul li .qutidadeDropdown p{
+#cardapioHeader ul .dropdown ul li .qutidadeDropdown p,
+#cardapioHeader ul .dropdown ul li .tamanhoDropdown p{
     margin-left: 0px;
     padding: 0 30px 0 45px;
 }
@@ -173,10 +174,50 @@
 #cardapioHeader ul .dropdown ul li .totalDropdown p{
     margin-left: 0px;
     padding: 0 30px 0 35px;
-    font-weight: bold;
     font-size: large;
+    color: white;
 }
 
 #cardapioHeader ul .dropdown ul li .totalDropdown .total{
-    color: #347235;
+    font-weight: bold;
+}
+
+#cardapioHeader ul .dropdown ul li p{
+    margin-bottom: 3px;
+}
+
+#cardapioHeader ul .dropdown ul .totalLi{
+    background: black;
+    padding: 0;
+    margin-top: 10px;
+    height: 35px;
+}
+
+#cardapioHeader ul .dropdown ul .totalLi p{
+    margin-top: 5px;
+}
+
+#cardapioHeader ul .dropdown ul{
+    padding-bottom: 0;
+    max-height: 400px;
+    overflow-x: hidden; 
+}
+
+#badgePedido{
+    margin: 0px 10px 0px 5px;
+}
+
+#togglePedido, #proseguirPedido{
+    margin-bottom: 10px;
+}
+
+#proseguirPedido img{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 12px;
+}
+
+#proseguirPedido span{
+
 }
