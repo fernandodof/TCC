@@ -8,72 +8,78 @@
 </script>
 <script type="text/javascript" src="../js/LoadMap.js"></script>
 <script type="text/javascript">
-    function initialize() {
-        var mapOptions = {
-            center: new google.maps.LatLng(-6.887496, -38.560768),
-            zoom: 15
-        };
-        var map = new google.maps.Map(document.getElementById("map"),
-                mapOptions);
-
-        var map2 = new google.maps.Map(document.getElementById("map2"),
-                mapOptions);
-    }
-
-    function initMap() {
-        var latitude = $('#latitude').val();
-        var longitude = $('#longitude').val();
-        var nomeRestaurante = $('#nomeRestauranteMap').val();
-        var myLatlng = new google.maps.LatLng(Number(latitude), Number(longitude));
-        var mapOptions = {
-            zoom: 16,
-            center: myLatlng
-        };
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-        // To add the marker to the map, use the 'map' property
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: nomeRestaurante
-        });
-    }
-
-    function addProduto(idForm) {
-         $('body').modalmanager('loading');
-        var form = document.getElementById(idForm);
-        var idProduto = form.getElementsByClassName('idProduto')[0].value;
-        var idTamanho = form.getElementsByClassName('idTamanho')[0].value;
-        var quantidade = form.getElementsByClassName('quantidade')[0].value;
-        var xmlhttp;
-
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-
-        if (xmlhttp) {
-            xmlhttp.open("GET", "../src/app/ajaxReceivers/adicionarAoCarrinho.php?idProduto=" +
-                    idProduto + "&idTamanho=" + idTamanho + "&quantidade=" + quantidade, true);
-
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState === 4) {
-                    alert("Novo item adicionado com sucesso ao seu pedido");
-                    $('#pedidoDropdown').html(this.responseText);
-                }
+    {literal}
+        function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(-6.887496, -38.560768),
+                zoom: 15
             };
-            xmlhttp.send();
+            var map = new google.maps.Map(document.getElementById("map"),
+                    mapOptions);
+
+            var map2 = new google.maps.Map(document.getElementById("map2"),
+                    mapOptions);
         }
 
-    }
+        function initMap() {
+            var latitude = $('#latitude').val();
+            var longitude = $('#longitude').val();
+            var nomeRestaurante = $('#nomeRestauranteMap').val();
+            var myLatlng = new google.maps.LatLng(Number(latitude), Number(longitude));
+            var mapOptions = {
+                zoom: 16,
+                center: myLatlng
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    google.maps.event.addDomListener(window, 'load', initMap);
-    google.maps.event.trigger(map, 'resize');
+            // To add the marker to the map, use the 'map' property
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: nomeRestaurante
+            });
+        }
+
+        function addProduto(idForm) {
+            $('.tab-content').addClass('blur');
+            $('#loader').show();
+            $("body").find("input,button,textarea").attr("disabled", "disabled");
+            var form = document.getElementById(idForm);
+            var idProduto1 = form.getElementsByClassName('idProduto')[0].value;
+            var idTamanho1 = form.getElementsByClassName('idTamanho')[0].value;
+            var quantidade1 = form.getElementsByClassName('quantidade')[0].value;
+
+            var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1};
+            var url = '../src/app/ajaxReceivers/adicionarAoCarrinho.php';
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                async: true,
+                data: data,
+                success: function (serverResponse) {
+                    if(serverResponse === 'Erro'){
+                        alert('Por favor faça o login para poder realizar o pedido');
+                    }
+                    else{
+                        $('#pedidoDropdown').html(serverResponse);
+                        $('.tab-content').removeClass('blur');
+                        $("body").find("input,button,textarea").removeAttr("disabled");
+                        $('#loader').hide();
+                    }
+                },
+                error: function (data) {
+                    alert("Erro ");
+                }
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initMap);
+        google.maps.event.trigger(map, 'resize');
+    {/literal}
 </script>
 <div class="container">
+    <img src="../images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
     <div class="visible-sm visible-xs">
         <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target=".restaurant">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -107,7 +113,7 @@
                     {if isset($smarty.session.pedido)}
                         <a href="#" class="dropdown-toggle btn btn-primary" id="togglePedido" data-toggle="dropdown">Resumo do Pedido 
                             <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span> <b class="caret"></b></a>
-                            <a href="../pages/confirmOrder.php" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido 
+                        <a href="../pages/confirmOrder.php" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido 
                             <img class="img" src='../images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></a>
                         <ul class="dropdown-menu col-xs-12 col-sm-6">
                             {$count1=0}

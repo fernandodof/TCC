@@ -1,10 +1,11 @@
 <head>
     <script>
+        {literal}     
         function callFilter(str) {
             filter(str);
         }
 
-        {literal} 
+
         function filter(str) {
             if (str === '') {
                 $('#lbTamanho').removeClass("visible").addClass("invisible");
@@ -38,21 +39,19 @@
                 }
             });
         }
-        {/literal}
 
-            function checkCreatePrice(checkbox) {
-                var checkboxVal = checkbox.value;
-                if (checkbox.checked) {
-                    $(checkbox).parent().append("<input type='text' class='price' name='price[]' placeholder='Preço' id='price" + checkboxVal + "'/>");
-                } else {
-                    $("#price" + checkboxVal).remove();
-                }
 
+        function checkCreatePrice(checkbox) {
+            var checkboxVal = checkbox.value;
+            if (checkbox.checked) {
+                $(checkbox).parent().append("<input type='text' class='price' name='price[]' placeholder='Preço' id='price" + checkboxVal + "'/>");
+            } else {
+                $("#price" + checkboxVal).remove();
             }
 
-        {*        jQuery(document).ready(function ($) {
-        $('#tabs').tab();
-        });*}
+        }
+
+        {/literal}
     </script>
     <script>
 

@@ -207,6 +207,10 @@
     margin: 0px 10px 0px 5px;
 }
 
+#togglePedido{
+    margin-right: 10px;
+}
+
 #togglePedido, #proseguirPedido{
     margin-bottom: 10px;
 }
@@ -217,3 +221,19 @@
     margin-left: 10px;
     margin-right: 12px;
 }
+
+#loader{
+    display: none;
+    position:fixed;
+    left: 50%;
+    top: 50%;
+}
+
+.blur{
+    -webkit-filter: blur(1.5px);
+    -moz-filter: blur(1.5px);
+    -o-filter: blur(1.5px);
+    -ms-filter: blur(1.5px);
+    filter: blur(1.5px);
+}
+

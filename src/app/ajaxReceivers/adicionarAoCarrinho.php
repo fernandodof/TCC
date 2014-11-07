@@ -14,7 +14,7 @@ require_once '../model/entities/Tamanho.class.php';
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    echo 'Por favor faça o login para poder realizar o pedido';
+    echo 'Erro';
 } else {
     
     if((filter_input(INPUT_GET,'first') !== null)){
@@ -58,10 +58,10 @@ if (!isset($_SESSION['id'])) {
     
     $pedido = $_SESSION['pedido'];
     
-    echo "<a href='#' class='dropdown-toggle btn btn-primary' id='togglePedido' data-toggle='dropdown'>Resumo do Pedido "
-          . "<span class='badge' id='badgePedido'>".count($pedido->getItensPedido())."</span> <b class='caret'></b></a>";
-    echo "<a href='#' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido " 
-            . "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></a>";
+        echo "<a href='#' class='dropdown-toggle btn btn-primary' id='togglePedido' data-toggle='dropdown'>Resumo do Pedido" . 
+                            "<span class='badge' id='badgePedido'>".count($pedido->getItensPedido()) . "</span> <b class='caret'></b></a>";
+        echo "<a href='../pages/confirmOrder.php' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" .
+                            "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></a>";
         echo "<ul class='dropdown-menu col-xs-12 col-sm-6'>";
         $counter = 0;
         foreach ($pedido->getItensPedido() as $it) {

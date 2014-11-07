@@ -11,6 +11,7 @@
         {* Move this script tags *}
         <script src="../bootstrap/js/jquery.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.dim-background.js"></script>
     </head>
     <body>
         <header>
