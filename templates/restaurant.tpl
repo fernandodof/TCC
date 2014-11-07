@@ -1,5 +1,8 @@
+<link href="../bootstrap-modal-master/css/bootstrap-modal.css">
 <link href="../css/restaurant.css" rel="stylesheet" type="text/css">
 <link href="../css/cardapio.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../bootstrap-modal-master/js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="../bootstrap-modal-master/js/bootstrap-modalmanager.js"></script>
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
 </script>
@@ -37,6 +40,7 @@
     }
 
     function addProduto(idForm) {
+         $('body').modalmanager('loading');
         var form = document.getElementById(idForm);
         var idProduto = form.getElementsByClassName('idProduto')[0].value;
         var idTamanho = form.getElementsByClassName('idTamanho')[0].value;

@@ -1,13 +1,11 @@
 <head>
     <script>
         function callFilter(str) {
-            $('#wait').show();
             filter(str);
         }
 
+        {literal} 
         function filter(str) {
-            var xmlhttp;
-
             if (str === '') {
                 $('#lbTamanho').removeClass("visible").addClass("invisible");
                 $('#ingredientes').remove();
@@ -20,38 +18,37 @@
             } else {
                 $('#ingDiv').append("<textarea class='form-control' rows='3' name='ingredientes' id='ingredientes' placeholder='Ingredientes'></textarea>");
             }
+            $('#wait').show();
 
-            if (window.XMLHttpRequest) {
-                // code for IE7+, Firefox, Chrome, Opera, Safari
-                xmlhttp = new XMLHttpRequest();
-            } else {
-                // code for IE6, IE5
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
+            var data = {cat: str};
+            var url = '../src/app/util/tamanhosProduto.php';
 
-            if (xmlhttp) {
-                xmlhttp.open("GET", "../src/app/util/tamanhosProduto.php?cat=" + str, true);
-
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState === 4) {
-                        document.getElementById('tamanhosDiv').innerHTML = this.responseText;
-                        $('#lbTamanho').removeClass("invisible").addClass("visilble");
-                    }
-                };
-                xmlhttp.send();
-                $('#wait').hide();
-            }
+            $.ajax({
+                type: "GET",
+                url: url,
+                async: true,
+                data: data,
+                success: function (server) {
+                    $('#tamanhosDiv').html(server);
+                    $('#lbTamanho').removeClass("invisible").addClass("visilble");
+                    $('#wait').hide();
+                },
+                error: function (data) {
+                    alert("Erro");
+                }
+            });
         }
+        {/literal}
 
-        function checkCreatePrice(checkbox) {
-            var checkboxVal = checkbox.value;
-            if (checkbox.checked) {
-                $(checkbox).parent().append("<input type='text' class='price' name='price[]' placeholder='Preço' id='price" + checkboxVal + "'/>");
-            } else {
-                $("#price" + checkboxVal).remove();
+            function checkCreatePrice(checkbox) {
+                var checkboxVal = checkbox.value;
+                if (checkbox.checked) {
+                    $(checkbox).parent().append("<input type='text' class='price' name='price[]' placeholder='Preço' id='price" + checkboxVal + "'/>");
+                } else {
+                    $("#price" + checkboxVal).remove();
+                }
+
             }
-
-        }
 
         {*        jQuery(document).ready(function ($) {
         $('#tabs').tab();
@@ -147,8 +144,8 @@
 
                 <div class="form-group">   
                     <label id="lbTamanho" class="invisible col-sm-2">Tamanho(s):</label>
+                    <span id="wait" style="display: none;"><img src="../images/ajax-loader1.gif" alt = "Aguarde..."></span>
                     <div id="tamanhosDiv" class="col-xs-12 form-group">
-                        <span id="wait" style="display: none;"><img src="../images/ajax-loader1.gif" alt = "Aguarde..."></span>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-lg btn-success pull-right" name="formSubmit" value="cadastrarProduto"> Cadastrar </button>
