@@ -21,7 +21,7 @@
                                 <div class="col-sm-10">
                                     <h4 class="nomargin">{$it->getProduto()->getNome()}</h4>
                       
-                                    <p>{$it->getProduto()->getCategoria()->getId()}</p>
+                                    <p>{$it->getProduto()->getIngredientes()}</p>
                                 </div>
                             </div>
                         </td>
