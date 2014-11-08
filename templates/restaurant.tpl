@@ -41,7 +41,7 @@
         }
 
         function addProduto(idForm) {
-            $('.tab-content').addClass('blur');
+            $('body').dimBackground();
             $('#loader').show();
             $("body").find("input,button,textarea").attr("disabled", "disabled");
             var form = document.getElementById(idForm);
@@ -63,7 +63,7 @@
                     }
                     else{
                         $('#pedidoDropdown').html(serverResponse);
-                        $('.tab-content').removeClass('blur');
+                        $('body').undim();
                         $("body").find("input,button,textarea").removeAttr("disabled");
                         $('#loader').hide();
                     }

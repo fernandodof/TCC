@@ -9,6 +9,10 @@
 /**
  * @Entity
  * * */
+require_once 'Categoria.class.php';
+require_once 'Tamanho.class.php';
+require_once 'Avaliacao.class.php';
+
 class Produto {
 
     /**

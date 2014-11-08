@@ -4,6 +4,7 @@ require_once '../model/persistence/Dao.class.php';
 require_once '../model/entities/Pedido.class.php';
 require_once '../model/entities/ItemPedido.class.php';
 require_once '../model/entities/Produto.class.php';
+require_once '../model/entities/Categoria.class.php';
 require_once '../model/entities/Tamanho.class.php';
 
 /*

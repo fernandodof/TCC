@@ -9,6 +9,9 @@
 /**
  * @Entity
  * * */
+require_once 'Produto.class.php';
+require_once 'Categoria.class.php';
+
 class ItemPedido {
 
     /**
