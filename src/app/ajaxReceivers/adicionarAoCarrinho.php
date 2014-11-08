@@ -7,11 +7,6 @@ require_once '../model/entities/Produto.class.php';
 require_once '../model/entities/Categoria.class.php';
 require_once '../model/entities/Tamanho.class.php';
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 session_start();
 
 if (!isset($_SESSION['id'])) {
