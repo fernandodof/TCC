@@ -6,9 +6,10 @@
             $('body').dimBackground();
             $('#loader').show();
             $("body").find("input,button,textarea").attr("disabled", "disabled");
-
-            var data = {indexProduto: indexProduto};
-            var url = '../src/app/ajaxReceivers/removeProductFromOrder.php';
+            
+            var idRestaurante = $('#idRestaurantePedido').val();
+            var data = {indexProduto: indexProduto, idRestaurante: idRestaurante, command: "remove"};
+            var url = '../src/app/ajaxReceivers/changeOrder.php';
 
             $.ajax({
                 type: "POST",
@@ -21,12 +22,12 @@
                         alert('Ocorreu um erro com a sua solicitação');
                         $('body').undim();
                         $("body").find("input,button,textarea").removeAttr("disabled");
-
                     }
                     else {
                         $('body').undim();
                         $("body").find("input,button,textarea").removeAttr("disabled");
                         $('#loader').hide();
+                        $('#cart').html(serverResponse);
                         alert('Produto removido com sucesso');
                     }
                 },
@@ -40,17 +41,17 @@
 
 <div class="container">
     <img src="../images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
-    {*<h2>{$restaurante->getNome()}</h2>*}
+    <h2>{$restaurante->getNome()}</h2>
 
     {if isset($smarty.session.pedido)}
         <table id="cart" class="table table-hover table-condensed">
             <thead>
                 <tr>
-                    <th style="width:50%">Produto</th>
-                    <th style="width:10%">Valor</th>
-                    <th style="width:8%">Quantidade</th>
-                    <th style="width:22%" class="text-center">Subtotal</th>
-                    <th style="width:10%"></th>
+                    <th id="ProdutoTh">Produto</th>
+                    <th id="ValorTh">Valor</th>
+                    <th id="ValorTh">Quantidade</th>
+                    <th id="SubtotalTh" class="text-center">Subtotal</th>
+                    <th id="ButtonsTh"></th>
                 </tr>
             </thead>
             <tbody>
@@ -72,7 +73,7 @@
                         </td>
                         <td data-th="Price">R$ {$it->getTamanho()->getPreco()}</td>
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" value="{$it->getQuantidade()}">
+                            <input type="number" class="form-control text-center" min="1" max="99" value="{$it->getQuantidade()}">
                         </td>
                         <td data-th="Subtotal" class="text-center">R$ {$it->getSubtotal()}</td>
                         <td class="actions" data-th="">
@@ -91,7 +92,10 @@
                     <td><a href="../pages/restaurant.php?res={$restaurante->getId()}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Voltar ao cardápio</a></td>
                     <td colspan="2" class="hidden-xs"></td>
                     <td class="hidden-xs text-center"><strong>Total R$ {$smarty.session.pedido->getValorTotal()}</strong></td>
-                    <td><a href="#" class="btn btn-success btn-block">Comfirmar <i class="fa fa-angle-right"></i></a></td>
+                    <form method="POST">
+                        <td><a href="#" class="btn btn-success btn-block">Comfirmar <i class="fa fa-angle-right"></i></a></td>
+                        <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" value="{$restaurante->getId()}">
+                    </form>
                 </tr>
             </tfoot>
         </table>

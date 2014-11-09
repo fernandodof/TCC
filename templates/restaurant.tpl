@@ -41,7 +41,6 @@
         }
 
         function addProduto(idForm) {
-            alert($('#idRestaurantePedidoInicial').val());
             $('body').dimBackground();
             $('#loader').show();
             $("body").find("input,button,textarea").attr("disabled", "disabled");

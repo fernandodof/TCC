@@ -47,3 +47,24 @@
     font-size: small;
     font-weight: normal;
 }
+
+table thead tr #ProdutoTh{
+    width: 50%;
+}
+
+table thead tr #ValorTh{
+   width:10%;
+}
+
+table thead tr #QuantidadeTh{
+    width:8%;
+}
+
+table thead tr #SubtotalTh{
+    width: 22%;
+}
+
+table thead tr #ButtonsTh{
+    width: 10%;
+}
+
