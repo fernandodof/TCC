@@ -15,16 +15,20 @@ $tamanhos = $dao->findAll('TamanhoCadastrado');
 $restaurante = $dao->findByKey('Restaurante', $_SESSION['idRestaurante']);
 $produtos = $restaurante->getProdutos();
 
-$produtosComida;
-$produtosBebida;
+$produtosComida = [];
+$produtosBebida = [];
 
-foreach ($produtos as $p){
-    if($p->getCategoria()->getNome() == 'Comida'){
-        $produtosComida[] = $p;
-    }else if($p->getCategoria()->getNome() == 'Bebida'){
-        $produtosBebida[] = $p;
+
+if (count($produtos) > 0) {
+    foreach ($produtos as $p) {
+        if ($p->getCategoria()->getNome() == 'Comida') {
+            $produtosComida[] = $p;
+        } else if ($p->getCategoria()->getNome() == 'Bebida') {
+            $produtosBebida[] = $p;
+        }
     }
 }
+
 
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);

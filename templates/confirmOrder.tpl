@@ -1,6 +1,9 @@
 <link href="../css/conformOrder.css" rel="stylesheet" type="text/css">
 <link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
+    
+    <h2>{$restaurante->getNome()}</h2>
+    
     {if isset($smarty.session.pedido)}
         <table id="cart" class="table table-hover table-condensed">
             <thead>
@@ -17,10 +20,13 @@
                     <tr>
                         <td data-th="Item">
                             <div class="row">
-                                <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+                                {if ($it->getProduto()->getIngredientes() ==null)}
+                                    <div class="col-sm-2 hidden-xs"><img src="../images/icons/drink.png" alt="..." class="img-responsive"/></div>
+                                {else}
+                                    <div class="col-sm-2 hidden-xs"><img src="../images/icons/food.png" alt="..." class="img-responsive"/></div>
+                                {/if}
                                 <div class="col-sm-10">
                                     <h4 class="nomargin">{$it->getProduto()->getNome()}</h4>
-                      
                                     <p>{$it->getProduto()->getIngredientes()}</p>
                                 </div>
                             </div>
@@ -45,7 +51,7 @@
                     <td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Voltar ao cardápio</a></td>
                     <td colspan="2" class="hidden-xs"></td>
                     <td class="hidden-xs text-center"><strong>Total R$ {$smarty.session.pedido->getValorTotal()}</strong></td>
-                    <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+                    <td><a href="#" class="btn btn-success btn-block">Comfirmar <i class="fa fa-angle-right"></i></a></td>
                 </tr>
             </tfoot>
         </table>

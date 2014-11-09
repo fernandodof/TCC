@@ -1,5 +1,4 @@
 <?php
-
 require_once './smartyHeader.php';
 $title = 'SaborVirtual - Pedidos pela internet';
 $siteName = 'SaborVirtual';

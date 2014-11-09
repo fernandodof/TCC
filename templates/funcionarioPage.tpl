@@ -44,7 +44,7 @@
         function checkCreatePrice(checkbox) {
             var checkboxVal = checkbox.value;
             if (checkbox.checked) {
-                $(checkbox).parent().append("<input type='text' class='price' name='price[]' placeholder='Preço' id='price" + checkboxVal + "'/>");
+                $(checkbox).parent().append("<input type='text' class='price' name='price[]' required placeholder='Preço' id='price" + checkboxVal + "'/>");
             } else {
                 $("#price" + checkboxVal).remove();
             }

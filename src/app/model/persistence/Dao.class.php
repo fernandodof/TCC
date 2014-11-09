@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:/wamp/www/Restaurantes/vendor/autoload.php';
+require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -22,18 +22,19 @@ class Dao {
             'driver' => 'pdo_mysql',
         );
 
-        
+
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
-
+        
         $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
 
         if (!empty($metadata)) {
             $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($entityManager);
             $schemaTool->updateSchema($metadata);
         }
-
+        
         $this->em = $entityManager;
+        
     }
 
     public function findByKey($entity, $id) {
@@ -86,17 +87,17 @@ class Dao {
         return $query->getResult();
     }
 
-    public function test(){
-        
+    public function test() {
+
         $qb = $this->em->createQueryBuilder();
         $qb->select('r')
-            ->from('restaurante', 'r')
-            ->where('r.endereco.cep = :cep')
-            ->setParameter('cep', '58900-000');
-        
+                ->from('restaurante', 'r')
+                ->where('r.endereco.cep = :cep')
+                ->setParameter('cep', '58900-000');
+
         $query = $qb->getQuery();
-        
+
         $query->getResult();
     }
-    
+
 }

@@ -6,21 +6,22 @@ require_once './src/app/model/entities/FormaPagamento.class.php';
 require_once './src/app/model/entities/TipoRestaurante.class.php';
 require_once './src/app/model/persistence/Dao.class.php';
 require_once './src/app/util/Queries.php';
-
 $dao = new Dao();
 
-//$formaPagamento = new FormaPagamento();
-//$formaPagamento->setNome("Dinheiro");
-//$dao->save($formaPagamento);
+$formaPagamento = new FormaPagamento();
+$formaPagamento->setNome("Dinheiro");
+$dao->save($formaPagamento);
+echo '1';
 
 $tipoRestaurante = new TipoRestaurante();
 $tipoRestaurante->setNome("Pizzaria");
 $dao->save($tipoRestaurante);
+echo '2';
 
 $forma = $dao->findByKey('FormaPagamento', 1);
 $formas[] = $forma;
 
-$tipo = $dao->findByKey('TipoRestaurante', 2);
+$tipo = $dao->findByKey('TipoRestaurante', 1);
 
 $restaurante = new Restaurante();
 $restaurante->setNome("Pizzaria Tarandela 3");
@@ -32,15 +33,12 @@ $restaurante->setDescricao("A Pizzaria Tarandela 3 oferece os mais variados tipo
 //$restaurante->setDescricao("O Restaurante China Mania tem oferece os mais variados prados de comida Chinesa e Japonesa");
 
 $endereco = new Endereco();
-$endereco->setBairro("Oásis");
+$endereco->setBairro("Jardim Oásis");
 $endereco->setCep("58900-000");
 $endereco->setCidade("Cajazeiras");
 $endereco->setDescricao("Endereço Tarandela 3");
 $endereco->setEstado("Paraíba");
-//$endereco->setLatitude("-6.888228");
-//$endereco->setLongitude("-38.552894");
-
-$endereco->setLatitude("6.8888144");
+$endereco->setLatitude("-6.8888144");
 $endereco->setLongitude("-38.5469936");
 
 $endereco->setLogradouro("Rua João Alves da Silva");
@@ -48,10 +46,12 @@ $endereco->setNumero("138");
 $endereco->setComplemento(null);
 
 $dao->save($endereco);
+echo '3';
 
 $restaurante->setEndereco($endereco);
 
 $dao->save($restaurante);
+echo '4';
 
 //$params['nome'] = '%tar%';
 //
@@ -60,9 +60,9 @@ $dao->save($restaurante);
 //print_r($restaurantes[0]->getTipo()[0]);
 
 
-$r = $dao->findAll('Restaurante');
-
-print_r($r[0]->getEndereco()->getLogradouro());
+//$r = $dao->findAll('Restaurante');
+//
+//print_r($r[0]->getEndereco()->getLogradouro());
 //
 //
 //$tamanhos = $dao->findAll('Tamanho');

@@ -48,20 +48,25 @@
             var idProduto1 = form.getElementsByClassName('idProduto')[0].value;
             var idTamanho1 = form.getElementsByClassName('idTamanho')[0].value;
             var quantidade1 = form.getElementsByClassName('quantidade')[0].value;
+            var idRestaurantePedido =  $('#idRestaurantePedido').val();
 
-            var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1};
-            var url = '../src/app/ajaxReceivers/adicionarAoCarrinho.php';
+            var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1, idRestaurantePedido: idRestaurantePedido};
+            var url = '../src/app/ajaxReceivers/addToCart.php';
 
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: url,
                 async: true,
                 data: data,
                 success: function (serverResponse) {
-                    if(serverResponse === 'Erro'){
+                    if (serverResponse === 'Erro') {
+                        $('#loader').hide();
                         alert('Por favor faça o login para poder realizar o pedido');
+                        $('body').undim();
+                        $("body").find("input,button,textarea").removeAttr("disabled");
+
                     }
-                    else{
+                    else {
                         $('#pedidoDropdown').html(serverResponse);
                         $('body').undim();
                         $("body").find("input,button,textarea").removeAttr("disabled");
@@ -109,12 +114,18 @@
         <div id="cardapioHeader" class="row col-md-12">
             <h2>Cardápio</h2>
             <ul>
+
                 <li class="dropdown" id="pedidoDropdown">
                     {if isset($smarty.session.pedido)}
-                        <a href="#" class="dropdown-toggle btn btn-primary" id="togglePedido" data-toggle="dropdown">Resumo do Pedido 
+
+                        <a href="#" class="dropdown-toggle btn btn-primary pull-left" id="togglePedido" data-toggle="dropdown">Resumo do Pedido 
                             <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span> <b class="caret"></b></a>
-                        <a href="../pages/confirmOrder.php" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido 
-                            <img class="img" src='../images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></a>
+                        <form action="../pages/confirmOrder.php" method="POST" id="formProseguir" class="pull-left">
+                            <button type="submit" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido
+                                <img class="img" src='../images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></button>
+                            <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" value="{$restaurante->getId()}">
+                        </form>
+
                         <ul class="dropdown-menu col-xs-12 col-sm-6">
                             {$count1=0}
                             {foreach from=$smarty.session.pedido->getItensPedido() item=it}

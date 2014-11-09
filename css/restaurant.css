@@ -201,18 +201,12 @@
     padding-bottom: 0;
     max-height: 400px;
     overflow-x: hidden; 
+    margin-top: 40px;
+    float: left;
 }
 
 #badgePedido{
     margin: 0px 10px 0px 5px;
-}
-
-#togglePedido{
-    margin-right: 10px;
-}
-
-#togglePedido, #proseguirPedido{
-    margin-bottom: 10px;
 }
 
 #proseguirPedido img{
@@ -222,11 +216,21 @@
     margin-right: 12px;
 }
 
+#togglePedido{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#proseguirPedido{
+    margin-bottom: 10px;
+}
+
 #loader{
     display: none;
     position:fixed;
     left: 50%;
     top: 50%;
+    z-index: 100;
 }
 
 .blur{

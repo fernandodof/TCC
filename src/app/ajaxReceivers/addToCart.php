@@ -12,14 +12,11 @@ session_start();
 if (!isset($_SESSION['id'])) {
     echo 'Erro';
 } else {
-    
-    if((filter_input(INPUT_GET,'first') !== null)){
-        echo 'hahaha';
-    }
 
-    $idProuto = filter_input(INPUT_GET, 'idProduto');
-    $idTamanho = filter_input(INPUT_GET, 'idTamanho');
-    $quantidade = filter_input(INPUT_GET, 'quantidade');
+    $idRestaurantePedido = filter_input(INPUT_POST, 'idRestaurantePedido');
+    $idProuto = filter_input(INPUT_POST, 'idProduto');
+    $idTamanho = filter_input(INPUT_POST, 'idTamanho');
+    $quantidade = filter_input(INPUT_POST, 'quantidade');
 
     $dao = new Dao();
     $produto = $dao->findByKey('Produto', $idProuto);
@@ -54,10 +51,13 @@ if (!isset($_SESSION['id'])) {
     
     $pedido = $_SESSION['pedido'];
     
-        echo "<a href='#' class='dropdown-toggle btn btn-primary' id='togglePedido' data-toggle='dropdown'>Resumo do Pedido" . 
+        echo "<a href='#' class='dropdown-toggle btn btn-primary pull-left' id='togglePedido' data-toggle='dropdown'>Resumo do Pedido" . 
                             "<span class='badge' id='badgePedido'>".count($pedido->getItensPedido()) . "</span> <b class='caret'></b></a>";
-        echo "<a href='../pages/confirmOrder.php' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" .
-                            "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></a>";
+        echo "<form action='../pages/confirmOrder.php' method='POST' id='formProseguir' class='pull-left'>";
+            echo "<button type='submit' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" . 
+                "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></button>";
+            echo "<input type='hidden' name='idRestaurantePedido' id='idRestaurantePedido' value='". $idRestaurantePedido ."'>";
+        echo "</form>";    
         echo "<ul class='dropdown-menu col-xs-12 col-sm-6'>";
         $counter = 0;
         foreach ($pedido->getItensPedido() as $it) {
