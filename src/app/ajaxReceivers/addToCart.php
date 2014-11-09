@@ -56,7 +56,7 @@ if (!isset($_SESSION['id'])) {
         echo "<form action='../pages/confirmOrder.php' method='POST' id='formProseguir' class='pull-left'>";
             echo "<button type='submit' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" . 
                 "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></button>";
-            echo "<input type='hidden' name='idRestaurantePedido' id='idRestaurantePedido' value='". $idRestaurantePedido ."'>";
+            echo "<input type='hidden' name='idRestaurantePedido' id='idRestaurantePedido' value='".$idRestaurantePedido."'>";
         echo "</form>";    
         echo "<ul class='dropdown-menu col-xs-12 col-sm-6'>";
         $counter = 0;

@@ -41,6 +41,7 @@
         }
 
         function addProduto(idForm) {
+            alert($('#idRestaurantePedidoInicial').val());
             $('body').dimBackground();
             $('#loader').show();
             $("body").find("input,button,textarea").attr("disabled", "disabled");
@@ -48,9 +49,9 @@
             var idProduto1 = form.getElementsByClassName('idProduto')[0].value;
             var idTamanho1 = form.getElementsByClassName('idTamanho')[0].value;
             var quantidade1 = form.getElementsByClassName('quantidade')[0].value;
-            var idRestaurantePedido =  $('#idRestaurantePedido').val();
+            var idRestaurantePedido1 = $('#idRestaurantePedidoInicial').val();
 
-            var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1, idRestaurantePedido: idRestaurantePedido};
+            var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1, idRestaurantePedido: idRestaurantePedido1};
             var url = '../src/app/ajaxReceivers/addToCart.php';
 
             $.ajax({
@@ -113,6 +114,7 @@
     <div class="menu col-md-9 col-sm-12">
         <div id="cardapioHeader" class="row col-md-12">
             <h2>Cardápio</h2>
+            <input type="hidden" id="idRestaurantePedidoInicial" value="{$restaurante->getId()}">
             <ul>
 
                 <li class="dropdown" id="pedidoDropdown">
