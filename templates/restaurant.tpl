@@ -94,15 +94,15 @@
     <div class="restauntContainer col-md-3">
         <div class="restaurant collapse navbar-collapse">
             <img src="../images/logos/restaurantLogo.gif" class="img img-thumbnail img-responsive restaurantLogo"/>
-            <h4 id="nomeRestaurante">{$restaurante->getNome()}</h2>
-                <img src="../images/icons/rsz_location.png" class="pull-left addressIcon">
-                <address>{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
-                    {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()}.</address>
+            <h4 id="nomeRestaurante">{$restaurante->getNome()}</h4>
+            <img src="../images/icons/rsz_location.png" class="pull-left addressIcon">
+            <address>{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
+                {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()}.</address>
 
-                <div id="location">
-                    <div id="map">
-                    </div>
+            <div id="location">
+                <div id="map">
                 </div>
+            </div>
         </div>
         <a href="#bigMap" data-toggle="modal">Expandir Mapa</a>
         <input type="hidden" id="latitude" value="{$restaurante->getEndereco()->getLatitude()}">
@@ -128,9 +128,13 @@
                         </form>
 
                         <ul class="dropdown-menu col-xs-12 col-sm-6">
-                            {$count1=0}
-                            {foreach from=$smarty.session.pedido->getItensPedido() item=it}
-                                {$count1=$count1+1}
+                            <li id="liNomeRetaurantePedido">
+                                <h5 id="nomeRestaurnatePedido">{$restaurante->getNome()}</h5>
+                            </li>
+                            <li class="divider firstDivider"></li>
+                                {$count1=0}
+                                {foreach from=$smarty.session.pedido->getItensPedido() item=it}
+                                    {$count1=$count1+1}
                                 <li>
                                     <div class="row produtoDropdown">
                                         <p class="pull-left noreProdutoDropdown">{$it->getProduto()->getNome()}</p>

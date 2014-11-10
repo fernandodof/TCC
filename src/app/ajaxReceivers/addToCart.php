@@ -6,19 +6,23 @@ require_once '../model/entities/ItemPedido.class.php';
 require_once '../model/entities/Produto.class.php';
 require_once '../model/entities/Categoria.class.php';
 require_once '../model/entities/Tamanho.class.php';
+require_once '../util/Queries.php';
 
 session_start();
 
 if (!isset($_SESSION['id'])) {
     echo 'Erro';
 } else {
-
+    $dao = new Dao();
     $idRestaurantePedido = filter_input(INPUT_POST, 'idRestaurantePedido');
+    $params['id'] = $idRestaurantePedido;
+    $nomeRestaurante = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_NOME_RESTAURANTE_BY_ID, $params);
+    
     $idProuto = filter_input(INPUT_POST, 'idProduto');
     $idTamanho = filter_input(INPUT_POST, 'idTamanho');
     $quantidade = filter_input(INPUT_POST, 'quantidade');
 
-    $dao = new Dao();
+    
     $produto = $dao->findByKey('Produto', $idProuto);
     $tamanho = $dao->findByKey('Tamanho', $idTamanho);
 
@@ -27,7 +31,8 @@ if (!isset($_SESSION['id'])) {
     $itemPedido->setTamanho($tamanho);
     $itemPedido->setQuantidade($quantidade);
     $itemPedido->setSubtotal($tamanho->getPreco() * $quantidade);
-
+    $_SESSION['idRestauranteDoPedidoAtual'] =  $idRestaurantePedido;
+    
     if (!isset($_SESSION['pedido'])) {
         $pedido = new Pedido();
         $pedido->addItemPedido($itemPedido);
@@ -60,6 +65,10 @@ if (!isset($_SESSION['id'])) {
         echo "</form>";    
         echo "<ul class='dropdown-menu col-xs-12 col-sm-6'>";
         $counter = 0;
+        echo "<div id='divNomeRestaurante'>";
+            echo "<h5 id='nomeRestaurnatePedido'>".$nomeRestaurante['nome']."</h5>";
+        echo "</div>";    
+        echo "<li class='divider firstDivider'></li>";
         foreach ($pedido->getItensPedido() as $it) {
             $counter++;
             echo "<li>";

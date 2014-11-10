@@ -98,6 +98,7 @@ class Restaurante {
      *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id", unique=false)}
      *      )
+     * @OrderBy({"nome" = "ASC"})
      * */
     private $produtos;
     

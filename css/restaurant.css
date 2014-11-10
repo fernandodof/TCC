@@ -242,3 +242,7 @@
     background-color:  rgba(0,0,0,0.5);
 }
 
+#nomeRestaurnatePedido{
+    text-align: center;
+    font-weight: bold;
+}
