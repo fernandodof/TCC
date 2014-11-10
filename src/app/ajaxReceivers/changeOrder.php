@@ -108,7 +108,7 @@ if(isset($_SESSION['pedido'])){
         echo "<td><a href='../pages/restaurant.php?res=" . $idRestaurante . "' class='btn btn-warning'><i class='fa fa-angle-left'></i> Voltar ao cardápio</a></td>";
             echo "<td colspan='2' class='hidden-xs'></td>";
             echo "<td class='hidden-xs text-center'><strong>Total R$ ". $pedido->getValorTotal() . "</strong></td>";
-            echo "<td><a href='#' class='btn btn-success btn-block'>Comfirmar <i class='fa fa-angle-right'></i></a></td>";
+            echo "<td><button class='btn btn-success btn-block' onclick='checkout();'>Comfirmar <i class='fa fa-angle-right'></i></button></td>";
         echo "</tr>";
     echo "</tfoot>";
 }                

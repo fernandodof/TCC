@@ -1,8 +1,7 @@
 <link href="../bootstrap-modal-master/css/bootstrap-modal.css">
 <link href="../css/restaurant.css" rel="stylesheet" type="text/css">
 <link href="../css/cardapio.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../bootstrap-modal-master/js/bootstrap-modal.js"></script>
-<script type="text/javascript" src="../bootstrap-modal-master/js/bootstrap-modalmanager.js"></script>
+<script type="text/javascript" src="../js/bootbox.min.js"></script>
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
 </script>
@@ -75,6 +74,16 @@
                 },
                 error: function (data) {
                     alert("Erro ");
+                }
+            });
+        }
+
+        function checkCurrentOrder() {
+            bootbox.prompt("What is your name?", function (result) {
+                if (result === null) {
+                    Example.show("Prompt dismissed");
+                } else {
+                    Example.show("Hi <b>" + result + "</b>");
                 }
             });
         }
@@ -185,7 +194,7 @@
                                 <div class="tam">
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
-                                    <form action="javascript:void(0);" id="{$count}" onsubmit="addProduto({$count});">
+                                    <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder();">
                                         <button class="btn-link pull-right" ><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
                                                                                   alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>

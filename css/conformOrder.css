@@ -53,7 +53,7 @@ table thead tr #ProdutoTh{
 }
 
 table thead tr #ValorTh{
-   width:10%;
+    width:10%;
 }
 
 table thead tr #QuantidadeTh{
@@ -68,3 +68,22 @@ table thead tr #ButtonsTh{
     width: 10%;
 }
 
+#cart {
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    animation-duration: 2s;
+    -ms-animation-duration:2s;
+}
+
+#confirmation{
+    text-align: center;
+    height: 200px;
+    display: none;
+}
+
+#confirmation h2{
+    text-align: center;
+    width: 100%;
+    margin-top:100px;
+    font-size: xx-large;
+}

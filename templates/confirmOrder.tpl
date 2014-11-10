@@ -1,5 +1,6 @@
 <link href="../css/conformOrder.css" rel="stylesheet" type="text/css">
 <link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
 <script>
     {literal}
         function removeProduct(indexProduto) {
@@ -68,13 +69,30 @@
                 }
             });
         }
+        
+        function checkout(){
+            $('#cart').addClass('animated bounceOutRight');
+            
+            setTimeout(function (){$('#cart').remove();},1800);
+            setTimeout(
+                    function () { 
+                        $('#confirmation').html('<h2>Pedido realizado com sucesso</h2>');
+                        $('#confirmation').show();
+                    },
+                    2000);
+        }
+        
+        
+        function showMessage(){
+            
+        }
     {/literal}
 </script>
 
 <div class="container">
     <img src="../images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
     <h2>{$restaurante->getNome()}</h2>
-
+    <div id="confirmation"></div>
     {if isset($smarty.session.pedido)}
         <table id="cart" class="table table-hover table-condensed">
             <thead>
@@ -124,8 +142,8 @@
                     <td><a href="../pages/restaurant.php?res={$smarty.session.idRestauranteDoPedidoAtual}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Voltar ao cardápio</a></td>
                     <td colspan="2" class="hidden-xs"></td>
                     <td class="hidden-xs text-center"><strong>Total R$ {$smarty.session.pedido->getValorTotal()}</strong></td>
-            <form method="POST">
-                <td><a href="#" class="btn btn-success btn-block">Comfirmar <i class="fa fa-angle-right"></i></a></td>
+            <form method="POST" action="javascript:void(0)">
+                <td><button class="btn btn-success btn-block" onclick="checkout();">Comfirmar <i class="fa fa-angle-right"></i></button></td>
             </form>
             </tr>
             </tfoot>
