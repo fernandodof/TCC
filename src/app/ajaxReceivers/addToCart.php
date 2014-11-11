@@ -10,6 +10,13 @@ require_once '../util/Queries.php';
 
 session_start();
 
+$orderAction = filter_input(INPUT_POST, 'orderAction');
+
+if($orderAction == true){
+    unset($_SESSION['pedido']);
+    unset($_SESSION['idRestauranteDoPedidoAtual']);
+}
+
 if (!isset($_SESSION['id'])) {
     echo 'Erro';
 } else {

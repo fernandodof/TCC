@@ -11,6 +11,9 @@ require_once '../src/app/model/entities/Produto.class.php';
 include_once '../pages/header.php';
 
 $dao = new Dao();
+
+$restaurantePedido = $dao->findByKey('Restaurante', $_SESSION['idRestauranteDoPedidoAtual']);
+
 $restaurante = $dao->findByKey('Restaurante', filter_input(INPUT_GET, 'res'));
 $produtos = $restaurante->getProdutos();
 
@@ -25,6 +28,7 @@ foreach ($produtos as $p) {
     }
 }
 
+$smarty->assign('restaurantePedido',$restaurantePedido);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('restaurante', $restaurante);

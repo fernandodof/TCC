@@ -5,89 +5,9 @@
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
 </script>
-<script type="text/javascript" src="../js/LoadMap.js"></script>
+<script type="text/javascript" src="../js/restaurantPageFunctions.js"></script>
 <script type="text/javascript">
     {literal}
-        function initialize() {
-            var mapOptions = {
-                center: new google.maps.LatLng(-6.887496, -38.560768),
-                zoom: 15
-            };
-            var map = new google.maps.Map(document.getElementById("map"),
-                    mapOptions);
-
-            var map2 = new google.maps.Map(document.getElementById("map2"),
-                    mapOptions);
-        }
-
-        function initMap() {
-            var latitude = $('#latitude').val();
-            var longitude = $('#longitude').val();
-            var nomeRestaurante = $('#nomeRestauranteMap').val();
-            var myLatlng = new google.maps.LatLng(Number(latitude), Number(longitude));
-            var mapOptions = {
-                zoom: 16,
-                center: myLatlng
-            };
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-            // To add the marker to the map, use the 'map' property
-            var marker = new google.maps.Marker({
-                position: myLatlng,
-                map: map,
-                title: nomeRestaurante
-            });
-        }
-
-        function addProduto(idForm) {
-            $('body').dimBackground();
-            $('#loader').show();
-            $("body").find("input,button,textarea").attr("disabled", "disabled");
-            var form = document.getElementById(idForm);
-            var idProduto1 = form.getElementsByClassName('idProduto')[0].value;
-            var idTamanho1 = form.getElementsByClassName('idTamanho')[0].value;
-            var quantidade1 = form.getElementsByClassName('quantidade')[0].value;
-            var idRestaurantePedido1 = $('#idRestaurantePedidoInicial').val();
-
-            var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1, idRestaurantePedido: idRestaurantePedido1};
-            var url = '../src/app/ajaxReceivers/addToCart.php';
-
-            $.ajax({
-                type: "POST",
-                url: url,
-                async: true,
-                data: data,
-                success: function (serverResponse) {
-                    if (serverResponse === 'Erro') {
-                        $('#loader').hide();
-                        alert('Por favor faça o login para poder realizar o pedido');
-                        $('body').undim();
-                        $("body").find("input,button,textarea").removeAttr("disabled");
-
-                    }
-                    else {
-                        $('#pedidoDropdown').html(serverResponse);
-                        $('body').undim();
-                        $("body").find("input,button,textarea").removeAttr("disabled");
-                        $('#loader').hide();
-                    }
-                },
-                error: function (data) {
-                    alert("Erro ");
-                }
-            });
-        }
-
-        function checkCurrentOrder() {
-            bootbox.prompt("What is your name?", function (result) {
-                if (result === null) {
-                    Example.show("Prompt dismissed");
-                } else {
-                    Example.show("Hi <b>" + result + "</b>");
-                }
-            });
-        }
-
         google.maps.event.addDomListener(window, 'load', initMap);
         google.maps.event.trigger(map, 'resize');
     {/literal}
@@ -106,7 +26,8 @@
             <h4 id="nomeRestaurante">{$restaurante->getNome()}</h4>
             <img src="../images/icons/rsz_location.png" class="pull-left addressIcon">
             <address>{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
-                {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()}.</address>
+                {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()} 
+                {$restaurante->getEndereco()->getComplemento()}.</address>
 
             <div id="location">
                 <div id="map">
@@ -133,12 +54,12 @@
                         <form action="../pages/confirmOrder.php" method="POST" id="formProseguir" class="pull-left">
                             <button type="submit" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido
                                 <img class="img" src='../images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></button>
-                            <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" value="{$restaurante->getId()}">
+                            <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" value="{$restaurantePedido->getId()}">
                         </form>
 
                         <ul class="dropdown-menu col-xs-12 col-sm-6">
                             <li id="liNomeRetaurantePedido">
-                                <h5 id="nomeRestaurnatePedido">{$restaurante->getNome()}</h5>
+                                <h5 id="nomeRestaurnatePedido">{$restaurantePedido->getNome()}</h5>
                             </li>
                             <li class="divider firstDivider"></li>
                                 {$count1=0}
@@ -162,8 +83,6 @@
                                         <p class="pull-right">{$it->getSubtotal()}</p> 
                                     </div>
                                 </li>
-                                {*                                <p>{$count1}</p>
-                                <p>{$smarty.session.pedido->getItensPedido()|@count}</p>*}
                                 {if ($count1 < $smarty.session.pedido->getItensPedido()|@count)}
                                     <li class="divider"></li>
                                     {/if}
@@ -194,9 +113,9 @@
                                 <div class="tam">
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
-                                    <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder();">
-                                        <button class="btn-link pull-right" ><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
-                                                                                  alt="Adicionar a compra" title="Adicionar a compra"/></button>
+                                    <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder({$count});">
+                                        <button class="btn-link pull-right addCart"><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
+                                                                                                                       alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
                                         <input type="hidden" class="idProduto" value="{$produto->getId()}">
                                         <input type="hidden" class="idTamanho" value="{$tamanho->getId()}">
@@ -223,7 +142,7 @@
                                 <div class="tam">
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
-                                    <form action="javascript:void(0);" id="{$count}" onsubmit="addProduto({$count});">
+                                    <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder({$count});">
                                         <button class="btn-link pull-right" ><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
                                                                                   alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
