@@ -20,8 +20,8 @@ $kindsOfFood[] = 'Cozlinha Italiana';
 $kindsOfFood[] = 'Variada';
 sort($kindsOfFood);
 
-$params['nome'] = trim(filter_input(INPUT_POST, 'search'));
-$tipo = trim(filter_input(INPUT_POST, 'kindOfFood'));
+$params['nome'] = trim(filter_input(INPUT_GET, 'search'));
+$tipo = trim(filter_input(INPUT_GET, 'kindOfFood'));
 
 if (is_numeric($params['nome'])) {
     $params['nome'] = '%' . $params['nome'] . '%';

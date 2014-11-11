@@ -4,7 +4,6 @@ require_once '../src/app/model/persistence/Dao.class.php';
 require_once '../src/app/util/Queries.php';
 include_once '../pages/header.php';
 
-
 $dao = new Dao();
 
 $highlights = array();
