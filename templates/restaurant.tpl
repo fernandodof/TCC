@@ -1,5 +1,6 @@
 <link href="../bootstrap-modal-master/css/bootstrap-modal.css">
 <link href="../css/restaurant.css" rel="stylesheet" type="text/css">
+<link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="../css/cardapio.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="../js/bootbox.min.js"></script>
 <script type="text/javascript" 
@@ -8,8 +9,7 @@
 <script type="text/javascript" src="../js/restaurantPageFunctions.js"></script>
 <script type="text/javascript">
     {literal}
-        google.maps.event.addDomListener(window, 'load', initMap);
-        google.maps.event.trigger(map, 'resize');
+
     {/literal}
 </script>
 <div class="container">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <a href="#bigMap" data-toggle="modal">Expandir Mapa</a>
+        <a onclick="expandMap();" class="elementToggle">Expandir Mapa</a>
         <input type="hidden" id="latitude" value="{$restaurante->getEndereco()->getLatitude()}">
         <input type="hidden" id="longitude" value="{$restaurante->getEndereco()->getLongitude()}">
         <input type="hidden" id="nomeRestauranteMap" value="{$restaurante->getNome()}">
@@ -115,7 +115,7 @@
                                     {$count=$count+1}
                                     <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder({$count});">
                                         <button class="btn-link pull-right addCart"><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
-                                                                                                                       alt="Adicionar a compra" title="Adicionar a compra"/></button>
+                                                                                         alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
                                         <input type="hidden" class="idProduto" value="{$produto->getId()}">
                                         <input type="hidden" class="idTamanho" value="{$tamanho->getId()}">
@@ -163,10 +163,11 @@
     <div class="modal" id="bigMap" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" id="map-header">
+                    <h4 id="closeMap" class="elementToggle" onclick="closeMap()">Fechar <span class="glyphicon glyphicon-remove"></span></h4>
                 </div>
-                <div class="modal-body">
-                    <div id="location">
+                <div class="modal-body" id="bigMap-modal-body">
+                    <div id="location2">
                         <div id="map2" class="col-xs-12">
                         </div>
                     </div>

@@ -128,11 +128,22 @@
 #map{
     width: 200px;
     height:200px;
+    z-index: 10;
 }
 
-#map2{
-    width: 570px;
-    height: 400px;
+#bigMap #map-header #closeMap{
+    float: right;
+    margin-top: -15px;
+}
+
+#bigMap #map-header #closeMap:hover{
+    color: #ac2925;
+}
+
+
+#bigMap #map-header{
+    padding-top: 30px;
+    
 }
 
 .modal-body{
@@ -199,7 +210,7 @@
 
 #cardapioHeader ul .dropdown ul{
     padding-bottom: 0;
-    max-height: 400px;
+    max-height: 420px;
     overflow-x: hidden; 
     margin-top: 40px;
     float: left;
@@ -234,11 +245,6 @@
 }
 
 .blur{
-/*    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);*/
     background-color:  rgba(0,0,0,0.5);
 }
 

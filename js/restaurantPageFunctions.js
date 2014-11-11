@@ -1,15 +1,4 @@
-function initialize() {
-    var mapOptions = {
-        center: new google.maps.LatLng(-6.887496, -38.560768),
-        zoom: 15
-    };
-    var map = new google.maps.Map(document.getElementById("map"),
-            mapOptions);
-
-    var map2 = new google.maps.Map(document.getElementById("map2"),
-            mapOptions);
-}
-
+var map;
 function initMap() {
     var latitude = $('#latitude').val();
     var longitude = $('#longitude').val();
@@ -19,15 +8,50 @@ function initMap() {
         zoom: 16,
         center: myLatlng
     };
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-    // To add the marker to the map, use the 'map' property
     var marker = new google.maps.Marker({
         position: myLatlng,
         map: map,
         title: nomeRestaurante
     });
+
+//    var marker2 = new google.maps.Marker({
+//        position: myLatlng,
+//        map: map2,
+//        title: nomeRestaurante
+//    });
+
 }
+
+google.maps.event.addDomListener(window, 'load', initMap);
+google.maps.event.addDomListener(window, "resize", function () {
+    $('#map').width($('#bigMap-modal-body').width() - 25).height($('#bigMap-modal-body').height());
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+});
+
+function expandMap() {
+    $('#bigMap').show();
+    $('#map').width($('#bigMap-modal-body').width() - 25).height($('#bigMap-modal-body').height());
+    var center = map.getCenter();
+    google.maps.event.trigger(map, "resize");
+    map.setCenter(center);
+    $('#map2').empty();
+    $('#map').appendTo('#map2');
+}
+
+function closeMap() {
+    $('#bigMap').hide();
+    $('#map').width('200px').height('200px');
+    $('#location').html("<div id='map'></div>");
+//    var center = map.getCenter();
+//    google.maps.event.trigger(map, "resize");
+//    map.setCenter(center);
+    initMap();
+} 
 
 function addProduto(idForm, orderAction) {
     var form = document.getElementById(idForm);
