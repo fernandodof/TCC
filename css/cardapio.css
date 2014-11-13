@@ -84,12 +84,12 @@
 }
 
 .imgAddCart{
-    width: 40px;
-    height: 40px;
+    width: 44.2px;
+    height: 28px;
     position: relative;
     background: white;
     border-radius: 30px;
-    border: 3px solid #1569C7;
+/*    border: 3px solid #1569C7;*/
 }
 
 .imgAddCart:hover{

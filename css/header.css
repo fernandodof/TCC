@@ -76,6 +76,10 @@
 }
 
 #goToCart button{
+    float: left;
+}
+
+#goToCart button{
     background: inherit;
 }
 

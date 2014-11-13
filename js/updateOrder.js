@@ -36,7 +36,7 @@ function createCartCount(idRestaurante) {
     var itemCount = getItemCount();
     $('#liGotoCart').html(
             "<form method='post' action='../pages/confirmOrder.php' id='goToCart'>" +
-            "<button class='btn' type='submit'><img src='../images/icons/cartIcon.png' title='Pedido' alt='Pedido'>" +
+            "<button class='btn' type='submit'><img src='../images/icons/cartIcon2.png' title='Pedido' alt='Pedido'>" +
             "<span class='badge' id='badgePedido'>" + itemCount + "</span></button>" +
             "<input type='hidden' name='idRestaurantePedido' id='" + idRestaurante + "'" +
             "value='1'>" +
@@ -106,6 +106,7 @@ function checkout() {
                 $("body").find("input,button,textarea").removeAttr("disabled");
                 $('#confirmation').html('<h2>Pedido realizado com sucesso</h2>');
                 $('#confirmation').show();
+                $('#liGotoCart').empty();
             }
         },
         error: function (data) {

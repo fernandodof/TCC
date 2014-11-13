@@ -80,9 +80,8 @@
                                     {if isset($smarty.session.pedido)}
 
                                         <form method="post" action="../pages/confirmOrder.php" id="goToCart">
-                                            <button class="btn" type="submit"><img src="../images/icons/cartIcon.png" title="Pedido" alt="Pedido">
+                                            <button class="btn" type="submit"><img src="../images/icons/cartIcon2.png" title="Pedido" alt="Pedido">
                                                 <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span></button>
-
                                             <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" 
                                                    value="{$smarty.session.idRestauranteDoPedidoAtual}">
                                         </form>
