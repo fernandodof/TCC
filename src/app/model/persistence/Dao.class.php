@@ -31,9 +31,6 @@ class Dao {
             $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($entityManager);
             $schemaTool->updateSchema($metadata);
         }
-        
-        $pro = new Doctrine\ORM\Proxy\ProxyFactory($entityManager, $_SERVER['DOCUMENT_ROOT'].'Restaurantes\DoctrineProxies\__CG__', 'Proxies', TRUE);
-        $pro->generateProxyClasses($metadata);
         $this->em = $entityManager;
     }
 

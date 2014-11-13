@@ -69,10 +69,10 @@ table thead tr #ButtonsTh{
 }
 
 #cart {
-    -webkit-animation-duration: 2s;
-    -moz-animation-duration: 2s;
-    animation-duration: 2s;
-    -ms-animation-duration:2s;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+    -ms-animation-duration:1.5s;
 }
 
 #confirmation{
@@ -106,13 +106,4 @@ table thead tr #ButtonsTh{
 
 textarea[name=observacoes] {
     resize: none;
-}
-
-#loader{
-    display: none;
-    position:fixed;
-    z-index: 100;
-    vertical-align: text-top;
-    top: 40%;
-    left: 40%;
 }

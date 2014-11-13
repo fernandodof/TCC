@@ -21,7 +21,7 @@
     <body>
         <header>
             {* Creating a navigation bar *}
-            <nav class="navbar navbar-custom navbar-static-top">
+            <nav class="navbar navbar-inverse navbar-custom navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
                         {* Creating toggle button for navigation bar *}
@@ -34,7 +34,7 @@
                     </div>
                     <div class="collapse navbar-collapse custonNavHeaderCollapse">
                         {* Creating list for Navigation bar options *} 
-                        <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right" id="bar">
                             <li><a href="./index.php">Home</a></li>
                                 {if !isset($smarty.session.id)}
                                 <li><a href="./subscribe.php">Cadastro</a></li>
@@ -75,6 +75,19 @@
                                                 <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair</button>
                                             </form></li>
                                     </ul>
+                                </li>
+                                <li id="liGotoCart">
+                                    {if isset($smarty.session.pedido)}
+
+                                        <form method="post" action="../pages/confirmOrder.php" id="goToCart">
+                                            <button class="btn" type="submit"><img src="../images/icons/cartIcon.png" title="Pedido" alt="Pedido">
+                                                <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span></button>
+
+                                            <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" 
+                                                   value="{$smarty.session.idRestauranteDoPedidoAtual}">
+                                        </form>
+
+                                    {/if}
                                 </li>
                             {/if}
                         </ul>

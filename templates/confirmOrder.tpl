@@ -3,7 +3,7 @@
 <link href="../css/conformOrder.css" rel="stylesheet" type="text/css">
 <script src="../js/updateOrder.js" type="text/javascript"></script>
 <div class="container">
-    <img src="../images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
+    <input type="hidden" id="idRestaurante" value="{$smarty.session.idRestauranteDoPedidoAtual}">
     <h2>{$restaurante->getNome()}</h2>
     <div id="confirmation"></div>
     {if isset($smarty.session.pedido)}
@@ -57,7 +57,7 @@
                         <td colspan="2" class="hidden-xs"></td>
                         <td class="hidden-xs text-center bold">Total R$ {$smarty.session.pedido->getValorTotal()}</td>
                 <form method="POST" action="javascript:void(0)">
-                    <td><button class="btn btn-success btn-block" onclick="checkout();">Comfirmar <i class="fa fa-angle-right"></i></button></td>
+                    <td><button class="btn btn-success btn-block" data-loading-text="Enviando....." id="confirmar" onclick="checkout();">Comfirmar <i class="fa fa-angle-right"></i></button></td>
                 </form>
                 </tr>
                 </tfoot>

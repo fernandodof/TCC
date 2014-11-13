@@ -113,7 +113,7 @@
                                 <div class="tam">
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
-                                    <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder({$count});">
+                                    <form action="javascript:void(0);" id="add{$count}" onsubmit="checkCurrentOrder({$count});">
                                         <button class="btn-link pull-right addCart"><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
                                                                                          alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
@@ -142,9 +142,9 @@
                                 <div class="tam">
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
-                                    <form action="javascript:void(0);" id="{$count}" onsubmit="checkCurrentOrder({$count});">
-                                        <button class="btn-link pull-right" ><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
-                                                                                  alt="Adicionar a compra" title="Adicionar a compra"/></button>
+                                    <form action="javascript:void(0);" id="add{$count}" onsubmit="checkCurrentOrder({$count});">
+                                        <button class="btn-link pull-right"><img src="../images/icons/addCart.png" class="img img-responsive pull-right imgAddCart img-circle" 
+                                                                                 alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
                                         <input type="hidden" class="idProduto" value="{$produto->getId()}">
                                         <input type="hidden" class="idTamanho" value="{$tamanho->getId()}">
