@@ -239,9 +239,8 @@
 #loader{
     display: none;
     position:fixed;
-    left: 50%;
-    top: 50%;
     z-index: 100;
+    vertical-align: text-top;
 }
 
 .blur{

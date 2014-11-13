@@ -22,10 +22,9 @@ class Dao {
             'driver' => 'pdo_mysql',
         );
 
-
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
-        
+
         $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
 
         if (!empty($metadata)) {
@@ -33,8 +32,9 @@ class Dao {
             $schemaTool->updateSchema($metadata);
         }
         
+        $pro = new Doctrine\ORM\Proxy\ProxyFactory($entityManager, $_SERVER['DOCUMENT_ROOT'].'Restaurantes\DoctrineProxies\__CG__', 'Proxies', TRUE);
+        $pro->generateProxyClasses($metadata);
         $this->em = $entityManager;
-        
     }
 
     public function findByKey($entity, $id) {
@@ -60,6 +60,11 @@ class Dao {
         $this->em->remove($entity);
         $this->em->flush();
         $this->em->commit();
+    }
+
+    public function refreshEntity($entity) {
+        $this->em->merge($entity);
+        $this->em->flush();
     }
 
     public function findAll($entity) {

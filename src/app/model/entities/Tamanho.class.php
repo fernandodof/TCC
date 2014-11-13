@@ -9,6 +9,8 @@
 /**
  * @Entity
  * * */
+require_once 'Categoria.class.php';
+
 class Tamanho {
 
     /**
@@ -30,7 +32,7 @@ class Tamanho {
 
     /**
      * @ManyToOne(targetEntity="Categoria")
-     * @JoinColumn(name="id_categoria", referencedColumnName="id", unique=false)
+     * @JoinColumn(name="id_categoria", referencedColumnName="id")
      */
     private $categoria;
 

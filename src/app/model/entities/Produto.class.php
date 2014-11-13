@@ -43,7 +43,7 @@ class Produto {
     private $ingredientes;
 
     /**
-     * @ManyToMany(targetEntity="Tamanho", cascade={"all"})
+     * @ManyToMany(targetEntity="Tamanho")
      * @JoinTable(name="Produto_Tamanho",
      *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_tamanho", referencedColumnName="id", unique=false)}
@@ -58,7 +58,7 @@ class Produto {
     private $categoria;
 
     /**
-     * @ManyToMany(targetEntity="Avaliacao", cascade={"all"})
+     * @ManyToMany(targetEntity="Avaliacao")
      * @JoinTable(name="Produto_Avaliacao",
      *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
@@ -142,5 +142,5 @@ class Produto {
     public function addAvaliacao(Avaliacao $avaliacao){
         $this->avaliacoes->add($avaliacao);
     }
-
+       
 }

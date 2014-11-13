@@ -87,3 +87,32 @@ table thead tr #ButtonsTh{
     margin-top:100px;
     font-size: xx-large;
 }
+
+.bold{
+    font-weight: bold;
+}
+
+#enderecoEntrega h6{
+    font-weight: bold;
+}
+
+#enderecoEntrega #nome{
+    color: #002A80;
+}
+
+#enderecoEntrega p{
+    margin-bottom: 0;
+}
+
+textarea[name=observacoes] {
+    resize: none;
+}
+
+#loader{
+    display: none;
+    position:fixed;
+    z-index: 100;
+    vertical-align: text-top;
+    top: 40%;
+    left: 40%;
+}

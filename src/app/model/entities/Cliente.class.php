@@ -9,7 +9,7 @@ require_once 'Pessoa.class.php';
 require_once 'Telefone.class.php';
 require_once 'Avaliacao.class.php';
 require_once 'Endereco.class.php';
-
+require_once 'Pedido.class.php';
 /**
  * @Entity
  * * */
@@ -44,10 +44,10 @@ class Cliente extends Pessoa {
     private $avaliacoes;
 
     /**
-     * @ManyToMany(targetEntity="Pedido", cascade={"all"})
+     * @ManyToMany(targetEntity="Pedido", cascade="all")
      * @JoinTable(name="Pessoa_Pedido",
      *      joinColumns={@JoinColumn(name="id_pessoa", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_pedido", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="id_pedido", referencedColumnName="id")}
      *      )
      * */
     private $pedidos;

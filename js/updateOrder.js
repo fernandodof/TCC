@@ -66,15 +66,39 @@ function updateQuantity(indexProduto) {
 }
 
 function checkout() {
-    $('#cart').addClass('animated bounceOutRight');
+    $('body').dimBackground();
+    $('#loader').show();
+    $("body").find("input,button,textarea").attr("disabled", "disabled");
+    var obs = $('#observacoes').val();
 
-    setTimeout(function () {
-        $('#cart').remove();
-    }, 1800);
-    setTimeout(
-            function () {
+    var data = {obs: obs};
+    var url = '../src/app/ajaxReceivers/submitOrder.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse === 'Erro') {
+                alertify.alert("Ocorreu um erro ao fazer o seu pedido");
+            } else {
+                $('#orderInfo').addClass('animated bounceOutRight');
+
+                setTimeout(function () {
+                    $('#orderInfo').remove();
+                }, 1800);
+                
+                $('body').undim();
+                $('#loader').hide();
+                $("body").find("input,button,textarea").removeAttr("disabled");
                 $('#confirmation').html('<h2>Pedido realizado com sucesso</h2>');
                 $('#confirmation').show();
-            },
-            2000);
+            }
+        },
+        error: function (data) {
+            alertify.alert("Ocorreu um erro ao fazer o seu pedido");
+        }
+    });
+
+
 }      

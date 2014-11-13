@@ -11,13 +11,15 @@
  *
  * @author Fernando
  */
-
 /**
  * @Entity
  * * */
-
 require_once 'Endereco.class.php';
 require_once 'TipoRestaurante.class.php';
+require_once 'Produto.class.php';
+require_once 'FormaPagamento.class.php';
+require_once 'Pedido.class.php';
+
 
 class Restaurante {
 
@@ -101,14 +103,24 @@ class Restaurante {
      * @OrderBy({"nome" = "ASC"})
      * */
     private $produtos;
-    
+
+    /**
+     * @ManyToMany(targetEntity="Pedido")
+     * @JoinTable(name="Restaurante_Pedido",
+     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="id_pedido", referencedColumnName="id")}
+     *      )
+     * */
+    private $pedidos;
+
     public function __construct() {
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
         $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
+        $this->pedidos =  new Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     public function getId() {
         return $this->id;
     }
@@ -204,8 +216,21 @@ class Restaurante {
     public function setProdutos($produtos) {
         $this->produtos = $produtos;
     }
-    
-    public function addProduto(Produto $produto){
+
+    public function addProduto(Produto $produto) {
         $this->produtos->add($produto);
     }
+    
+    public function getPedidos() {
+        return $this->pedidos;
+    }
+
+    public function setPedidos($pedidos) {
+        $this->pedidos = $pedidos;
+    }
+
+    public function addPedido(Pedido $pedido){
+        $this->pedidos->add($pedido);
+    }  
+
 }

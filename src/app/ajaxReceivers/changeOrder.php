@@ -1,9 +1,13 @@
 <?php
 
-require '../model/entities/Pedido.class.php';
-require '../model/entities/Produto.class.php';
-require '../model/entities/ItemPedido.class.php';
-require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
+//require_once '../model/entities/Pedido.class.php';
+//require_once '../model/entities/Produto.class.php';
+//require_once '../model/entities/ItemPedido.class.php';
+require_once '../model/VO/PedidoVO.class.php';
+require_once '../model/VO/ItemPedidoVO.class.php';
+require_once '../model/VO/ProdutoVO.class.php';
+require_once '../model/VO/CategoriaVO.class.php';
+require_once '../model/VO/TamanhoVO.class.php';
 
 session_start();
 
@@ -18,27 +22,24 @@ if ($command == 'remove') {
         unset($_SESSION['pedido']);
     } else {
         $counter = 0;
-        $itensDoPedido = new Doctrine\Common\Collections\ArrayCollection();
+        $itensDoPedido;
         foreach ($pedido->getItensPedido() as $it) {
             if ($counter != $indexItem) {
-                $itensDoPedido->add($it);
+                $itensDoPedido[] = $it;
             } else {
                 $valorDoItem = $it->getSubtotal();
             }
-
             $counter++;
         }
-
-        $pedido->setValorTotal($pedido->getValorTotal() - $valorDoItem);
+        $pedido->setValorTotal($pedido->getvalorTotal() - $valorDoItem);
         $pedido->setItensPedido($itensDoPedido);
-
         $_SESSION['pedido'] = $pedido;
     }
     
 } else if ($command == 'update'){
     $quantidade = filter_input(INPUT_POST, 'quantidade');
     $counter = 0;
-    $itensDoPedido = new Doctrine\Common\Collections\ArrayCollection();
+    $itensDoPedido;
     $valorTotalPedido = 0;
 
     foreach ($pedido->getItensPedido() as $it) {
@@ -46,9 +47,9 @@ if ($command == 'remove') {
             $it->setQuantidade($quantidade);
             $it->setSubtotal($it->getTamanho()->getPreco() * $quantidade);
             $valorTotalPedido += $it->getTamanho()->getPreco() * $quantidade;
-            $itensDoPedido->add($it);
+            $itensDoPedido[] = $it;
         } else {
-            $itensDoPedido->add($it);
+            $itensDoPedido[] = $it;
             $valorTotalPedido += $it->getSubtotal();
         }
         $counter++;

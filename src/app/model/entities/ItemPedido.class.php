@@ -33,13 +33,13 @@ class ItemPedido {
     private $subtotal;
 
     /**
-     * @ManyToOne(targetEntity="Produto")
+     * @ManyToOne(targetEntity="Produto", cascade="all")
      * @JoinColumn(name="id_produto", referencedColumnName="id")
      */
     private $produto;
 
     /**
-     * @ManyToOne(targetEntity="Tamanho")
+     * @ManyToOne(targetEntity="Tamanho", cascade="all")
      * @JoinColumn(name="id_tamanho", referencedColumnName="id")
      */
     private $tamanho;

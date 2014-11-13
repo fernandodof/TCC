@@ -8,13 +8,13 @@ require_once './src/app/model/persistence/Dao.class.php';
 require_once './src/app/util/Queries.php';
 $dao = new Dao();
 
-//$formaPagamento = new FormaPagamento();
-//$formaPagamento->setNome("Dinheiro");
-//$dao->save($formaPagamento);
-//echo '1';
+$formaPagamento = new FormaPagamento();
+$formaPagamento->setNome("Dinheiro");
+$dao->save($formaPagamento);
+echo '1';
 
 $tipoRestaurante = new TipoRestaurante();
-$tipoRestaurante->setNome("Comida Chinesa");
+$tipoRestaurante->setNome("Pizzaria");
 $dao->save($tipoRestaurante);
 echo '2';
 
@@ -23,48 +23,47 @@ $formas[] = $forma;
 
 $tipo = $dao->findByKey('TipoRestaurante', 2);
 
-//$restaurante = new Restaurante();
-//$restaurante->setNome("Pizzaria Tarandela 3");
-//$restaurante->setAtivo(true);
-//$restaurante->setAberto(true);
-//$restaurante->setFormasPagamento($formas);
-//$restaurante->setTipo($tipo);
-//$restaurante->setDescricao("A Pizzaria Tarandela 3 oferece os mais variados tipos de pizza que vão agradar a todos os paladeres");
-//$restaurante = new Restaurante();
-
 $restaurante = new Restaurante();
-$restaurante->setNome("Restaurante China Mania");
+$restaurante->setNome("Pizzaria Tarandela 3");
 $restaurante->setAtivo(true);
 $restaurante->setAberto(true);
 $restaurante->setFormasPagamento($formas);
 $restaurante->setTipo($tipo);
-$restaurante->setDescricao("O Restaurante China Mania possui um cardápio bastante diverso, com comida chinesa e japosesa");
+$restaurante->setDescricao("A Pizzaria Tarandela 3 oferece os mais variados tipos de pizza que vão agradar a todos os paladeres");
 
-//$endereco = new Endereco();
-//$endereco->setBairro("Jardim Oásis");
-//$endereco->setCep("58900-000");
-//$endereco->setCidade("Cajazeiras");
-//$endereco->setDescricao("Endereço Tarandela 3");
-//$endereco->setEstado("Paraíba");
-//$endereco->setLatitude("-6.8888144");
-//$endereco->setLongitude("-38.5469936");
-//
-//$endereco->setLogradouro("Rua João Alves da Silva");
-//$endereco->setNumero("138");
-//$endereco->setComplemento(null);
+//$restaurante = new Restaurante();
+//$restaurante->setNome("Restaurante China Mania");
+//$restaurante->setAtivo(true);
+//$restaurante->setAberto(true);
+//$restaurante->setFormasPagamento($formas);
+//$restaurante->setTipo($tipo);
+//$restaurante->setDescricao("O Restaurante China Mania possui um cardápio bastante diverso, com comida chinesa e japosesa");
 
 $endereco = new Endereco();
-$endereco->setBairro("Jardim Adalgisa");
+$endereco->setBairro("Jardim Oásis");
 $endereco->setCep("58900-000");
 $endereco->setCidade("Cajazeiras");
 $endereco->setDescricao("Endereço Tarandela 3");
 $endereco->setEstado("Paraíba");
-$endereco->setLatitude("-6.887699");
-$endereco->setLongitude("-38.5572705");
+$endereco->setLatitude("-6.8888144");
+$endereco->setLongitude("-38.5469936");
 
-$endereco->setLogradouro("Avenida Comandante Vital Rolim");
-$endereco->setNumero("");
-$endereco->setComplemento("Cajazeiras Shopping");
+$endereco->setLogradouro("Rua João Alves da Silva");
+$endereco->setNumero("138");
+$endereco->setComplemento(null);
+
+//$endereco = new Endereco();
+//$endereco->setBairro("Jardim Adalgisa");
+//$endereco->setCep("58900-000");
+//$endereco->setCidade("Cajazeiras");
+//$endereco->setDescricao("Endereço Tarandela 3");
+//$endereco->setEstado("Paraíba");
+//$endereco->setLatitude("-6.887699");
+//$endereco->setLongitude("-38.5572705");
+//
+//$endereco->setLogradouro("Avenida Comandante Vital Rolim");
+//$endereco->setNumero("");
+//$endereco->setComplemento("Cajazeiras Shopping");
 
 $dao->save($endereco);
 echo '3';

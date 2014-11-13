@@ -161,7 +161,7 @@
     </div>
 
     <div class="modal" id="bigMap" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" id="map-header">
                     <h4 id="closeMap" class="elementToggle" onclick="closeMap()">Fechar <span class="glyphicon glyphicon-remove"></span></h4>

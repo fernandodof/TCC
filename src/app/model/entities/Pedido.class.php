@@ -9,6 +9,9 @@
 /**
  * @Entity
  * * */
+require_once 'ItemPedido.class.php';
+require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
+
 class Pedido {
 
     /**

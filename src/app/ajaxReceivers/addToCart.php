@@ -6,6 +6,12 @@ require_once '../model/entities/ItemPedido.class.php';
 require_once '../model/entities/Produto.class.php';
 require_once '../model/entities/Categoria.class.php';
 require_once '../model/entities/Tamanho.class.php';
+require_once '../model/VO/PedidoVO.class.php';
+require_once '../model/VO/ItemPedidoVO.class.php';
+require_once '../model/VO/ProdutoVO.class.php';
+require_once '../model/VO/CategoriaVO.class.php';
+require_once '../model/VO/TamanhoVO.class.php';
+
 require_once '../util/Queries.php';
 
 session_start();
@@ -28,43 +34,64 @@ if (!isset($_SESSION['id'])) {
     $idProuto = filter_input(INPUT_POST, 'idProduto');
     $idTamanho = filter_input(INPUT_POST, 'idTamanho');
     $quantidade = filter_input(INPUT_POST, 'quantidade');
-
     
     $produto = $dao->findByKey('Produto', $idProuto);
     $tamanho = $dao->findByKey('Tamanho', $idTamanho);
 
-    $itemPedido = new ItemPedido();
-    $itemPedido->setProduto($produto);
-    $itemPedido->setTamanho($tamanho);
-    $itemPedido->setQuantidade($quantidade);
-    $itemPedido->setSubtotal($tamanho->getPreco() * $quantidade);
+    $tamanhoVO = new TamanhoVO();
+    $tamanhoVO->setId($tamanho->getId());
+    $tamanhoVO->setDescricao($tamanho->getDescricao());
+    $tamanhoVO->setPreco($tamanho->getPreco());
+    
+    $categoriaVO = new CategoriaVO();
+    $categoriaVO->setId($produto->getCategoria()->getId());
+    $categoriaVO->setId($produto->getCategoria()->getId());
+    $categoriaVO->setNome($produto->getCategoria()->getNome());
+    
+    $produtoVO = new ProdutoVO();
+    $produtoVO->setId($produto->getId());
+    $produtoVO->setNome($produto->getNome());
+    $produtoVO->setIngredientes($produtoVO->getIngredientes());
+    $produtoVO->setCategoria($categoriaVO);
+    
+    $itemPedidoVO = new ItemPedidoVO();
+    $itemPedidoVO->setProduto($produtoVO);
+    $itemPedidoVO->setTamanho($tamanhoVO);
+    $itemPedidoVO->setQuantidade($quantidade);
+    $itemPedidoVO->setSubtotal($tamanhoVO->getPreco() * $quantidade);
+    
+//    $itemPedido = new ItemPedido();
+//    $itemPedido->setProduto($produto);
+//    $itemPedido->setTamanho($tamanho);
+//    $itemPedido->setQuantidade($quantidade);
+//    $itemPedido->setSubtotal($tamanho->getPreco() * $quantidade);
     $_SESSION['idRestauranteDoPedidoAtual'] =  $idRestaurantePedido;
     
     if (!isset($_SESSION['pedido'])) {
-        $pedido = new Pedido();
-        $pedido->addItemPedido($itemPedido);
+        $pedidoVO = new PedidoVO();
+        $pedidoVO->addItemPedido($itemPedidoVO);
         $valor = 0;
-        foreach ($pedido->getItensPedido() as $i) {
+        foreach ($pedidoVO->getItensPedido() as $i) {
             $valor += $i->getSubtotal();
         }
-        $pedido->setValorTotal($valor);
+        $pedidoVO->setValorTotal($valor);
 
-        $_SESSION['pedido'] = $pedido;
+        $_SESSION['pedido'] = $pedidoVO;
     } else {
-        $pedido = $_SESSION['pedido'];
-        $pedido->addItemPedido($itemPedido);
+        $pedidoVO = $_SESSION['pedido'];
+        $pedidoVO->addItemPedido($itemPedidoVO);
         $valor = 0;
-        foreach ($pedido->getItensPedido() as $i) {
+        foreach ($pedidoVO->getItensPedido() as $i) {
             $valor += $i->getSubtotal();
         }
-        $pedido->setValorTotal($valor);
-        $_SESSION['pedido'] = $pedido;
+        $pedidoVO->setValorTotal($valor);
+        $_SESSION['pedido'] = $pedidoVO;
     }
     
-    $pedido = $_SESSION['pedido'];
+    $pedidoVO = $_SESSION['pedido'];
     
         echo "<a href='#' class='dropdown-toggle btn btn-primary pull-left' id='togglePedido' data-toggle='dropdown'>Resumo do Pedido" . 
-                            "<span class='badge' id='badgePedido'>".count($pedido->getItensPedido()) . "</span> <b class='caret'></b></a>";
+                            "<span class='badge' id='badgePedido'>".count($pedidoVO->getItensPedido()) . "</span> <b class='caret'></b></a>";
         echo "<form action='../pages/confirmOrder.php' method='POST' id='formProseguir' class='pull-left'>";
             echo "<button type='submit' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" . 
                 "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></button>";
@@ -76,7 +103,7 @@ if (!isset($_SESSION['id'])) {
             echo "<h5 id='nomeRestaurnatePedido'>".$nomeRestaurante['nome']."</h5>";
         echo "</div>";    
         echo "<li class='divider firstDivider'></li>";
-        foreach ($pedido->getItensPedido() as $it) {
+        foreach ($pedidoVO->getItensPedido() as $it) {
             $counter++;
             echo "<li>";
                 echo "<div class ='row produtoDropdown'>";
@@ -96,14 +123,14 @@ if (!isset($_SESSION['id'])) {
                     echo "<p class = 'pull-right'>R$ ".$it->getSubtotal() . "</p>";
                 echo "</div>";
             echo "</li>";
-            if($counter < count($pedido->getItensPedido())){
+            if($counter < count($pedidoVO->getItensPedido())){
                 echo "<li class='divider'></li>";
             }
         }
             echo "<li class='totalLi'>";
                 echo "<div class='row totalDropdown'>";
                     echo "<p class='pull-left total'>TOTAL</p>";
-                    echo "<p class='pull-right'>R$ " . $pedido->getValorTotal() . "</p>"; 
+                    echo "<p class='pull-right'>R$ " . $pedidoVO->getValorTotal() . "</p>"; 
                 echo "</div>";
             echo "</li>";
     echo "</ul>";
