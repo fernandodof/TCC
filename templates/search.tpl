@@ -7,7 +7,9 @@
             <h4>Filtrar resultados</h4>
             <div class="visible-xs sidebarToggleButton">
                 <button class="btn btn-primary btn-lg" data-toggle="collapse" data-target=".sidebarCollapse">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
             </div>
         </div>

@@ -7,3 +7,47 @@
 .sidebar .active span{
     color: #f0c040;
 }
+
+/*@media screen and (max-width: 992px){
+
+    .kindOfFoodDiv{
+        margin-left: 0px;
+        padding: 0;
+    }
+    
+    .kindOfFoodSelect{
+        width: 420px;
+        margin-left: 15px;
+    }
+
+    .btSearchDiv{
+        margin-left: 0px;
+    }
+}*/
+
+.kindOfFoodDiv, .kindOfFoodDivButton{
+    padding: 0;
+}
+
+@media screen and (max-width: 992px){
+    .jumbotron{
+        padding-bottom: 180px;
+    }
+
+    .kindOfFoodSelect{
+        margin-left: 35px;
+    }
+
+    .searchDiv{
+        margin-left: 5px;
+    }
+
+    .btSearchDiv{
+        margin-left: 3px;
+    }
+
+    .btSearchDiv{
+        margin-bottom: 15px;
+
+    }
+}
