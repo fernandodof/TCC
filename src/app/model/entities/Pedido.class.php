@@ -5,7 +5,6 @@
  *
  * @author Fernando
  */
-
 /**
  * @Entity
  * * */
@@ -45,6 +44,18 @@ class Pedido {
      * * */
     private $observacoes;
 
+    /**
+     * @ManyToOne(targetEntity="Cliente", inversedBy="pedidos")
+     * @JoinColumn(name="id_pedido", referencedColumnName="id")
+     * */
+    private $cliente;
+
+    /**
+     * @ManyToOne(targetEntity="Restaurante", inversedBy="pedidos")
+     * @JoinColumn(name="id_pedido", referencedColumnName="id")
+     * */
+    private $restaurante;
+
     public function __construct() {
         $this->itensPedido = new Doctrine\Common\Collections\ArrayCollection();
     }
@@ -64,7 +75,7 @@ class Pedido {
     public function getValorTotal() {
         setlocale(LC_ALL, ''); // Locale will be different on each system.
         $locale = localeconv();
-        return $locale['currency_symbol'].number_format($this->valorTotal, 2, $locale['decimal_point'], $locale['thousands_sep']);
+        return $locale['currency_symbol'] . number_format($this->valorTotal, 2, $locale['decimal_point'], $locale['thousands_sep']);
     }
 
     public function getObservacoes() {
@@ -93,6 +104,22 @@ class Pedido {
 
     public function addItemPedido(ItemPedido $itemPedido) {
         $this->itensPedido->add($itemPedido);
+    }
+
+    public function getCliente() {
+        return $this->cliente;
+    }
+
+    public function setCliente($cliente) {
+        $this->cliente = $cliente;
+    }
+
+    public function getRestaurante() {
+        return $this->restaurante;
+    }
+
+    public function setRestaurante($restaurante) {
+        $this->restaurante = $restaurante;
     }
 
 }

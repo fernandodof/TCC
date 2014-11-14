@@ -1,4 +1,5 @@
 <?php
+
 require_once '../model/persistence/Dao.class.php';
 require_once '../model/entities/Pedido.class.php';
 require_once '../model/entities/Produto.class.php';
@@ -13,49 +14,56 @@ require_once '../model/VO/CategoriaVO.class.php';
 require_once '../model/VO/TamanhoVO.class.php';
 
 session_start();
-$dao = new Dao();
+if(!isset($_SESSION['idRestauranteDoPedidoAtual'])){
+    header('Location: ../../../pages/clientePage.php');
+}else{
 
-$clienteId = $_SESSION['id'];
-$cliente = $dao->findByKey('Cliente', $clienteId);
+    $dao = new Dao();
 
-$restauranteId = $_SESSION['idRestauranteDoPedidoAtual'];
-$restaurante = $dao->findByKey('Restaurante', $restauranteId);
+    $clienteId = $_SESSION['id'];
+    $cliente = $dao->findByKey('Cliente', $clienteId);
 
-$obs = filter_input(INPUT_POST, 'obs');
+    $restauranteId = $_SESSION['idRestauranteDoPedidoAtual'];
+    $restaurante = $dao->findByKey('Restaurante', $restauranteId);
 
-$pedidoVO = $_SESSION['pedido'];
+    $obs = filter_input(INPUT_POST, 'obs');
 
-$pedido = new Pedido();
+    $pedidoVO = $_SESSION['pedido'];
 
-foreach ($pedidoVO->getItensPedido() as $it){
-    $idProuto = $it->getProduto()->getId();
-    $produto = $dao->findByKey('Produto', $idProuto);
-    
-    $tamanho = $dao->findByKey('Tamanho', $it->getTamanho()->getId());
-    
-    $itemPedido = new ItemPedido();
-    $itemPedido->setProduto($produto);
-    $itemPedido->setQuantidade($it->getQuantidade());
-    $itemPedido->setSubtotal($it->getSubtotal());
-    $itemPedido->setTamanho($tamanho);
-    
-    $pedido->addItemPedido($itemPedido);
+    $pedido = new Pedido();
+
+    foreach ($pedidoVO->getItensPedido() as $it) {
+        $idProuto = $it->getProduto()->getId();
+        $produto = $dao->findByKey('Produto', $idProuto);
+
+        $tamanho = $dao->findByKey('Tamanho', $it->getTamanho()->getId());
+
+        $itemPedido = new ItemPedido();
+        $itemPedido->setProduto($produto);
+        $itemPedido->setQuantidade($it->getQuantidade());
+        $itemPedido->setSubtotal($it->getSubtotal());
+        $itemPedido->setTamanho($tamanho);
+
+        $pedido->addItemPedido($itemPedido);
+    }
+
+    if ($obs == '') {
+        $pedido->setObservacoes(null);
+    } else {
+        $pedido->setObservacoes($obs);
+    }
+
+    $pedido->setValorTotal($pedidoVO->getValorTotal());
+    $pedido->setDataHora(new \DateTime());
+    $pedido->setCliente($cliente);
+    $pedido->setRestaurante($restaurante);
+
+    $cliente->addPedido($pedido);
+    $restaurante->addPedido($pedido);
+
+    $dao->update($cliente);
+    $dao->update($restaurante);
+
+    unset($_SESSION['pedido']);
+    unset($_SESSION['idRestauranteDoPedidoAtual']);
 }
-
-if ($obs == '') {
-    $pedido->setObservacoes(null);
-} else {
-    $pedido->setObservacoes($obs);
-}
-
-//$pedido->setValorTotal($pedidoVO->getValorTotal());
-//$pedido->setDataHora(new \DateTime());
-//
-//$cliente->addPedido($pedido);
-//$restaurante->addPedido($pedido);
-//
-//$dao->update($cliente);
-//$dao->update($restaurante);
-//
-//unset($_SESSION['pedido']);
-//unset($_SESSION['idRestauranteDoPedidoAtual']);

@@ -8,23 +8,6 @@
     color: #f0c040;
 }
 
-/*@media screen and (max-width: 992px){
-
-    .kindOfFoodDiv{
-        margin-left: 0px;
-        padding: 0;
-    }
-    
-    .kindOfFoodSelect{
-        width: 420px;
-        margin-left: 15px;
-    }
-
-    .btSearchDiv{
-        margin-left: 0px;
-    }
-}*/
-
 .kindOfFoodDiv, .kindOfFoodDivButton{
     padding: 0;
 }
@@ -50,4 +33,8 @@
         margin-bottom: 15px;
 
     }
+}
+
+.btSearch{
+    z-index: 20;
 }

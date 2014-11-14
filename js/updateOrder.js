@@ -105,6 +105,7 @@ function checkout() {
                 $('body').undim();
                 $("body").find("input,button,textarea").removeAttr("disabled");
                 $('#confirmation').html('<h2>Pedido realizado com sucesso</h2>');
+                
                 $('#confirmation').show();
                 $('#liGotoCart').empty();
             }

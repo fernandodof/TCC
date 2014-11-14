@@ -17,6 +17,7 @@
         <link href="../alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
         <link href="../alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="../alertify.js-0.3.11/lib/alertify.min.js"></script>
+        <link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
     <body>
         <header>

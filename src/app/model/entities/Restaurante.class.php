@@ -105,11 +105,7 @@ class Restaurante {
     private $produtos;
 
     /**
-     * @ManyToMany(targetEntity="Pedido")
-     * @JoinTable(name="Restaurante_Pedido",
-     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_pedido", referencedColumnName="id")}
-     *      )
+     * @OneToMany(targetEntity="Pedido", mappedBy="cliente")
      * */
     private $pedidos;
 

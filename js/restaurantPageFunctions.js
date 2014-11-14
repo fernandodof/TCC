@@ -14,11 +14,6 @@ function initMap() {
         map: map,
         title: nomeRestaurante
     });
-//    var marker2 = new google.maps.Marker({
-//        position: myLatlng,
-//        map: map2,
-//        title: nomeRestaurante
-//    });
 
 }
 
@@ -29,6 +24,7 @@ google.maps.event.addDomListener(window, "resize", function () {
     google.maps.event.trigger(map, "resize");
     map.setCenter(center);
 });
+
 function expandMap() {
     $('#bigMap').show();
     $('#map').width($('#bigMap-modal-body').width() - 25).height($('#bigMap-modal-body').height());

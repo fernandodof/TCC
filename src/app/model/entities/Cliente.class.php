@@ -44,11 +44,7 @@ class Cliente extends Pessoa {
     private $avaliacoes;
 
     /**
-     * @ManyToMany(targetEntity="Pedido", cascade="all")
-     * @JoinTable(name="Pessoa_Pedido",
-     *      joinColumns={@JoinColumn(name="id_pessoa", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_pedido", referencedColumnName="id")}
-     *      )
+     * @OneToMany(targetEntity="Pedido", mappedBy="cliente", cascade={"all"})
      * */
     private $pedidos;
 
