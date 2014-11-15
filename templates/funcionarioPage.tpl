@@ -1,10 +1,10 @@
 <head>
+    <script src="../js/jquery.priceFormat.min.js" type="text/javascript"></script>
     <script>
         {literal}     
         function callFilter(str) {
             filter(str);
         }
-
 
         function filter(str) {
             if (str === '') {
@@ -44,22 +44,38 @@
         function checkCreatePrice(checkbox) {
             var checkboxVal = checkbox.value;
             if (checkbox.checked) {
-                $(checkbox).parent().append("<input type='text' class='price' name='price[]' required placeholder='Preço' id='price" + checkboxVal + "'/>");
+                $(checkbox).parent().append("<input type='text' class='price' name='price[]' required placeholder='Preço' value='000' id='price" + checkboxVal + "'/>");
             } else {
                 $("#price" + checkboxVal).remove();
             }
+            formatPrices();
 
+            $(document).tooltip();
+            $(".price").tooltip({
+                show: {
+                    effect: "slideDown",
+                    delay: 250
+                }
+            });
         }
 
+        function formatPrices() {
+            $('.price').priceFormat({
+                prefix: 'R$ ',
+                centsSeparator: ',',
+                thousandsSeparator: '.'
+            });
+        }
+
+        $(document).ready(function () {
+            formatPrices();
+        });
         {/literal}
     </script>
-    <script>
-
-
-    </script>
+    <link href="../css/funcionarioPage.css" rel="stylesheet" type="text/css">
+    <link href="../css/cardapio.css" rel="stylesheet" type="text/css">
 </head>
-<link href="../css/funcionarioPage.css" rel="stylesheet" type="text/css">
-<link href="../css/cardapio.css" rel="stylesheet" type="text/css">
+
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">

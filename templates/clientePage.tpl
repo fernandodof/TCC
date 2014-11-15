@@ -3,7 +3,7 @@
 <script src="../dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="../js/clientPageFunctions.js" type="text/javascript"></script>
 <link href="../dataTables/bootstrapDatatableTheme/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
-<script src="../dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>
+{*<script src="../dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>*}
 <div class="container">
     <form method="GET" class="form-horizontal searchForm" action="../pages/search.php">
         <div class="row input-group col-md-12 pull-left search">
@@ -46,12 +46,12 @@
         <div class="tab-pane" id="tab_b">
             <h4>Pedidos</h4>
 
-            <table id="pedidos" class="display">
+            <table id="pedidos" class="display table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Data</th>
-                        <th>Valor R$</th>
+                        <th>Valor</th>
                         <th>Estabelecimento</th>
                         <th>Itens</th>
                     </tr>
@@ -62,12 +62,45 @@
                         <tr>
                             <td>{$pedido->getId()}</td>
                             <td>{$pedido->getDataHora()}</td>
-                            <td>{$pedido->getValorTotal()}</td>
+                            <td>R$ {$pedido->getValorTotal()}</td>
                             <td>{$pedido->getRestaurante()->getNome()}</td>
-                            <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle">Ver Itens</label>
+                            <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle verItem">Ver Itens <span class="fa fa-eye"></span></label>
 
-                                <div class="modal" id="contact" role="dialog">
+                                <div class="modal" id="item{$i}" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4>Itens</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-hover table-responsive table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Nome</th>
+                                                            <th>Tamanho</th>
+                                                            <th>Quantidade</th>
+                                                            <th>Subtotal</th>
+                                                        <tr>
+                                                    </thead>
+                                                    {foreach from=$pedido->getItensPedido() item=it}
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{$it->getProduto()->getNome()}</td>
+                                                                <td>{$it->getTamanho()->getDescricao()}</td>
+                                                                <td>{$it->getQuantidade()}</td>
+                                                                <td>{$it->getSubtotal()}</td>
+                                                            </tr>
+                                                        <tbody>
+                                                        {/foreach}
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                             </td>
                         </tr>

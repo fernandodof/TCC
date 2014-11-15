@@ -38,3 +38,7 @@
 .btSearch{
     z-index: 20;
 }
+
+.verItem:hover{
+    text-decoration: underline; 
+}
