@@ -2,10 +2,8 @@ function removeProduct(indexProduto) {
     $('body').dimBackground();
     $('#loader').show();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
-
     var data = {indexProduto: indexProduto, command: "remove"};
     var url = '../src/app/ajaxReceivers/changeOrder.php';
-
     $.ajax({
         type: "POST",
         url: url,
@@ -16,6 +14,12 @@ function removeProduct(indexProduto) {
                 alertify.log(serverResponse);
             } else if (serverResponse === 'Sua Bandeja Está Vazia') {
                 $("#liGotoCart").empty();
+                $('#orderInfo').remove();
+                $('#confirmation').html("<h2>Sua Bandeja Está Vazia</h2>" +
+                        "<div id='faces'>" +
+                        "<img id = 'imgFace' src = '../images/icons/svg/sadFace.svg'/>" +
+                        "</div>");
+                $('#confirmation').show();
             }
             else {
                 createCartCount($('#idRestaurante').val());
@@ -24,9 +28,9 @@ function removeProduct(indexProduto) {
             $("body").find("input,button,textarea").removeAttr("disabled");
             $('#loader').hide();
             $('#cart').html(serverResponse);
-
         },
         error: function (data) {
+            alert(data);
             alert("Ocorreu um erro com a sua solicitação");
         }
     });
@@ -49,11 +53,9 @@ function updateQuantity(indexProduto) {
     $('body').dimBackground();
     $('#loader').show();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
-
     var quantidade = $('#quantidade' + indexProduto).val();
     var data = {indexProduto: indexProduto, quantidade: quantidade, command: "update"};
     var url = '../src/app/ajaxReceivers/changeOrder.php';
-
     $.ajax({
         type: "POST",
         url: url,
@@ -84,7 +86,6 @@ function checkout() {
     $('body').dimBackground();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var obs = $('#observacoes').val();
-
     var data = {obs: obs};
     var url = '../src/app/ajaxReceivers/submitOrder.php';
     $.ajax({
@@ -97,15 +98,15 @@ function checkout() {
                 alertify.alert("Ocorreu um erro ao fazer o seu pedido");
             } else {
                 $('#orderInfo').addClass('animated bounceOutRight');
-
                 setTimeout(function () {
                     $('#orderInfo').remove();
                 }, 1300);
-
                 $('body').undim();
                 $("body").find("input,button,textarea").removeAttr("disabled");
-                $('#confirmation').html('<h2>Pedido realizado com sucesso</h2>');
-                
+                $('#confirmation').html("<h2>Pedido realizado com sucesso</h2>" +
+                        "<div id='faces'>" +
+                        "<img id = 'imgFace' src = '../images/icons/svg/happyFace.svg'/>" +
+                        "</div>");
                 $('#confirmation').show();
                 $('#liGotoCart').empty();
             }

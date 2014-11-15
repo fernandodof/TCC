@@ -24,7 +24,15 @@ $(document).ready(function () {
                     }
                 },
                 "iDisplayLength": 5,
-                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Tudo"]]
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Tudo"]],
+                "order": [[1, "desc"]],
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    {"bSortable": false}
+                ]
             });
 });
 

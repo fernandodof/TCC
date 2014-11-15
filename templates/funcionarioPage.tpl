@@ -48,8 +48,7 @@
             } else {
                 $("#price" + checkboxVal).remove();
             }
-            formatPrices();
-
+           
             $(document).tooltip();
             $(".price").tooltip({
                 show: {
@@ -57,8 +56,7 @@
                     delay: 250
                 }
             });
-        }
- 
+        } formatPrices();
 
         function formatPrices() {
             $('.price').priceFormat({

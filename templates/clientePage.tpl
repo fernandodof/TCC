@@ -1,8 +1,8 @@
 <link href="../css/clientePage.css" rel="stylesheet" type="text/css">
 <link href="../dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+<link href="../dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
 <script src="../dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="../js/clientPageFunctions.js" type="text/javascript"></script>
-<link href="../dataTables/bootstrapDatatableTheme/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
 {*<script src="../dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>*}
 <div class="container">
     <form method="GET" class="form-horizontal searchForm" action="../pages/search.php">

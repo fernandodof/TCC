@@ -25,7 +25,7 @@
                             <tr>
                                 <td data-th="Item">
                                     <div class="row">
-                                        {if ($it->getProduto()->getIngredientes() ==null)}
+                                        {if ($it->getProduto()->getIngredientes() == null)}
                                             <div class="col-sm-2 hidden-xs"><img src="../images/icons/drink.png" alt="..." class="img-responsive"/></div>
                                             {else}
                                             <div class="col-sm-2 hidden-xs"><img src="../images/icons/food.png" alt="..." class="img-responsive"/></div>

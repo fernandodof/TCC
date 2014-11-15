@@ -1,8 +1,5 @@
 <?php
 
-//require_once '../model/entities/Pedido.class.php';
-//require_once '../model/entities/Produto.class.php';
-//require_once '../model/entities/ItemPedido.class.php';
 require_once '../model/VO/PedidoVO.class.php';
 require_once '../model/VO/ItemPedidoVO.class.php';
 require_once '../model/VO/ProdutoVO.class.php';
@@ -20,6 +17,7 @@ if ($command == 'remove') {
 
     if (count($pedido->getItensPedido()) == 1) {
         unset($_SESSION['pedido']);
+        unset($_SESSION['idRestauranteDoPedidoAtual']);
         echo 'Sua Bandeja Está Vazia';
     } else {
         $counter = 0;
@@ -37,7 +35,6 @@ if ($command == 'remove') {
         $_SESSION['pedido'] = $pedido;
     }
     $_SESSION['itemCount'] = count($pedido->getItensPedido());
-    
 } else if ($command == 'update') {
     $quantidade = filter_input(INPUT_POST, 'quantidade');
     $counter = 0;

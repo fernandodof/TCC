@@ -51,7 +51,7 @@ if (!isset($_SESSION['id'])) {
     $produtoVO = new ProdutoVO();
     $produtoVO->setId($produto->getId());
     $produtoVO->setNome($produto->getNome());
-    $produtoVO->setIngredientes($produtoVO->getIngredientes());
+    $produtoVO->setIngredientes($produto->getIngredientes());
     $produtoVO->setCategoria($categoriaVO);
 
     $itemPedidoVO = new ItemPedidoVO();
