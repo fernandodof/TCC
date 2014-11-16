@@ -38,7 +38,7 @@ foreach ($pedidos as $pedido) {
     $idsPedidos[] = $pedido->getId();
 }
 
-if ($idsPedidos != null) {
+if (isset($idsPedidos) && $idsPedidos != null) {
     $_SESSION['pedidosCarregados'] = $idsPedidos;
 }
 

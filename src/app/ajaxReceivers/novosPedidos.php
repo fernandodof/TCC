@@ -24,7 +24,7 @@ foreach ($pedidos as $pedido){
 //    echo 'TESTE';
 }
 
-$i=0;
+$i=count($pedidosCaregados)-1;
 if(count($pedidosNovos)>0){
     foreach ($pedidosNovos as $pedido){
         echo "<div class='well well-sm pedidoDiv'>";
