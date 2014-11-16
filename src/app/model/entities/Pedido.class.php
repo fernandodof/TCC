@@ -46,13 +46,13 @@ class Pedido {
 
     /**
      * @ManyToOne(targetEntity="Cliente", inversedBy="pedidos")
-     * @JoinColumn(name="id_pedido", referencedColumnName="id")
+     * @JoinColumn(name="id_cliente", referencedColumnName="id")
      * */
     private $cliente;
 
     /**
      * @ManyToOne(targetEntity="Restaurante", inversedBy="pedidos")
-     * @JoinColumn(name="id_pedido", referencedColumnName="id")
+     * @JoinColumn(name="id_restaurante", referencedColumnName="id")
      * */
     private $restaurante;
 

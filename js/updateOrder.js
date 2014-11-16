@@ -43,7 +43,7 @@ function createCartCount(idRestaurante) {
             "<button class='btn' type='submit'><img src='../images/icons/cartIcon2.png' title='Pedido' alt='Pedido'>" +
             "<span class='badge' id='badgePedido'>" + itemCount + "</span></button>" +
             "<input type='hidden' name='idRestaurantePedido' id='" + idRestaurante + "'" +
-            "value='1'>" +
+            "value='"+idRestaurante+"'>" +
             "</form>"
             );
 }

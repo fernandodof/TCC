@@ -105,7 +105,7 @@ class Restaurante {
     private $produtos;
 
     /**
-     * @OneToMany(targetEntity="Pedido", mappedBy="cliente")
+     * @OneToMany(targetEntity="Pedido", mappedBy="restaurante")
      * */
     private $pedidos;
 
