@@ -55,6 +55,11 @@ class Pedido {
      * @JoinColumn(name="id_restaurante", referencedColumnName="id")
      * */
     private $restaurante;
+    
+    /**
+     * @Column(type="boolean")
+     * **/
+    private $status = false;
 
     public function __construct() {
         $this->itensPedido = new Doctrine\Common\Collections\ArrayCollection();
@@ -120,6 +125,14 @@ class Pedido {
 
     public function setRestaurante($restaurante) {
         $this->restaurante = $restaurante;
+    }
+
+    public function getStatus() {
+        return $this->status;
+    }
+
+    public function setStatus($status) {
+        $this->status = $status;
     }
 
 }

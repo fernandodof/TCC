@@ -1,76 +1,6 @@
 <head>
     <script src="../js/jquery.priceFormat.min.js" type="text/javascript"></script>
-    <script>
-        {literal}     
-        function callFilter(str) {
-            filter(str);
-        }
-
-        function filter(str) {
-            if (str === '') {
-                $('#lbTamanho').removeClass("visible").addClass("invisible");
-                $('#ingredientes').remove();
-                $('.checkboxes').remove();
-                return;
-            }
-
-            if (str === '2') {
-                $('#ingredientes').remove();
-            } else {
-                $('#ingDiv').append("<textarea class='form-control' rows='3' name='ingredientes' id='ingredientes' placeholder='Ingredientes'></textarea>");
-            }
-            $('#wait').show();
-
-            var data = {cat: str};
-            var url = '../src/app/util/tamanhosProduto.php';
-
-            $.ajax({
-                type: "GET",
-                url: url,
-                async: true,
-                data: data,
-                success: function (server) {
-                    $('#tamanhosDiv').html(server);
-                    $('#lbTamanho').removeClass("invisible").addClass("visilble");
-                    $('#wait').hide();
-                },
-                error: function (data) {
-                    alert("Erro");
-                }
-            });
-        }
-
-
-        function checkCreatePrice(checkbox) {
-            var checkboxVal = checkbox.value;
-            if (checkbox.checked) {
-                $(checkbox).parent().append("<input type='text' class='price' name='price[]' required placeholder='Preço' value='000' id='price" + checkboxVal + "'/>");
-            } else {
-                $("#price" + checkboxVal).remove();
-            }
-           
-            $(document).tooltip();
-            $(".price").tooltip({
-                show: {
-                    effect: "slideDown",
-                    delay: 250
-                }
-            });
-        } formatPrices();
-
-        function formatPrices() {
-            $('.price').priceFormat({
-                prefix: 'R$ ',
-                centsSeparator: ',',
-                thousandsSeparator: '.'
-            });
-        }
-
-        $(document).ready(function () {
-            formatPrices();
-        });
-        {/literal}
-    </script>
+    <script src="../js/funcionarioPageFunctions.js" type="text/javascript"></script>
     <link href="../css/funcionarioPage.css" rel="stylesheet" type="text/css">
     <link href="../css/cardapio.css" rel="stylesheet" type="text/css">
 </head>
@@ -84,7 +14,39 @@
     <div class="tab-content col-md-10">
         <div class="tab-pane" id="tab_a">
             <h4>Pedidos</h4>
-            <p></p>
+            <div class="col-xs-12" id="pedidos">
+                {$i=0}
+                {foreach from=$pedidos item=pedido}
+                    <div class="well well-sm pedidoDiv">
+                        <div class="pull-right checkboxPedidoDiv">
+                            <input type="checkBox" name="pedidos[]" id="pedido{$i}">
+                            <label for="pedido{$i}"><span>Encaminhado para entrega</span></label>
+                        </div>
+                        <table class="table table-condensed table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantidade</th>
+                                    <th>Tamanho</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach from=$pedido->getItensPedido() item=it}
+                                    <tr>
+                                        <td>{$it->getProduto()->getNome()}</td>
+                                        <td>{$it->getQuantidade()}</td>
+                                        <td>{$it->getTamanho()->getDescricao()}</td>
+                                        <td>R$ {$it->getSubtotal()}</td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                        <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
+                    </div>
+                    {$i = $i+1}
+                {/foreach}
+            </div>
         </div>
 
         <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_b">
@@ -139,7 +101,7 @@
                 </div>
             {/if}
             <form class="form-horizontal col-md-10 collapse" method="POST" name="addProduto" id="addProduto" action="../src/app/processes/ProcessProduto.php">
-                <input type="hidden" name="idRestaurante" value="{$smarty.session.idRestaurante}"/>
+                <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                 <div class="form-group">
                     <select name="categoria" class="form-control" onchange="window.callFilter(this.value);" required>
                         <option value="">Escolha a categria</option>

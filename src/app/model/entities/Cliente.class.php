@@ -39,12 +39,12 @@ class Cliente extends Pessoa {
     private $enderecos;
 
     /**
-     * @OneToMany(targetEntity="Avaliacao", mappedBy="cliente")
+     * @OneToMany(targetEntity="Avaliacao", mappedBy="cliente", fetch="EXTRA_LAZY")
      * */
     private $avaliacoes;
 
     /**
-     * @OneToMany(targetEntity="Pedido", mappedBy="cliente", cascade={"all"})
+     * @OneToMany(targetEntity="Pedido", mappedBy="cliente", cascade={"all"}, fetch="EXTRA_LAZY")
      * */
     private $pedidos;
 

@@ -56,7 +56,7 @@ class Restaurante {
     private $ativo = true;
 
     /**
-     * @ManyToMany(targetEntity="Avaliacao", cascade={"all"})
+     * @ManyToMany(targetEntity="Avaliacao", cascade={"all"}, fetch="EXTRA_LAZY")
      * @JoinTable(name="Restaurante_Avaliacao",
      *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
@@ -95,7 +95,7 @@ class Restaurante {
     private $formasPagamento;
 
     /**
-     * @ManyToMany(targetEntity="Produto", cascade={"all"})
+     * @ManyToMany(targetEntity="Produto", cascade={"all"}, fetch="EXTRA_LAZY")
      * @JoinTable(name="Restaurante_Produto",
      *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_produto", referencedColumnName="id", unique=false)}
@@ -105,7 +105,7 @@ class Restaurante {
     private $produtos;
 
     /**
-     * @OneToMany(targetEntity="Pedido", mappedBy="restaurante")
+     * @OneToMany(targetEntity="Pedido", mappedBy="restaurante", fetch="EXTRA_LAZY")
      * */
     private $pedidos;
 

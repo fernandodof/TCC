@@ -4,6 +4,7 @@ require_once './smartyHeader.php';
 require_once '../src/app/model/persistence/Dao.class.php';
 require_once '../src/app/model/entities/Restaurante.class.php';
 require_once '../src/app/model/entities/Produto.class.php';
+require_once '../src/app/util/Queries.php';
 include_once '../pages/header.php';
 
 
@@ -18,6 +19,7 @@ $produtos = $restaurante->getProdutos();
 $produtosComida = [];
 $produtosBebida = [];
 
+$_SESSION['paginaFuncionarioCarregada'] = new DateTime();
 
 if (count($produtos) > 0) {
     foreach ($produtos as $p) {
@@ -29,7 +31,18 @@ if (count($produtos) > 0) {
     }
 }
 
+$params['id'] = $restaurante->getId();
+$pedidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RESTAURANTE_EM_ABERTO, $params);
 
+foreach ($pedidos as $pedido) {
+    $idsPedidos[] = $pedido->getId();
+}
+
+if ($idsPedidos != null) {
+    $_SESSION['pedidosCarregados'] = $idsPedidos;
+}
+
+$smarty->assign('pedidos', $pedidos);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('categorias', $categorias);
