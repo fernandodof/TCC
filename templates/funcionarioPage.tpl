@@ -13,13 +13,15 @@
     </ul>
     <div class="tab-content col-md-10">
         <div class="tab-pane" id="tab_a">
-            <h4>Pedidos</h4>
+            <h4 class="col-xs-12 pull-left">Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidos">
                 {$i=0}
                 {foreach from=$pedidos item=pedido}
-                    <div class="well well-sm pedidoDiv">
+                    <div class="pedidoDiv" id="pedidoDiv{$i}">
+                        <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
-                            <input type="checkBox" name="pedidos[]" id="pedido{$i}">
+                            <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
+                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedido{$i}" onchange="removerPedido(this);">
                             <label for="pedido{$i}"><span>Encaminhado para entrega</span></label>
                         </div>
                         <table class="table table-condensed table-responsive table-striped">
@@ -43,8 +45,19 @@
                             </tbody>
                         </table>
                         <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
+                        <div class="infoCliente">
+                            <h4 class="nomeCliente"><span>Cliente: </span>{$pedido->getCliente()->getNome()}</h4>
+                            <h4  data-toggle="collapse" data-target="#endereco{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
+                            <div class="collapse" id="endereco{$i}">
+                                {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                    <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
+                                    <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
+                                    <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
+                                {/foreach}
+                            </div>
+                        </div>
                     </div>
-                    {$i = $i+1}
+                    {$i=$i+1}
                 {/foreach}
             </div>
         </div>

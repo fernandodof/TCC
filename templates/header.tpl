@@ -73,7 +73,8 @@
                                             {/if}
                                         <li class="divider"></li>
                                         <li><form class="form-horizontal" method="POST" action="../pages/logout.php">
-                                                <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair</button>
+                                                <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair 
+                                                    <i class="glyphicon glyphicon-log-out logoutIcon"></i></button>
                                             </form></li>
                                     </ul>
                                 </li>

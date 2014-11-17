@@ -19,7 +19,7 @@ foreach ($pedidos as $pedido){
         $pedidosNovos->add($pedido);
         $pedidosCaregados[] = $pedido->getId();
         $_SESSION['pedidosCarregados'] = $pedidosCaregados; 
-        echo 'TESTE';
+//        echo 'TESTE';
     }
 //    echo 'TESTE';
 }
@@ -27,9 +27,10 @@ foreach ($pedidos as $pedido){
 $i=count($pedidosCaregados)-1;
 if(count($pedidosNovos)>0){
     foreach ($pedidosNovos as $pedido){
-        echo "<div class='well well-sm pedidoDiv'>";
+        echo "<div class='well well-sm pedidoDiv'id='pedidoDiv".$i."'>";
+            echo "<label class='idPedido'>#".$pedido->getId()."</label>";
             echo "<div class='pull-right checkboxPedidoDiv'>";
-                echo "<input type='checkBox' name='pedidos[]' id='pedido".$i."'>";
+                echo "<input type='checkBox' name='pedidos[]' value='".$i."' id='pedido".$i."' onchange='removerPedido(this)';>";
                 echo "<label for='pedido".$i."'>Encaminhado para entrega</label>";
             echo "</div>";
             echo "<table class='table table-condensed table-responsive table-striped'>";
@@ -53,6 +54,17 @@ if(count($pedidosNovos)>0){
                 echo "</tbody>";
             echo "</table>";
         echo "<label class='pull-right valorTotal'>TOTAL: R$ ". $pedido->getValorTotal() ."</label>";
+        echo "<div class='infoCliente'>";
+        echo "<h4 class='nomeCliente'><span>Cliente: </span>".$pedido->getCliente()->getNome()."</h4>";
+        echo "<h4 data-toggle='collapse' data-target='#endereco".$i."' class='elementToggle verEndereco'>Clique Aqui Para Ver o Endereço <i class='fa fa-chevron-circle-down'></i></h4>";
+            echo "<div class='collapse' id='endereco".$i."'>";
+                foreach ($pedido->getCliente()->getEnderecos() as $endereco){ 
+                    echo "<p>".$endereco->getLogradouro() . "," . $endereco->getNumero()."</p>";
+                    echo "<p>".$endereco->getBairro() . ", " . $endereco->getCidade() ."</p>";
+                    echo "<p>".$endereco->getEstado() . ", " . $endereco->getCep(). "</p>";
+                }
+            echo "</div>";
+        echo "</div>";
         echo "</div>";
     $i++;
     }

@@ -56,13 +56,11 @@ h3{
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-#pedidos{
-    border: 1px solid black;
-}
-
 .pedidoDiv{
     margin-bottom: 20px;
+    border: 1px solid #228AAD;
     border-left: 5px solid black;
+    padding: 10px;
     padding-bottom: 25px;
 }
 
@@ -110,3 +108,28 @@ input[type=checkbox]:checked + label:before {
 input[type=checkbox]:checked + label:before {
     letter-spacing: 5px; 
 } /* allow space for check mark */
+
+h4 i{
+    color: #002A80;
+}
+
+.nomeCliente span{
+    font-weight: bold;
+}
+
+.infoCliente{
+    margin-top: 60px;
+}
+
+.verEndereco:hover{
+    color: #228AAD;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #eee;
+}
+
+.idPedido{
+    color: #002A80;
+    font-size: large;
+}

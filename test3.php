@@ -13,12 +13,17 @@ $dao = new Dao();
 //$categoria1->setNome('Bebida');
 //$dao->save($categoria1);
 
-$params['id'] = '2';
-$params['dataHora'] = new \DateTime();
-$pedidos =  $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RESTAURANTE_EM_ABERTO_DATA, $params);
+//$params['id'] = '2';
+//$params['dataHora'] = new \DateTime();
+//$pedidos =  $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RESTAURANTE_EM_ABERTO_DATA, $params);
+//
+////print_r($pedidos->getDataHora());
+//
+//foreach ($pedidos as $p){
+//    echo $p->getDataHora()->format('d/m/Y - H:i:s').'<br>';
+//}
 
-//print_r($pedidos->getDataHora());
+$params['id'] = '37';
+$dao->executeQueryWithParameters(Queries::SET_PEDIDO_ENCAMINHADO, $params);
 
-foreach ($pedidos as $p){
-    echo $p->getDataHora()->format('d/m/Y - H:i:s').'<br>';
-}
+

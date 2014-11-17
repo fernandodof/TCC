@@ -88,6 +88,12 @@ class Dao {
         $query = $this->em->createQuery($queryInstruction);
         return $query->getResult();
     }
+    
+    public function executeQueryWithParameters($queryInstruction, $params){
+        $query = $this->em->createQuery($queryInstruction);
+        $query->setParameters($params);
+        $query->execute();
+    }
 
     public function test() {
 

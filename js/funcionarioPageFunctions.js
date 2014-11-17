@@ -59,7 +59,7 @@ function qureyPedidos() {
     var idRestaurante = $('#idRestaurante').val();
 
     var data = {idRestaurante: idRestaurante};
-    var url = '../src/app/ajaxReceivers/novosPedidos.php';
+    var url = '../src/app/ajaxReceivers/newOrders.php';
     $.ajax({
         type: "POST",
         url: url,
@@ -69,18 +69,57 @@ function qureyPedidos() {
             $('#pedidos').prepend(serverResponse);
         },
         error: function (serverResponse) {
-            alert(serverResponse);
+            alertify.alert(serverResponse);
         }
     });
 }
 
-function callQueryPedidos() {
-    setInterval("qureyPedidos()" , 3000);
+
+function resetAlertify() {
+    alertify.set({
+        labels: {
+            ok: "Sim",
+            cancel: "Não"
+        },
+        delay: 5000,
+        buttonReverse: false
+    });
+}
+
+function removerPedido(checkbox) {
+    resetAlertify();
+    if (checkbox.checked) {
+        alertify.confirm("Este pedido foi encaminhado para entrega ? Deseja removê-lo da lista ?", function (e) {
+            if (e) {
+                
+                var idPedido = $('#idPedido' + checkbox.value).val();
+                $('#pedidoDiv' + checkbox.value).remove();
+
+                var data = {idPedido: idPedido};
+                var url = '../src/app/ajaxReceivers/changeOrderStatus.php';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    async: true,
+                    data: data,
+                    success: function (serverResponse) {
+                        $('#pedidos').prepend(serverResponse);
+                    },
+                    error: function (serverResponse) {
+                        alert(serverResponse);
+                    }
+                });
+                alertify.log('Pedido removido da lista');
+            } else {
+                checkbox.checked = false;
+            }
+        });
+    }
 }
 
 $(document).ready(function () {
     formatPrices();
-    callQueryPedidos();
+    setInterval("qureyPedidos()", 3000);
 });
 
 
