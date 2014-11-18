@@ -1,19 +1,19 @@
-<link href="../bootstrap-modal-master/css/bootstrap-modal.css">
-<link href="../css/restaurant.css" rel="stylesheet" type="text/css">
-<link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="../css/cardapio.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../js/bootbox.min.js"></script>
+<link href="{$templateRoot}bootstrap-modal-master/css/bootstrap-modal.css">
+<link href="{$templateRoot}css/restaurant.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{$templateRoot}js/bootbox.min.js"></script>
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
 </script>
-<script type="text/javascript" src="../js/restaurantPageFunctions.js"></script>
+<script type="text/javascript" src="{$templateRoot}js/restaurantPageFunctions.js"></script>
 <script type="text/javascript">
     {literal}
 
     {/literal}
 </script>
 <div class="container">
-    <img src="../images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
+    <img src="{$templateRoot}images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
     <div class="visible-sm visible-xs">
         <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target=".restaurant">
             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -22,9 +22,9 @@
 
     <div class="restauntContainer col-md-3">
         <div class="restaurant collapse navbar-collapse">
-            <img src="../images/logos/restaurantLogo.gif" class="img img-thumbnail img-responsive restaurantLogo"/>
+            <img src="{$templateRoot}images/logos/restaurantLogo.gif" class="img img-thumbnail img-responsive restaurantLogo"/>
             <h4 id="nomeRestaurante">{$restaurante->getNome()}</h4>
-            <img src="../images/icons/rsz_location.png" class="pull-left addressIcon">
+            <img src="{$templateRoot}images/icons/rsz_location.png" class="pull-left addressIcon">
             <address>{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
                 {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()} 
                 {$restaurante->getEndereco()->getComplemento()}.</address>
@@ -51,9 +51,9 @@
 
                         <a href="#" class="dropdown-toggle btn btn-primary pull-left" id="togglePedido" data-toggle="dropdown">Resumo do Pedido 
                             <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span> <b class="caret"></b></a>
-                        <form action="../pages/confirmOrder.php" method="POST" id="formProseguir" class="pull-left">
+                        <form action="{$templateRoot}pages/confirmOrder" method="POST" id="formProseguir" class="pull-left">
                             <button type="submit" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido
-                                <img class="img" src='../images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></button>
+                                <img class="img" src='{$templateRoot}images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></button>
                             <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" value="{$restaurantePedido->getId()}">
                         </form>
 
@@ -114,7 +114,7 @@
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
                                     <form action="javascript:void(0);" id="add{$count}" onsubmit="checkCurrentOrder({$count});">
-                                        <button class="btn-link pull-right addCart"><img src="../images/icons/addCartIcon.png" class="img img-responsive pull-right imgAddCart img-circle" 
+                                        <button class="btn-link pull-right addCart"><img src="{$templateRoot}images/icons/addCartIcon.png" class="img img-responsive pull-right imgAddCart img-circle" 
                                                                                          alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
                                         <input type="hidden" class="idProduto" value="{$produto->getId()}">
@@ -143,7 +143,7 @@
                                     <p class="pull-left descricaoTamanho">{$tamanho->getDescricao()}</p>
                                     {$count=$count+1}
                                     <form action="javascript:void(0);" id="add{$count}" onsubmit="checkCurrentOrder({$count});">
-                                        <button class="btn-link pull-right"><img src="../images/icons/addCartIcon.png" class="img img-responsive pull-right imgAddCart img-circle" 
+                                        <button class="btn-link pull-right"><img src="{$templateRoot}images/icons/addCartIcon.png" class="img img-responsive pull-right imgAddCart img-circle" 
                                                                                  alt="Adicionar a compra" title="Adicionar a compra"/></button>
                                         <input type="number" min="1" max="99" value="1" class="form-control pull-right quantidade"/>
                                         <input type="hidden" class="idProduto" value="{$produto->getId()}">

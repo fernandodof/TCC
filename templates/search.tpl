@@ -1,5 +1,5 @@
-<link href= "../css/sidebar.css" rel="stylesheet">
-<link href="../css/search.css" rel="stylesheet">
+<link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
+<link href="{$templateRoot}css/search.css" rel="stylesheet">
 
 <div class="container">
     <div class="row">
@@ -41,7 +41,7 @@
                             <div class="well closed col-xs-12">
                                 <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
                                 <div class="row col-xs-12">
-                                    <img class="img pull-left" src="../images/icons/rsz_location.png"/>
+                                    <img class="img pull-left" src="{$templateRoot}images/icons/rsz_location.png"/>
                                     <address class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
                                         {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()} 
                                         {$restaurante->getEndereco()->getComplemento()}.
@@ -50,31 +50,31 @@
                                 <div class="row col-xs-12 pull-right formaPagamentoDiv">
                                     {foreach from = $restaurante->getFormasPagamento() item=forma}
                                         {if $forma->getNome()=='Dinheiro'}
-                                            <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="../images/icons/money59.png"/>
+                                            <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="{$templateRoot}images/icons/money59.png"/>
                                         {/if}
                                         {if $forma->getNome()=='Cartao'}
-                                            <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="../images/icons/card25.png"/>
+                                            <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="{$templateRoot}images/icons/card25.png"/>
                                         {/if}
                                     {/foreach}
                                     <p class="pull-right">Formas de Pagamento: </p>
                                 </div>
-                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php?res={$restaurante->getId()}">Visualizar Cardápio</a>
+                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
                             </div>       
                         {else}
                             <div class="well opened col-xs-12">
                                 <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
                                 <div class="row col-xs-12">
-                                    <img class="img pull-left locationImg" src="../images/icons/rsz_location.png"/>
+                                    <img class="img pull-left locationImg" src="{$templateRoot}images/icons/rsz_location.png"/>
                                     <address class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
                                         {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}
                                     </address>                                     
                                 </div>
                                 <div class="row col-xs-12 pull-right formaPagamentoDiv">
-                                    <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="../images/icons/money59.png"/>
-                                    <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="../images/icons/card25.png"/>
+                                    <img class="img pull-right moneyImg" alt="Dinheiro" title="Dinheiro" src="{$templateRoot}images/icons/money59.png"/>
+                                    <img class="img pull-right cardImg" alt="Cartão" title="Cartão"src="{$templateRoot}images/icons/card25.png"/>
                                     <p class="pull-right">Formas de Pagamento: </p>
                                 </div>
-                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="../pages/restaurant.php?res={$restaurante->getId()}">Visualizar Cardápio</a>
+                                <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant.php/{$restaurante->getId()}">Visualizar Cardápio</a>
                             </div>      
                         {/if}
                     {/foreach}

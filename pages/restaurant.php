@@ -1,19 +1,14 @@
 <?php
-
-require_once './smartyHeader.php';
-require_once '../src/app/model/persistence/Dao.class.php';
-//require_once '../src/app/model/entities/Categoria.class.php';
-//require_once '../src/app/model/entities/Pedido.class.php';
-//require_once '../src/app/model/entities/ItemPedido.class.php';
-//require_once '../src/app/model/entities/Tamanho.class.php';
-//require_once '../src/app/model/entities/Produto.class.php';
-
-require_once '../src/app/model/VO/PedidoVO.class.php';
-require_once '../src/app/model/VO/ItemPedidoVO.class.php';
-require_once '../src/app/model/VO/ProdutoVO.class.php';
-require_once '../src/app/model/VO/TamanhoVO.class.php';
-
 include_once '../pages/header.php';
+
+require_once $path.'pages/smartyHeader.php';
+require_once $path.'src/app/model/persistence/Dao.class.php';
+require_once $path.'src/app/model/VO/PedidoVO.class.php';
+require_once $path.'src/app/model/VO/ItemPedidoVO.class.php';
+require_once $path.'src/app/model/VO/ProdutoVO.class.php';
+require_once $path.'src/app/model/VO/TamanhoVO.class.php';
+
+list(,,,,$res) = explode('/',$_SERVER['REQUEST_URI']);
 
 $dao = new Dao();
 if (isset($_SESSION['idRestauranteDoPedidoAtual'])) {
@@ -21,7 +16,7 @@ if (isset($_SESSION['idRestauranteDoPedidoAtual'])) {
     $smarty->assign('restaurantePedido', $restaurantePedido);
 }
 
-$restaurante = $dao->findByKey('Restaurante', filter_input(INPUT_GET, 'res'));
+$restaurante = $dao->findByKey('Restaurante', $res);
 $produtos = $restaurante->getProdutos();
 
 $produtosComida;
@@ -40,6 +35,6 @@ $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('restaurante', $restaurante);
 
-$smarty->display('../templates/restaurant.tpl');
+$smarty->display($path.'templates/restaurant.tpl');
 
-include_once '../pages/footer.php';
+include_once $path.'pages/footer.php';

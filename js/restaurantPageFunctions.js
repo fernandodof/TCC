@@ -1,4 +1,5 @@
 var map;
+var templateRoot;
 function initMap() {
     var latitude = $('#latitude').val();
     var longitude = $('#longitude').val();
@@ -52,7 +53,7 @@ function addProduto(idForm, orderAction) {
     var quantidade1 = form.getElementsByClassName('quantidade')[0].value;
     var idRestaurantePedido1 = $('#idRestaurantePedidoInicial').val();
     var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1, idRestaurantePedido: idRestaurantePedido1, orderAction: orderAction};
-    var url = '../src/app/ajaxReceivers/addToCart.php';
+    var url = templateRoot+'src/app/ajaxReceivers/addToCart.php';
     $.ajax({
         type: "POST",
         url: url,
@@ -80,8 +81,8 @@ function addProduto(idForm, orderAction) {
 function createCartCount(idRestaurante) {
     $('#liGotoCart').empty();
     $('#liGotoCart').html(
-            "<form method='post' action='../pages/confirmOrder.php' id='goToCart'>" +
-            "<button class='btn' type='submit'><img src='../images/icons/cartIcon2.png' title='Pedido' alt='Pedido'>" +
+            "<form method='post' action='"+templateRoot+"pages/confirmOrder.php' id='goToCart'>" +
+            "<button class='btn' type='submit'><img src='"+templateRoot+"images/icons/cartIcon2.png' title='Pedido' alt='Pedido'>" +
             "<span class='badge' id='badgePedido'>" + getItemCount() + "</span></button>" +
             "<input type='hidden' name='idRestaurantePedido' id='" + idRestaurante + "'" +
             "value='1'>" +
@@ -107,7 +108,7 @@ function checkCurrentOrder(idForm) {
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var idRestaurante = $('#idRestaurantePedidoInicial').val();
     var data = {idRestaurantePedido: idRestaurante};
-    var url = '../src/app/ajaxReceivers/checkCurrentOrder.php';
+    var url = templateRoot+'src/app/ajaxReceivers/checkCurrentOrder.php';
     $.ajax({
         type: "POST",
         url: url,
@@ -142,7 +143,7 @@ function checkCurrentOrder(idForm) {
 }
 
 function getItemCount() {
-    var url = '../src/app/ajaxReceivers/itemCount.php';
+    var url = templateRoot+'src/app/ajaxReceivers/itemCount.php';
     var count;
     $.ajax({
         type: "POST",
@@ -176,3 +177,9 @@ function undimPageAndEnableComponents() {
     $('body').undim();
     $("body").find("input,button,textarea").removeAttr("disabled");
 }
+
+
+$(document).ready(function (){
+   templateRoot = $('#templateRoot').val();
+    alert(templateRoot);
+});

@@ -1,19 +1,21 @@
 <?php
-require_once './smartyHeader.php';
+$templateRoot = 'http://'.$_SERVER['HTTP_HOST'].'/Restaurantes/';
+$path = str_replace("\\", '/',  dirname(__DIR__).'/');
+
+//var_dump($path);
+//var_dump($domain);
+
+require_once $path.'pages/smartyHeader.php';
+require_once $path.'src/app/model/VO/PedidoVO.class.php';
+
 $title = 'SaborVirtual - Pedidos pela internet';
 $siteName = 'SaborVirtual';
 
 $smarty->assign('title', $title);
 $smarty->assign('siteName', $siteName);
 
-//require_once '../src/app/model/persistence/Dao.class.php';
-//require_once '../src/app/model/entities/Categoria.class.php';
-//require_once '../src/app/model/entities/Pedido.class.php';
-//require_once '../src/app/model/entities/ItemPedido.class.php';
-//require_once '../src/app/model/entities/Tamanho.class.php';
-//require_once '../src/app/model/entities/Produto.class.php';
-require_once '../src/app/model/VO/PedidoVO.class.php';
-
 session_start();
 
-$smarty->display('../templates/header.tpl');
+$smarty->assign('path',$path);
+$smarty->assign('templateRoot',$templateRoot);
+$smarty->display($path.'templates/header.tpl');

@@ -1,16 +1,18 @@
 <?php
-require_once './smartyHeader.php';
-require_once '../src/app/model/persistence/Dao.class.php';
-require_once '../src/app/util/Queries.php';
+
 include_once '../pages/header.php';
+
+require_once $path . 'pages/smartyHeader.php';
+require_once $path . 'src/app/model/persistence/Dao.class.php';
+require_once $path . 'src/app/util/Queries.php';
 
 $dao = new Dao();
 
 $highlights = array();
-$highlights['Pizza de Frango com Catupiry'] = '../images/dishes/francoComCatupiry.jpg';
-$highlights['Lasanha à Bolhonesa'] = '../images/dishes/lasanhabolonhesa.jpg';
-$highlights['Penne ao Pepperoni'] = '../images/dishes/penne-ao-molho-de-linguica.jpg';
-$highlights['Vaca Atolada'] = '../images/dishes/vacaAtolada.jpg';
+$highlights['Pizza de Frango com Catupiry'] = $templateRoot.'images/dishes/francoComCatupiry.jpg';
+$highlights['Lasanha à Bolhonesa'] = $templateRoot.'images/dishes/lasanhabolonhesa.jpg';
+$highlights['Penne ao Pepperoni'] = $templateRoot.'images/dishes/penne-ao-molho-de-linguica.jpg';
+$highlights['Vaca Atolada'] = $templateRoot.'images/dishes/vacaAtolada.jpg';
 
 $restaurants = array();
 $restaurants[] = 'Pizza Place';
@@ -25,11 +27,11 @@ $links[] = '#';
 
 $kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);
 
-$smarty->assign('kindsOfFood',$kindsOfFood);
+$smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->assign('highlights', $highlights);
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('links', $links);
 
-$smarty->display('../templates/index.tpl');
+$smarty->display($path . 'templates/index.tpl');
 
-include_once '../pages/footer.php';
+include_once $path . 'pages/footer.php';

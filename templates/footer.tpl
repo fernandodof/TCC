@@ -1,4 +1,4 @@
-<link href= "../css/footer.css" rel="stylesheet">
+<link href= "{$templateRoot}css/footer.css" rel="stylesheet">
 {*Creating botton navbar*}
 <div class="navbar navbar-default navbar-static footerBar">
     <div class="container">

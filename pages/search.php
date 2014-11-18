@@ -1,11 +1,10 @@
 <?php
-
-require_once './smartyHeader.php';
-require_once '../src/app/model/entities/Restaurante.class.php';
-require_once '../src/app/util/Queries.php';
-require_once '../src/app/model/persistence/Dao.class.php';
-
 include_once '../pages/header.php';
+
+require_once $path.'pages/smartyHeader.php';
+require_once $path.'/src/app/model/entities/Restaurante.class.php';
+require_once $path.'src/app/util/Queries.php';
+require_once $path.'src/app/model/persistence/Dao.class.php';
 
 $dao = new Dao();
 
@@ -45,6 +44,7 @@ if (is_numeric($params['nome'])) {
 
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);
-$smarty->display('../templates/search.tpl');
+$smarty->display($path.'templates/search.tpl');
 
-include_once '../pages/footer.php';
+include_once $path.'pages/footer.php';
+

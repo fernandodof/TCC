@@ -4,26 +4,27 @@
         <title>{$title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link href= "../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href= "{$templateRoot}bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <meta charset="UTF-8">
-        <link href="../css/header.css" rel="stylesheet">
-        <link href= "../css/styles.css" rel="stylesheet">
+        <link href="{$templateRoot}css/header.css" rel="stylesheet">
+        <link href= "{$templateRoot}css/styles.css" rel="stylesheet">
         {* Move this script tags *}
-        <script src="../bootstrap/js/jquery.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="../js/jquery.dim-background.js"></script>
+        <script src="{$templateRoot}bootstrap/js/jquery.min.js"></script>
+        <script src="{$templateRoot}bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{$templateRoot}js/jquery.dim-background.js"></script>
 
-        <link href="../alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
-        <link href="../alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
-        <link href="../alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
-        <script type="text/javascript" src="../alertify.js-0.3.11/lib/alertify.min.js"></script>
-        <link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{$templateRoot}alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
+        <link href="{$templateRoot}alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
+        <link href="{$templateRoot}alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="{$templateRoot}alertify.js-0.3.11/lib/alertify.min.js"></script>
+        <link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
     </head>
     <body>
         <header>
             {* Creating a navigation bar *}
             <nav class="navbar navbar-inverse navbar-custom navbar-static-top">
                 <div class="container">
+                    <input type="hidden" id="templateRoot" value="{$templateRoot}">
                     <div class="navbar-header">
                         {* Creating toggle button for navigation bar *}
                         <button type="button" class="navbar-toggle collapsed" data-toggle = "collapse" data-target = ".custonNavHeaderCollapse">
@@ -31,18 +32,18 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="../pages/index.php">{$siteName}</a>
+                        <a class="navbar-brand" href="{$templateRoot}pages/index">{$siteName}</a>
                     </div>
                     <div class="collapse navbar-collapse custonNavHeaderCollapse">
                         {* Creating list for Navigation bar options *} 
                         <ul class="nav navbar-nav navbar-right" id="bar">
-                            <li><a href="./index.php">Home</a></li>
+                            <li><a href="./index">Home</a></li>
                                 {if !isset($smarty.session.id)}
-                                <li><a href="./subscribe.php">Cadastro</a></li>
+                                <li><a href="./subscribe">Cadastro</a></li>
                                 <li class="dropdown" id="menuLogin">
                                     <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
                                     <div class="dropdown-menu">
-                                        <form class="form-horizontal" id="loginForm" method="POST" action="../src/app/processes/ProcessCliente.php">
+                                        <form class="form-horizontal" id="loginForm" method="POST" action="{$templateRoot}src/app/processes/ProcessCliente">
                                             <div class="form-group">
                                                 <div class="col-lg-12">
                                                     <input name="emailLogin" id="emailLogin" class="form-control" type="email" placeholder="Email" required> 
@@ -67,12 +68,12 @@
 
                                     <ul class="dropdown-menu" id="dropdownBar" role="menu">
                                         {if {$smarty.session.tipo == 'funcionario'}}
-                                            <li><a href="./funcionarioPage.php">Minha Conta</a></li>
+                                            <li><a href="{$templateRoot}pages/funcionarioPage">Minha Conta</a></li>
                                             {else}
-                                            <li><a href="./clientePage.php">Minha Conta</a></li>
+                                            <li><a href="{$templateRoot}pages/clientePage">Minha Conta</a></li>
                                             {/if}
                                         <li class="divider"></li>
-                                        <li><form class="form-horizontal" method="POST" action="../pages/logout.php">
+                                        <li><form class="form-horizontal" method="POST" action="{$templateRoot}pages/logout">
                                                 <button type="submit" name="formSubmit" value="Logout" class="btn btn-danger pull-right">Sair 
                                                     <i class="glyphicon glyphicon-log-out logoutIcon"></i></button>
                                             </form></li>
@@ -81,8 +82,8 @@
                                 <li id="liGotoCart">
                                     {if isset($smarty.session.pedido)}
 
-                                        <form method="post" action="../pages/confirmOrder.php" id="goToCart">
-                                            <button class="btn" type="submit"><img src="../images/icons/cartIcon2.png" title="Pedido" alt="Pedido">
+                                        <form method="post" action="{$templateRoot}pages/confirmOrder" id="goToCart">
+                                            <button class="btn" type="submit"><img src="{$templateRoot}images/icons/cartIcon2.png" title="Pedido" alt="Pedido">
                                                 <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span></button>
                                             <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" 
                                                    value="{$smarty.session.idRestauranteDoPedidoAtual}">
