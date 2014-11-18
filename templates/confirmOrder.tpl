@@ -1,7 +1,7 @@
-<link href="../font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="../css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
-<link href="../css/conformOrder.css" rel="stylesheet" type="text/css">
-<script src="../js/updateOrder.js" type="text/javascript"></script>
+<link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}css/conformOrder.css" rel="stylesheet" type="text/css">
+<script src="{$templateRoot}js/updateOrder.js" type="text/javascript"></script>
 <div class="container">
     {if isset($smarty.session.pedido)}
         <input type="hidden" id="idRestaurante" value="{$smarty.session.idRestauranteDoPedidoAtual}">
@@ -26,9 +26,9 @@
                                 <td data-th="Item">
                                     <div class="row">
                                         {if ($it->getProduto()->getIngredientes() == null)}
-                                            <div class="col-sm-2 hidden-xs"><img src="../images/icons/drink.png" alt="..." class="img-responsive"/></div>
+                                            <div class="col-sm-2 hidden-xs"><img src="{$templateRoot}images/icons/drink.png" alt="Bebida" class="img-responsive"/></div>
                                             {else}
-                                            <div class="col-sm-2 hidden-xs"><img src="../images/icons/food.png" alt="..." class="img-responsive"/></div>
+                                            <div class="col-sm-2 hidden-xs"><img src="{$templateRoot}images/icons/food.png" alt="Comida" class="img-responsive"/></div>
                                             {/if}
                                         <div class="col-sm-10">
                                             <h4 class="nomargin nomeProduto">{$it->getProduto()->getNome()} <span class="tamanho"> - {$it->getTamanho()->getDescricao()}</span></h4>
@@ -54,7 +54,7 @@
                             <td class="text-center bold">Total R$ {$smarty.session.pedido->getValorTotal()}</td>
                         </tr>
                         <tr>
-                            <td><a href="../pages/restaurant.php?res={$smarty.session.idRestauranteDoPedidoAtual}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Voltar ao cardápio</a></td>
+                            <td><a href="{$templateRoot}pages/restaurant/{$smarty.session.idRestauranteDoPedidoAtual}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Voltar ao cardápio</a></td>
                             <td colspan="2" class="hidden-xs"></td>
                             <td class="hidden-xs text-center bold">Total R$ {$smarty.session.pedido->getValorTotal()}</td>
                     <form method="POST" action="javascript:void(0)">
@@ -85,7 +85,7 @@
         {/if}
     {else}
         {literal}
-            <script>location.href = "../pages/clientePage.php";</script>
+            <script>location.href = "../pages/clientePage";</script>
         {/literal}
     {/if}
 
