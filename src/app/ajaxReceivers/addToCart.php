@@ -1,4 +1,5 @@
 <?php
+require '../../../pages/pathVars.php';
 
 require_once '../model/persistence/Dao.class.php';
 require_once '../model/entities/Pedido.class.php';
@@ -88,46 +89,46 @@ if (!isset($_SESSION['id'])) {
             
     echo "<a href='#' class='dropdown-toggle btn btn-primary pull-left' id='togglePedido' data-toggle='dropdown'>Resumo do Pedido" .
     "<span class='badge' id='badgePedido'>" . count($pedidoVO->getItensPedido()) . "</span> <b class='caret'></b></a>";
-    echo "<form action='../pages/confirmOrder.php' method='POST' id='formProseguir' class='pull-left'>";
-    echo "<button type='submit' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" .
-    "<img class='img' src='../images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></button>";
-    echo "<input type='hidden' name='idRestaurantePedido' id='idRestaurantePedido' value='" . $idRestaurantePedido . "'>";
+    echo "<form action='".$templateRoot."pages/confirmOrder.php' method='POST' id='formProseguir' class='pull-left'>";
+        echo "<button type='submit' class='dropdown-toggle btn btn-success' id='proseguirPedido'>Proseguir Pedido" .
+        "<img class='img' src='".$templateRoot."images/icons/hotPot.png'/> <span class='glyphicon glyphicon-arrow-right'></span></button>";
+        echo "<input type='hidden' name='idRestaurantePedido' id='idRestaurantePedido' value='" . $idRestaurantePedido . "'>";
     echo "</form>";
     echo "<ul class='dropdown-menu col-xs-12 col-sm-6'>";
-    $counter = 0;
-    echo "<div id='divNomeRestaurante'>";
-    echo "<h5 id='nomeRestaurnatePedido'>" . $nomeRestaurante['nome'] . "</h5>";
-    echo "</div>";
-    echo "<li class='divider firstDivider'></li>";
-    foreach ($pedidoVO->getItensPedido() as $it) {
-        $counter++;
-        echo "<li>";
-        echo "<div class ='row produtoDropdown'>";
-        echo "<p class ='pull-left noreProdutoDropdown'>" . $it->getProduto()->getNome() . "</p>";
-        echo "<p class = 'pull-right'>R$ " . $it->getTamanho()->getPreco() . "</p>";
+        $counter = 0;
+        echo "<div id='divNomeRestaurante'>";
+            echo "<h5 id='nomeRestaurnatePedido'>" . $nomeRestaurante['nome'] . "</h5>";
         echo "</div>";
-        echo "<div class = 'row qutidadeDropdown'>";
-        echo "<p class = 'pull-left'>Quantidade:</p>";
-        echo "<p class = 'pull-right'>" . $it->getQuantidade() . "</p>";
-        echo "</div>";
-        echo "<div class = 'row tamanhoDropdown'>";
-        echo "<p class = 'pull-left'>Tamanho:</p>";
-        echo "<p class = 'pull-right'>" . $it->getTamanho()->getDescricao() . "</p>";
-        echo "</div>";
-        echo "<div class = 'row subtotalDropdown'>";
-        echo "<p class = 'pull-left subtotal'>Subtotal</p>";
-        echo "<p class = 'pull-right'>R$ " . $it->getSubtotal() . "</p>";
+        echo "<li class='divider firstDivider'></li>";
+        foreach ($pedidoVO->getItensPedido() as $it) {
+            $counter++;
+            echo "<li>";
+                echo "<div class ='row produtoDropdown'>";
+                    echo "<p class ='pull-left noreProdutoDropdown'>" . $it->getProduto()->getNome() . "</p>";
+                    echo "<p class = 'pull-right'>R$ " . $it->getTamanho()->getPreco() . "</p>";
+                echo "</div>";
+                echo "<div class = 'row qutidadeDropdown'>";
+                    echo "<p class = 'pull-left'>Quantidade:</p>";
+                    echo "<p class = 'pull-right'>" . $it->getQuantidade() . "</p>";
+                echo "</div>";
+                echo "<div class = 'row tamanhoDropdown'>";
+                    echo "<p class = 'pull-left'>Tamanho:</p>";
+                    echo "<p class = 'pull-right'>" . $it->getTamanho()->getDescricao() . "</p>";
+                echo "</div>";
+                echo "<div class = 'row subtotalDropdown'>";
+                    echo "<p class = 'pull-left subtotal'>Subtotal</p>";
+                    echo "<p class = 'pull-right'>R$ " . $it->getSubtotal() . "</p>";
+                echo "</div>";
+            echo "</li>";
+            if ($counter < count($pedidoVO->getItensPedido())) {
+                echo "<li class='divider'></li>";
+            }
+        }
+        echo "<li class='totalLi'>";
+        echo "<div class='row totalDropdown'>";
+            echo "<p class='pull-left total'>TOTAL</p>";
+            echo "<p class='pull-right'>R$ " . $pedidoVO->getValorTotal() . "</p>";
         echo "</div>";
         echo "</li>";
-        if ($counter < count($pedidoVO->getItensPedido())) {
-            echo "<li class='divider'></li>";
-        }
-    }
-    echo "<li class='totalLi'>";
-    echo "<div class='row totalDropdown'>";
-    echo "<p class='pull-left total'>TOTAL</p>";
-    echo "<p class='pull-right'>R$ " . $pedidoVO->getValorTotal() . "</p>";
-    echo "</div>";
-    echo "</li>";
     echo "</ul>";
 }

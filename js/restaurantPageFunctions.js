@@ -159,18 +159,18 @@ function getItemCount() {
     return count;
 }
 
-function showConfirmDialog() {
-    resetAlertify();
-    var ret;
-    alertify.confirm("Você já tem uma compra em andamento com outro estabelecimento " +
-            "se você continuar, essa compra será cancelada. Deseja continuar?", function (e) {
-                if (e) {
-                    ret = true;
-                } else {
-                    ret = false;
-                }
-            });
-}
+//function showConfirmDialog() {
+//    resetAlertify();
+//    var ret;
+//    alertify.confirm("Você já tem uma compra em andamento com outro estabelecimento " +
+//            "se você continuar, essa compra será cancelada. Deseja continuar?", function (e) {
+//                if (e) {
+//                    ret = true;
+//                } else {
+//                    ret = false;
+//                }
+//            });
+//}
 
 function undimPageAndEnableComponents() {
     $('#loader').hide();
@@ -181,5 +181,4 @@ function undimPageAndEnableComponents() {
 
 $(document).ready(function (){
    templateRoot = $('#templateRoot').val();
-    alert(templateRoot);
 });

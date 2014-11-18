@@ -3,10 +3,16 @@ include_once '../pages/header.php';
 
 require_once $path.'pages/smartyHeader.php';
 require_once $path.'src/app/model/persistence/Dao.class.php';
-require_once $path.'src/app/model/VO/PedidoVO.class.php';
-require_once $path.'src/app/model/VO/ItemPedidoVO.class.php';
-require_once $path.'src/app/model/VO/ProdutoVO.class.php';
-require_once $path.'src/app/model/VO/TamanhoVO.class.php';
+//require_once $path.'src/app/model/VO/PedidoVO.class.php';
+//require_once $path.'src/app/model/VO/ItemPedidoVO.class.php';
+//require_once $path.'src/app/model/VO/ProdutoVO.class.php';
+//require_once $path.'src/app/model/VO/TamanhoVO.class.php';
+//
+//require_once '../src/app/model/VO/PedidoVO.class.php';
+//require_once '../src/app/model/VO/ItemPedidoVO.class.php';
+//require_once '../src/app/model/VO/ProdutoVO.class.php';
+//require_once '../src/app/model/VO/TamanhoVO.class.php';
+
 
 list(,,,,$res) = explode('/',$_SERVER['REQUEST_URI']);
 

@@ -1,11 +1,10 @@
-<link href="../css/clientePage.css" rel="stylesheet" type="text/css">
-<link href="../dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
-<link href="../dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
-<script src="../dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="../js/clientPageFunctions.js" type="text/javascript"></script>
-{*<script src="../dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>*}
+<link href="{$templateRoot}css/clientePage.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
+<script src="{$templateRoot}dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}js/clientPageFunctions.js" type="text/javascript"></script>
 <div class="container">
-    <form method="GET" class="form-horizontal searchForm" action="../pages/search.php">
+    <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
         <div class="row input-group col-md-12 pull-left search">
             <div class="col-md-7 col-xs-12 searchDiv pull-left">
                 <input type="text" class="form-control input-lg pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">

@@ -1,5 +1,6 @@
 <?php
-require_once '../libs/Smarty/Smarty.class.php';
+require '../pages/pathVars.php';
+require_once $path.'libs/Smarty/Smarty.class.php';
 
 $smarty = new Smarty;
 $smarty->caching = false;

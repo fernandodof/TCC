@@ -1,3 +1,5 @@
 <?php
 session_start();
-echo $_SESSION['itemCount'];
+if (isset($_SESSION['itemCount'])) {
+    echo $_SESSION['itemCount'];
+}
