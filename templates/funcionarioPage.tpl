@@ -8,8 +8,8 @@
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">
-        <li class=""><a href="#tab_a" data-toggle="pill">Pedidos<span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_b" data-toggle="pill">Cardápio<span class="glyphicon glyphicon-list-alt"></span></a></li>
+        <li class=""><a href="#tab_a" data-toggle="pill">Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_b" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
     <div class="tab-content col-md-10">
         <div class="tab-pane" id="tab_a">
@@ -107,12 +107,12 @@
                 </div>
             </div>
             <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle" id="openInserir">Inserir Novo Produto <b class="caret"></b></h4>
-                {if isset($smarty.get.produtoCadastrado)}
-                <div class="alert alert-success alert-dismissible col-md-10" role="alert">
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                    Produto cadastrado com sucesso
-                </div>
-            {/if}
+                {if isset($success)}
+                    <div class="alert alert-success alert-dismissible col-md-10" role="alert">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                        Produto cadastrado com sucesso
+                    </div>
+                {/if}
             <form class="form-horizontal col-md-10 collapse" method="POST" name="addProduto" id="addProduto" action="../src/app/processes/ProcessProduto.php">
                 <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                 <div class="form-group">

@@ -50,6 +50,6 @@ function cadastrarProduto() {
     $restaurante->addProduto($produto);
     $dao->save($restaurante);
     
-    header("Location: ../../../pages/funcionarioPage.php?produtoCadastrado=sucesso");
+    header("Location: ../../../pages/funcionarioPage?produtoCadastrado=sucesso");
     exit();
 }

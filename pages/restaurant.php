@@ -14,7 +14,7 @@ require_once $path.'src/app/model/persistence/Dao.class.php';
 //require_once '../src/app/model/VO/TamanhoVO.class.php';
 
 
-list(,,,,$res) = explode('/',$_SERVER['REQUEST_URI']);
+list(,,,,$res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
 $dao = new Dao();
 if (isset($_SESSION['idRestauranteDoPedidoAtual'])) {

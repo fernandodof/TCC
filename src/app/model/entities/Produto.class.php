@@ -43,7 +43,7 @@ class Produto {
     private $ingredientes;
 
     /**
-     * @ManyToMany(targetEntity="Tamanho")
+     * @ManyToMany(targetEntity="Tamanho", cascade="all")
      * @JoinTable(name="Produto_Tamanho",
      *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_tamanho", referencedColumnName="id", unique=false)}

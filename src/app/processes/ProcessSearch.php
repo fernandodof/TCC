@@ -13,7 +13,3 @@ switch (recieveForm(filter_input(INPUT_POST, 'formSubmit'))) {
             break;
         }
 }
-
-function searchRestaurante(){
-    echo 'Test';
-}

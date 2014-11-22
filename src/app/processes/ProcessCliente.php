@@ -66,7 +66,7 @@ function cadastrarCLiente() {
     $dao = new Dao();
     $dao->save($cliente);
 
-    header("Location: ../../../pages/subscriptionConfirmation.php");
+    header("Location: ../../../pages/subscriptionConfirmation");
     exit();
 }
 
@@ -86,7 +86,7 @@ function login() {
     $_SESSION['last_activity'] = time();
     $_SESSION['expire_time'] = 30 * 60;
     
-    header("Location: ../../../pages/clientePage.php");
+    header("Location: ../../../pages/clientePage");
     exit();
 }
 
@@ -94,5 +94,5 @@ function logout() {
     session_destroy();
     unset($_SESSION);
     setcookie("PHPSESSID", "", time() - 61200, "/");
-    header("Location: ../../../pages/index.php");
+    header("Location: ../../../pages/index");
 }

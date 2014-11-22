@@ -8,6 +8,7 @@ require_once '../src/app/util/Queries.php';
 include_once '../pages/header.php';
 
 
+
 $dao = new Dao();
 
 $categorias = $dao->findAll('Categoria');
@@ -40,6 +41,15 @@ foreach ($pedidos as $pedido) {
 
 if (isset($idsPedidos) && $idsPedidos != null) {
     $_SESSION['pedidosCarregados'] = $idsPedidos;
+}
+
+if (substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/') == 4) {
+
+    list(,,,, $produtoCadastrado) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
+
+    if($produtoCadastrado === 'success'){
+        $smarty->assign('success', $produtoCadastrado);
+    }
 }
 
 $smarty->assign('pedidos', $pedidos);

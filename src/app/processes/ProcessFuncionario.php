@@ -38,6 +38,6 @@ function login() {
     $_SESSION['last_activity'] = time();
     $_SESSION['expire_time'] = 30 * 60;
 
-    header("Location: ../../../pages/funcionarioPage.php");
+    header("Location: ../../../pages/funcionarioPage");
     exit();
 }

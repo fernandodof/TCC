@@ -1,1 +1,3 @@
 Options +MultiViews
+
+ErrorDocument 404 /Restaurantes/pages/error.php
