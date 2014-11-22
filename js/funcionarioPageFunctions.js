@@ -89,7 +89,7 @@ function resetAlertify() {
 function removerPedido(checkbox) {
     resetAlertify();
     if (checkbox.checked) {
-        alertify.confirm("Este pedido foi encaminhado para entrega ? Deseja removê-lo da lista ?", function (e) {
+        alertify.confirm("Este pedido foi encaminhado para entrega ? ao clicar sim este pedido será removido da lista", function (e) {
             if (e) {
                 
                 var idPedido = $('#idPedido' + checkbox.value).val();

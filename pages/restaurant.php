@@ -1,20 +1,10 @@
 <?php
-include_once '../pages/header.php';
-
-require_once $path.'pages/smartyHeader.php';
-require_once $path.'src/app/model/persistence/Dao.class.php';
-//require_once $path.'src/app/model/VO/PedidoVO.class.php';
-//require_once $path.'src/app/model/VO/ItemPedidoVO.class.php';
-//require_once $path.'src/app/model/VO/ProdutoVO.class.php';
-//require_once $path.'src/app/model/VO/TamanhoVO.class.php';
-//
-//require_once '../src/app/model/VO/PedidoVO.class.php';
-//require_once '../src/app/model/VO/ItemPedidoVO.class.php';
-//require_once '../src/app/model/VO/ProdutoVO.class.php';
-//require_once '../src/app/model/VO/TamanhoVO.class.php';
+require_once './pathVars.php';
+require_once $path . 'pages/smartyHeader.php';
+require_once $path . 'src/app/model/persistence/Dao.class.php';
 
 
-list(,,,,$res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
+list(,,,, $res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
 $dao = new Dao();
 if (isset($_SESSION['idRestauranteDoPedidoAtual'])) {
@@ -23,6 +13,13 @@ if (isset($_SESSION['idRestauranteDoPedidoAtual'])) {
 }
 
 $restaurante = $dao->findByKey('Restaurante', $res);
+
+if ($restaurante == null) {
+    header("Location: ../error");
+}
+
+include_once '../pages/header.php';
+
 $produtos = $restaurante->getProdutos();
 
 $produtosComida;
@@ -41,6 +38,6 @@ $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('restaurante', $restaurante);
 
-$smarty->display($path.'templates/restaurant.tpl');
+$smarty->display($path . 'templates/restaurant.tpl');
 
-include_once $path.'pages/footer.php';
+include_once $path . 'pages/footer.php';

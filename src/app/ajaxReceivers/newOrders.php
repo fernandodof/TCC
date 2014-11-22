@@ -27,7 +27,7 @@ foreach ($pedidos as $pedido){
 $i=count($pedidosCaregados)-1;
 if(count($pedidosNovos)>0){
     foreach ($pedidosNovos as $pedido){
-        echo "<div class='well well-sm pedidoDiv'id='pedidoDiv".$i."'>";
+        echo "<div class='pedidoDiv'id='pedidoDiv".$i."'>";
             echo "<label class='idPedido'>#".$pedido->getId()."</label>";
             echo "<div class='pull-right checkboxPedidoDiv'>";
                 echo "<input type='checkBox' name='pedidos[]' value='".$i."' id='pedido".$i."' onchange='removerPedido(this)';>";

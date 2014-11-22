@@ -155,3 +155,7 @@
 .logoutIcon{
     margin-left: 5px;
 }
+
+#messageContact {
+    resize: none;
+}

@@ -22,7 +22,7 @@
     <body>
         <header>
             {* Creating a navigation bar *}
-            <nav class="navbar navbar-inverse navbar-custom navbar-static-top">
+            <nav class="navbar navbar-inverse navbar-custom navbar-static-top" id="nav">
                 <div class="container">
                     <input type="hidden" id="templateRoot" value="{$templateRoot}">
                     <div class="navbar-header">
@@ -37,9 +37,9 @@
                     <div class="collapse navbar-collapse custonNavHeaderCollapse">
                         {* Creating list for Navigation bar options *} 
                         <ul class="nav navbar-nav navbar-right" id="bar">
-                            <li><a href="./index">Home</a></li>
+                            <li><a href="{$templateRoot}pages/index">Home</a></li>
                                 {if !isset($smarty.session.id)}
-                                <li><a href="./subscribe">Cadastro</a></li>
+                                <li><a href="{$templateRoot}pages/subscribe">Cadastro</a></li>
                                 <li class="dropdown" id="menuLogin">
                                     <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
                                     <div class="dropdown-menu">

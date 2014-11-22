@@ -1,21 +1,13 @@
 body { 
-    background: url('../images/errorPageBackground.png') no-repeat center center fixed;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
+    background: url('../images/errorPageBackground.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-header{
-/*    -webkit-transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -o-transform: rotate(3deg);
-    -ms-transform: rotate(3deg);
-    transform: rotate(3deg);
-    margin-top: 30px;
-    width: 99.9%;*/
+.navbar-custom{
 }
-
 
 .error-template {
     padding: 40px 15px;
