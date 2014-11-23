@@ -133,3 +133,7 @@ h4 i{
     color: #002A80;
     font-size: large;
 }
+
+.modal-footer div{
+    text-align: left;
+}

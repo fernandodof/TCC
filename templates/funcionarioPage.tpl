@@ -100,6 +100,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4>Itens</h4>
+                                                    <h5>{$pedido->getDataHora()}</h5>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table table-hover table-responsive table-condensed">
@@ -125,6 +126,14 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>
+                                                    <div class="col-xs-12">
+                                                        <h4>Cliente: {$pedido->getCliente()->getNome()}</h4>
+                                                        {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                                            <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
+                                                            <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
+                                                            <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
+                                                        {/foreach}
+                                                    </div>
                                                 </div>
 
                                             </div>
