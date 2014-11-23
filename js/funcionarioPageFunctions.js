@@ -91,7 +91,7 @@ function removerPedido(checkbox) {
     if (checkbox.checked) {
         alertify.confirm("Este pedido foi encaminhado para entrega ? ao clicar sim este pedido será removido da lista", function (e) {
             if (e) {
-                
+
                 var idPedido = $('#idPedido' + checkbox.value).val();
                 $('#pedidoDiv' + checkbox.value).remove();
 
@@ -118,6 +118,42 @@ function removerPedido(checkbox) {
 }
 
 $(document).ready(function () {
+    $('#historicoPedidos').DataTable(
+            {
+                language: {
+                    processing: "Processando...",
+                    search: "Pesquisar&nbsp;:",
+                    lengthMenu: "Mostrar _MENU_ Registros",
+                    info: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    infoEmpty: "Mostrando de 0 até 0 de 0 registros",
+                    infoFiltered: "",
+                    infoPostFix: "",
+                    loadingRecords: "Carregando resgistros...",
+                    zeroRecords: "Não foram encontrados resultados",
+                    emptyTable: "Tabela Vazia",
+                    paginate: {
+                        first: "Primeiro",
+                        previous: "Anterior",
+                        next: "Próximo",
+                        last: "Último"
+                    },
+                    aria: {
+                        sortAscending: ": Habilitar ordenação ascendente",
+                        sortDescending: ": Habilitar ordenação descendente"
+                    }
+                },
+                "iDisplayLength": 10,
+                "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Tudo"]],
+                "order": [[1, "desc"]],
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    {"bSortable": false, "bSearchable": false}
+                ]
+            });
+
     formatPrices();
     setInterval("qureyPedidos()", 3000);
 });

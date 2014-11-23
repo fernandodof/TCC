@@ -1,19 +1,24 @@
 <head>
-    <script src="../js/jquery.priceFormat.min.js" type="text/javascript"></script>
-    <script src="../js/funcionarioPageFunctions.js" type="text/javascript"></script>
-    <link href="../css/funcionarioPage.css" rel="stylesheet" type="text/css">
-    <link href="../css/cardapio.css" rel="stylesheet" type="text/css">
+    <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
+    <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
+    <link href="{$templateRoot}css/funcionarioPage.css" rel="stylesheet" type="text/css">
+    <link href="{$templateRoot}dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <link href="{$templateRoot}dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
+    <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
+
+    <script src="{$templateRoot}dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 </head>
 
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
-    <ul class="nav nav-pills nav-stacked col-md-2 sidebar">
-        <li class=""><a href="#tab_a" data-toggle="pill">Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_b" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
+    <ul class="nav nav-pills nav-stacked col-md-3 sidebar">
+        <li class=""><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
+        <li><a href="#tab_b" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
+        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_c" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
-    <div class="tab-content col-md-10">
+    <div class="tab-content col-md-9">
         <div class="tab-pane" id="tab_a">
-            <h4 class="col-xs-12 pull-left">Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
+            <h4 class="col-xs-12 pull-left">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidos">
                 {$i=0}
                 {foreach from=$pedidos item=pedido}
@@ -62,7 +67,79 @@
             </div>
         </div>
 
-        <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_b">
+
+        <div class="tab-pane" id="tab_b">
+            <h4 class="col-xs-12 pull-left">Historico de pedidos <i class="fa fa-history fa-2x pull-right"></i></h4>
+            <div id="historico">
+                <table id="historicoPedidos" class="display table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Data</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {$i=0}
+                        {foreach from=$historicoPedidos item=pedido}
+                            <tr>
+                                <td>{$pedido->getId()}</td>
+                                <td>{$pedido->getDataHora()}</td>
+                                <td>R$ {$pedido->getValorTotal()}</td>
+                                {if ($pedido->getStatus())}
+                                    <td>Finalizado</td>
+                                {else}
+                                    <td>Em andamento</td>
+                                {/if}
+                                <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle verItem">Detalhes <span class="fa fa-eye"></span></label>
+
+                                    <div class="modal" id="item{$i}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4>Itens</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-hover table-responsive table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Nome</th>
+                                                                <th>Tamanho</th>
+                                                                <th>Quantidade</th>
+                                                                <th>Subtotal</th>
+                                                            <tr>
+                                                        </thead>
+                                                        {foreach from=$pedido->getItensPedido() item=it}
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{$it->getProduto()->getNome()}</td>
+                                                                    <td>{$it->getTamanho()->getDescricao()}</td>
+                                                                    <td>{$it->getQuantidade()}</td>
+                                                                    <td>{$it->getSubtotal()}</td>
+                                                                </tr>
+                                                            <tbody>
+                                                            {/foreach}
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {$i=$i+1}
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_c">
             <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle" id="openCardapio">Cardápio <b class="caret"></b></h4>
             <div id="cardapio" class="collapse">
                 <ul class="nav nav-tabs nav-justified" data-tabs="tabs" role="tablist">
@@ -108,11 +185,11 @@
             </div>
             <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle" id="openInserir">Inserir Novo Produto <b class="caret"></b></h4>
                 {if isset($success)}
-                    <div class="alert alert-success alert-dismissible col-md-10" role="alert">
-                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                        Produto cadastrado com sucesso
-                    </div>
-                {/if}
+                <div class="alert alert-success alert-dismissible col-md-10" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                    Produto cadastrado com sucesso
+                </div>
+            {/if}
             <form class="form-horizontal col-md-10 collapse" method="POST" name="addProduto" id="addProduto" action="../src/app/processes/ProcessProduto.php">
                 <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                 <div class="form-group">

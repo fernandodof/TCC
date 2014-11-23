@@ -1,13 +1,10 @@
 <?php
-
 require_once './smartyHeader.php';
 require_once '../src/app/model/persistence/Dao.class.php';
 require_once '../src/app/model/entities/Restaurante.class.php';
 require_once '../src/app/model/entities/Produto.class.php';
 require_once '../src/app/util/Queries.php';
 include_once '../pages/header.php';
-
-
 
 $dao = new Dao();
 
@@ -47,10 +44,16 @@ if (substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/') == 4) {
 
     list(,,,, $produtoCadastrado) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
-    if($produtoCadastrado === 'success'){
+    if ($produtoCadastrado === 'success') {
         $smarty->assign('success', $produtoCadastrado);
     }
 }
+
+$historicoPedidos = $restaurante->getPedidos();
+foreach ($historicoPedidos as $p) {
+    $p->setDataHora($p->getDataHora()->format('d/m/Y - H:i:s'));
+}
+$smarty->assign('historicoPedidos', $historicoPedidos);
 
 $smarty->assign('pedidos', $pedidos);
 $smarty->assign('produtosComida', $produtosComida);
