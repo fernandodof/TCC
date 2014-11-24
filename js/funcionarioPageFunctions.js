@@ -149,7 +149,6 @@ $(document).ready(function () {
                     null,
                     null,
                     null,
-                    null,
                     {"bSortable": false, "bSearchable": false}
                 ]
             });

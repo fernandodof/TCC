@@ -77,7 +77,6 @@
                             <th>#</th>
                             <th>Data</th>
                             <th>Valor</th>
-                            <th>Status</th>
                             <th>Detalhes</th>
                         </tr>
                     </thead>
@@ -88,11 +87,6 @@
                                 <td>{$pedido->getId()}</td>
                                 <td>{$pedido->getDataHora()}</td>
                                 <td>R$ {$pedido->getValorTotal()}</td>
-                                {if ($pedido->getStatus())}
-                                    <td>Finalizado</td>
-                                {else}
-                                    <td>Em andamento</td>
-                                {/if}
                                 <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle verItem">Detalhes <span class="fa fa-eye"></span></label>
 
                                     <div class="modal" id="item{$i}" role="dialog">
