@@ -60,3 +60,10 @@ h3{
     width: 100px;
     width: 100px;
 }
+
+#circleLoader{
+    width: 30px;
+    width: 30px;
+    margin-top: 15px;
+    display: none;
+}

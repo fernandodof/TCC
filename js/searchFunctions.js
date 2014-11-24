@@ -1,13 +1,15 @@
 function filterRestaurante(str) {
+    $('#circleLoader').show();
+
     var search = getUrlParameter('search');
     var data = {kind: str, search: search};
 
     var absoluteUrl = getAbsoluteUrl();
     var parameters = $.query.set("kindOfFood", str);
     parameters = parameters.toString().replace("%2B", "+");
-    
-    window.history.pushState(data, "Title", absoluteUrl+parameters);
-    
+
+    window.history.pushState(data, "Title", absoluteUrl + parameters);
+
     var url = '../src/app/ajaxReceivers/filterSearch.php';
 
     $.ajax({
@@ -16,6 +18,7 @@ function filterRestaurante(str) {
         async: true,
         data: data,
         success: function (serverResponse) {
+            $('#circleLoader').hide();
             $('#results').html(serverResponse);
         }
     });

@@ -30,14 +30,14 @@
     <div class="row">
         <div class="col-sm-8">
             <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="row">   
-                        <div class="page-header">
-                            <h3>Resultados da pesquisa</h3>
-                            {*                            <div class="well well-sm closed col-xs-2 statusIndicatioClosed"><p>Aberto</p></div>
-                            <div class="well well-sm opened col-xs-2 pull-right statusIndicationOpened"><p>Fechado</p></div>*}
-                        </div>
+                <div class="row">   
+                    <div class="page-header row col-xs-12">
+                        <h3 class="col-xs-11">Resultados da pesquisa</h3><img id="circleLoader" class="img img-responsive" src="{$templateRoot}images/icons/circleLoader.gif" alt="Carregando..." title="Carregando...">
+                        {*                            <div class="well well-sm closed col-xs-2 statusIndicatioClosed"><p>Aberto</p></div>
+                        <div class="well well-sm opened col-xs-2 pull-right statusIndicationOpened"><p>Fechado</p></div>*}
                     </div>
+                </div>
+                <div class="panel-body">
                     <div id="results">
                         {if empty($restaurants)}
                             <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado.</h3>
