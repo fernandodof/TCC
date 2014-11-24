@@ -1,5 +1,6 @@
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
+<script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/searchFunctions.js" type="text/javascript"></script>
 
 <div class="container">
@@ -17,7 +18,7 @@
         <div class="navbar navbar-default navbar-static-top sidebar">
             <div class="collapse navbar-collapse sidebarCollapse">
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a>Todas</a></li>
+                    <li  onclick="filterRestaurante('');"><a>Todas</a></li>
                         {foreach from = $kindsOfFood item = kind}
                         <li onclick="filterRestaurante('{$kind.nome}');"><a class="elementToggle">{$kind.nome}</a></li>
                         {/foreach}

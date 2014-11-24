@@ -38,3 +38,4 @@ $smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->display($path.'templates/search.tpl');
 
 include_once $path.'pages/footer.php';
+
