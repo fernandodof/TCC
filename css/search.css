@@ -43,3 +43,20 @@ h3{
 .btVerCardapio{
     margin-right: -10px;
 }
+
+.no-result-search{
+    text-align: center;
+    color: #228AAD;
+}
+
+#faces{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#faces #imgFace {
+    width: 100px;
+    width: 100px;
+}

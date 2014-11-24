@@ -1,4 +1,5 @@
 <?php
+
 include_once '../pages/header.php';
 
 require_once $path.'pages/smartyHeader.php';
@@ -7,17 +8,6 @@ require_once $path.'src/app/util/Queries.php';
 require_once $path.'src/app/model/persistence/Dao.class.php';
 
 $dao = new Dao();
-
-$kindsOfFood = array();
-$kindsOfFood[] = 'Churrascaria';
-$kindsOfFood[] = 'Lanchonete';
-$kindsOfFood[] = 'Pizzaria';
-$kindsOfFood[] = 'Cozinha Japonesa';
-$kindsOfFood[] = 'Cozinha Chinesa';
-$kindsOfFood[] = 'Saladas';
-$kindsOfFood[] = 'Cozlinha Italiana';
-$kindsOfFood[] = 'Variada';
-sort($kindsOfFood);
 
 $params['nome'] = trim(filter_input(INPUT_GET, 'search'));
 $tipo = trim(filter_input(INPUT_GET, 'kindOfFood'));
@@ -41,10 +31,10 @@ if (is_numeric($params['nome'])) {
     }
 }
 
+$kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);
 
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->display($path.'templates/search.tpl');
 
 include_once $path.'pages/footer.php';
-
