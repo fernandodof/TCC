@@ -42,7 +42,7 @@ if (empty($restaurants)) {
                 }
                 echo "<p class='pull-right'>Formas de Pagamento: </p>";
             echo "</div>";
-            echo "<a class='btn btn-primary btn-sm pull-right btVerCardapio' href='" . $templateRoot . "pages/restaurant/ " . $restaurante->getId() . "'>Visualizar Cardápio</a>";
+            echo "<a class='btn btn-primary btn-sm pull-right btVerCardapio' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
         echo "</div>";
     }
 }
