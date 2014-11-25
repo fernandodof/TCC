@@ -28,8 +28,17 @@ function cadastrarProduto() {
     $restaurante = $dao->findByKey('Restaurante', filter_input(INPUT_POST, 'idRestaurante'));
     $categoria = $dao->findByKey('Categoria', filter_input(INPUT_POST, 'categoria'));
 
-    $tamanhos = filter_input(INPUT_POST, 'tamanhos',  FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+    $tamanhos = filter_input(INPUT_POST, 'tamanhos', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
     $precos = filter_input(INPUT_POST, 'price', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+
+   
+    var_dump($precos);
+    
+    for ($i = 0; $i < count($precos); $i++) {
+        $precos[$i] = str_replace("R$ ", "", $precos[$i]);
+    }
+    
+    var_dump($precos);
 
     $produto = new Produto();
     $produto->setCategoria($categoria);
@@ -37,7 +46,7 @@ function cadastrarProduto() {
     $produto->setIngredientes(filter_input(INPUT_POST, 'ingredientes'));
     $produto->setNome(filter_input(INPUT_POST, 'nomeProduto'));
 
-    for ($i=0; $i< count($tamanhos); $i++) {
+    for ($i = 0; $i < count($tamanhos); $i++) {
         $tamanhosCadastrado = $dao->findByKey('TamanhoCadastrado', $tamanhos[$i]);
         $tamanho = new Tamanho();
         $tamanho->setCategoria($categoria);
@@ -45,11 +54,11 @@ function cadastrarProduto() {
         $tamanho->setPreco($precos[$i]);
         $produto->addTamanho($tamanho);
     }
-    
+
     $dao->save($produto);
     $restaurante->addProduto($produto);
     $dao->save($restaurante);
-    
+
     header("Location: ../../../pages/funcionarioPage?produtoCadastrado=sucesso");
     exit();
 }
