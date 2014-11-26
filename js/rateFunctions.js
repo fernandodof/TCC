@@ -13,6 +13,7 @@ function saveRating() {
         async: true,
         data: data,
         success: function (serverResponse) {
+//            $('body').html(serverResponse);
             alertify.log('Avaliação recebida');
         },
         error: function (jqXHR, textStatus, errorThrown) {

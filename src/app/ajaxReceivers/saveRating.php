@@ -24,7 +24,7 @@ $nota = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_NOTA_CLINTE
 
 var_dump($nota);
 
-if ($nota) {
+if ($nota != false) {
     $avaliacao = $dao->findByKey('Avaliacao', $nota['id']);
     $avaliacao->setNota($novaNota);
     $dao->update($avaliacao);
@@ -32,7 +32,7 @@ if ($nota) {
     $avaliacao = new Avaliacao();
     $avaliacao->setCliente($cliente);
     $avaliacao->setRestaurante($restaurante);
-    $avaliacao->setNota($Nota);
+    $avaliacao->setNota($novaNota);
     $dao->save($avaliacao);
     $dao->update($cliente);
     $dao->update($restaurante);

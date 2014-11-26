@@ -22,7 +22,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li  onclick="filterRestaurante('');"><a>Todas</a></li>
                         {foreach from = $kindsOfFood item = kind}
-                        <li onclick="filterRestaurante('{$kind.nome}');"><a class="elementToggle">{$kind.nome}</a></li>
+                            <li onclick="filterRestaurante('{$kind.nome}');"><a class="elementToggle">{$kind.nome}</a></li>
                         {/foreach}
                 </ul>
             </div>

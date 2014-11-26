@@ -1,7 +1,14 @@
 <?php
+
 require_once '../pages/pathVars.php';
 require_once $path . 'pages/smartyHeader.php';
 require_once $path . 'src/app/model/persistence/Dao.class.php';
+require_once $path . 'src/app/model/VO/PedidoVO.class.php';
+require_once $path . 'src/app/model/VO/ItemPedidoVO.class.php';
+require_once $path . 'src/app/model/VO/ProdutoVO.class.php';
+require_once $path . 'src/app/model/VO/TamanhoVO.class.php';
+
+session_start();
 
 list(,,,, $res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
@@ -32,7 +39,23 @@ foreach ($produtos as $p) {
     }
 }
 
+$avgRating;
+$sum = 0;
+$counter = 0;
+foreach ($restaurante->getAvaliacoes() as $av) {
+    $sum += $av->getNota();
+    $counter++;
+}
 
+if ($counter > 0) {
+    $avg = $sum / $counter;
+} else {
+    $avg = 0;
+}
+
+$avgRating = $avg;
+
+$smarty->assign('avgRating', $avgRating);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('restaurante', $restaurante);

@@ -15,10 +15,27 @@ $params['nome'] = '%' . $params['nome'] . '%';
 $params['tipo'] = "%" . $tipo . "%";
 $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
 
+foreach ($restaurants as $r) {
+    $avgRating;
+    $sum = 0;
+    $counter = 0;
+    foreach ($r->getAvaliacoes() as $av) {
+        $sum += $av->getNota();
+        $counter++;
+    }
+
+    if ($counter > 0) {
+        $avg = $sum / $counter;
+    } else {
+        $avg = 0;
+    }
+
+    $avgRating[] = $avg;
+}
 
 if(isset($_SESSION['id'])){
-    $params['id_cliente'] = $_SESSION['id'];
-    $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
+    $params1['id_cliente'] = $_SESSION['id'];
+    $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params1);
 }
 
 if (empty($restaurants)) {
@@ -27,6 +44,7 @@ if (empty($restaurants)) {
        echo "<img id='imgFace' src = '../images/icons/svg/sadFace.svg'/>";
     echo "</div>";
 } else {
+    $i=0;
     foreach ($restaurants as $restaurante) {
         echo "<div class='well closed col-xs-12'>";
             echo "<h4>" . $restaurante->getNome() . "<small> " . $restaurante->getTipo()->getNome() . "</small></h4>";
@@ -55,8 +73,10 @@ if (empty($restaurants)) {
                         echo "<a class='btn btn-default btn-sm pull-left' href='". $templateRoot . "pages/rate/". $restaurante->getId() . "'>Avaliar estabelecimento</a>";
                     }   
                 }   
-            echo "<a class='btn btn-primary btn-sm pull-right btVerCardapio' href='" . $templateRoot . "/pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
+            echo "<a class='btn btn-primary btn-sm pull-right btVerCardapio' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
             echo "</div>";
+            echo "<input class='rateInputs' data-show-clear='false' value='" . $avgRating[$i] . "'>";
         echo "</div>";
+    $i++;
     }
 }

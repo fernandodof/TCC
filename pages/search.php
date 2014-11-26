@@ -31,13 +31,12 @@ if (is_numeric($params['nome'])) {
 }
 
 if (isset($_SESSION['id'])) {
-    $params['id_cliente'] = $_SESSION['id'];
-    $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
+    $params1['id_cliente'] = $_SESSION['id'];
+    $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params1);
     $smarty->assign('idsRestaurantesComprados', $idsRestaurantesComprados);
 }
 
 $kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);
-
 
 foreach ($restaurants as $r) {
     $avgRating;
@@ -60,6 +59,7 @@ foreach ($restaurants as $r) {
 if (isset($avgRating)) {
     $smarty->assign('avgRating', $avgRating);
 }
+
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->display($path . 'templates/search.tpl');

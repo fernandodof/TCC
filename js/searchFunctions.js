@@ -20,6 +20,7 @@ function filterRestaurante(str) {
         success: function (serverResponse) {
             $('#circleLoader').hide();
             $('#results').html(serverResponse);
+            initIputs();
         }
     });
 }
@@ -47,7 +48,7 @@ function getAbsoluteUrl() {
     return  url;
 }
 
-$(document).ready(function () {
+function initIputs() {
     $(".rateInputs").rating({
         starCaptions: function (val) {
             if (val === 0) {
@@ -63,7 +64,10 @@ $(document).ready(function () {
         },
         clearCaption: '',
         size: 'xs',
-        disabled: true,
-        showCaption: false
+        disabled: true
     });
+}
+
+$(document).ready(function () {
+    initIputs();
 });
