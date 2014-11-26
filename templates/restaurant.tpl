@@ -2,11 +2,13 @@
 <link href="{$templateRoot}css/restaurant.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}css/restaurantColumn.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="{$templateRoot}js/bootbox.min.js"></script>
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
 </script>
 <script type="text/javascript" src="{$templateRoot}js/restaurantPageFunctions.js"></script>
+<script type="text/javascript" src="{$templateRoot}js/mapFunctions.js"></script>
 <script type="text/javascript">
     {literal}
 
@@ -166,7 +168,7 @@
                 <div class="modal-header" id="map-header">
                     <h4 id="closeMap" class="elementToggle" onclick="closeMap()">Fechar <span class="glyphicon glyphicon-remove"></span></h4>
                 </div>
-                <div class="modal-body" id="bigMap-modal-body">
+                <div class="modal-body modal-body-map" id="bigMap-modal-body">
                     <div id="location2">
                         <div id="map2" class="col-xs-12">
                         </div>

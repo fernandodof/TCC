@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 include_once '../pages/header.php';
 
@@ -29,6 +29,13 @@ if (is_numeric($params['nome'])) {
         $params['tipo'] = $tipo;
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
     }
+}
+
+if(isset($_SESSION['id'])){
+    $params['id_cliente'] = $_SESSION['id'];
+    $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
+    $smarty->assign('idsRestaurantesComprados', $idsRestaurantesComprados);
+    
 }
 
 $kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);

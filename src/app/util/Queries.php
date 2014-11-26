@@ -19,6 +19,8 @@ class Queries {
     const GET_PEDIDOS_RESTAURANTE_EM_ABERTO = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = false';
     const GET_PEDIDOS_RESTAURANTE_EM_ABERTO_DATA = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = false and p.dataHora > :dataHora';
     const SET_PEDIDO_ENCAMINHADO = 'UPDATE pedido p SET p.status = true WHERE p.id = :id';
+    
+    //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante FROM pedido p WHERE p.id_cliente = id_cliente';
 }
 
