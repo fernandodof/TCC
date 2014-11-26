@@ -4,7 +4,6 @@ require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Query\ResultSetMapping;
 
 class Dao {
 
@@ -102,4 +101,12 @@ class Dao {
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
+    public function getArrayResultOfNativeQueryWithParameters($queryInstruction, $params) {
+        $stmt = $this->em->getConnection()->prepare($queryInstruction);
+        $stmt->execute($params);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    
+    
 }

@@ -31,6 +31,7 @@
         <a onclick="expandMap();" class="elementToggle">Expandir Mapa</a>
         <input type="hidden" id="latitude" value="{$restaurante->getEndereco()->getLatitude()}">
         <input type="hidden" id="longitude" value="{$restaurante->getEndereco()->getLongitude()}">
+        <input type="hidden" id="idRestaurante" value="{$restaurante->getId()}">
         <input type="hidden" id="nomeRestauranteMap" value="{$restaurante->getNome()}">
     </div>
 
@@ -38,7 +39,7 @@
         <h3>Avaliar Estabelecimento</h3>
         <div id="rateDiv">
             <h4>Faça Sua Avaliação</h4>
-            <input id="rateInput" data-show-clear="false">
+            <input id="rateInput" data-show-clear="false" value="{$nota}">
         </div>
     </div>
 

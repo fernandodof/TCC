@@ -1,4 +1,30 @@
-jQuery(document).ready(function () {
+var templateRoot;
+
+function saveRating() {
+    var nota = $('#rateInput').val();
+    var idRestaurante = $('#idRestaurante').val();
+    var data = {nota: nota, idRestaurante: idRestaurante};
+
+    var url =  templateRoot +  'src/app/ajaxReceivers/saveRating.php';
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            alertify.log('Avaliação recebida');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            alert(textStatus);
+            alert(jqXHR);
+        }
+    });
+}
+
+
+$(document).ready(function () {
     $("#rateInput").rating({
         starCaptions: function (val) {
             if (val === 0) {
@@ -17,12 +43,7 @@ jQuery(document).ready(function () {
     });
 
     $('#rateInput').on('rating.change', function (event, value, caption) {
-        alert($('#rateInput').val());
+        saveRating();
     });
-
+    templateRoot = $('#templateRoot').val();
 });
-
-
-function sentRate(){
-    
-}

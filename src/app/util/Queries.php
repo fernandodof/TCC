@@ -22,5 +22,7 @@ class Queries {
     
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante FROM pedido p WHERE p.id_cliente = id_cliente';
+    const GET_NOTA_CLINTE_RESTAURANTE = 'SELECT id,nota FROM avaliacao WHERE id_cliente = :id_cliente and id_restaurante = :id_restaurante';
+    
 }
 

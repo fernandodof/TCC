@@ -3,7 +3,6 @@ require_once '../pages/pathVars.php';
 require_once $path . 'pages/smartyHeader.php';
 require_once $path . 'src/app/model/persistence/Dao.class.php';
 
-
 list(,,,, $res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
 $dao = new Dao();

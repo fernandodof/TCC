@@ -8,7 +8,10 @@ require_once $path.'src/app/model/VO/PedidoVO.class.php';
 require_once $path.'src/app/model/VO/ItemPedidoVO.class.php';
 require_once $path.'src/app/model/VO/ProdutoVO.class.php';
 require_once $path.'src/app/model/VO/TamanhoVO.class.php';
-session_start();
+
+if(!isset($_SESSION)){
+    session_start();
+}
 
 $title = 'SaborVirtual - Pedidos pela internet';
 $siteName = 'SaborVirtual';
