@@ -19,7 +19,8 @@ require_once 'TipoRestaurante.class.php';
 require_once 'Produto.class.php';
 require_once 'FormaPagamento.class.php';
 require_once 'Pedido.class.php';
-
+require_once 'Comentario.class.php';
+require_once 'Avaliacao.class.php';
 
 class Restaurante {
 
@@ -54,15 +55,6 @@ class Restaurante {
      * @Column(type="boolean")
      * * */
     private $ativo = true;
-
-    /**
-     * @ManyToMany(targetEntity="Avaliacao", cascade={"all"}, fetch="EXTRA_LAZY")
-     * @JoinTable(name="Restaurante_Avaliacao",
-     *      joinColumns={@JoinColumn(name="id_restaurante", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
-     *      )
-     * */
-    private $avaliacoes;
 
     /**
      * @ManyToMany(targetEntity="Telefone", cascade={"all"})
@@ -109,12 +101,23 @@ class Restaurante {
      * */
     private $pedidos;
 
+    /**
+     * @OneToMany(targetEntity="Comentario", mappedBy="restaurante", fetch="EXTRA_LAZY")
+     * */
+    private $comentarios;
+
+    /**
+     * @OneToMany(targetEntity="Avaliacao", mappedBy="restaurante", fetch="EXTRA_LAZY")
+     * */
+    private $avaliacoes;
+
     public function __construct() {
+        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->formasPagamento = new Doctrine\Common\Collections\ArrayCollection();
         $this->produtos = new Doctrine\Common\Collections\ArrayCollection();
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
-        $this->pedidos =  new Doctrine\Common\Collections\ArrayCollection();
+        $this->pedidos = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -216,7 +219,7 @@ class Restaurante {
     public function addProduto(Produto $produto) {
         $this->produtos->add($produto);
     }
-    
+
     public function getPedidos() {
         return $this->pedidos;
     }
@@ -225,8 +228,16 @@ class Restaurante {
         $this->pedidos = $pedidos;
     }
 
-    public function addPedido(Pedido $pedido){
+    public function addPedido(Pedido $pedido) {
         $this->pedidos->add($pedido);
-    }  
+    }
+
+    public function addComentario(Comentario $comentario) {
+        $this->comentarios->add($comentario);
+    }
+
+    public function addAvaliacao(Comentario $comentario) {
+        $this->comentarios->add($comentario);
+    }
 
 }

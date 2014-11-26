@@ -7,9 +7,11 @@
  */
 require_once 'Pessoa.class.php';
 require_once 'Telefone.class.php';
+require_once 'Comentario.class.php';
 require_once 'Avaliacao.class.php';
 require_once 'Endereco.class.php';
 require_once 'Pedido.class.php';
+
 /**
  * @Entity
  * * */
@@ -39,6 +41,11 @@ class Cliente extends Pessoa {
     private $enderecos;
 
     /**
+     * @OneToMany(targetEntity="Comentario", mappedBy="cliente", fetch="EXTRA_LAZY")
+     * */
+    private $comentarios;
+
+    /**
      * @OneToMany(targetEntity="Avaliacao", mappedBy="cliente", fetch="EXTRA_LAZY")
      * */
     private $avaliacoes;
@@ -51,6 +58,7 @@ class Cliente extends Pessoa {
     function __construct() {
         $this->telefones = new Doctrine\Common\Collections\ArrayCollection();
         $this->enderecos = new Doctrine\Common\Collections\ArrayCollection();
+        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
         $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
         $this->pedidos = new Doctrine\Common\Collections\ArrayCollection();
     }
@@ -119,16 +127,12 @@ class Cliente extends Pessoa {
         $this->enderecos->add($endereco);
     }
 
-    public function getAvaliacoes() {
-        return $this->avaliacoes;
+    public function getComentarios() {
+        return $this->comentarios;
     }
 
-    public function setAvaliacoes($avaliacoes) {
-        $this->avaliacoes = $avaliacoes;
-    }
-
-    public function addAvaliacao(Avaliacao $avaliacao) {
-        $this->avaliacoes->add($avaliacao);
+    public function setComentarios($comentarios) {
+        $this->comentarios = $comentarios;
     }
 
     public function getPedidos() {
@@ -143,4 +147,14 @@ class Cliente extends Pessoa {
         $this->pedidos->add($pedido);
     }
 
+    public function addComentario(Comentario $comentario) {
+        $this->comentarios->add($comentario);
+    }
+    
+    public function addAvaliacao(Avaliacao $comentario) {
+        $this->comentarios->add($comentario);
+    }
+    
+    
+    
 }

@@ -3,16 +3,26 @@ jQuery(document).ready(function () {
         starCaptions: function (val) {
             if (val === 0) {
                 return 'Sem Avaliação';
-            }else if (val > 0.1 && val < 1){
+            } else if (val > 0.1 && val < 1) {
                 return val;
-            }else if(val === 1){
+            } else if (val === 1) {
                 return  val;
-            } 
+            }
             else {
                 return val;
             }
         },
-        clearCaption: ''
+        clearCaption: '',
+        size: 'lg'
+    });
+
+    $('#rateInput').on('rating.change', function (event, value, caption) {
+        alert($('#rateInput').val());
     });
 
 });
+
+
+function sentRate(){
+    
+}

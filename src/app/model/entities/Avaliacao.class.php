@@ -5,55 +5,47 @@
  *
  * @author Fernando
  */
-require_once 'Cliente.class.php';
-require_once 'Restaurante.class.php';
+
 
 /**
  * @Entity
- * * */
+ * **/
 class Avaliacao {
 
     /**
      * @Column(type="integer")
+     * @GeneratedValue(strategy="IDENTITY")
      * @Id
-     * @GeneratedValue
      * * */
     private $id;
 
     /**
-     * @Column(type="datetime")
-     * * */
-    private $dataHora;
+     * @ManyToOne(targetEntity="Cliente", inversedBy="comentarios")
+     * @JoinColumn(name="id_cliente", referencedColumnName="id")
+     * */
+    private $cliente;
 
     /**
-     * @Column(type="text", nullable=true)
-     * * */
-    private $texto;
+     * @ManyToOne(targetEntity="Restaurante", inversedBy="comentarios")
+     * @JoinColumn(name="id_restaurante", referencedColumnName="id")
+     * */
+    private $restaurante;
 
     /**
-     * @Column(type="boolean")
-     * * */
-    private $disponivel;
-
-    /**
-     * @Column(type="integer")
+     * @Column(type="float")
      * * */
     private $nota;
-
+    
     public function getId() {
         return $this->id;
     }
 
-    public function getDataHora() {
-        return $this->dataHora;
+    public function getCliente() {
+        return $this->cliente;
     }
 
-    public function getTexto() {
-        return $this->texto;
-    }
-
-    public function getDisponivel() {
-        return $this->disponivel;
+    public function getRestaurante() {
+        return $this->restaurante;
     }
 
     public function getNota() {
@@ -64,21 +56,18 @@ class Avaliacao {
         $this->id = $id;
     }
 
-    public function setDataHora($dataHora) {
-        $this->dataHora = $dataHora;
+    public function setCliente($cliente) {
+        $this->cliente = $cliente;
     }
 
-    public function setTexto($texto) {
-        $this->texto = $texto;
-    }
-
-    public function setDisponivel($disponivel) {
-        $this->disponivel = $disponivel;
+    public function setRestaurante($restaurante) {
+        $this->restaurante = $restaurante;
     }
 
     public function setNota($nota) {
         $this->nota = $nota;
     }
-    
 
+
+    
 }

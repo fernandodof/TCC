@@ -1,5 +1,5 @@
 <?php
-require_once './pathVars.php';
+require_once '../pages/pathVars.php';
 require_once $path . 'pages/smartyHeader.php';
 require_once $path . 'src/app/model/persistence/Dao.class.php';
 

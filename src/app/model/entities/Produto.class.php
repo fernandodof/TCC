@@ -11,7 +11,7 @@
  * * */
 require_once 'Categoria.class.php';
 require_once 'Tamanho.class.php';
-require_once 'Avaliacao.class.php';
+require_once 'Comentario.class.php';
 
 class Produto {
 
@@ -58,17 +58,17 @@ class Produto {
     private $categoria;
 
     /**
-     * @ManyToMany(targetEntity="Avaliacao")
-     * @JoinTable(name="Produto_Avaliacao",
+     * @ManyToMany(targetEntity="Comentario")
+     * @JoinTable(name="Produto_Comentario",
      *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
      *      )
      * */
-    private $avaliacoes;
+    private $comentarios;
 
     public function __construct() {
         $this->tamanhos = new Doctrine\Common\Collections\ArrayCollection();
-        $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
+        $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -131,16 +131,16 @@ class Produto {
         $this->categoria = $categoria;
     }
     
-    public function getAvaliacoes() {
-        return $this->avaliacoes;
+    public function getComentarios() {
+        return $this->comentarios;
     }
 
-    public function setAvaliacoes($avaliacoes) {
-        $this->avaliacoes = $avaliacoes;
+    public function setComentarios($comentarios) {
+        $this->comentarios = $comentarios;
     }
 
-    public function addAvaliacao(Avaliacao $avaliacao){
-        $this->avaliacoes->add($avaliacao);
+    public function addComentario(Comentario $comentario){
+        $this->avaliacoes->add($comentario);
     }
        
 }
