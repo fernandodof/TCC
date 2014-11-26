@@ -1,5 +1,7 @@
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
+<link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
+<script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/searchFunctions.js" type="text/javascript"></script>
 
@@ -45,6 +47,7 @@
                                 <img id = "imgFace" src = '{$templateRoot}images/icons/svg/sadFace.svg'/>
                             </div>
                         {else}
+                            {$i = 0}
                             {foreach from = $restaurants item = restaurante}
                                 <div class="well closed col-xs-12">
                                     <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
@@ -74,7 +77,9 @@
                                         {/if}   
                                         <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
                                     </div>
-                                </div>       
+                                    <input class="rateInputs" data-show-clear="false" value="{$avgRating[$i]}">
+                                </div>
+                                {$i = $i+1}
                             {/foreach}
                         {/if}
                     </div>

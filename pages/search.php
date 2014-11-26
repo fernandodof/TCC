@@ -1,11 +1,11 @@
- <?php
+<?php
 
 include_once '../pages/header.php';
 
-require_once $path.'pages/smartyHeader.php';
-require_once $path.'/src/app/model/entities/Restaurante.class.php';
-require_once $path.'src/app/util/Queries.php';
-require_once $path.'src/app/model/persistence/Dao.class.php';
+require_once $path . 'pages/smartyHeader.php';
+require_once $path . '/src/app/model/entities/Restaurante.class.php';
+require_once $path . 'src/app/util/Queries.php';
+require_once $path . 'src/app/model/persistence/Dao.class.php';
 
 $dao = new Dao();
 
@@ -19,7 +19,6 @@ if (is_numeric($params['nome'])) {
     } else {
         $params['tipo'] = $tipo;
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_CEP_TIPO, $params);
-        
     }
 } else {
     $params['nome'] = '%' . $params['nome'] . '%';
@@ -31,18 +30,39 @@ if (is_numeric($params['nome'])) {
     }
 }
 
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     $params['id_cliente'] = $_SESSION['id'];
     $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
     $smarty->assign('idsRestaurantesComprados', $idsRestaurantesComprados);
-    
 }
 
 $kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);
 
+
+foreach ($restaurants as $r) {
+    $avgRating;
+    $sum = 0;
+    $counter = 0;
+    foreach ($r->getAvaliacoes() as $av) {
+        $sum += $av->getNota();
+        $counter++;
+    }
+
+    if ($counter > 0) {
+        $avg = $sum / $counter;
+    } else {
+        $avg = 0;
+    }
+
+    $avgRating[] = $avg;
+}
+
+if (isset($avgRating)) {
+    $smarty->assign('avgRating', $avgRating);
+}
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);
-$smarty->display($path.'templates/search.tpl');
+$smarty->display($path . 'templates/search.tpl');
 
-include_once $path.'pages/footer.php';
+include_once $path . 'pages/footer.php';
 
