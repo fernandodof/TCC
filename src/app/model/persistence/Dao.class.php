@@ -4,6 +4,7 @@ require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 class Dao {
 
@@ -88,24 +89,17 @@ class Dao {
         $query = $this->em->createQuery($queryInstruction);
         return $query->getResult();
     }
-    
-    public function executeQueryWithParameters($queryInstruction, $params){
+
+    public function executeQueryWithParameters($queryInstruction, $params) {
         $query = $this->em->createQuery($queryInstruction);
         $query->setParameters($params);
         $query->execute();
     }
 
-    public function test() {
-
-        $qb = $this->em->createQueryBuilder();
-        $qb->select('r')
-                ->from('restaurante', 'r')
-                ->where('r.endereco.cep = :cep')
-                ->setParameter('cep', '58900-000');
-
-        $query = $qb->getQuery();
-
-        $query->getResult();
+    public function getListResultOfNativeQueryWithParameters($queryInstruction, $params) {
+        $stmt = $this->em->getConnection()->prepare($queryInstruction);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
 }

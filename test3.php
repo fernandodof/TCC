@@ -23,7 +23,12 @@ $dao = new Dao();
 //    echo $p->getDataHora()->format('d/m/Y - H:i:s').'<br>';
 //}
 
-$params['id'] = '37';
-$dao->executeQueryWithParameters(Queries::SET_PEDIDO_ENCAMINHADO, $params);
+//$params['id'] = '37';
+//$dao->executeQueryWithParameters(Queries::SET_PEDIDO_ENCAMINHADO, $params);
 
+$params['id_cliente'] = '1';
+//$param = 1;
+$idRestauratesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
+print_r($idRestauratesComprados);
 
+var_dump($idRestauratesComprados);
