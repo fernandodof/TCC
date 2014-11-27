@@ -17,4 +17,5 @@ textarea[name=comment] {
 
 #comment #send{
     margin-right: -10px;
+    margin-top: -30px;
 }

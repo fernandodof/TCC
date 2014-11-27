@@ -27,10 +27,10 @@ function saveRating() {
 
 function sendComment() {
     var comment = $('#commentBox').val();
-
     if (comment === '') {
         return;
     }
+
     $('#send').button('loading');
     var idRestaurante = $('#idRestaurante').val();
     var data = {comment: comment, idRestaurante: idRestaurante};
@@ -43,7 +43,8 @@ function sendComment() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            alertify.log('Comentário recebido');
+            $('#commentBox').val("");
+            alertify.alert("Comentário recebido");
             $('#send').button('reset');
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -73,9 +74,6 @@ function initIputs() {
         disabled: true
     });
 }
-
-
-
 
 $(document).ready(function () {
     $("#rateInputUser").rating({

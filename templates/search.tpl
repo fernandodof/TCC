@@ -22,7 +22,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li  onclick="filterRestaurante('');"><a>Todas</a></li>
                         {foreach from = $kindsOfFood item = kind}
-                            <li onclick="filterRestaurante('{$kind.nome}');"><a class="elementToggle">{$kind.nome}</a></li>
+                        <li onclick="filterRestaurante('{$kind.nome}');"><a class="elementToggle">{$kind.nome}</a></li>
                         {/foreach}
                 </ul>
             </div>
@@ -50,7 +50,10 @@
                             {$i = 0}
                             {foreach from = $restaurants item = restaurante}
                                 <div class="well closed col-xs-12">
-                                    <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
+                                    <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small> 
+                                        <a class="btn btn-default btn-sm pull-right commentButton {if (count($restaurante->getComentarios()) ==0)} disabl {/if}" href="#"><span class="fa fa-comment commentIcon"></span> 
+                                            <span class="badge">{count($restaurante->getComentarios())}</span></a>
+                                    </h4>
                                     <div class="row col-xs-12">
                                         <img class="img pull-left" src="{$templateRoot}images/icons/rsz_location.png"/>
                                         <address class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
@@ -77,7 +80,7 @@
                                         {/if}   
                                         <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
                                     </div>
-                                    <input class="rateInputs" data-show-clear="false" value="{$avgRating[$i]}">
+                                    <input class="rateInputs pull-left" data-show-clear="false" value="{$avgRating[$i]}">
                                 </div>
                                 {$i = $i+1}
                             {/foreach}

@@ -228,8 +228,12 @@ class Restaurante {
         $this->pedidos = $pedidos;
     }
 
-    public function addPedido(Pedido $pedido) {
-        $this->pedidos->add($pedido);
+    public function getComentarios() {
+        return $this->comentarios;
+    }
+
+    public function setComentarios($comentarios) {
+        $this->comentarios = $comentarios;
     }
 
     public function addComentario(Comentario $comentario) {
@@ -238,6 +242,10 @@ class Restaurante {
 
     public function addAvaliacao(Comentario $comentario) {
         $this->comentarios->add($comentario);
+    }
+
+    public function addPedido(Pedido $pedido) {
+        $this->pedidos->add($pedido);
     }
 
 }

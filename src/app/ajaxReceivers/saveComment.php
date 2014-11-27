@@ -27,5 +27,9 @@ $comentario->setDisponivel(true);
 $comentario->setTexto($comment);
 
 $dao->save($comentario);
+
+$cliente->addComentario($comentario);
 $dao->update($cliente);
+
+$restaurante->addComentario($comentario);
 $dao->update($restaurante);
