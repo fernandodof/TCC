@@ -30,6 +30,23 @@ $params1['id_restaurante'] = $res;
 $nota = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_NOTA_CLINTE_RESTAURANTE, $params1);
 $smarty->assign('nota', $nota['nota']);
 
+$avgRating;
+$sum = 0;
+$counter = 0;
+foreach ($restaurante->getAvaliacoes() as $av) {
+    $sum += $av->getNota();
+    $counter++;
+}
+
+if ($counter > 0) {
+    $avg = $sum / $counter;
+} else {
+    $avg = 0;
+}
+
+$avgRating = $avg;
+
+$smarty->assign('avgRating', $avgRating);
 
 include_once '../pages/header.php';
 

@@ -1,3 +1,20 @@
 #rateDiv{
     margin-top: 35px;
 }
+
+#comment{
+    margin-top: 20px;
+}
+
+#comment label{
+    margin-left: -15px;
+}
+
+textarea[name=comment] {
+    resize: none;
+    font-size: medium;
+}
+
+#comment #send{
+    margin-right: -10px;
+}
