@@ -14,29 +14,33 @@
 
 .comments .comment-info .fa {
     line-height: 10px;
-    color: #31B0D5;
+    color:#0020C2;
 }
 
 .comments .media .userIcon{
-    color:#0020C2;
+    color:#A1A1A1;
 }
 
 .comments .media-body p {
     position: relative;
-    background: #F7F7F7;
+    background: #F3F3F3;
     padding: 15px;
     margin-top: 50px;
+    border: 1.5px solid #0020C2;
+    box-shadow: 0 0 2px 2px rgba(0, 32, 194, .4);
 }
 
 .comments .media-body p::before {
-    background-color: #F7F7F7;
-    box-shadow: -2px 2px 2px 0 rgba( 178, 178, 178, .4);
+    background-color: #F3F3F3;
+    box-shadow: -2px 2px 2px 0 rgba(0, 32, 194, .4);
+    border-left: 1px solid #0020C2;
+    border-bottom: 1px solid #0020C2;
     content: "\00a0";
     display: block;
     height:25px;
     left: 20px;
     position: absolute;
-    top: -10px;
+    top: -13px;
     transform: rotate( 135deg );
     width: 25px;
 }

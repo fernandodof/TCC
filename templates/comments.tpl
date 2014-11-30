@@ -43,7 +43,7 @@
                 <li class="media">
                    <span class="fa fa-user fa-4x pull-left img-thumbnail userIcon"></span>
                     <div class="media-body">
-                        <h5 class="media-heading pull-left">{$comentario->getCliente()->getNome()}</h5>
+                        <h5 class="media-heading pull-left">{$comentario->getCliente()->getLogin()}</h5>
                         <div class="comment-info pull-left">
                             <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> {$comentario->getDataHora()->format('d/m/Y - H:i:s')}</div>
                         </div>

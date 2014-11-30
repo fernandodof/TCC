@@ -46,7 +46,7 @@
                                         <form class="form-horizontal" id="loginForm" method="POST" action="{$templateRoot}src/app/processes/ProcessCliente">
                                             <div class="form-group">
                                                 <div class="col-lg-12">
-                                                    <input name="emailLogin" id="emailLogin" class="form-control" type="email" placeholder="Email" required> 
+                                                    <input name="emailLogin" id="emailLogin" class="form-control" placeholder="Email ou login" required> 
                                                 </div>
                                             </div>
                                             <div class="form-group">

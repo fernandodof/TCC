@@ -73,10 +73,15 @@ function cadastrarCLiente() {
 function login() {
     $dao = new Dao();
 
-    $params['email'] = filter_input(INPUT_POST, 'emailLogin');
     $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'senhaLogin'));
-
-    $cliente = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN, $params);
+    $emailLogin = filter_input(INPUT_POST, 'emailLogin');
+    if (isEmail($emailLogin)) {
+        $params['email'] = $emailLogin;
+        $cliente = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_COM_EMAIl, $params);
+    } else {
+        $params['login'] = $emailLogin;
+        $cliente = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_COM_LOGIN, $params);
+    }
 
     session_start();
     $_SESSION['nome'] = $cliente->getNome();
@@ -85,7 +90,7 @@ function login() {
     $_SESSION['logged_in'] = true;
     $_SESSION['last_activity'] = time();
     $_SESSION['expire_time'] = 30 * 60;
-    
+
     header("Location: ../../../pages/clientePage");
     exit();
 }
@@ -95,4 +100,12 @@ function logout() {
     unset($_SESSION);
     setcookie("PHPSESSID", "", time() - 61200, "/");
     header("Location: ../../../pages/index");
+}
+
+function isEmail($str) {
+    if (filter_var($str, FILTER_VALIDATE_EMAIL)) {
+        return true;
+    } else {
+        return false;
+    }
 }

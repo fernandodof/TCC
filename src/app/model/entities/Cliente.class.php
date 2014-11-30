@@ -23,6 +23,11 @@ class Cliente extends Pessoa {
     private $email;
 
     /**
+     * @Column(type="string", unique=true)
+     * * */
+    private $login;
+
+    /**
      * @ManyToMany(targetEntity="Telefone", cascade={"all"})
      * @JoinTable(name="Pessoa_Telefone",
      *      joinColumns={@JoinColumn(name="id_pessoa", referencedColumnName="id")},
@@ -142,6 +147,22 @@ class Cliente extends Pessoa {
     public function setPedidos($pedidos) {
         $this->pedidos = $pedidos;
     }
+    
+    public function getLogin() {
+        return $this->login;
+    }
+
+    public function getAvaliacoes() {
+        return $this->avaliacoes;
+    }
+
+    public function setLogin($login) {
+        $this->login = $login;
+    }
+
+    public function setAvaliacoes($avaliacoes) {
+        $this->avaliacoes = $avaliacoes;
+    }
 
     public function addPedido(Pedido $pedido) {
         $this->pedidos->add($pedido);
@@ -150,11 +171,9 @@ class Cliente extends Pessoa {
     public function addComentario(Comentario $comentario) {
         $this->comentarios->add($comentario);
     }
-    
+
     public function addAvaliacao(Avaliacao $comentario) {
         $this->comentarios->add($comentario);
     }
-    
-    
-    
+
 }
