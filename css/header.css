@@ -1,4 +1,4 @@
-.navbar-custom {
+/*.navbar-custom {
   background-color: #000000;
   border-color: #000000;
   background-image: -webkit-gradient(linear, left 0%, left 100%, from(#1a1a1a), to(#000000));
@@ -111,7 +111,7 @@
 }
 .navbar-custom .navbar-link:hover {
   color: #877d7d;
-}
+}*/
 
 #loginForm{
     padding: 12px;

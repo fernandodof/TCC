@@ -72,10 +72,25 @@ h4 .commentButton{
     display: none;
 }
 
+.sidebar{
+    border-left: 3px solid #000000;
+}
+
+.rateInputs{
+    width: 100px;
+}
+
 .well .buttons{
     padding: 2px 10px 2px 20px;
 }
 
 .well .buttons a{
     margin: 5px 0px 5px 0px;
+}
+
+.well .commentCountBadge{
+    position: absolute;
+    margin-left: -19px;
+    margin-top: 34px;
+    padding: 0px;
 }

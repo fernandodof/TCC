@@ -27,6 +27,7 @@ function saveRating() {
 
 function sendComment() {
     var comment = $('#commentBox').val();
+    
     if (comment === '') {
         return;
     }
@@ -43,7 +44,8 @@ function sendComment() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            $('#commentBox').val("");
+            $('#commentBox').next().html('300');
+            $('#commentBox').val('');
             alertify.alert("Comentário recebido");
             $('#send').button('reset');
         },
@@ -53,6 +55,7 @@ function sendComment() {
             alert(jqXHR);
         }
     });
+
 }
 
 function initIputs() {
@@ -75,7 +78,16 @@ function initIputs() {
     });
 }
 
+function  setCommentBox() {
+    $('#commentBox').stopVerbosity({
+        limit: 300,
+        indicatorPhrase: ['[countdown]'],
+    });
+}
+
 $(document).ready(function () {
+    templateRoot = $('#templateRoot').val();
+
     $("#rateInputUser").rating({
         starCaptions: function (val) {
             if (val === 0) {
@@ -97,16 +109,7 @@ $(document).ready(function () {
         saveRating();
     });
 
-    $('#commentBox').stopVerbosity({
-        limit: 300,
-        indicatorPhrase: ['[countdown]'
-//            '[countdown]', 'characters remaining.', 'Maximo', '[limit]'
-//            'characters.', '<br>', 'Permits multiple counts up:', '[countup]',
-//            'and counts down:', '[countdown].',
-//            'This indicator is customizable.'
-        ]
-    });
-
     initIputs();
-    templateRoot = $('#templateRoot').val();
+
+    setCommentBox();
 });

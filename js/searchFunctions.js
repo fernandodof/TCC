@@ -1,4 +1,6 @@
-function filterRestaurante(str) {
+function filterRestaurante(str, liId) {
+    $('.liFilterType').removeClass('active');
+    $('#'+liId).addClass('active');
     $('#circleLoader').show();
 
     var search = getUrlParameter('search');

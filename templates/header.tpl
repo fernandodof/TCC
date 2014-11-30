@@ -22,7 +22,7 @@
     <body>
         <header>
             {* Creating a navigation bar *}
-            <nav class="navbar navbar-inverse navbar-custom navbar-static-top" id="nav">
+            <nav class="navbar navbar-default navbar-custom navbar-static-top" id="nav">
                 <div class="container">
                     <input type="hidden" id="templateRoot" value="{$templateRoot}">
                     <div class="navbar-header">
