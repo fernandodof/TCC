@@ -28,7 +28,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-sm-8">
             <div class="panel panel-default">
@@ -51,7 +50,7 @@
                             {foreach from = $restaurants item = restaurante}
                                 <div class="well closed col-xs-12">
                                     <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small> 
-                                        <a class="btn btn-default btn-sm pull-right commentButton {if (count($restaurante->getComentarios()) ==0)} disabl {/if}" href="#"><span class="fa fa-comment commentIcon"></span> 
+                                        <a class="btn btn-default btn-sm pull-right commentButton {if (count($restaurante->getComentarios()) == 0)} disabled {/if}" href="{$templateRoot}pages/comments/{$restaurante->getId()}"><span class="fa fa-comment fa-2x commentIcon"></span> 
                                             <span class="badge">{count($restaurante->getComentarios())}</span></a>
                                     </h4>
                                     <div class="row col-xs-12">

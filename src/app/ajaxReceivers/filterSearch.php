@@ -47,7 +47,14 @@ if (empty($restaurants)) {
     $i=0;
     foreach ($restaurants as $restaurante) {
         echo "<div class='well closed col-xs-12'>";
-            echo "<h4>" . $restaurante->getNome() . "<small> " . $restaurante->getTipo()->getNome() . "</small></h4>";
+            echo "<h4>" . $restaurante->getNome()  . "<small> " . $restaurante->getTipo()->getNome() . "</small>" .
+                 "<a class='btn btn-default btn-sm pull-right commentButton'";
+                    if (count($restaurante->getComentarios()) == 0){
+                    echo " disabled ";
+                    }
+                echo "href=" . $templateRoot . "pages/comments/" . $restaurante->getId() . "><span class='fa fa-comment fa-2x commentIcon'></span> " .  
+                                            "<span class='badge'> " . count($restaurante->getComentarios()) . "</span></a>";
+            echo "</h4>";
             echo "<div class='row col-xs-12'>";
                 echo "<img class='img pull-left' src='" . $templateRoot . "images/icons/rsz_location.png.'/>";
                 echo "<address class='col-xs-10'>" . $restaurante->getEndereco()->getLogradouro() . ", " . $restaurante->getEndereco()->getNumero() . ", Bairro: "
