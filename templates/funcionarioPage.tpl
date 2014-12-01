@@ -21,7 +21,7 @@
             <h4 class="col-xs-12 pull-left">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidos">
                 {$i=0}
-                {foreach from=$pedidos item=pedido}
+                {foreach from=$pedidosRecebidos item=pedido}
                     <div class="pedidoDiv" id="pedidoDiv{$i}">
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">

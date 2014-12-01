@@ -48,7 +48,7 @@
                             <div class="btn btn-default btn-xs"><i class="fa fa-clock-o"></i> {$comentario->getDataHora()->format('d/m/Y - H:i:s')}</div>
                         </div>
                         <br class="clearfix">
-                        <p class="well">{$comentario->getTexto()}</p>
+                        <p class="well commentText">{$comentario->getTexto()}</p>
                     </div>
                 </li>
             {/foreach}

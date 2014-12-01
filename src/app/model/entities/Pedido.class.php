@@ -9,9 +9,13 @@
  * @Entity
  * * */
 require_once 'ItemPedido.class.php';
-require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
 
 class Pedido {
+
+    const PEDIDO_RECEBIDO = 1;
+    const PEDIDO_COZINHA = 2;
+    const PEDIDO_ENTREGA = 3;
+    const PEDIDO_FINALIZADO = 4;
 
     /**
      * @Column(type="integer")
@@ -57,7 +61,7 @@ class Pedido {
     private $restaurante;
     
     /**
-     * @Column(type="boolean")
+     * @Column(type="integer")
      * **/
     private $status = false;
 

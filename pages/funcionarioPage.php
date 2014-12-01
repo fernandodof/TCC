@@ -30,9 +30,9 @@ if (count($produtos) > 0) {
 }
 
 $params['id'] = $restaurante->getId();
-$pedidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RESTAURANTE_EM_ABERTO, $params);
+$pedidosRecebidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RECEBIDOS_RESTAURANTE, $params);
 
-foreach ($pedidos as $pedido) {
+foreach ($pedidosRecebidos as $pedido) {
     $idsPedidos[] = $pedido->getId();
 }
 
@@ -55,7 +55,7 @@ foreach ($historicoPedidos as $p) {
 }
 $smarty->assign('historicoPedidos', $historicoPedidos);
 
-$smarty->assign('pedidos', $pedidos);
+$smarty->assign('pedidosRecebidos', $pedidosRecebidos);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('categorias', $categorias);
