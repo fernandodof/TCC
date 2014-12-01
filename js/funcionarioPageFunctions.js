@@ -55,7 +55,7 @@ function formatPrices() {
     });
 }
 
-function qureyPedidos() {
+function qureyPedidosNovos() {
     var idRestaurante = $('#idRestaurante').val();
 
     var data = {idRestaurante: idRestaurante};
@@ -66,13 +66,52 @@ function qureyPedidos() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            $('#pedidos').prepend(serverResponse);
+            $('#pedidosRecebidos').append(serverResponse);
         },
         error: function (serverResponse) {
             alertify.alert(serverResponse);
         }
     });
 }
+
+function qureyPedidosCozinha() {
+    var idRestaurante = $('#idRestaurante').val();
+
+    var data = {idRestaurante: idRestaurante};
+    var url = '../src/app/ajaxReceivers/kitchenOrders.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('#pedidosCozinha').append(serverResponse);
+        },
+        error: function (serverResponse) {
+            alertify.alert(serverResponse);
+        }
+    });
+}
+
+function qureyPedidosEntrega() {
+    var idRestaurante = $('#idRestaurante').val();
+
+    var data = {idRestaurante: idRestaurante};
+    var url = '../src/app/ajaxReceivers/deliveryOrders.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('#pedidosEntrega').append(serverResponse);
+        },
+        error: function (serverResponse) {
+            alertify.alert(serverResponse);
+        }
+    });
+}
+
 
 
 function resetAlertify() {
@@ -86,16 +125,17 @@ function resetAlertify() {
     });
 }
 
-function removerPedido(checkbox) {
+function enviarPedidoCozinha(checkbox) {
     resetAlertify();
     if (checkbox.checked) {
-        alertify.confirm("Este pedido foi encaminhado para entrega ? ao clicar sim este pedido será removido da lista", function (e) {
+        alertify.confirm("Este pedido será enviado para a cozinha. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {
 
                 var idPedido = $('#idPedido' + checkbox.value).val();
-                $('#pedidoDiv' + checkbox.value).remove();
+                var status = '2';
+                $('#pedidoRecebidoDiv' + checkbox.value).remove();
 
-                var data = {idPedido: idPedido};
+                var data = {idPedido: idPedido, status: status};
                 var url = '../src/app/ajaxReceivers/changeOrderStatus.php';
                 $.ajax({
                     type: "POST",
@@ -103,19 +143,115 @@ function removerPedido(checkbox) {
                     async: true,
                     data: data,
                     success: function (serverResponse) {
-                        $('#pedidos').prepend(serverResponse);
+                        $('#pedidosRecebidos').prepend(serverResponse);
                     },
                     error: function (serverResponse) {
                         alert(serverResponse);
                     }
                 });
-                alertify.log('Pedido removido da lista');
+                alertify.log('Pedido enviado para cozinha');
             } else {
                 checkbox.checked = false;
             }
         });
     }
 }
+
+function enviarPedidoEntrega(checkbox) {
+    resetAlertify();
+    if (checkbox.checked) {
+        alertify.confirm("Este pedido será enviado para a entrega. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
+            if (e) {
+
+                var idPedido = $('#idPedido' + checkbox.value).val();
+                var status = '3';
+                $('#pedidoCozinhaDiv' + checkbox.value).remove();
+                var data = {idPedido: idPedido, status: status};
+                var url = '../src/app/ajaxReceivers/changeOrderStatus.php';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    async: true,
+                    data: data,
+                    success: function (serverResponse) {
+                        $('#pedidosCozinha').prepend(serverResponse);
+                    },
+                    error: function (serverResponse) {
+                        alert(serverResponse);
+                    }
+                });
+                alertify.log('Pedido enviado para entrega');
+            } else {
+                checkbox.checked = false;
+            }
+        });
+    }
+}
+
+function finalizarPedido(checkbox) {
+    resetAlertify();
+    if (checkbox.checked) {
+        alertify.confirm("Este pedido será finalizado. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
+            if (e) {
+
+                var idPedido = $('#idPedido' + checkbox.value).val();
+                var status = '4';
+                $('#pedidoEntregaDiv' + checkbox.value).remove();
+                var data = {idPedido: idPedido, status: status};
+                var url = '../src/app/ajaxReceivers/changeOrderStatus.php';
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    async: true,
+                    data: data,
+                    success: function (serverResponse) {
+                        $('#pedidosEntrega').prepend(serverResponse);
+                    },
+                    error: function (serverResponse) {
+                        alert(serverResponse);
+                    }
+                });
+                alertify.success('Pedido enviado para entrega');
+            } else {
+                checkbox.checked = false;
+            }
+        });
+    }
+}
+
+$(function(){
+    activate('img[src*=".svg"]');
+
+    function activate(string){
+        jQuery(string).each(function(){
+            var $img = jQuery(this);
+            var imgID = $img.attr('id');
+            var imgClass = $img.attr('class');
+            var imgURL = $img.attr('src');
+
+            jQuery.get(imgURL, function(data) {
+                // Get the SVG tag, ignore the rest
+                var $svg = jQuery(data).find('svg');
+
+                // Add replaced image's ID to the new SVG
+                if(typeof imgID !== 'undefined') {
+                    $svg = $svg.attr('id', imgID);
+                }
+                // Add replaced image's classes to the new SVG
+                if(typeof imgClass !== 'undefined') {
+                    $svg = $svg.attr('class', imgClass+' replaced-svg');
+                }
+
+                // Remove any invalid XML tags as per http://validator.w3.org
+                $svg = $svg.removeAttr('xmlns:a');
+
+                // Replace image with new SVG
+                $img.replaceWith($svg);
+
+            }, 'xml');
+        });
+    }
+});
 
 $(document).ready(function () {
     $('#historicoPedidos').DataTable(
@@ -154,7 +290,9 @@ $(document).ready(function () {
             });
 
     formatPrices();
-    setInterval("qureyPedidos()", 3000);
+    setInterval("qureyPedidosNovos()", 3000);
+    setInterval("qureyPedidosCozinha()", 3000);
+    setInterval("qureyPedidosEntrega()", 3000);
 });
 
 

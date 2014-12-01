@@ -75,6 +75,7 @@ class Dao {
         foreach ($params as $key => $value) {
             $query->setParameter($key, $value);
         }
+//        print_r($query->getParameters());
         return $query->getResult();
     }
 

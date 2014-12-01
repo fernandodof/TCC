@@ -57,7 +57,8 @@ if(!isset($_SESSION['idRestauranteDoPedidoAtual'])){
     $pedido->setDataHora(new \DateTime());
     $pedido->setCliente($cliente);
     $pedido->setRestaurante($restaurante);
-
+    $pedido->setStatus(Pedido::PEDIDO_RECEBIDO);
+    
     $cliente->addPedido($pedido);
     $restaurante->addPedido($pedido);
 

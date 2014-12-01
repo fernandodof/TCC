@@ -30,15 +30,45 @@ if (count($produtos) > 0) {
 }
 
 $params['id'] = $restaurante->getId();
-$pedidosRecebidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RECEBIDOS_RESTAURANTE, $params);
+
+//novos
+$params['status'] = Pedido::PEDIDO_RECEBIDO;
+$pedidosRecebidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
 
 foreach ($pedidosRecebidos as $pedido) {
-    $idsPedidos[] = $pedido->getId();
+    $idsPedidosRecebidos[] = $pedido->getId();
 }
 
-if (isset($idsPedidos) && $idsPedidos != null) {
-    $_SESSION['pedidosCarregados'] = $idsPedidos;
+if (isset($idsPedidosRecebidos) && $idsPedidosRecebidos != null) {
+    $_SESSION['pedidosNovosCarregados'] = $idsPedidosRecebidos;
 }
+
+
+//cozinha
+$params['status'] = Pedido::PEDIDO_COZINHA;
+$pedidosEntrega = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
+
+foreach ($pedidosEntrega as $pedido) {
+    $idsPedidosCozinha[] = $pedido->getId();
+}
+
+if (isset($idsPedidosCozinha) && $idsPedidosCozinha != null) {
+    $_SESSION['pedidosCozinhaCarregados'] = $idsPedidosCozinha;
+}
+
+//entrega
+$params['status'] = Pedido::PEDIDO_ENTREGA;
+$pedidosEntrega = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
+
+foreach ($pedidosEntrega as $pedido) {
+    $idsPedidosEntrega[] = $pedido->getId();
+}
+
+if (isset($idsPedidosEntrega) && $idsPedidosEntrega != null) {
+    $_SESSION['pedidosEntregaCarregados'] = $idsPedidosEntrega;
+}
+
+
 
 if (substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/') == 4) {
 
@@ -56,6 +86,8 @@ foreach ($historicoPedidos as $p) {
 $smarty->assign('historicoPedidos', $historicoPedidos);
 
 $smarty->assign('pedidosRecebidos', $pedidosRecebidos);
+$smarty->assign('pedidosCozinha', $pedidosEntrega);
+$smarty->assign('pedidosEntrega', $pedidosEntrega);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('categorias', $categorias);

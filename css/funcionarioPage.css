@@ -5,7 +5,16 @@
 }
 
 .sidebar .active span{
-    color: #f0c040;
+    color: #ACE63C;
+}
+
+.sidebar svg, span{
+    width: 30px;
+    width: 30px;
+}
+
+.sidebar .active svg{
+    fill: #ACE63C;
 }
 
 h3{
@@ -56,12 +65,31 @@ h3{
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+.pedidoDiv .obs, .obs small{
+    color: #11BA9A;
+}
+
+.pedidoDiv{
+    border: 1px solid #228AAD;
+}
+
 .pedidoDiv{
     margin-bottom: 20px;
     border: 1px solid #228AAD;
-    border-left: 5px solid black;
     padding: 10px;
     padding-bottom: 25px;
+}
+
+#pedidosRecebidos .pedidoDiv{
+    border-left: 7px solid #C11B17;
+}
+
+#pedidosCozinha .pedidoDiv{
+    border-left: 7px solid #FBB117;
+}
+
+#pedidosEntrega .pedidoDiv{
+    border-left: 7px solid #348017;
 }
 
 .checkboxPedidoDiv label{
@@ -126,7 +154,7 @@ h4 i{
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: #eee;
+    background-color: #eee;
 }
 
 .idPedido{

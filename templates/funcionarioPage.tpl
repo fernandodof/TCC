@@ -13,21 +13,23 @@
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-3 sidebar">
         <li class=""><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
-        <li><a href="#tab_b" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
-        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_c" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
+        <li class=""><a href="#tab_b" data-toggle="pill">Pedidos na Cozinha <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/chef16.svg" alt="Cozinha"></a></a></li>
+        <li class=""><a href="#tab_c" data-toggle="pill">Pedidos em entrega <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/logistics3.svg" alt="Cozinha"></a></a></li>
+        <li><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
+        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
     <div class="tab-content col-md-9">
         <div class="tab-pane" id="tab_a">
             <h4 class="col-xs-12 pull-left">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
-            <div class="col-xs-12" id="pedidos">
+            <div class="col-xs-12" id="pedidosRecebidos">
                 {$i=0}
                 {foreach from=$pedidosRecebidos item=pedido}
-                    <div class="pedidoDiv" id="pedidoDiv{$i}">
+                    <div class="pedidoDiv" id="pedidoRecebidoDiv{$i}">
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
                             <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
-                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedido{$i}" onchange="removerPedido(this);">
-                            <label for="pedido{$i}"><span>Encaminhado para entrega</span></label>
+                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoRecebido{$i}" onchange="enviarPedidoCozinha(this);">
+                            <label for="pedidoRecebido{$i}"><span class="lbEncaminharCozinha">Encaminhar para cozinha</span></label>
                         </div>
                         <table class="table table-condensed table-responsive table-striped">
                             <thead>
@@ -61,6 +63,62 @@
                                 {/foreach}
                             </div>
                         </div>
+                        {if $pedido->getObservacoes() != null}
+                            <h3 class="obs">Observações: <small>{$pedido->getObservacoes()}</small></h3>
+                        {/if}
+                    </div>
+                    {$i=$i+1}
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="tab-pane" id="tab_b">
+            <h4 class="col-xs-12 pull-left">Pedidos na Cozinha <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
+            <div class="col-xs-12" id="pedidosCozinha">
+                {$i=0}
+                {foreach from=$pedidosCozinha item=pedido}
+                    <div class="pedidoDiv" id="pedidoCozinhaDiv{$i}">
+                        <label class="idPedido">#{$pedido->getId()}</label>
+                        <div class="pull-right checkboxPedidoDiv">
+                            <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
+                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoCozinha{$i}" onchange="enviarPedidoEntrega(this);">
+                            <label for="pedidoCozinha{$i}"><span class="lbEncaminharEntrega">Encaminhar para entrega</span></label>
+                        </div>
+                        <table class="table table-condensed table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantidade</th>
+                                    <th>Tamanho</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach from=$pedido->getItensPedido() item=it}
+                                    <tr>
+                                        <td>{$it->getProduto()->getNome()}</td>
+                                        <td>{$it->getQuantidade()}</td>
+                                        <td>{$it->getTamanho()->getDescricao()}</td>
+                                        <td>R$ {$it->getSubtotal()}</td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                        <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
+                        <div class="infoCliente">
+                            <h4 class="nomeCliente"><span>Cliente: </span>{$pedido->getCliente()->getNome()}</h4>
+                            <h4  data-toggle="collapse" data-target="#endereco{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
+                            <div class="collapse" id="endereco{$i}">
+                                {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                    <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
+                                    <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
+                                    <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
+                                {/foreach}
+                            </div>
+                        </div>
+                        {if $pedido->getObservacoes() != null}
+                            <h3 class="obs">Observações: <small>{$pedido->getObservacoes()}</small></h3>
+                        {/if}
                     </div>
                     {$i=$i+1}
                 {/foreach}
@@ -68,8 +126,61 @@
         </div>
 
 
-        <div class="tab-pane" id="tab_b">
-            <h4 class="col-xs-12 pull-left">Historico de pedidos <i class="fa fa-history fa-2x pull-right"></i></h4>
+        <div class="tab-pane" id="tab_c">
+            <h4 class="col-xs-12 pull-left">Pedidos em Entrega <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
+            <div class="col-xs-12" id="pedidosEntrega">
+               {$i=0}
+               {foreach from=$pedidosEntrega item=pedido}
+                    <div class="pedidoDiv" id="pedidoEntregaDiv{$i}">
+                        <label class="idPedido">#{$pedido->getId()}</label>
+                        <div class="pull-right checkboxPedidoDiv">
+                            <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
+                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoEntrega{$i}" onchange="finalizarPedido(this);">
+                            <label for="pedidoEntrega{$i}"><span class="lbFinalizar">Finalizar pedido</span></label>
+                        </div>
+                        <table class="table table-condensed table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantidade</th>
+                                    <th>Tamanho</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {foreach from=$pedido->getItensPedido() item=it}
+                                    <tr>
+                                        <td>{$it->getProduto()->getNome()}</td>
+                                        <td>{$it->getQuantidade()}</td>
+                                        <td>{$it->getTamanho()->getDescricao()}</td>
+                                        <td>R$ {$it->getSubtotal()}</td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                        <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
+                        <div class="infoCliente">
+                            <h4 class="nomeCliente"><span>Cliente: </span>{$pedido->getCliente()->getNome()}</h4>
+                            <h4  data-toggle="collapse" data-target="#endereco{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
+                            <div class="collapse" id="endereco{$i}">
+                                {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                    <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
+                                    <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
+                                    <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
+                                {/foreach}
+                            </div>
+                        </div>
+                        {if $pedido->getObservacoes() != null}
+                            <h3 class="obs">Observações: <small>{$pedido->getObservacoes()}</small></h3>
+                        {/if}
+                    </div>
+                    {$i=$i+1}
+                {/foreach}
+            </div>
+        </div>
+
+        <div class="tab-pane" id="tab_d">
+            <h4 class="col-xs-12 pull-left">Pedidos em entrega <i class="fa fa-history fa-2x pull-right"></i></h4>
             <div id="historico">
                 <table id="historicoPedidos" class="display table-striped">
                     <thead>
@@ -142,7 +253,7 @@
             </div>
         </div>
 
-        <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_c">
+        <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_e">
             <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle" id="openCardapio">Cardápio <b class="caret"></b></h4>
             <div id="cardapio" class="collapse">
                 <ul class="nav nav-tabs nav-justified" data-tabs="tabs" role="tablist">

@@ -6,15 +6,14 @@ require_once '../model/entities/Pedido.class.php';
 session_start();
 
 $params['id'] = filter_input(INPUT_POST, 'idRestaurante');
-$params['dataHora'] = $_SESSION['paginaFuncionarioCarregada'];
-$params['status'] = Pedido::PEDIDO_RECEBIDO;
+$params['status'] = Pedido::PEDIDO_COZINHA;
 
 $dao = new Dao();
-$pedidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
+$pedidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
 
-if (isset($_SESSION['pedidosNovosCarregados'])) {
+if (isset($_SESSION['pedidosCozinhaCarregados'])) {
 
-    $pedidosCaregados = $_SESSION['novosPedidosCarregados'];
+    $pedidosCaregados = $_SESSION['pedidosCozinhaCarregados'];
 
     $pedidosEntrega = new Doctrine\Common\Collections\ArrayCollection();
 
@@ -22,20 +21,21 @@ if (isset($_SESSION['pedidosNovosCarregados'])) {
         if (!in_array($pedido->getId(), $pedidosCaregados)) {
             $pedidosEntrega->add($pedido);
             $pedidosCaregados[] = $pedido->getId();
-            $_SESSION['novosPedidosCarregados'] = $pedidosCaregados;
+            $_SESSION['pedidosCozinhaCarregados'] = $pedidosCaregados;
         }
     }
 }
+
 
 if (isset($pedidosEntrega)) {
     $i = count($pedidosCaregados) - 1;
     if (count($pedidosEntrega) > 0) {
         foreach ($pedidosEntrega as $pedido) {
-            echo "<div class='pedidoDiv'id='pedidoRecebidoDiv" . $i . "'>";
+            echo "<div class='pedidoDiv'id='pedidoCozinhaDiv" . $i . "'>";
                 echo "<label class='idPedido'>#" . $pedido->getId() . "</label>";
                     echo "<div class='pull-right checkboxPedidoDiv'>";
-                        echo "<input type='checkBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='enviarPedidoCozinha(this)';>";
-                        echo "<label for='pedido" . $i . "'><span class='lbEncaminharCozinha'>Encaminhar para cozinha</span></label>";
+                        echo "<input type='checkBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='enviarPedidoEntrega(this)';>";
+                        echo "<label for='pedido" . $i . "'><span class='lbEncaminharEntrega'>Encaminhar para entrega</span></label>";
                     echo "</div>";
                     echo "<table class='table table-condensed table-responsive table-striped'>";
                         echo "<thead>";

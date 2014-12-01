@@ -26,9 +26,9 @@ $dao = new Dao();
 //$params['id'] = '37';
 //$dao->executeQueryWithParameters(Queries::SET_PEDIDO_ENCAMINHADO, $params);
 
-$params['id_cliente'] = '2';
-$idRestauratesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
-var_dump($idRestauratesComprados);
+//$params['id_cliente'] = '2';
+//$idRestauratesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
+//var_dump($idRestauratesComprados);
 //
 //
 //$params['id_cliente'] = 1;
@@ -37,3 +37,10 @@ var_dump($idRestauratesComprados);
 //
 //
 //var_dump($nota);
+
+$params['id'] = '2';
+$params['dataHora'] = new \DateTime();
+$params['status'] = Pedido::PEDIDO_COZINHA;
+
+$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
+var_dump($r);

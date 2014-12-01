@@ -17,9 +17,9 @@ class Queries {
     const TIPOS_RESTAURANTE_DISTINCT = 'SELECT DISTINCT t.nome FROM tiporestaurante t';
     const GET_NOME_RESTAURANTE_BY_ID = 'SELECT r.nome FROM restaurante r WHERE r.id = :id';
     const GET_PEDIDOS_RESTAURANTE = 'SELECT p FROM pedido p WHERE p.restaurante = :id';
-    const GET_PEDIDOS_RECEBIDOS_RESTAURANTE = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = 1';
-    const GET_PEDIDOS_RESTAURANTE_EM_ABERTO_DATA = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = false and p.dataHora > :dataHora';
-    const SET_PEDIDO_ENCAMINHADO = 'UPDATE pedido p SET p.status = true WHERE p.id = :id';
+    const GET_PEDIDOS_POR_STATUS_RESTAURANTE = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = :status';
+    const GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = :status and p.dataHora > :dataHora';
+    const SET_PEDIDO_STATUS = 'UPDATE pedido p SET p.status = :status WHERE p.id = :id';
     
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante FROM pedido p WHERE p.id_cliente = :id_cliente';
