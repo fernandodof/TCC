@@ -1,18 +1,18 @@
 [
     {
         "name": "symfony/console",
-        "version": "v2.5.6",
-        "version_normalized": "2.5.6.0",
+        "version": "v2.6.0",
+        "version_normalized": "2.6.0.0",
         "target-dir": "Symfony/Component/Console",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/Console.git",
-            "reference": "6f177fca24200a5b97aef5ce7a5c98124a0f0db0"
+            "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Console/zipball/6f177fca24200a5b97aef5ce7a5c98124a0f0db0",
-            "reference": "6f177fca24200a5b97aef5ce7a5c98124a0f0db0",
+            "url": "https://api.github.com/repos/symfony/Console/zipball/d3bac228fd7a2aac9193e241b239880b3ba39a10",
+            "reference": "d3bac228fd7a2aac9193e241b239880b3ba39a10",
             "shasum": ""
         },
         "require": {
@@ -20,17 +20,19 @@
         },
         "require-dev": {
             "psr/log": "~1.0",
-            "symfony/event-dispatcher": "~2.1"
+            "symfony/event-dispatcher": "~2.1",
+            "symfony/process": "~2.1"
         },
         "suggest": {
             "psr/log": "For using the console logger",
-            "symfony/event-dispatcher": ""
+            "symfony/event-dispatcher": "",
+            "symfony/process": ""
         },
-        "time": "2014-10-05 13:57:04",
+        "time": "2014-11-20 13:24:23",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.5-dev"
+                "dev-master": "2.6-dev"
             }
         },
         "installation-source": "dist",

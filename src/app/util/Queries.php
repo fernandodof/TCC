@@ -20,7 +20,9 @@ class Queries {
     const GET_PEDIDOS_POR_STATUS_RESTAURANTE = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = :status';
     const GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = :status and p.dataHora > :dataHora';
     const SET_PEDIDO_STATUS = 'UPDATE pedido p SET p.status = :status WHERE p.id = :id';
-    
+    const UPDATE_STATUS_PEDIDO = 'UPDATE pedido p SET p.status = p.status+1 WHERE p.id = :id';
+
+
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante FROM pedido p WHERE p.id_cliente = :id_cliente';
     const GET_NOTA_CLINTE_RESTAURANTE = 'SELECT id, nota FROM avaliacao WHERE id_cliente = :id_cliente and id_restaurante = :id_restaurante';

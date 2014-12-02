@@ -75,7 +75,6 @@ class Dao {
         foreach ($params as $key => $value) {
             $query->setParameter($key, $value);
         }
-//        print_r($query->getParameters());
         return $query->getResult();
     }
 
@@ -91,9 +90,14 @@ class Dao {
     }
 
     public function executeQueryWithParameters($queryInstruction, $params) {
+        $this->em->beginTransaction();
+
         $query = $this->em->createQuery($queryInstruction);
         $query->setParameters($params);
         $query->execute();
+
+        $this->em->flush();
+        $this->em->commit();
     }
 
     public function getListResultOfNativeQueryWithParameters($queryInstruction, $params) {
@@ -108,6 +112,4 @@ class Dao {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    
-    
 }

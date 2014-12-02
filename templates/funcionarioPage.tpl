@@ -54,8 +54,8 @@
                         <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
                         <div class="infoCliente">
                             <h4 class="nomeCliente"><span>Cliente: </span>{$pedido->getCliente()->getNome()}</h4>
-                            <h4  data-toggle="collapse" data-target="#endereco{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
-                            <div class="collapse" id="endereco{$i}">
+                            <h4  data-toggle="collapse" data-target="#enderecoNovosPedidos{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
+                            <div class="collapse" id="enderecoNovosPedidos{$i}">
                                 {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                     <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
                                     <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
@@ -107,8 +107,8 @@
                         <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
                         <div class="infoCliente">
                             <h4 class="nomeCliente"><span>Cliente: </span>{$pedido->getCliente()->getNome()}</h4>
-                            <h4  data-toggle="collapse" data-target="#endereco{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
-                            <div class="collapse" id="endereco{$i}">
+                            <h4  data-toggle="collapse" data-target="#enderecoCozinha{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
+                            <div class="collapse" id="enderecoCozinha{$i}">
                                 {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                     <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
                                     <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
@@ -161,8 +161,8 @@
                         <label class="pull-right valorTotal">TOTAL: R$ {$pedido->getValorTotal()}</label>
                         <div class="infoCliente">
                             <h4 class="nomeCliente"><span>Cliente: </span>{$pedido->getCliente()->getNome()}</h4>
-                            <h4  data-toggle="collapse" data-target="#endereco{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
-                            <div class="collapse" id="endereco{$i}">
+                            <h4  data-toggle="collapse" data-target="#enderecoEntrega{$i}" class="elementToggle verEndereco">Clique Aqui Para Ver o Endereço <i class="fa fa-chevron-circle-down"></i></h4>
+                            <div class="collapse" id="enderecoEntrega{$i}">
                                 {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                     <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
                                     <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>

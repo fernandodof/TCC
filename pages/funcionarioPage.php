@@ -31,6 +31,11 @@ if (count($produtos) > 0) {
 
 $params['id'] = $restaurante->getId();
 
+//unset 
+unset($_SESSION['pedidosNovosCarregados']);
+unset($_SESSION['pedidosCozinhaCarregados'] );
+unset($_SESSION['pedidosEntregaCarregados']);
+
 //novos
 $params['status'] = Pedido::PEDIDO_RECEBIDO;
 $pedidosRecebidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
@@ -46,9 +51,9 @@ if (isset($idsPedidosRecebidos) && $idsPedidosRecebidos != null) {
 
 //cozinha
 $params['status'] = Pedido::PEDIDO_COZINHA;
-$pedidosEntrega = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
+$pedidosCozinha = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
 
-foreach ($pedidosEntrega as $pedido) {
+foreach ($pedidosCozinha as $pedido) {
     $idsPedidosCozinha[] = $pedido->getId();
 }
 
@@ -86,7 +91,7 @@ foreach ($historicoPedidos as $p) {
 $smarty->assign('historicoPedidos', $historicoPedidos);
 
 $smarty->assign('pedidosRecebidos', $pedidosRecebidos);
-$smarty->assign('pedidosCozinha', $pedidosEntrega);
+$smarty->assign('pedidosCozinha', $pedidosCozinha);
 $smarty->assign('pedidosEntrega', $pedidosEntrega);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);

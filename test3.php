@@ -38,9 +38,10 @@ $dao = new Dao();
 //
 //var_dump($nota);
 
-$params['id'] = '2';
-$params['dataHora'] = new \DateTime();
-$params['status'] = Pedido::PEDIDO_COZINHA;
-
-$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
-var_dump($r);
+//$params['id'] = '2';
+//$params['dataHora'] = new \DateTime();
+//$params['status'] = Pedido::PEDIDO_COZINHA;
+//
+//$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
+session_start();
+var_dump($_SESSION);
