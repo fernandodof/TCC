@@ -73,8 +73,6 @@ if (isset($idsPedidosEntrega) && $idsPedidosEntrega != null) {
     $_SESSION['pedidosEntregaCarregados'] = $idsPedidosEntrega;
 }
 
-
-
 if (substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/') == 4) {
 
     list(,,,, $produtoCadastrado) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
@@ -84,7 +82,18 @@ if (substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/') == 4) {
     }
 }
 
-$historicoPedidos = $restaurante->getPedidos();
+//historico
+$params['status'] = Pedido::PEDIDO_FINALIZADO;
+$historicoPedidos = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE, $params);
+
+foreach ($historicoPedidos as $pedido) {
+    $idsPedidosHistorico[] = $pedido->getId();
+}
+
+if (isset($idsPedidosHistorico) && $idsPedidosHistorico != null) {
+    $_SESSION['pedidosHistorioCarregados'] = $idsPedidosHistorico;
+}
+
 foreach ($historicoPedidos as $p) {
     $p->setDataHora($p->getDataHora()->format('d/m/Y - H:i:s'));
 }

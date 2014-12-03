@@ -20,7 +20,7 @@
     </ul>
     <div class="tab-content col-md-9">
         <div class="tab-pane" id="tab_a">
-            <h4 class="col-xs-12 pull-left">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
+            <h4 class="col-xs-12 pull-left novosPedidosLb">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidosRecebidos">
                 {$i=0}
                 {foreach from=$pedidosRecebidos item=pedido}
@@ -73,7 +73,7 @@
         </div>
 
         <div class="tab-pane" id="tab_b">
-            <h4 class="col-xs-12 pull-left">Pedidos na Cozinha <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
+            <h4 class="col-xs-12 pull-left pedidosCozinhaLb">Pedidos na Cozinha <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidosCozinha">
                 {$i=0}
                 {foreach from=$pedidosCozinha item=pedido}
@@ -127,10 +127,10 @@
 
 
         <div class="tab-pane" id="tab_c">
-            <h4 class="col-xs-12 pull-left">Pedidos em Entrega <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
+            <h4 class="col-xs-12 pull-left pedidosEntregaLb">Pedidos em Entrega <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidosEntrega">
-               {$i=0}
-               {foreach from=$pedidosEntrega item=pedido}
+                {$i=0}
+                {foreach from=$pedidosEntrega item=pedido}
                     <div class="pedidoDiv" id="pedidoEntregaDiv{$i}">
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
@@ -204,8 +204,8 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4>Itens</h4>
                                                     <h5>{$pedido->getDataHora()}</h5>
+                                                    <h4>Itens</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table table-hover table-responsive table-condensed">

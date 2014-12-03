@@ -79,7 +79,7 @@
                                                 <a class="btn btn-default btn-sm pull-left" href="{$templateRoot}pages/rate/{$restaurante->getId()}">Avaliar estabelecimento</a>
                                             {/if}   
                                         {/if}   
-                                        <a class="btn btn-primary btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
+                                        <a class="btn btn-info btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
                                     </div>
                                     <div class="col-xs-5">
                                     <input class="rateInputs pull-left" data-show-clear="false" value="{$avgRating[$i]}">

@@ -80,7 +80,7 @@ if (empty($restaurants)) {
                         echo "<a class='btn btn-default btn-sm pull-left' href='". $templateRoot . "pages/rate/". $restaurante->getId() . "'>Avaliar estabelecimento</a>";
                     }   
                 }   
-            echo "<a class='btn btn-primary btn-sm pull-right btVerCardapio' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
+            echo "<a class='btn btn-info btn-sm pull-right btVerCardapio' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
             echo "</div>";
             echo "<input class='rateInputs' data-show-clear='false' value='" . $avgRating[$i] . "'>";
         echo "</div>";

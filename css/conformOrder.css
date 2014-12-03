@@ -31,6 +31,15 @@
 
 }
 
+table#cart tbody tr{
+    border-bottom: 1px solid #C1C1C1; 
+}
+
+table#cart tbody#quantidade{
+    padding-left: 0;
+    padding-right: 0;
+}
+
 #loader{
     display: none;
     position:fixed;
@@ -117,4 +126,9 @@ textarea[name=observacoes] {
 #faces #imgFace {
     width: 200px;
     width: 200px;
+}
+
+#confirmar{
+    padding-left: 45px;
+    padding-right: 45px;
 }

@@ -58,7 +58,7 @@
                             <td colspan="2" class="hidden-xs"></td>
                             <td class="hidden-xs text-center bold">Total R$ {$smarty.session.pedido->getValorTotal()}</td>
                     <form method="POST" action="javascript:void(0)">
-                        <td><button class="btn btn-success btn-block" data-loading-text="Enviando....." id="confirmar" onclick="checkout();">Comfirmar <i class="fa fa-angle-right"></i></button></td>
+                        <td><button class="btn btn-success btn-block" data-loading-text="Enviando..." id="confirmar" onclick="checkout();"> Comfirmar <i class="fa fa-angle-right"></i></button></td>
                     </form>
                     </tr>
                     </tfoot>

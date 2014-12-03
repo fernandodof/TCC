@@ -130,7 +130,6 @@ function enviarPedidoCozinha(checkbox) {
     var idPedido = $('#idPedido' + checkbox.value).val();
     var status = 2;
 
-    alert(status + " " + idPedido);
     if (checkbox.checked) {
         alertify.confirm("Este pedido será enviado para a cozinha. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {
@@ -164,7 +163,7 @@ function enviarPedidoEntrega(checkbox) {
 
     var idPedido = $('#idPedido' + checkbox.value).val();
     var status = 3;
-    alert(status + " " + idPedido);
+    
     if (checkbox.checked) {
         alertify.confirm("Este pedido será enviado para a entrega. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {
@@ -196,7 +195,7 @@ function finalizarPedido(checkbox) {
 
     var idPedido = $('#idPedido' + checkbox.value).val();
     var status = 4;
-    alert(status + " " + idPedido);
+
     if (checkbox.checked) {
         alertify.confirm("Este pedido será finalizado. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {

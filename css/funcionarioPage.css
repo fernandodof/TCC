@@ -92,6 +92,11 @@ h3{
     border-left: 7px solid #348017;
 }
 
+.novosPedidosLb i, 
+.pedidosCozinhaLb i, .pedidosEntregaLb i{
+    color: #2C3E50;
+}
+
 .checkboxPedidoDiv label{
     padding: 6px;
     font-weight: normal;
@@ -153,8 +158,8 @@ h4 i{
     color: #228AAD;
 }
 
-.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-    background-color: #eee;
+.pedidoDiv .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #D4D8DC;
 }
 
 .idPedido{
