@@ -1,21 +1,21 @@
 <head>
     <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
+    <script src="{$templateRoot}dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <link href="{$templateRoot}css/funcionarioPage.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
-
-    <script src="{$templateRoot}dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-3 sidebar">
         <li class=""><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
-        <li class=""><a href="#tab_b" data-toggle="pill">Pedidos na Cozinha <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/chef16.svg" alt="Cozinha"></a></a></li>
-        <li class=""><a href="#tab_c" data-toggle="pill">Pedidos em entrega <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/logistics3.svg" alt="Cozinha"></a></a></li>
-        <li><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
+        <li class=""><a href="#tab_b" data-toggle="pill">Pedidos na Cozinha <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/chef16.svg" alt="Cozinha"></a></li>
+        <li class=""><a href="#tab_c" data-toggle="pill">Pedidos em entrega <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/logistics3.svg" alt="Cozinha"></a></li>
+        <li class=""><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
         <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
     <div class="tab-content col-md-9">
@@ -27,7 +27,7 @@
                     <div class="pedidoDiv" id="pedidoRecebidoDiv{$i}">
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
-                            <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
+                            <input type="hidden" value="{$pedido->getId()}" id="idPedidoRecebido{$i}">
                             <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoRecebido{$i}" onchange="enviarPedidoCozinha(this);">
                             <label for="pedidoRecebido{$i}"><span class="lbEncaminharCozinha">Encaminhar para cozinha</span></label>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="pedidoDiv" id="pedidoCozinhaDiv{$i}">
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
-                            <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
+                            <input type="hidden" value="{$pedido->getId()}" id="idPedidoCozinha{$i}">
                             <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoCozinha{$i}" onchange="enviarPedidoEntrega(this);">
                             <label for="pedidoCozinha{$i}"><span class="lbEncaminharEntrega">Encaminhar para entrega</span></label>
                         </div>
@@ -134,7 +134,7 @@
                     <div class="pedidoDiv" id="pedidoEntregaDiv{$i}">
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
-                            <input type="hidden" value="{$pedido->getId()}" id="idPedido{$i}">
+                            <input type="hidden" value="{$pedido->getId()}" id="idPedidoEntrega{$i}">
                             <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoEntrega{$i}" onchange="finalizarPedido(this);">
                             <label for="pedidoEntrega{$i}"><span class="lbFinalizar">Finalizar pedido</span></label>
                         </div>
@@ -179,8 +179,9 @@
             </div>
         </div>
 
-        <div class="tab-pane" id="tab_d">
-            <h4 class="col-xs-12 pull-left">Pedidos em entrega <i class="fa fa-history fa-2x pull-right"></i></h4>
+        <div class="tab-pane" id="tab_d">                      
+            <button class="btn btn-info btn-sm" data-loading-text="Atualizando ...." onclick="updateHitorico();" id="update">Atualizar Historio</button>
+            <h4 class="col-xs-12 pull-left">Historico <img id="historyIcon" class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/history.svg"/></h4>
             <div id="historico">
                 <table id="historicoPedidos" class="display table-striped">
                     <thead>
@@ -191,12 +192,12 @@
                             <th>Detalhes</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="bodyHistorico">
                         {$i=0}
                         {foreach from=$historicoPedidos item=pedido}
                             <tr>
                                 <td>{$pedido->getId()}</td>
-                                <td>{$pedido->getDataHora()}</td>
+                                <td>{$pedido->getDataHora()->format('d/m/Y - H:i:s')}</td>
                                 <td>R$ {$pedido->getValorTotal()}</td>
                                 <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle verItem">Detalhes <span class="fa fa-eye"></span></label>
 
@@ -204,7 +205,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5>{$pedido->getDataHora()}</h5>
+                                                    <h5>{$pedido->getDataHora()->format('d/m/Y - H:i:s')}</h5>
                                                     <h4>Itens</h4>
                                                 </div>
                                                 <div class="modal-body">

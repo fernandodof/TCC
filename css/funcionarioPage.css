@@ -170,3 +170,9 @@ h4 i{
 .modal-footer div{
     text-align: left;
 }
+
+#historyIcon{
+    fill: red;
+    width: 50px;
+    height: 50px;
+}

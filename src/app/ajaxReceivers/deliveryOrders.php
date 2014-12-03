@@ -43,7 +43,7 @@ if (isset($_SESSION['pedidosEntregaCarregados'])) {
                 echo "<div class='pedidoDiv'id='pedidoEntregaDiv" . $i . "'>";
                     echo "<label class='idPedido'>#" . $pedido->getId() . "</label>";
                     echo "<div class='pull-right checkboxPedidoDiv'>";
-                        echo "<input type='hidden' value='" . $pedido->getId() . "' id='idPedido". $i . "'>";
+                        echo "<input type='hidden' value='" . $pedido->getId() . "' id='idPedidoEntrega". $i . "'>";
                         echo "<input type='checkBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='finalizarPedido(this)';>";
                         echo "<label for='pedido" . $i . "'><span class='lbEFinalizar'>Finalizar pedido</span></label>";
                     echo "</div>";

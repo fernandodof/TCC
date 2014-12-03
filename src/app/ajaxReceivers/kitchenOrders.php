@@ -43,7 +43,7 @@ if(count($pedidos)>0){
                 echo "<div class='pedidoDiv'id='pedidoCozinhaDiv" . $i . "'>";
                     echo "<label class='idPedido'>#" . $pedido->getId() . "</label>";
                     echo "<div class='pull-right checkboxPedidoDiv'>";
-                        echo "<input type='hidden' value='" . $pedido->getId() . "' id='idPedido". $i . "'>";
+                        echo "<input type='hidden' value='" . $pedido->getId() . "' id='idPedidoCozinha". $i . "'>";
                         echo "<input type='checkBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='enviarPedidoEntrega(this)';>";
                         echo "<label for='pedido" . $i . "'><span class='lbEncaminharEntrega'>Encaminhar para entrega</span></label>";
                     echo "</div>";

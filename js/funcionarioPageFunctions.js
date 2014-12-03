@@ -112,7 +112,27 @@ function qureyPedidosEntrega() {
     });
 }
 
+function updateHitorico() {
+    $('#update').button('loading');
+    var idRestaurante = $('#idRestaurante').val();
 
+    var data = {idRestaurante: idRestaurante};
+    var url = '../src/app/ajaxReceivers/ordersHistory.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('#historico').html(serverResponse);
+            setUpTable();
+            $('#update').button('reset');
+        },
+        error: function (serverResponse) {
+            alertify.alert(serverResponse);
+        }
+    });
+}
 
 function resetAlertify() {
     alertify.set({
@@ -127,9 +147,9 @@ function resetAlertify() {
 
 function enviarPedidoCozinha(checkbox) {
     resetAlertify();
-    var idPedido = $('#idPedido' + checkbox.value).val();
+    var idPedido = $('#idPedidoRecebido' + checkbox.value).val();
     var status = 2;
-
+    alert(idPedido + " => " + status);
     if (checkbox.checked) {
         alertify.confirm("Este pedido será enviado para a cozinha. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {
@@ -161,9 +181,9 @@ function enviarPedidoCozinha(checkbox) {
 function enviarPedidoEntrega(checkbox) {
     resetAlertify();
 
-    var idPedido = $('#idPedido' + checkbox.value).val();
+    var idPedido = $('#idPedidoCozinha' + checkbox.value).val();
     var status = 3;
-    
+    alert(idPedido + " => " + status);
     if (checkbox.checked) {
         alertify.confirm("Este pedido será enviado para a entrega. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {
@@ -193,9 +213,9 @@ function enviarPedidoEntrega(checkbox) {
 function finalizarPedido(checkbox) {
     resetAlertify();
 
-    var idPedido = $('#idPedido' + checkbox.value).val();
+    var idPedido = $('#idPedidoEntrega' + checkbox.value).val();
     var status = 4;
-
+    alert(idPedido + " => " + status);
     if (checkbox.checked) {
         alertify.confirm("Este pedido será finalizado. Ao clicar sim ele será removido desta lista, deseja fazer isso ?", function (e) {
             if (e) {
@@ -259,10 +279,7 @@ function updateOrdersList() {
     qureyPedidosEntrega();
 }
 
-$(document).ready(function () {
-    setInterval("updateOrdersList()", 3000);
-    activate('img[src*=".svg"]');
-    
+function  setUpTable() {
     $('#historicoPedidos').DataTable(
             {
                 language: {
@@ -297,6 +314,13 @@ $(document).ready(function () {
                     {"bSortable": false, "bSearchable": false}
                 ]
             });
+}
+
+$(document).ready(function () {
+    setInterval("updateOrdersList()", 3000);
+    activate('img[src*=".svg"]');
+
+    setUpTable();
 
     formatPrices();
 });

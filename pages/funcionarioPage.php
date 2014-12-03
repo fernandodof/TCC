@@ -35,6 +35,8 @@ $params['id'] = $restaurante->getId();
 unset($_SESSION['pedidosNovosCarregados']);
 unset($_SESSION['pedidosCozinhaCarregados'] );
 unset($_SESSION['pedidosEntregaCarregados']);
+unset($_SESSION['pedidosHistorioCarregados']);
+
 
 //novos
 $params['status'] = Pedido::PEDIDO_RECEBIDO;
@@ -90,13 +92,6 @@ foreach ($historicoPedidos as $pedido) {
     $idsPedidosHistorico[] = $pedido->getId();
 }
 
-if (isset($idsPedidosHistorico) && $idsPedidosHistorico != null) {
-    $_SESSION['pedidosHistorioCarregados'] = $idsPedidosHistorico;
-}
-
-foreach ($historicoPedidos as $p) {
-    $p->setDataHora($p->getDataHora()->format('d/m/Y - H:i:s'));
-}
 $smarty->assign('historicoPedidos', $historicoPedidos);
 
 $smarty->assign('pedidosRecebidos', $pedidosRecebidos);

@@ -10,6 +10,7 @@ $idPedido = intval(filter_input(INPUT_POST, 'idPedido'));
 $status = intval(filter_input(INPUT_POST, 'status'));
 
 $currentStatus = $status - 1;
+
 switch ($currentStatus) {
     case Pedido::PEDIDO_RECEBIDO:
         $pedidosCaregados = $_SESSION['pedidosNovosCarregados'];
