@@ -116,6 +116,7 @@
 #loginForm{
     padding: 12px;
     width: 300px;
+    height: 180px;
 }
 
 #contactForm label{

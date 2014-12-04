@@ -1,8 +1,8 @@
 <link href= "{$templateRoot}css/index.css" rel="stylesheet">
 <div class="container">
+    <div id="jumbotronContent" class="col-xs-12">
+    </div>
     <div class="jumbotron">
-        <h1>Bem vindo ao SaborVirtual</h1>
-        <p>Faça pedidos aos seus restaurantes favoritos de forma fácil, rápida e descomplicada</p>
         <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
             <div class="row input-group col-md-12 pull-left search">
                 <div class="col-md-7 col-xs-12 searchDiv pull-left">
@@ -31,7 +31,11 @@
             </div>
         </form>
     </div>
+    <h1>Bem vindo ao SaborVirtual</h1>
+
 </div>
+
+
 
 <div class="container">
     <h3 id="destaques">Destaques</h3>

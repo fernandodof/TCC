@@ -72,10 +72,6 @@ h4 .commentButton{
     display: none;
 }
 
-.sidebar{
-    border-left: 3px solid #000000;
-}
-
 .rateInputs{
     width: 100px;
 }
@@ -87,6 +83,17 @@ h4 .commentButton{
 .well .buttons a{
     margin: 5px 0px 5px 0px;
 }
+
+@media (max-width: 768px){ 
+    .commentButton{
+        margin-top: 15px;
+    }
+    
+    .btVerCardapio{
+        margin-right: 100px;
+    }
+}
+
 /*
 .well .commentCountBadge{
     position: absolute;
