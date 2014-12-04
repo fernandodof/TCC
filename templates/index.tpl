@@ -37,7 +37,7 @@
 
 
 
-<div class="container" id="highlights">
+<div class="container">
     <h3 id="destaques">Destaques</h3>
     <div class="row">
         {$count=0}
