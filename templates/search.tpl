@@ -51,7 +51,7 @@
                             {$i = 0}
                             {foreach from = $restaurants item = restaurante}
                                 <div class="well closed col-xs-12">
-                                    <h4>{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small> 
+                                    <h4 id="nameRestaurante">{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small> 
                                         <a class="btn btn-primary btn-sm pull-right commentButton {if (count($restaurante->getComentarios()) == 0)} disabled {/if}" href="{$templateRoot}pages/comments/{$restaurante->getId()}"><span class="fa fa-comment fa-2x commentIcon"></span> 
                                             <span class="badge commentCountBadge">{count($restaurante->getComentarios())}</span></a>
                                     </h4>
@@ -81,7 +81,7 @@
                                         {/if}   
                                         <a class="btn btn-info btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
                                     </div>
-                                    <div class="col-xs-5">
+                                    <div class="col-md-6 col-sm-8 col-xs-12">
                                     <input class="rateInputs pull-left" data-show-clear="false" value="{$avgRating[$i]}">
                                     </div>
                                 </div>

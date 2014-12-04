@@ -1,6 +1,6 @@
 <link href= "{$templateRoot}css/footer.css" rel="stylesheet">
 {*Creating botton navbar*}
-<div class="navbar navbar-inverse navbar-static navbar-bottom">
+<div class="navbar navbar-default navbar-static navbar-bottom">
     <div class="container">
         <p class="navbar-text pull-left">{$footerBarMsg}</p>
         {* Creating toggle button for botton navigation bar *}

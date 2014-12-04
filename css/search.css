@@ -85,10 +85,11 @@ h4 .commentButton{
 }
 
 @media (max-width: 768px){ 
-    .commentButton{
-        margin-top: 15px;
+    #nomeRestaurante{
+        height: 80px;
+        border: 1px solid red;
     }
-    
+
     .btVerCardapio{
         margin-right: 100px;
     }

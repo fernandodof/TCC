@@ -66,7 +66,7 @@ h1{
 }
 
 .jumbotron{
-    background: url(../images/indexBackground5.jpg);
+    background: url(../images/indexBackground.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -78,6 +78,7 @@ h1{
     width: 100%;
     margin-bottom: -80px;
     z-index: 5;
+    margin-top: -22px;
 }
 
 .jumbotron form{
@@ -86,12 +87,12 @@ h1{
 }
 
 #jumbotronContent{
-    min-height: 350px;
+    min-height: 270px;
     width: 100%;
     opacity: 0.7;
     background:rgba(255,255,255,0.8);
     margin-left: 0;
-    margin-top: 0;
+    margin-top: -22px;
     margin-bottom: -350px;
     left: 0;
     z-index: 0;
@@ -184,4 +185,9 @@ h1{
     .collapsing {
         overflow: hidden!important;
     }
+}
+
+#highlights{
+    background: white;
+    margin-top: -100px;
 }
