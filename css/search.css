@@ -19,10 +19,6 @@ h3{
     margin-left: 15px; 
 }
 
-h4 .commentButton{
-    margin-top: -10px;
-}
-
 .statusIndicatioClosed{
     margin-left: 15px;
 }
@@ -42,10 +38,6 @@ h4 .commentButton{
 .formaPagamentoDiv p{
     margin-top: 8px;
     margin-right: 5px;
-}
-
-.btVerCardapio{
-    margin-right: -10px;
 }
 
 .no-result-search{
@@ -76,29 +68,52 @@ h4 .commentButton{
     width: 100px;
 }
 
-.well .buttons{
-    padding: 2px 10px 2px 20px;
+.enderecoDiv address{
+    margin-left: -10px;
 }
 
-.well .buttons a{
-    margin: 5px 0px 5px 0px;
+.enderecoDiv .fa{
+    margin-left: 15px;
 }
 
-@media (max-width: 768px){ 
-    #nomeRestaurante{
-        height: 80px;
-        border: 1px solid red;
+.buttons{
+    margin-left: 20px;
+}
+
+.rateInputs{
+    margin-right: 240px;
+
+}
+
+btVerCardapio{
+    margin-right: -150px;
+}
+
+.star-rating{
+    margin-left: -40px;
+    margin-top: -5px;
+    width: 210px;
+}
+
+.buttons .commentButton{
+    margin-right: 15px;
+}
+
+
+@media only screen and (max-width: 991px){ 
+    .star-rating{
+        margin-left: -45px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 250px;
+        text-align: center;
     }
 
-    .btVerCardapio{
-        margin-right: 100px;
+    .buttons{
+        width: 100%;
+    }
+    
+    .buttons .commentButtonSm, .buttons .btVerCardapioSm{
+        margin-right: 15px;
     }
 }
-
-/*
-.well .commentCountBadge{
-    position: absolute;
-    margin-left: -19px;
-    margin-top: 34px;
-    padding: 0px;
-}*/

@@ -1,6 +1,6 @@
+<link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
-<link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/searchFunctions.js" type="text/javascript"></script>
@@ -20,11 +20,11 @@
         <div class="navbar navbar-static-top sidebar">
             <div class="collapse navbar-collapse sidebarCollapse">
                 <ul class="nav nav-pills nav-stacked">
-                     {$j=0}
+                    {$j=0}
                     <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('', this.id);"><a>Todos</a></li>
                         {foreach from = $kindsOfFood item = kind}
-                        {$j = $j+1}
-                            <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('{$kind.nome}', this.id);"><a class="elementToggle">{$kind.nome}</a></li>
+                            {$j = $j+1}
+                        <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('{$kind.nome}', this.id);"><a class="elementToggle">{$kind.nome}</a></li>
                         {/foreach}
                 </ul>
             </div>
@@ -51,12 +51,9 @@
                             {$i = 0}
                             {foreach from = $restaurants item = restaurante}
                                 <div class="well closed col-xs-12">
-                                    <h4 id="nameRestaurante">{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small> 
-                                        <a class="btn btn-primary btn-sm pull-right commentButton {if (count($restaurante->getComentarios()) == 0)} disabled {/if}" href="{$templateRoot}pages/comments/{$restaurante->getId()}"><span class="fa fa-comment fa-2x commentIcon"></span> 
-                                            <span class="badge commentCountBadge">{count($restaurante->getComentarios())}</span></a>
-                                    </h4>
-                                    <div class="row col-xs-12">
-                                        <img class="img pull-left" src="{$templateRoot}images/icons/rsz_location.png"/>
+                                    <h4 id="nameRestaurante" class="col-sm-8">{$restaurante->getNome()} <small> {$restaurante->getTipo()->getNome()}</small></h4>
+                                    <div class="row col-xs-12 enderecoDiv">
+                                        <span class="fa fa-map-marker fa-2x pull-left"> </span>
                                         <address class="col-xs-10">{$restaurante->getEndereco()->getLogradouro()}, {$restaurante->getEndereco()->getNumero()}, Bairro: {$restaurante->getEndereco()->getBairro()}, CEP:
                                             {$restaurante->getEndereco()->getCep()}, {$restaurante->getEndereco()->getCidade()}, {$restaurante->getEndereco()->getEstado()} 
                                             {$restaurante->getEndereco()->getComplemento()}.
@@ -73,16 +70,23 @@
                                         {/foreach}
                                         <p class="pull-right">Formas de Pagamento: </p>
                                     </div>
-                                    <div class="row buttons">
+                                    <div class="row buttons pull-left col-md-12">
+                                        <div class="col-md-6 col-sm-8 col-xs-12">
+                                            <input class="rateInputs pull-left" data-show-clear="false" value="{$avgRating[$i]}">
+                                        </div>
                                         {if isset($idsRestaurantesComprados)}
                                             {if in_array($restaurante->getId(), $idsRestaurantesComprados)}
                                                 <a class="btn btn-default btn-sm pull-left" href="{$templateRoot}pages/rate/{$restaurante->getId()}">Avaliar estabelecimento</a>
                                             {/if}   
                                         {/if}   
-                                        <a class="btn btn-info btn-sm pull-right btVerCardapio" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
-                                    </div>
-                                    <div class="col-md-6 col-sm-8 col-xs-12">
-                                    <input class="rateInputs pull-left" data-show-clear="false" value="{$avgRating[$i]}">
+                                        <a class="btn btn-info btn-sm pull-right btVerCardapio visible-lg visible-md" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
+                                        <a class="btn btn-primary btn-xs pull-right commentButton visible-lg visible-md {if (count($restaurante->getComentarios()) == 0)} disabled {/if}" href="{$templateRoot}pages/comments/{$restaurante->getId()}"><span class="fa fa-comment fa-2x commentIcon"></span> 
+                                            <span class="badge commentCountBadge">{count($restaurante->getComentarios())}</span></a>
+
+                                        <a class="btn btn-info btn-sm pull-right btVerCardapioSm visible-xs visible-sm btn-block" href="{$templateRoot}pages/restaurant/{$restaurante->getId()}">Visualizar Cardápio</a>
+                                        <a class="btn btn-primary btn-xs pull-right commentButtonSm visible-xs visible-sm btn-block {if (count($restaurante->getComentarios()) == 0)} disabled {/if}" href="{$templateRoot}pages/comments/{$restaurante->getId()}"><span class="fa fa-comment fa-2x commentIcon"></span> 
+                                            <span class="badge commentCountBadge">{count($restaurante->getComentarios())}</span> Comentários</a>
+
                                     </div>
                                 </div>
                                 {$i = $i+1}
