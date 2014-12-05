@@ -34,6 +34,7 @@ function cadastrarCLiente() {
     $cliente = new Cliente();
     $cliente->setNome(filter_input(INPUT_POST, 'nome'));
     $cliente->setEmail(filter_input(INPUT_POST, 'email'));
+    $cliente->setLogin(filter_input(INPUT_POST, 'login'));
     $cliente->setSenha(EncryptPassword::encrypt(filter_input(INPUT_POST, 'senha1')));
 
     //Telefone

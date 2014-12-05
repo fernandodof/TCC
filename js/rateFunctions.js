@@ -102,7 +102,7 @@ $(document).ready(function () {
             }
         },
         clearCaption: '',
-        size: 'lg'
+        size: 'md'
     });
 
     $('#rateInputUser').on('rating.change', function (event, value, caption) {

@@ -99,6 +99,10 @@ btVerCardapio{
     margin-right: 15px;
 }
 
+.btAvaliar{
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
 
 @media only screen and (max-width: 991px){ 
     .star-rating{
@@ -115,5 +119,10 @@ btVerCardapio{
     
     .buttons .commentButtonSm, .buttons .btVerCardapioSm{
         margin-right: 15px;
+    }
+    
+    .buttons .btAvaliar{
+        margin-top: 5px;
+        margin-left: -15px;
     }
 }
