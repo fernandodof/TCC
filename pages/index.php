@@ -18,7 +18,7 @@ $restaurants = array();
 $restaurants[] = 'Pizza Place';
 $restaurants[] = 'Sapore D\'Itália';
 $restaurants[] = 'Sabores do Brasil';
-$restaurants[] = 'Sabores da Toscana Sabores da Toscana';
+$restaurants[] = 'Sabores da Toscana';
 
 $links[] = '#';
 $links[] = '#';

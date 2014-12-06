@@ -5,8 +5,8 @@
 .restaurantName{
     margin-bottom: 25px;
     height: 20px;
+    width: 100%;
 }
-
 
 @media screen and (max-width: 992px){
     #destaquesDiv{
