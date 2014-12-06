@@ -35,21 +35,19 @@
 
 </div>
 
-
-
 <div class="container">
     <h3 id="destaques">Destaques</h3>
-    <div class="row">
+    <div class="col-lg-12" id="destaquesDiv">
         {$count=0}
-        {foreach c from = $highlights key = dishName item = img}
+        {foreach from = $highlights key = dishName item = img}
 
-            <div class="col-md-3 col-sm-5 colunaDestaque">
+            <div class="col-sm-3 colunaDestaque">
                 <h4 class="dishName">{$dishName}</h4>
-                <div class="well-sm imgDiv">
-                    <img src="{$img}" class="img-responsive">
+                <div class="well well-sm imgDiv">
+                    <img src="{$img}" class="img img-responsive">
                 </div>
-                <a class="restaurantName" href="{$links[$count]}">{$restaurants[$count]}</a>
-                <a heref="#" class="btn btn-danger col-xs-12 pecaAgora">Peça agora</a>
+                <a class="restaurantName pull-left" href="{$links[$count]}">{$restaurants[$count]}</a>
+                <a heref="#" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
             </div> 
             {$count = $count+1}
         {/foreach}

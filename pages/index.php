@@ -11,16 +11,16 @@ $dao = new Dao();
 $highlights = array();
 $highlights['Pizza de Frango com Catupiry'] = $templateRoot.'images/dishes/francoComCatupiry.jpg';
 $highlights['Lasanha à Bolhonesa'] = $templateRoot.'images/dishes/lasanhabolonhesa.jpg';
-$highlights['Penne ao Pepperoni'] = $templateRoot.'images/dishes/penne-ao-molho-de-linguica.jpg';
 $highlights['Vaca Atolada'] = $templateRoot.'images/dishes/vacaAtolada.jpg';
+$highlights['Penne ao Pepperoni'] = $templateRoot.'images/dishes/penne-ao-molho-de-linguica.jpg';
 
 $restaurants = array();
 $restaurants[] = 'Pizza Place';
 $restaurants[] = 'Sapore D\'Itália';
-$restaurants[] = 'Sabores da Toscana';
 $restaurants[] = 'Sabores do Brasil';
+$restaurants[] = 'Sabores da Toscana Sabores da Toscana';
 
-$links[] = './restaurant.php';
+$links[] = '#';
 $links[] = '#';
 $links[] = '#';
 $links[] = '#';

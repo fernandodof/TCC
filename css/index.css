@@ -1,14 +1,23 @@
 .colunaDestaque{
-    margin-left: -4px;
+    margin-left: -10px;
 }
 
 .restaurantName{
     margin-bottom: 25px;
+    height: 20px;
 }
 
+
 @media screen and (max-width: 992px){
+    #destaquesDiv{
+
+    }
+
     .colunaDestaque{
-        margin-left:40px; 
+        margin-right: 0;
+        /*        padding-left: 0;
+                padding-right: 0;*/
+        /*margin-right: -10px;*/
     }
 }
 
