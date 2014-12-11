@@ -53,4 +53,8 @@ $params['longitude'] = -38.5481574;
 $params['raio'] = 1;
 $restaurantes = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
 
+foreach ($restaurantes as $r){
+    echo $r['id'].'<br>';
+}
+
 var_dump($restaurantes);

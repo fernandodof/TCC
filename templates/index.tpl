@@ -43,11 +43,13 @@
 
             <div class="col-sm-3 colunaDestaque">
                 <h4 class="dishName">{$dishName}</h4>
-                <div class="well well-sm imgDiv">
+                <div class="well well-sm imgDiv pull-left">
                     <img src="{$img}" class="img img-responsive">
                 </div>
-                <a class="restaurantName pull-left" href="{$links[$count]}">{$restaurants[$count]}</a>
-                <a heref="#" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
+                <div class="info">
+                    <a class="restaurantName pull-left" href="{$links[$count]}">{$restaurants[$count]}</a>
+                    <a heref="#" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
+                </div>
             </div> 
             {$count = $count+1}
         {/foreach}
