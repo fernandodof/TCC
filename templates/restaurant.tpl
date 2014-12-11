@@ -6,6 +6,9 @@
 <link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="{$templateRoot}js/bootbox.min.js"></script>
+<script type="text/javascript" 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
+</script>
 <script type="text/javascript" src="{$templateRoot}js/restaurantPageFunctions.js"></script>
 <script type="text/javascript" src="{$templateRoot}js/mapFunctions.js"></script>
 <script type="text/javascript">

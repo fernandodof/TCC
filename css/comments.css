@@ -45,6 +45,10 @@
     width: 25px;
 }
 
+.comments .commentText{
+    width: 100%;
+}
+
 white {
     color: #fff;
 }

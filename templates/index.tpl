@@ -1,5 +1,6 @@
 <link href= "{$templateRoot}css/index.css" rel="stylesheet">
-<div class="container">
+<script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
+<div class="container main">
     <div id="jumbotronContent" class="col-xs-12">
     </div>
     <div class="jumbotron">
@@ -28,11 +29,11 @@
                         <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
                     </div>
                 </div>
+                <a class="btn btn-sm btn-success" href="{$templateRoot}pages/nearBy">Locais Proximos</a>
             </div>
         </form>
     </div>
     <h1>Bem vindo ao SaborVirtual</h1>
-
 </div>
 
 <div class="container">

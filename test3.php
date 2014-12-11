@@ -45,8 +45,8 @@ $dao = new Dao();
 //$params['status'] = Pedido::PEDIDO_COZINHA;
 //
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
-//session_start();
-//var_dump($_SESSION);
+session_start();
+var_dump($_SESSION);
 
 $params['latitude'] = -6.889079;
 $params['longitude'] = -38.5481574;
