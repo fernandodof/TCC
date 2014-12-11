@@ -18,6 +18,10 @@
         <link href="{$templateRoot}alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="{$templateRoot}alertify.js-0.3.11/lib/alertify.min.js"></script>
         <link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" 
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
+        </script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
     </head>
     <body>
         <header>

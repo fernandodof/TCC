@@ -6,6 +6,5 @@
         <a class="navbar-btn visible-xs pull-right navbar-text" href="{$templateRoot}pages/areaRestrita"><span class="fa fa-lock"></span></a>
     </div>
 </nav>
-
 </body>
 </html>

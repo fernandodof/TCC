@@ -2,6 +2,8 @@
 require_once './src/app/model/persistence/Dao.class.php';
 require_once './src/app/model/entities/Categoria.class.php';
 require_once './src/app/util/Queries.php';
+require_once './src/app/util/Spherical-geometry.class.php';
+
 $dao = new Dao();
 
 //$categoria = new Categoria();
@@ -43,5 +45,12 @@ $dao = new Dao();
 //$params['status'] = Pedido::PEDIDO_COZINHA;
 //
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
-session_start();
-var_dump($_SESSION);
+//session_start();
+//var_dump($_SESSION);
+
+$params['latitude'] = -6.889079;
+$params['longitude'] = -38.5481574;
+$params['raio'] = 1;
+$restaurantes = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
+
+var_dump($restaurantes);
