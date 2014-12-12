@@ -1,21 +1,36 @@
 function filterRestaurante(str, liId, raio) {
-//    alert("RAIO: " + raio);
+    $('#circleLoader').show();
+
     if (liId !== null) {
         $('.liFilterType').removeClass('active');
         $('#' + liId).addClass('active');
     }
-    $('#circleLoader').show();
 
-    var data = {kind: str, location: true, raio: raio};
-
-    if (str !== '') {
+    if (str !== null) {
         var absoluteUrl = getAbsoluteUrl();
         var parameters = $.query.set("kindOfFood", str);
         parameters = parameters.toString().replace("%2B", "+");
 
         window.history.pushState(data, "Title", absoluteUrl + parameters);
+    } else {
+        alert('it is null');
+        var kind = getUrlParameter('kindOfFood');
+        alert('kind '+ kind);
+        if (!(kind === undefined || kind === null)) {
+            alert('it not undefined');
+            str = kind;
+            var absoluteUrl = getAbsoluteUrl();
+            var parameters = $.query.set("kindOfFood", str);
+            parameters = parameters.toString().replace("%2B", "+");
+            
+            var stateObj = {raio : raio, kindOfFood: str}; 
+            
+            window.history.pushState(stateObj, "Title", absoluteUrl + parameters);
+        }
     }
     
+
+    var data = {kind: str, location: true, raio: raio};
     var url = '../src/app/ajaxReceivers/filterSearch.php';
 
     $.ajax({
@@ -36,7 +51,7 @@ function filterRestaurante(str, liId, raio) {
     });
 }
 
-function getUrlParameter(sParam){
+function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
     for (var i = 0; i < sURLVariables.length; i++)

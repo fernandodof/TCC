@@ -12,6 +12,7 @@ $params['nome'] = trim(filter_input(INPUT_POST, 'search'));
 
 if(trim(filter_input(INPUT_POST, 'kind')) !== null) {
     $tipo = trim(filter_input(INPUT_POST, 'kind'));
+    $tipo = str_replace("+", " ", $tipo);
 }
 
 if (filter_input(INPUT_POST, 'location') !== null) {
@@ -24,7 +25,7 @@ if (filter_input(INPUT_POST, 'location') !== null) {
     $raio = 0.5;
     if (filter_input(INPUT_POST, 'raio') !== null && filter_input(INPUT_POST, 'raio') !== '') {
         $raio = floatval(filter_input(INPUT_POST, 'raio'));
-        var_dump(filter_input(INPUT_POST, 'raio'));
+//        var_dump(filter_input(INPUT_POST, 'raio'));
     }else if(isset ($_SESSION['raio'])){
         $raio = $_SESSION['raio'];
     }
@@ -38,7 +39,7 @@ if (filter_input(INPUT_POST, 'location') !== null) {
     foreach ($nearByrestaurants as $r) {
         $restaurants->add($dao->findByKey('Restaurante', $r['id']));
     }
-    //var_dump($params1);
+//    var_dump($params1);
 
 } else {
 
@@ -70,16 +71,16 @@ if (isset($_SESSION['id'])) {
     $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params2);
 }
 
-if (filter_input(INPUT_POST, 'location') != null) {
-    echo "<form class='col-xs-12'>";
-    echo "<h4 class='pull-left'>Raio de: </h4>";
-    echo "<div class='input-group pull-left'>";
-    echo "<input class='form-control input-sm pull-left' name='raio' value='" . $_SESSION['raio'] . "' id='raio' />";
-    echo "<span class='input-group-addon input-sm pull-left' id='kmAddon'>Km</span>";
-    echo "</div>";
-    echo "<button class='btn btn-sm btn-success pull-left' id='search' onclick='filterRestaurante(,null,this.form.raio.value);'><span class='glyphicon glyphicon-search'></span></button>";
-    echo "</form>";
-}
+//if (filter_input(INPUT_POST, 'location') != null) {
+//    echo "<form class='col-xs-12'>";
+//    echo "<h4 class='pull-left'>Raio de: </h4>";
+//    echo "<div class='input-group pull-left'>";
+//    echo "<input class='form-control input-sm pull-left' name='raio' value='" . $_SESSION['raio'] . "' id='raio' />";
+//    echo "<span class='input-group-addon input-sm pull-left' id='kmAddon'>Km</span>";
+//    echo "</div>";
+//    echo "<button class='btn btn-sm btn-success pull-left' id='search' onclick='filterRestaurante(null,null,this.form.raio.value);'><span class='glyphicon glyphicon-search'></span></button>";
+//    echo "</form>";
+//}
 
 if (count($restaurants) == 0) {
     echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado.</h3>";
@@ -94,7 +95,7 @@ if (count($restaurants) == 0) {
         echo "<div class='row col-xs-12 enderecoDiv'>";
         echo "<span class='fa fa-map-marker fa-2x pull-left'> </span>";
         echo "<address class='col-xs-10'>" . $restaurante->getEndereco()->getLogradouro() . ", " . $restaurante->getEndereco()->getNumero() . ", Bairro: " . $restaurante->getEndereco()->getBairro() . ", CEP: " .
-        $restaurante->getEndereco()->getCep() . ", " . $restaurante->getEndereco()->getCidade() . ", " . $restaurante->getEndereco()->getEstado() .
+        $restaurante->getEndereco()->getCep() . ", " . $restaurante->getEndereco()->getCidade() . ", " . $restaurante->getEndereco()->getEstado() . " " .
         $restaurante->getEndereco()->getComplemento() .
         "</address>";
         echo "</div>";

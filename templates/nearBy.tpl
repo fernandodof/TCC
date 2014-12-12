@@ -44,15 +44,15 @@
                 </div>
                 <div class="panel-body">
                     <div id="results">
-                        <form class="col-xs-12">
-                            <h4 class="pull-left">Raio de: </h4>
-                            <div class="input-group pull-left">
-                                <input class="form-control input-sm pull-left" name="raio" value="{$smarty.session.raio}" id="raio" />
-                                <span class="input-group-addon input-sm pull-left" id="kmAddon">Km</span>
-                            </div>
-                            <button class="btn btn-sm btn-success pull-left" id="search" onclick="filterRestaurante('', null, this.form.raio.value);"><span class="glyphicon glyphicon-search"></span></button>
+                        {*                        <form class="col-xs-12">
+                        <h4 class="pull-left">Raio de: </h4>
+                        <div class="input-group pull-left">
+                        <input class="form-control input-sm pull-left" name="raio" value="{$smarty.session.raio}" id="raio" />
+                        <span class="input-group-addon input-sm pull-left" id="kmAddon">Km</span>
+                        </div>
+                        <button class="btn btn-sm btn-success pull-left" id="search" onclick="filterRestaurante(null, null, this.form.raio.value);"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
-
+                        *}
                         {if (count($restaurants)==0)}
                             <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado.</h3>
                             <div id='faces'> 
