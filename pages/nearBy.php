@@ -1,4 +1,5 @@
 <?php
+
 include_once '../pages/header.php';
 
 require_once $path . 'pages/smartyHeader.php';
@@ -14,15 +15,28 @@ $latLong = explode(',', $_SESSION['latLong']);
 
 $params['latitude'] = $latLong[0];
 $params['longitude'] = $latLong[1];
-$params['raio'] = 1;
-$nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
 
-//foreach ($restaurants as $r){
-//    echo 'res: '. $r['id'].' dis: '.$r['distance'].'<br>';
-//}
+
+$raio = 0.5;
+if (filter_input(INPUT_GET, 'raio') != null) {
+    $raio = floatval(filter_input(INPUT_GET, 'raio'));
+}else if(isset($_SESSION['raio'])){
+    $raio = $_SESSION['raio'];
+}
+
+$params['raio'] = $raio;
+$_SESSION['raio'] = $raio;
+
+if (filter_input(INPUT_GET, 'kindOfFood') == null) {
+    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
+} else {
+    $params['tipo'] = filter_input(INPUT_GET, 'kindOfFood');
+    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO, $params);
+}
+
 
 $restaurants = new \Doctrine\Common\Collections\ArrayCollection();
-foreach ($nearByrestaurants as $r){
+foreach ($nearByrestaurants as $r) {
     $restaurants->add($dao->findByKey('Restaurante', $r['id']));
 }
 
@@ -55,7 +69,6 @@ if (isset($avgRating)) {
 }
 
 $smarty->assign('restaurants', $restaurants);
-
 $smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->display($path . 'templates/nearBy.tpl');
 

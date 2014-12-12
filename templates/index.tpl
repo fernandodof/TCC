@@ -44,7 +44,7 @@
 
             <div class="col-sm-3 colunaDestaque">
                 <h4 class="dishName">{$dishName}</h4>
-                <div class="well well-sm imgDiv pull-left">
+                <div class="well well-sm col-xs-12 imgDiv pull-left">
                     <img src="{$img}" class="img img-responsive">
                 </div>
                 <div class="info">

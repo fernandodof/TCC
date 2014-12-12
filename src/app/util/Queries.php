@@ -26,6 +26,7 @@ class Queries {
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante FROM pedido p WHERE p.id_cliente = :id_cliente';
     const GET_NOTA_CLINTE_RESTAURANTE = 'SELECT id, nota FROM avaliacao WHERE id_cliente = :id_cliente and id_restaurante = :id_restaurante';
-    const GET_RESTAURANTE_RAIO = 'SELECT R.id, (6371 * acos(cos(radians(:latitude)) * cos(radians(e.latitude)) * cos(radians(e.longitude) - radians(:longitude)) + sin(radians(:latitude)) * sin(radians(e.latitude)))) AS distance FROM restaurante R INNER JOIN endereco E ON r.id_endereco = e.id HAVING distance < :raio';
+    const GET_RESTAURANTE_RAIO = 'SELECT r.id, (6371 * acos(cos(radians(:latitude)) * cos(radians(e.latitude)) * cos(radians(e.longitude) - radians(:longitude)) + sin(radians(:latitude)) * sin(radians(e.latitude)))) AS distance FROM restaurante R INNER JOIN endereco E ON r.id_endereco = e.id HAVING distance < :raio';
+    const GET_RESTAURANTE_RAIO_TIPO = 'SELECT r.id, (6371 * acos(cos(radians(:latitude)) * cos(radians(e.latitude)) * cos(radians(e.longitude) - radians(:longitude)) + sin(radians(:latitude)) * sin(radians(e.latitude)))) AS distance FROM restaurante R INNER JOIN endereco E ON r.id_endereco = e.id INNER JOIN tiporestaurante t ON r.id_tipo = t.id WHERE t.nome LIKE :tipo HAVING distance < :raio';
 }
 

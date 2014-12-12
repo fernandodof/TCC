@@ -1,9 +1,11 @@
 <link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
+<link href="{$templateRoot}css/nearBy.css" rel="stylesheet">
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
-<script src="{$templateRoot}js/searchFunctions.js" type="text/javascript"></script>
+<script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
+<script src="{$templateRoot}js/searchFunctionsLocation.js" type="text/javascript"></script>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -20,10 +22,10 @@
             <div class="collapse navbar-collapse sidebarCollapse">
                 <ul class="nav nav-pills nav-stacked">
                     {$j=0}
-                    <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('', this.id);"><a>Todos</a></li>
+                    <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('', this.id, null);"><a>Todos</a></li>
                         {foreach from = $kindsOfFood item = kind}
                             {$j = $j+1}
-                        <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('{$kind.nome}', this.id);"><a class="elementToggle">{$kind.nome}</a></li>
+                        <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('{$kind.nome}', this.id, null);"><a class="elementToggle">{$kind.nome}</a></li>
                         {/foreach}
                 </ul>
             </div>
@@ -42,7 +44,16 @@
                 </div>
                 <div class="panel-body">
                     <div id="results">
-                        {if empty($restaurants)}
+                        <form class="col-xs-12">
+                            <h4 class="pull-left">Raio de: </h4>
+                            <div class="input-group pull-left">
+                                <input class="form-control input-sm pull-left" name="raio" value="{$smarty.session.raio}" id="raio" />
+                                <span class="input-group-addon input-sm pull-left" id="kmAddon">Km</span>
+                            </div>
+                            <button class="btn btn-sm btn-success pull-left" id="search" onclick="filterRestaurante('', null, this.form.raio.value);"><span class="glyphicon glyphicon-search"></span></button>
+                        </form>
+
+                        {if (count($restaurants)==0)}
                             <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado.</h3>
                             <div id='faces'> 
                                 <img id = "imgFace" src = '{$templateRoot}images/icons/svg/sadFace.svg'/>
