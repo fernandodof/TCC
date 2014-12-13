@@ -13,11 +13,6 @@ require_once 'Pessoa.class.php';
 class Administrador extends Pessoa {
 
     /**
-     * @Column(type="string", unique=true)
-     * * */
-    private $login;
-
-    /**
      * @Column(type="datetime")
      * * */
     private $ultimoAcesso;
@@ -54,20 +49,20 @@ class Administrador extends Pessoa {
         parent::setStatus($status);
     }
 
-    public function getLogin() {
-        return $this->login;
-    }
-
     public function getUltimoAcesso() {
         return $this->ultimoAcesso;
     }
 
-    public function setLogin($login) {
-        $this->login = $login;
-    }
-
     public function setUltimoAcesso($ultimoAcesso) {
         $this->ultimoAcesso = $ultimoAcesso;
+    }
+    
+    public function getLogin() {
+        return parent::getLogin();
+    }
+
+    public function setLogin($login) {
+        parent::setLogin($login);
     }
 
 }

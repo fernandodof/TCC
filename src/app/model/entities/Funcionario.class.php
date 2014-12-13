@@ -19,11 +19,6 @@ class Funcionario extends Pessoa {
     private $cargo;
 
     /**
-     * @Column(type="string", unique=true)
-     * * */
-    private $login;
-
-   /**
      * @OneToOne(targetEntity="Restaurante", mappedBy="Funcionario")
      * @JoinColumn(name="id_restaurante", referencedColumnName="id")
      */
@@ -65,10 +60,6 @@ class Funcionario extends Pessoa {
         return $this->cargo;
     }
 
-    public function getLogin() {
-        return $this->login;
-    }
-
     public function getRestaurante() {
         return $this->restaurante;
     }
@@ -77,12 +68,16 @@ class Funcionario extends Pessoa {
         $this->cargo = $cargo;
     }
 
-    public function setLogin($login) {
-        $this->login = $login;
-    }
-
     public function setRestaurante($restaurante) {
         $this->restaurante = $restaurante;
+    }
+
+    public function getLogin() {
+        return parent::getLogin();
+    }
+
+    public function setLogin($login) {
+        parent::setLogin($login);
     }
 
 }

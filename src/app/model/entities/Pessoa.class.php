@@ -21,6 +21,12 @@ class Pessoa {
      * @Column(type="string")
      */
     private $nome;
+    
+    /**
+     * @Column(type="string", unique=true)
+     * * */
+    private $login;
+    
     /**
      * @Column(type="string")
      * **/
@@ -62,4 +68,12 @@ class Pessoa {
         $this->status = $status;
     }
  
+    public function getLogin() {
+        return $this->login;
+    }
+
+    public function setLogin($login) {
+        $this->login = $login;
+    }
+
 }
