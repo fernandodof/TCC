@@ -176,3 +176,7 @@ h1{
     }
 
 }
+
+.jumbotron #indexButtons #starIcon{
+    color: #FDE16D;
+}

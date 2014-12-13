@@ -29,7 +29,10 @@
                         <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
                     </div>
                 </div>
-                <a class="btn btn-sm btn-success" href="{$templateRoot}pages/nearBy">Locais Proximos</a>
+                <div id="indexButtons">        
+                    <a class="btn btn-sm btn-success" href="{$templateRoot}pages/nearBy">Locais proximos</a>
+                    <a class="btn btn-sm btn-success" href="{$templateRoot}pages/bestRate">Melhores locais <span id="starIcon" class="glyphicon glyphicon-star"></span></a>
+                </div>
             </div>
         </form>
     </div>

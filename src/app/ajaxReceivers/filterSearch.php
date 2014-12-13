@@ -8,16 +8,19 @@ session_start();
 
 $dao = new Dao();
 
+$latLong = explode(',', $_SESSION['latLong']);
+
 $params['nome'] = trim(filter_input(INPUT_POST, 'search'));
 
-if(trim(filter_input(INPUT_POST, 'kind')) !== null) {
+if (trim(filter_input(INPUT_POST, 'kind')) !== null) {
     $tipo = trim(filter_input(INPUT_POST, 'kind'));
     $tipo = str_replace("+", " ", $tipo);
 }
 
-if (filter_input(INPUT_POST, 'location') !== null) {
-    $latLong = explode(',', $_SESSION['latLong']);
-
+if (!boolval(filter_input(INPUT_POST, 'location') || filter_input(INPUT_POST, 'location') !== null)) {
+    
+    var_dump(filter_input(INPUT_POST, 'location'));
+    
     $params1['latitude'] = $latLong[0];
     $params1['longitude'] = $latLong[1];
     $params1['tipo'] = "%" . $tipo . "%";
@@ -26,7 +29,7 @@ if (filter_input(INPUT_POST, 'location') !== null) {
     if (filter_input(INPUT_POST, 'raio') !== null && filter_input(INPUT_POST, 'raio') !== '') {
         $raio = floatval(filter_input(INPUT_POST, 'raio'));
 //        var_dump(filter_input(INPUT_POST, 'raio'));
-    }else if(isset ($_SESSION['raio'])){
+    } else if (isset($_SESSION['raio'])) {
         $raio = $_SESSION['raio'];
     }
 
@@ -40,12 +43,24 @@ if (filter_input(INPUT_POST, 'location') !== null) {
         $restaurants->add($dao->findByKey('Restaurante', $r['id']));
     }
 //    var_dump($params1);
-
 } else {
+    if (!boolval(filter_input(INPUT_POST, 'location'))) {
+        $params1['latitude'] = $latLong[0];
+        $params1['longitude'] = $latLong[1];
+        $params1['tipo'] = "%" . $tipo . "%";
 
-    $params['nome'] = '%' . $params['nome'] . '%';
-    $params['tipo'] = "%" . $tipo . "%";
-    $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
+        $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params1);
+
+        $restaurants = new \Doctrine\Common\Collections\ArrayCollection();
+        foreach ($nearByrestaurants as $r) {
+            $restaurants->add($dao->findByKey('Restaurante', $r['id']));
+        }
+    } else {
+        $params['nome'] = '%' . $params['nome'] . '%';
+        $params['tipo'] = "%" . $tipo . "%";
+        $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
+    }
+
 }
 
 foreach ($restaurants as $r) {
@@ -122,7 +137,7 @@ if (count($restaurants) == 0) {
         echo "<a class='btn btn-info btn-sm pull-right btVerCardapio visible-lg visible-md' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
         echo "<a class='btn btn-primary btn-xs pull-right commentButton visible-lg visible-md'";
         if (count($restaurante->getComentarios()) == 0) {
-            echo "disabled";
+            echo "disabled ";
         } echo "href='" . $templateRoot . "pages/comments/" . $restaurante->getId() . "'><span class='fa fa-comment fa-2x commentIcon'></span> " .
         "<span class='badge commentCountBadge'> " . count($restaurante->getComentarios()) . "</span></a>";
 

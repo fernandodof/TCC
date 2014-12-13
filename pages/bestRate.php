@@ -16,22 +16,11 @@ $latLong = explode(',', $_SESSION['latLong']);
 $params['latitude'] = $latLong[0];
 $params['longitude'] = $latLong[1];
 
-
-$raio = 0.5;
-if (filter_input(INPUT_GET, 'raio') != null) {
-    $raio = floatval(filter_input(INPUT_GET, 'raio'));
-}else if(isset($_SESSION['raio'])){
-    $raio = $_SESSION['raio'];
-}
-
-$params['raio'] = $raio;
-$_SESSION['raio'] = $raio;
-
 if (filter_input(INPUT_GET, 'kindOfFood') == null) {
-    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
+    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_ORDER_BY_AVALIACAO_E_RAIO, $params);
 } else {
-    $params['tipo'] = '%'.filter_input(INPUT_GET, 'kindOfFood').'%';
-    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO, $params);
+    $params['tipo'] = '%' . filter_input(INPUT_GET, 'kindOfFood') . '%';
+    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params);
 }
 
 
@@ -70,6 +59,6 @@ if (isset($avgRating)) {
 
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);
-$smarty->display($path . 'templates/nearBy.tpl');
+$smarty->display($path . 'templates/bestRate.tpl');
 
 include_once $path . 'pages/footer.php';

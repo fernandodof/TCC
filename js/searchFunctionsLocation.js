@@ -15,22 +15,26 @@ function filterRestaurante(str, liId, raio) {
     } else {
         alert('it is null');
         var kind = getUrlParameter('kindOfFood');
-        alert('kind '+ kind);
+        alert('kind ' + kind);
         if (!(kind === undefined || kind === null)) {
             alert('it not undefined');
             str = kind;
             var absoluteUrl = getAbsoluteUrl();
             var parameters = $.query.set("kindOfFood", str);
             parameters = parameters.toString().replace("%2B", "+");
-            
-            var stateObj = {raio : raio, kindOfFood: str}; 
-            
+
+            var stateObj = {raio: raio, kindOfFood: str};
+
             window.history.pushState(stateObj, "Title", absoluteUrl + parameters);
         }
     }
-    
 
-    var data = {kind: str, location: true, raio: raio};
+    var location = true;
+    if (raio === false) {
+        location = false;
+    }
+
+    var data = {kind: str, location: location, raio: raio};
     var url = '../src/app/ajaxReceivers/filterSearch.php';
 
     $.ajax({
