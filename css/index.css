@@ -117,16 +117,16 @@ h1{
 @media screen and (max-width: 992px){
     .jumbotron{
         padding-bottom: 180px;
-        min-height: 380px;
+        min-height: 360px;
     }
 
     #jumbotronContent{
-        min-height: 380px;
+        min-height: 360px;
         margin-bottom: -480px;
     }
 
     h1{
-        top:-240px;
+        top:-280px;
         margin-left: 55px;
         position:relative;
         font-size: 30px;
@@ -139,6 +139,18 @@ h1{
 
     .btSearchDiv{
         margin-left: 3px;
+    }
+
+    .search{
+        margin-top: -30px;
+    }
+
+    #indexButtons{
+        margin-left: 17px;
+    }
+
+    #indexButtons .btn{
+        margin-top: 10px;
     }
 }
 
@@ -153,27 +165,37 @@ h1{
         font-size: 30px;
         padding-left: 75px;
         margin-left: -15px;
-        top:-270px;
+        top:-310px;
     }
 
 }
 
 @media only screen and (max-width: 768px){ 
     .jumbotron, #jumbotronContent{
-        min-height: 380px;
+        min-height: 400px;
     }
 
     #jumbotronContent{
-        min-height: 380px;
+        min-height: 400px;
     }
 
     h1{
-        top:-285px;
+        top:-350px;
         margin-left:15px;
         padding-left: 0px;
         position:relative;
         font-size: 22px;
     }
+
+    #indexButtons{
+        margin-top: 225px;
+        padding-right: 15px;
+    }
+    
+    #indexButtons .btn{
+        margin-top: 10px;
+        display: block;
+    } 
 
 }
 

@@ -18,11 +18,11 @@ $params['longitude'] = $latLong[1];
 
 
 $raio = 0.5;
-if (filter_input(INPUT_GET, 'raio') != null) {
-    $raio = floatval(filter_input(INPUT_GET, 'raio'));
-}else if(isset($_SESSION['raio'])){
-    $raio = $_SESSION['raio'];
-}
+//if (filter_input(INPUT_GET, 'raio') != null) {
+//    $raio = floatval(filter_input(INPUT_GET, 'raio'));
+//}else if(isset($_SESSION['raio'])){
+//    $raio = $_SESSION['raio'];
+//}
 
 $params['raio'] = $raio;
 $_SESSION['raio'] = $raio;

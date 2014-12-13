@@ -17,10 +17,8 @@ if (trim(filter_input(INPUT_POST, 'kind')) !== null) {
     $tipo = str_replace("+", " ", $tipo);
 }
 
-if (!boolval(filter_input(INPUT_POST, 'location') || filter_input(INPUT_POST, 'location') !== null)) {
-    
-    var_dump(filter_input(INPUT_POST, 'location'));
-    
+if (filter_input(INPUT_POST, 'location') === 'true') {
+
     $params1['latitude'] = $latLong[0];
     $params1['longitude'] = $latLong[1];
     $params1['tipo'] = "%" . $tipo . "%";
@@ -44,10 +42,11 @@ if (!boolval(filter_input(INPUT_POST, 'location') || filter_input(INPUT_POST, 'l
     }
 //    var_dump($params1);
 } else {
-    if (!boolval(filter_input(INPUT_POST, 'location'))) {
+    if (filter_input(INPUT_POST, 'location')=== 'false' ) {
+        
         $params1['latitude'] = $latLong[0];
         $params1['longitude'] = $latLong[1];
-        $params1['tipo'] = "%" . $tipo . "%";
+        $params1['tipo'] = '%' . $tipo . '%';
 
         $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params1);
 
@@ -55,12 +54,12 @@ if (!boolval(filter_input(INPUT_POST, 'location') || filter_input(INPUT_POST, 'l
         foreach ($nearByrestaurants as $r) {
             $restaurants->add($dao->findByKey('Restaurante', $r['id']));
         }
+
     } else {
         $params['nome'] = '%' . $params['nome'] . '%';
-        $params['tipo'] = "%" . $tipo . "%";
+        $params['tipo'] = '%' . $tipo . '%';
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
     }
-
 }
 
 foreach ($restaurants as $r) {
