@@ -111,7 +111,16 @@
                 {$count=0}
                 {foreach from=$produtosComida item=produto}
                     <div class="produto">
-                        <p class="nome">{$produto->getNome()}</p>
+                        
+                        {if isset($idsProdutosComprados) and in_array($produto->getId(), $idsProdutosComprados)}
+                            <p class="nome pull-left col-sm-10 nameP">{$produto->getNome()}</p>
+                            <div class="row btAvaliarDiv">
+                                <a class="btn btn-default btn-sm pull-right btAvaliar" href="{$templateRoot}pages/rateItem/{$produto->getId()}">Avaliar Ítem</a>
+                            </div>
+                        {else}
+                            <p class="nome pull-left col-xs-12 nameP">{$produto->getNome()}</p>
+                        {/if}
+                        
                         {foreach from = $produto->getTamanhos() item=tamanho}
                             <div class="tamanho row col-xs-12">
                                 <div class="tam">

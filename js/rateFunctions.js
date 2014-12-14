@@ -24,10 +24,33 @@ function saveRating() {
     });
 }
 
+function saveRatingItem() {
+    var nota = $('#rateInputUserItem').val();
+    var idProduto = $('#idProduto').val();
+    var data = {nota: nota, idProduto: idProduto};
+
+    var url = templateRoot + 'src/app/ajaxReceivers/saveRatingItem.php';
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+//            $('body').html(serverResponse);
+            alertify.log('Avaliação recebida');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            alert(textStatus);
+            alert(jqXHR);
+        }
+    });
+}
 
 function sendComment() {
     var comment = $('#commentBox').val();
-    
+
     if (comment === '') {
         return;
     }
@@ -81,7 +104,7 @@ function initIputs() {
 function  setCommentBox() {
     $('#commentBox').stopVerbosity({
         limit: 300,
-        indicatorPhrase: ['[countdown]'],
+        indicatorPhrase: ['[countdown]']
     });
 }
 
@@ -105,8 +128,29 @@ $(document).ready(function () {
         size: 'md'
     });
 
+    $("#rateInputUserItem").rating({
+        starCaptions: function (val) {
+            if (val === 0) {
+                return 'Sem Avaliação';
+            } else if (val > 0.1 && val < 1) {
+                return val;
+            } else if (val === 1) {
+                return  val;
+            }
+            else {
+                return val;
+            }
+        },
+        clearCaption: '',
+        size: 'md'
+    });
+
     $('#rateInputUser').on('rating.change', function (event, value, caption) {
         saveRating();
+    });
+
+    $('#rateInputUserItem').on('rating.change', function (event, value, caption) {
+        saveRatingItem();
     });
 
     initIputs();

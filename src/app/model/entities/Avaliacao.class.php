@@ -6,10 +6,9 @@
  * @author Fernando
  */
 
-
 /**
  * @Entity
- * **/
+ * * */
 class Avaliacao {
 
     /**
@@ -20,22 +19,28 @@ class Avaliacao {
     private $id;
 
     /**
-     * @ManyToOne(targetEntity="Cliente", inversedBy="comentarios")
+     * @ManyToOne(targetEntity="Cliente", inversedBy="avaliacoes")
      * @JoinColumn(name="id_cliente", referencedColumnName="id")
      * */
     private $cliente;
 
     /**
-     * @ManyToOne(targetEntity="Restaurante", inversedBy="comentarios")
+     * @ManyToOne(targetEntity="Restaurante", inversedBy="avaliacoes")
      * @JoinColumn(name="id_restaurante", referencedColumnName="id")
      * */
-    private $restaurante;
+    private $restaurante = null;
+
+    /**
+     * @ManyToOne(targetEntity="Produto", inversedBy="avaliacoes")
+     * @JoinColumn(name="id_produto", referencedColumnName="id")
+     * */
+    private $produto = null;
 
     /**
      * @Column(type="float")
      * * */
     private $nota;
-    
+
     public function getId() {
         return $this->id;
     }
@@ -68,6 +73,12 @@ class Avaliacao {
         $this->nota = $nota;
     }
 
+    public function getProduto() {
+        return $this->produto;
+    }
 
-    
+    public function setProduto($produto) {
+        $this->produto = $produto;
+    }
+
 }

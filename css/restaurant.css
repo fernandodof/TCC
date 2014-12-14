@@ -46,6 +46,10 @@
     font-size: 12px;
 }
 
+.tab-content{
+    margin-top: 10px;
+}
+
 #cardapioHeader ul{
     list-style: none;
     margin-left: 15px;
@@ -139,11 +143,31 @@
     vertical-align: text-top;
 }
 
-.blur{
-    background-color:  rgba(0,0,0,0.5);
-}
-
 #nomeRestaurnatePedido{
     text-align: center;
     font-weight: bold;
+}
+
+.produto .btAvaliar{
+    margin-left: -15px;
+}
+
+.produto .btAvaliarDiv{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+@media only screen and (max-width: 768px){ 
+    .produto .btAvaliar{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        width: 100%;
+        float: left;
+    }
+    
+    .produto .nameP{
+        float: none;
+    }
+
 }

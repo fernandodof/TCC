@@ -7,6 +7,7 @@ require_once $path . 'src/app/model/VO/PedidoVO.class.php';
 require_once $path . 'src/app/model/VO/ItemPedidoVO.class.php';
 require_once $path . 'src/app/model/VO/ProdutoVO.class.php';
 require_once $path . 'src/app/model/VO/TamanhoVO.class.php';
+require_once $path . 'src/app/util/Queries.php';
 
 session_start();
 
@@ -54,6 +55,12 @@ if ($counter > 0) {
 }
 
 $avgRating = $avg;
+
+if (isset($_SESSION['id'])) {
+    $params1['id_cliente'] = $_SESSION['id'];
+    $idsProdutosComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_PRODUTOS_CLIENTE_COMPROOU, $params1);
+    $smarty->assign('idsProdutosComprados', $idsProdutosComprados);
+}
 
 $smarty->assign('avgRating', $avgRating);
 $smarty->assign('produtosComida', $produtosComida);

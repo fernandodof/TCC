@@ -12,17 +12,15 @@ session_start();
 $dao = new Dao();
 
 $idCliente = $_SESSION['id'];
-$idRestaurante = filter_input(INPUT_POST, 'idRestaurante');
+$idProduto = filter_input(INPUT_POST, 'idProduto');
 $novaNota = filter_input(INPUT_POST, 'nota');
 
 $cliente = $dao->findByKey('Cliente', $idCliente);
-$restaurante = $dao->findByKey('Restaurante', $idRestaurante);
+$produto = $dao->findByKey('Produto', $idProduto);
 
 $params['id_cliente'] = $idCliente;
-$params['id_restaurante'] = $idRestaurante;
-$nota = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_NOTA_CLINTE_RESTAURANTE, $params);
-
-var_dump($nota);
+$params['id_produto'] = $idProduto;
+$nota = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_NOTA_CLINTE_PRODUTO, $params);
 
 if ($nota != false) {
     $avaliacao = $dao->findByKey('Avaliacao', $nota['id']);
@@ -31,12 +29,12 @@ if ($nota != false) {
 } else {
     $avaliacao = new Avaliacao();
     $avaliacao->setCliente($cliente);
-    $avaliacao->setRestaurante($restaurante);
+    $avaliacao->setProduto($produto);
     $avaliacao->setNota($novaNota);
     $dao->save($avaliacao);
     
     $cliente->addAvaliacao($avaliacao);
-    $restaurante->addAvaliacao($avaliacao);
+    $produto->addAvaliacao($avaliacao);
     $dao->update($cliente);
-    $dao->update($restaurante);
+    $dao->update($produto);
 }

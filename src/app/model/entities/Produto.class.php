@@ -58,17 +58,19 @@ class Produto {
     private $categoria;
 
     /**
-     * @ManyToMany(targetEntity="Comentario")
-     * @JoinTable(name="Produto_Comentario",
-     *      joinColumns={@JoinColumn(name="id_produto", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="id_avaliacao", referencedColumnName="id")}
-     *      )
+     * @OneToMany(targetEntity="Comentario", mappedBy="restaurante", fetch="EXTRA_LAZY")
      * */
     private $comentarios;
+
+    /**
+     * @OneToMany(targetEntity="Avaliacao", mappedBy="restaurante", fetch="EXTRA_LAZY")
+     * */
+    private $avaliacoes;
 
     public function __construct() {
         $this->tamanhos = new Doctrine\Common\Collections\ArrayCollection();
         $this->comentarios = new Doctrine\Common\Collections\ArrayCollection();
+        $this->avaliacoes = new Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -143,4 +145,16 @@ class Produto {
         $this->avaliacoes->add($comentario);
     }
        
+    public function getAvaliacoes() {
+        return $this->avaliacoes;
+    }
+
+    public function setAvaliacoes($avaliacoes) {
+        $this->avaliacoes = $avaliacoes;
+    }
+
+    public function addAvaliacao(Avaliacao $avaliacao){
+        $this->avaliacoes->add($avaliacao);
+    }
+    
 }
