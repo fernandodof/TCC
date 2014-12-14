@@ -44,6 +44,12 @@
                 </div>
                 <div class="panel-body">
                     <div id="results">
+
+                        {if isset($smarty.session.locationError)}
+                            <h4 class="locationError">Não foi possível obter a sua localização, motivo: <small> {$smarty.session.locationError} </smal></h4>
+                            <h6>Mas os locais mais bem avaliados estão aqui</h6>
+                        {/if}
+
                         {if (count($restaurants)==0)}
                             <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado.</h3>
                             <div id='faces'> 

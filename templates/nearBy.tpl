@@ -2,6 +2,7 @@
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
 <link href="{$templateRoot}css/nearBy.css" rel="stylesheet">
+<link href="{$templateRoot}css/clientePage.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
@@ -18,7 +19,7 @@
         </div>
     </div>
     <div class="col-sm-3 sidebarContainer">
-        <div class="navbar navbar-static-top sidebar">
+        <div class="navbar navbar-static-top sidebar {if isset($smarty.session.locationError)} disabledSideBar {/if}">
             <div class="collapse navbar-collapse sidebarCollapse">
                 <ul class="nav nav-pills nav-stacked">
                     {$j=0}
@@ -53,6 +54,40 @@
                         <button class="btn btn-sm btn-success pull-left" id="search" onclick="filterRestaurante(null, null, this.form.raio.value);"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
                         *}
+
+                        {if isset($smarty.session.locationError)}
+                            <h4 class="locationError">Não foi possível obter a sua localização, motivo: <small> {$smarty.session.locationError} </smal></h4>
+                            <h6>Mas você pode pesquisar aqui</h6>
+                            
+                            <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
+                                <div class="row input-group col-md-12 pull-left search">
+                                    <div class="col-md-7 col-xs-12 searchDiv pull-left">
+                                        <input type="text" class="form-control pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
+                                    </div>
+                                    <div class="row col-md-5 col-xs-12">
+                                        <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
+                                            <select class="form-control kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
+                                                <option class="" value="">Tipo de cozinha (todas)</option>
+                                                {foreach from = $kindsOfFood kind}
+                                                    <option class="" value='{$kind.nome}'>{$kind.nome}</option>
+                                                {/foreach}
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1 visible-lg visible-md btSearchDiv">        
+                                            <div class="input-group-btn">
+                                                <button type="submit" name="formSubmit" value="SearchRestaurante" class="btn btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row col-xs-12 visible-sm visible-xs btSearchDiv">        
+                                        <div class="input-group-btn">
+                                            <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {/if}
+
                         {if (count($restaurants)==0)}
                             <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado.</h3>
                             <div id='faces'> 

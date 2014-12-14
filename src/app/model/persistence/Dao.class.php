@@ -111,10 +111,16 @@ class Dao {
         $stmt->execute($params);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     public function getListAssocResultOfNativeQueryWithParameters($queryInstruction, $params) {
         $stmt = $this->em->getConnection()->prepare($queryInstruction);
         $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getListAssocResultOfNativeQuery($queryInstruction) {
+        $stmt = $this->em->getConnection()->prepare($queryInstruction);
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

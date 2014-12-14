@@ -29,11 +29,9 @@ function filterRestaurante(str, liId, raio) {
         }
     }
     
-    alert(raio);
     var location = true;
     if (raio === false) {
         location = false;
-        alert(raio);
     }
 
     var data = {kind: str, location: location, raio: raio};

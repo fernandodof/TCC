@@ -2,7 +2,7 @@
     border-top: 1px solid #f1f1f1;
 }
 
-.panel-body #results form{
+/*.panel-body #results form{
     margin-top: -40px;
     margin-bottom: 20px;
     margin-left: -15px;
@@ -21,4 +21,21 @@
 
 .panel-body #results form #search{
     width: 45px;
+}*/
+
+.locationError{
+    color: #217DBB;
+}
+
+.locationError small{
+    color: #909090;
+}
+
+.sidebarContainer .disabledSideBar li{
+    pointer-events: none;
+    cursor: default;
+}
+
+.sidebarContainer .disabledSideBar li a{
+    color: gray;
 }

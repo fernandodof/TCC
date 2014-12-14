@@ -9,30 +9,39 @@ require_once $path . 'src/app/model/persistence/Dao.class.php';
 
 $dao = new Dao();
 
-$kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);
-
-$latLong = explode(',', $_SESSION['latLong']);
-
-$params['latitude'] = $latLong[0];
-$params['longitude'] = $latLong[1];
-
-if (filter_input(INPUT_GET, 'kindOfFood') == null) {
-    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_ORDER_BY_AVALIACAO_E_RAIO, $params);
-} else {
-    $params['tipo'] = '%' . filter_input(INPUT_GET, 'kindOfFood') . '%';
-    $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params);
-}
-
-
-$restaurants = new \Doctrine\Common\Collections\ArrayCollection();
-foreach ($nearByrestaurants as $r) {
-    $restaurants->add($dao->findByKey('Restaurante', $r['id']));
-}
-
 if (isset($_SESSION['id'])) {
     $params1['id_cliente'] = $_SESSION['id'];
     $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params1);
     $smarty->assign('idsRestaurantesComprados', $idsRestaurantesComprados);
+}
+
+$kindsOfFood = $dao->getListResultOfNamedQuery(Queries::TIPOS_RESTAURANTE_DISTINCT);
+$restaurants = new \Doctrine\Common\Collections\ArrayCollection();
+
+if (isset($_SESSION['latLong'])) {
+
+    $latLong = explode(',', $_SESSION['latLong']);
+
+    $params['latitude'] = $latLong[0];
+    $params['longitude'] = $latLong[1];
+
+    if (filter_input(INPUT_GET, 'kindOfFood') == null) {
+        $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_ORDER_BY_AVALIACAO_E_RAIO, $params);
+    } else {
+        $params['tipo'] = '%' . filter_input(INPUT_GET, 'kindOfFood') . '%';
+        $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params);
+    }
+
+    foreach ($nearByrestaurants as $r) {
+        $restaurants->add($dao->findByKey('Restaurante', $r['id']));
+    }
+    
+} else {
+    $bestRestaurants = $dao->getListAssocResultOfNativeQuery(Queries::GET_RESTAURANTE_ORDER_BY_AVALIACAO);
+    
+    foreach ($bestRestaurants as $r) {
+        $restaurants->add($dao->findByKey('Restaurante', $r['id']));
+    }
 }
 
 foreach ($restaurants as $r) {

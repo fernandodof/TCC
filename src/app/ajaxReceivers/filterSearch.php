@@ -7,10 +7,9 @@ require_once '../model/entities/Restaurante.class.php';
 session_start();
 
 $dao = new Dao();
-
-$latLong = explode(',', $_SESSION['latLong']);
-
-$params['nome'] = trim(filter_input(INPUT_POST, 'search'));
+//
+//
+//$params['nome'] = trim(filter_input(INPUT_POST, 'search'));
 
 if (trim(filter_input(INPUT_POST, 'kind')) !== null) {
     $tipo = trim(filter_input(INPUT_POST, 'kind'));
@@ -18,6 +17,8 @@ if (trim(filter_input(INPUT_POST, 'kind')) !== null) {
 }
 
 if (filter_input(INPUT_POST, 'location') === 'true') {
+
+    $latLong = explode(',', $_SESSION['latLong']);
 
     $params1['latitude'] = $latLong[0];
     $params1['longitude'] = $latLong[1];
@@ -42,21 +43,33 @@ if (filter_input(INPUT_POST, 'location') === 'true') {
     }
 //    var_dump($params1);
 } else {
-    if (filter_input(INPUT_POST, 'location')=== 'false' ) {
-        
-        $params1['latitude'] = $latLong[0];
-        $params1['longitude'] = $latLong[1];
-        $params1['tipo'] = '%' . $tipo . '%';
+    if (filter_input(INPUT_POST, 'location') === 'false') {
 
-        $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params1);
+        if (isset($_SESSION['locationError'])) {
+            $params['tipo'] = '%' . $tipo . '%';
 
-        $restaurants = new \Doctrine\Common\Collections\ArrayCollection();
-        foreach ($nearByrestaurants as $r) {
-            $restaurants->add($dao->findByKey('Restaurante', $r['id']));
+            $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_TIPO_ORDER_BY_AVALIACAO, $params);
+
+            $restaurants = new \Doctrine\Common\Collections\ArrayCollection();
+            foreach ($nearByrestaurants as $r) {
+                $restaurants->add($dao->findByKey('Restaurante', $r['id']));
+            }
+        } else {
+
+            $latLong = explode(',', $_SESSION['latLong']);
+            $params1['latitude'] = $latLong[0];
+            $params1['longitude'] = $latLong[1];
+            $params1['tipo'] = '%' . $tipo . '%';
+
+            $nearByrestaurants = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO_TIPO_ORDER_BY_AVALIACAO_E_RAIO, $params1);
+
+            $restaurants = new \Doctrine\Common\Collections\ArrayCollection();
+            foreach ($nearByrestaurants as $r) {
+                $restaurants->add($dao->findByKey('Restaurante', $r['id']));
+            }
         }
-
     } else {
-        $params['nome'] = '%' . $params['nome'] . '%';
+        $params['nome'] = '%' . trim(filter_input(INPUT_POST, 'search')) . '%';
         $params['tipo'] = '%' . $tipo . '%';
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
     }
