@@ -21,7 +21,9 @@ class Queries {
     const GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA = 'SELECT p FROM pedido p WHERE p.restaurante = :id and p.status = :status and p.dataHora > :dataHora';
     const SET_PEDIDO_STATUS = 'UPDATE pedido p SET p.status = :status WHERE p.id = :id';
     const UPDATE_STATUS_PEDIDO = 'UPDATE pedido p SET p.status = p.status+1 WHERE p.id = :id';
-    
+    const GET_RESTAURANTE_BY_ID_PRODUTO = 'SELECT r FROM restaurante r JOIN r.produtos p WHERE p.id = :id_produto';
+
+
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante FROM pedido p WHERE p.id_cliente = :id_cliente';
     const GET_IDS_PRODUTOS_CLIENTE_COMPROOU = "SELECT DISTINCT ip.id_produto as id_produto FROM pedido p INNER JOIN pedido_itempedido pIt ON p.id = pIt.id_Pedido INNER JOIN itempedido ip ON pIt.id_itemPedido = ip.id INNER JOIN produto pr ON pr.id = ip.id_produto INNER JOIN categoria c ON c.id = pr.id_categoria WHERE c.nome LIKE 'comida' AND p.id_cliente = :id_cliente";

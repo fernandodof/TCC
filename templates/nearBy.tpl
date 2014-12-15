@@ -3,6 +3,7 @@
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
 <link href="{$templateRoot}css/nearBy.css" rel="stylesheet">
 <link href="{$templateRoot}css/clientePage.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}hoverCSS/hover.min.css" rel="stylesheet">
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
@@ -23,11 +24,11 @@
             <div class="collapse navbar-collapse sidebarCollapse">
                 <ul class="nav nav-pills nav-stacked">
                     {$j=0}
-                    <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('', this.id, null);"><a>Todos</a></li>
+                    <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('', this.id, null);"><a class="elementToggle button glow">Todos</a></li>
                         {foreach from = $kindsOfFood item = kind}
                             {$j = $j+1}
-                        <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('{$kind.nome}', this.id, null);"><a class="elementToggle">{$kind.nome}</a></li>
-                        {/foreach}
+                        <li id="liFilter{$j}" class="liFilterType" onclick="filterRestaurante('{$kind.nome}', this.id, null);"><a class="elementToggle button glow">{$kind.nome}</a></li>
+                        {/foreach} 
                 </ul>
             </div>
         </div>

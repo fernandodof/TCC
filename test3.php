@@ -45,16 +45,24 @@ $dao = new Dao();
 //$params['status'] = Pedido::PEDIDO_COZINHA;
 //
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
-session_start();
-var_dump($_SESSION);
 
-$params['latitude'] = -6.889079;
-$params['longitude'] = -38.5481574;
-$params['raio'] = 1;
-$restaurantes = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
 
-foreach ($restaurantes as $r){
-    echo $r['id'].'<br>';
-}
+//session_start();
+//var_dump($_SESSION);
+//
+//$params['latitude'] = -6.889079;
+//$params['longitude'] = -38.5481574;
+//$params['raio'] = 1;
+//$restaurantes = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_RESTAURANTE_RAIO, $params);
+//
+//foreach ($restaurantes as $r){
+//    echo $r['id'].'<br>';
+//}
+//
+//var_dump($restaurantes)
+//;
 
-var_dump($restaurantes);
+$params['id_produto'] = 19;
+$r = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RESTAURANTE_BY_ID_PRODUTO, $params);
+
+var_dump($r);

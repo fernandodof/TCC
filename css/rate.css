@@ -19,3 +19,8 @@ textarea[name=comment] {
     margin-right: -10px;
     margin-top: -30px;
 }
+
+.nameP{
+   font-weight: bold;
+   color: #18BC9C;
+}

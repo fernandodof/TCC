@@ -45,7 +45,13 @@ class Comentario {
      * @ManyToOne(targetEntity="Restaurante", inversedBy="comentarios")
      * @JoinColumn(name="id_restaurante", referencedColumnName="id")
      * */
-    private $restaurante;
+    private $restaurante = null;
+
+    /**
+     * @ManyToOne(targetEntity="Produto", inversedBy="comentarios")
+     * @JoinColumn(name="id_produto", referencedColumnName="id")
+     * */
+    private $produto = null;
 
     public function getId() {
         return $this->id;
@@ -93,6 +99,14 @@ class Comentario {
 
     public function setRestaurante($restaurante) {
         $this->restaurante = $restaurante;
+    }
+
+    public function getProduto() {
+        return $this->produto;
+    }
+
+    public function setProduto($produto) {
+        $this->produto = $produto;
     }
 
 }

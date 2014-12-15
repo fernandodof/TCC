@@ -58,12 +58,12 @@ class Produto {
     private $categoria;
 
     /**
-     * @OneToMany(targetEntity="Comentario", mappedBy="restaurante", fetch="EXTRA_LAZY")
+     * @OneToMany(targetEntity="Comentario", mappedBy="produto", fetch="EXTRA_LAZY")
      * */
     private $comentarios;
 
     /**
-     * @OneToMany(targetEntity="Avaliacao", mappedBy="restaurante", fetch="EXTRA_LAZY")
+     * @OneToMany(targetEntity="Avaliacao", mappedBy="produto", fetch="EXTRA_LAZY")
      * */
     private $avaliacoes;
 

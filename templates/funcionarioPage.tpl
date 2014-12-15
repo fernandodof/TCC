@@ -7,6 +7,7 @@
     <link href="{$templateRoot}dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="{$templateRoot}hoverCSS/hover.min.css" rel="stylesheet">
 </head>
 
 <div class="container" id="page">

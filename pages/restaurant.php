@@ -56,6 +56,30 @@ if ($counter > 0) {
 
 $avgRating = $avg;
 
+
+foreach ($produtosComida as $p) {
+    $avgRatingP;
+    $sumP = 0;
+    $counter = 0;
+
+    foreach ($p->getAvaliacoes() as $av) {
+        $sumP += $av->getNota();
+        $counter++;
+    }
+
+    if ($counter > 0) {
+        $avgP = $sum / $counter;
+    } else {
+        $avgP = 0;
+    }
+
+    $avgRatingP[] = $avgP;
+}
+
+if (isset($avgRatingP)) {
+    $smarty->assign('avgRatingP', $avgRatingP);
+}
+
 if (isset($_SESSION['id'])) {
     $params1['id_cliente'] = $_SESSION['id'];
     $idsProdutosComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_PRODUTOS_CLIENTE_COMPROOU, $params1);

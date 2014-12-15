@@ -37,7 +37,7 @@ function saveRatingItem() {
         async: true,
         data: data,
         success: function (serverResponse) {
-//            $('body').html(serverResponse);
+            $('body').html(serverResponse);
             alertify.log('Avaliação recebida');
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -59,7 +59,40 @@ function sendComment() {
     var idRestaurante = $('#idRestaurante').val();
     var data = {comment: comment, idRestaurante: idRestaurante};
 
-    var url = templateRoot + 'src/app/ajaxReceivers/saveComment.php';
+    var url = templateRoot + 'src/app/ajaxReceivers/saveCommentItem.php';
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('#commentBox').next().html('300');
+            $('#commentBox').val('');
+            alertify.alert("Comentário recebido");
+            $('#send').button('reset');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            alert(textStatus);
+            alert(jqXHR);
+        }
+    });
+
+}
+
+function sendCommentItem() {
+    var comment = $('#commentBox').val();
+
+    if (comment === '') {
+        return;
+    }
+
+    $('#send').button('loading');
+    var idProduto = $('#idProduto').val();
+    var data = {comment: comment, idProduto: idProduto};
+
+    var url = templateRoot + 'src/app/ajaxReceivers/saveCommentItem.php';
 
     $.ajax({
         type: "POST",

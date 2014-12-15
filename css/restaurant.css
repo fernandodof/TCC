@@ -171,3 +171,9 @@
     }
 
 }
+
+.produto .rateDiv{
+    text-align: right;
+    width: 190px;
+    float: right;
+}

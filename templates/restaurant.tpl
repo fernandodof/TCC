@@ -1,9 +1,11 @@
 <link href="{$templateRoot}bootstrap-modal-master/css/bootstrap-modal.css">
+<link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/restaurant.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/restaurantColumn.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
+<script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="{$templateRoot}js/bootbox.min.js"></script>
 <script type="text/javascript" 
@@ -109,9 +111,10 @@
         <div class="tab-content">
             <div id="comida" class="tab-pane active fade in">
                 {$count=0}
+                {$i = 0}
                 {foreach from=$produtosComida item=produto}
                     <div class="produto">
-                        
+
                         {if isset($idsProdutosComprados) and in_array($produto->getId(), $idsProdutosComprados)}
                             <p class="nome pull-left col-sm-10 nameP">{$produto->getNome()}</p>
                             <div class="row btAvaliarDiv">
@@ -120,7 +123,11 @@
                         {else}
                             <p class="nome pull-left col-xs-12 nameP">{$produto->getNome()}</p>
                         {/if}
-                        
+                        <div class="col-xs-12">
+                            <div class="rateDiv">
+                                <input class="rateInputs pull-right" data-show-clear="false" value="{$avgRatingP[$i]}">  
+                            </div>
+                        </div>
                         {foreach from = $produto->getTamanhos() item=tamanho}
                             <div class="tamanho row col-xs-12">
                                 <div class="tam">
@@ -144,6 +151,7 @@
                             <p>{$produto->getIngredientes()}</p>
                         </div>
                     </div>
+                    {$i=$i+1}        
                 {/foreach}
             </div>
             <div id="bebida" class="tab-pane fade">

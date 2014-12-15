@@ -5,6 +5,7 @@ require_once $path.'pages/smartyHeader.php';
 require_once $path.'/src/app/model/entities/Restaurante.class.php';
 require_once $path.'src/app/util/Queries.php';
 require_once $path.'src/app/model/persistence/Dao.class.php';
+require_once $path . 'src/app/model/VO/PedidoVO.class.php';
 session_start();
 $dao = new Dao();
 

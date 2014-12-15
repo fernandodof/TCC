@@ -14,7 +14,8 @@
 
     <div class="menu col-md-8 col-md-offset-2 col-sm-12">
         <input type="hidden" id="idProduto" value="{$produto->getId()}">
-        <h3>Avaliar <small>{$produto->getNome()}</small></h3>
+        <h2>{$restaurante->getNome()}</h2>
+        <h3>Avaliar: <small class="nameP">{$produto->getNome()}</small></h3>
         <div id="rateDiv">
             <h4>Faça Sua Avaliação</h4>
             <input id="rateInputUserItem" data-show-clear="false" value="{$nota}">
@@ -26,7 +27,7 @@
                 <div class="form-group">
                     <textarea id="commentBox" rows="5" class="form-control" name="comment" required placeholder="Insira seu comentário aqui"></textarea>
                 </div>
-                <button class="btn btn-primary pull-right" data-loading-text="Enviando....." id="send" onclick="sendComment();">Enviar comentário</button>
+                <button class="btn btn-primary pull-right" data-loading-text="Enviando....." id="send" onclick="sendCommentItem();">Enviar comentário</button>
             </form>
         </div>
     </div>
