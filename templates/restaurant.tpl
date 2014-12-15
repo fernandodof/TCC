@@ -125,6 +125,8 @@
                         {/if}
                         <div class="col-xs-12">
                             <div class="rateDiv">
+                                <a class="btn btn-primary btn-xs pull-right commentButton {if (count($produto->getComentarios()) == 0)} disabled {/if}" href="{$templateRoot}pages/itemComments/{$produto->getId()}"><span class="fa fa-comment fa-2x commentIcon"></span> 
+                                    <span class="badge commentCountBadge">{count($produto->getComentarios())}</span></a>
                                 <input class="rateInputs pull-right" data-show-clear="false" value="{$avgRatingP[$i]}">  
                             </div>
                         </div>

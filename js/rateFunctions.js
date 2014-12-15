@@ -24,11 +24,10 @@ function saveRating() {
     });
 }
 
-function saveRatingItem() {
-    var nota = $('#rateInputUserItem').val();
+function saveRatingItem(value) {
+    var nota = value;
     var idProduto = $('#idProduto').val();
     var data = {nota: nota, idProduto: idProduto};
-
     var url = templateRoot + 'src/app/ajaxReceivers/saveRatingItem.php';
 
     $.ajax({
@@ -37,7 +36,7 @@ function saveRatingItem() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            $('body').html(serverResponse);
+ //           $('body').html(serverResponse);
             alertify.log('Avaliação recebida');
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -183,7 +182,7 @@ $(document).ready(function () {
     });
 
     $('#rateInputUserItem').on('rating.change', function (event, value, caption) {
-        saveRatingItem();
+        saveRatingItem(value);
     });
 
     initIputs();

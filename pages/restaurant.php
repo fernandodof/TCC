@@ -68,7 +68,7 @@ foreach ($produtosComida as $p) {
     }
 
     if ($counter > 0) {
-        $avgP = $sum / $counter;
+        $avgP = $sumP / $counter;
     } else {
         $avgP = 0;
     }
