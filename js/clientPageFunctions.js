@@ -1,3 +1,38 @@
+var templateRoot;
+
+function reOrder(idPedido, idRestaurante) {
+    var data = {idPedido: idPedido, idRestaurante: idRestaurante};
+    var url = templateRoot + 'src/app/ajaxReceivers/reOrder.php';
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+//            $('body').html(serverResponse);
+            window.location.replace(templateRoot + 'pages/confirmOrder');
+        },
+        error: function (data) {
+            alert("Error");
+        }
+    });
+
+}
+
+
+function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});
+
 $(document).ready(function () {
     $('#pedidos').DataTable(
             {
@@ -34,16 +69,6 @@ $(document).ready(function () {
                     {"bSortable": false}
                 ]
             });
-});
 
-function centerModal() {
-    $(this).css('display', 'block');
-    var $dialog = $(this).find(".modal-dialog");
-    var offset = ($(window).height() - $dialog.height()) / 2;
-    $dialog.css("margin-top", offset);
-}
-
-$('.modal').on('show.bs.modal', centerModal);
-$(window).on("resize", function () {
-    $('.modal:visible').each(centerModal);
+    templateRoot = $('#templateRoot').val();
 });

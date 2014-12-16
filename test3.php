@@ -47,8 +47,8 @@ $dao = new Dao();
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
 
 
-//session_start();
-//var_dump($_SESSION);
+session_start();
+var_dump($_SESSION);
 //
 //$params['latitude'] = -6.889079;
 //$params['longitude'] = -38.5481574;
@@ -62,7 +62,7 @@ $dao = new Dao();
 //var_dump($restaurantes)
 //;
 
-$params['id_produto'] = 19;
-$r = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RESTAURANTE_BY_ID_PRODUTO, $params);
-
-var_dump($r);
+//$params['id_produto'] = 19;
+//$r = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RESTAURANTE_BY_ID_PRODUTO, $params);
+//
+//var_dump($r);

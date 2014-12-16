@@ -45,7 +45,7 @@
                 <div class="pedidoDiv well well-sm">
                     <div class="pedidoHeader">
                         <h5 class="pull-left">{$pedido->getDataHora()}</h5>
-                        <a class="btn btn-xs btn-info pull-right addCart">Refazer Pedido</a>
+                        <a class="btn btn-xs btn-info pull-right addCart" onclick="reOrder({$pedido->getId()},{$pedido->getRestaurante()->getId()});">Refazer Pedido</a>
                     </div>
                     <table class="table table-condensed table-responsive table-bordered">
                         <thead>
@@ -118,7 +118,7 @@
                                                                 <td>{$it->getSubtotal()}</td>
                                                             </tr>
                                                         <tbody>
-                                                        {/foreach}
+                                                    {/foreach}
                                                 </table>
                                             </div>
                                             <div class="modal-footer">
