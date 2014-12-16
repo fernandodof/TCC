@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div id="indexButtons">        
-                    <a class="btn btn-sm btn-success" href="{$templateRoot}pages/nearBy">Locais próximos</a>
+                    <a class="btn btn-sm btn-success" href="{$templateRoot}pages/nearBy">Locais próximos <span class="glyphicon glyphicon-map-marker"></span></a>
                     <a class="btn btn-sm btn-success" href="{$templateRoot}pages/bestRate">Melhores locais <span id="starIcon" class="glyphicon glyphicon-star"></span></a>
   {*                  <a class="btn btn-sm btn-success visible-xs" href="{$templateRoot}pages/nearBy">Locais próximos</a>
                     <a class="btn btn-sm btn-success visible-xs" href="{$templateRoot}pages/bestRate">Melhores locais <span id="starIcon" class="glyphicon glyphicon-star"></span></a>

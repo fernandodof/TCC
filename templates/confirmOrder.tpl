@@ -38,7 +38,7 @@
                                 </td>
                                 <td data-th="Preço: ">R$ {$it->getTamanho()->getPreco()}</td>
                                 <td data-th="Quantidade: ">
-                                    <input type="number" class="form-control text-center" min="1" max="99" id="quantidade{$i}" value="{$it->getQuantidade()}">
+                                    <input type="number" class="form-control" min="1" max="99" id="quantidade{$i}" value="{$it->getQuantidade()}">
                                 </td>
                                 <td data-th="Subtotal" class="text-center">R$ {$it->getSubtotal()}</td>
                                 <td class="actions" data-th="">

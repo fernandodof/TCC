@@ -1,6 +1,7 @@
 var templateRoot;
 
-function reOrder(idPedido, idRestaurante) {
+function reOrder(idPedido, idRestaurante, btn) {
+    $('#reOrder'+btn).button('loading');
     var data = {idPedido: idPedido, idRestaurante: idRestaurante};
     var url = templateRoot + 'src/app/ajaxReceivers/reOrder.php';
 

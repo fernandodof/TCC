@@ -41,11 +41,14 @@
     <div class="tab-content col-md-10">
         <div class="tab-pane active" id="tab_a">
             <h4>Últimos Pedidos</h4>
+            {$i=0}
             {foreach from=$ultimosPedidos item=pedido}
                 <div class="pedidoDiv well well-sm">
                     <div class="pedidoHeader">
-                        <h5 class="pull-left">{$pedido->getDataHora()}</h5>
-                        <a class="btn btn-xs btn-info pull-right addCart" onclick="reOrder({$pedido->getId()},{$pedido->getRestaurante()->getId()});">Refazer Pedido</a>
+                        <h5 class="date pull-left">{$pedido->getDataHora()}</h5>
+                        <button class="btn btn-xs btn-info pull-right addCart glow" id='reOrder{$i}' data-loading-text="Enviando..."
+                                onclick="reOrder({$pedido->getId()},{$pedido->getRestaurante()->getId()},{$i});">Refazer Pedido
+                        </button>
                     </div>
                     <table class="table table-condensed table-responsive table-bordered">
                         <thead>
@@ -65,8 +68,9 @@
                             {/foreach}
                         </tbody>
                     </table>
-                    <h5>{$pedido->getRestaurante()->getNome()}</h5>
+                    <h5 class="restaurant">{$pedido->getRestaurante()->getNome()}</h5>
                 </div>
+            {$i=$i+1}
             {/foreach}
 
         </div>
@@ -118,7 +122,7 @@
                                                                 <td>{$it->getSubtotal()}</td>
                                                             </tr>
                                                         <tbody>
-                                                    {/foreach}
+                                                        {/foreach}
                                                 </table>
                                             </div>
                                             <div class="modal-footer">
