@@ -1,6 +1,7 @@
 <link href="{$templateRoot}css/clientePage.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}hoverCSS/hover.min.css" rel="stylesheet">
 <script src="{$templateRoot}dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/clientPageFunctions.js" type="text/javascript"></script>
 <div class="container">
@@ -33,14 +34,41 @@
     </form>
 
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">
-        <li class="active"><a href="#tab_a" data-toggle="pill">Principal<span class="glyphicon glyphicon-user"></span></a></li>
-        <li><a href="#tab_b" data-toggle="pill">Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#tab_c" data-toggle="pill">Endereços <span class="glyphicon glyphicon-map-marker"></span></a></li>
+        <li class="active"><a href="#tab_a" data-toggle="pill" class="button glow">Principal<span class="glyphicon glyphicon-user"></span></a></li>
+        <li><a href="#tab_b" data-toggle="pill" class="button glow">Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        <li><a href="#tab_c" data-toggle="pill" class="button glow">Endereços <span class="glyphicon glyphicon-map-marker"></span></a></li>
     </ul>
     <div class="tab-content col-md-10">
         <div class="tab-pane active" id="tab_a">
-            <h4>Principal</h4>
-            <p></p>
+            <h4>Últimos Pedidos</h4>
+            {foreach from=$ultimosPedidos item=pedido}
+                <div class="pedidoDiv well well-sm">
+                    <div class="pedidoHeader">
+                        <h5 class="pull-left">{$pedido->getDataHora()}</h5>
+                        <a class="btn btn-xs btn-info pull-right addCart">Refazer Pedido</a>
+                    </div>
+                    <table class="table table-condensed table-responsive table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantidade</th>
+                                <th>Tamanho</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach from=$pedido->getItensPedido() item=it}
+                                <tr>
+                                    <td>{$it->getProduto()->getNome()}</td>
+                                    <td>{$it->getQuantidade()}</td>
+                                    <td>{$it->getTamanho()->getDescricao()}</td>
+                                </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                    <h5>{$pedido->getRestaurante()->getNome()}</h5>
+                </div>
+            {/foreach}
+
         </div>
         <div class="tab-pane" id="tab_b">
             <h4>Pedidos</h4>

@@ -15,6 +15,7 @@ if (isset($_SESSION['id'])) {
         $pedido->setDataHora($pedido->getDataHora()->format('d/m/Y - H:i:s'));
     }
     $smarty->assign('pedidos', $cliente->getPedidos());
+    $smarty->assign('ultimosPedidos', array_slice($cliente->getPedidos()->toArray(), 0, 3));
 }
 
 $smarty->assign('kindsOfFood', $kindsOfFood);

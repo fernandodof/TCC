@@ -52,6 +52,7 @@ class Cliente extends Pessoa {
 
     /**
      * @OneToMany(targetEntity="Pedido", mappedBy="cliente", cascade={"all"}, fetch="EXTRA_LAZY")
+     * @OrderBy({"dataHora" = "DESC"})
      * */
     private $pedidos;
 

@@ -22,6 +22,7 @@ class Queries {
     const SET_PEDIDO_STATUS = 'UPDATE pedido p SET p.status = :status WHERE p.id = :id';
     const UPDATE_STATUS_PEDIDO = 'UPDATE pedido p SET p.status = p.status+1 WHERE p.id = :id';
     const GET_RESTAURANTE_BY_ID_PRODUTO = 'SELECT r FROM restaurante r JOIN r.produtos p WHERE p.id = :id_produto';
+    const GET_PRODUTOS_ORDER_BY_DATE = 'SELECT p FROM Pedido ORDER BY p.dataHora';
 
 
     //Native Queries
