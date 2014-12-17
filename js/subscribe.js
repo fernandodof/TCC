@@ -1,4 +1,29 @@
+var templateRoot;
+
+//function checkEmail() {
+//    var email = $('#email').val();
+//
+//    var data = {email: email};
+//    var url = templateRoot + 'src/app/ajaxReceivers/checkLogin.php';
+//    $.ajax({
+//        type: "POST",
+//        url: url,
+//        async: true,
+//        data: data,
+//        success: function (serverResponse) {
+//            if(serverResponse==='0'){
+//                alertify.success('no');
+//            }else{
+//                alertify.log('yes');
+//            }
+//            
+//        }
+//    });
+//
+//}
+
 $(document).ready(function () {
+    templateRoot = $('#templateRoot').val();
     $("#cep").mask("99.999-999");
     $('#subscribeForm').bootstrapValidator({
         feedbackIcons: {
@@ -26,6 +51,13 @@ $(document).ready(function () {
                     },
                     emailAddress: {
                         message: 'Endereço de email inválido'
+                    },
+                    remote :{
+                        message: 'Email já em uso',
+                        url : templateRoot + 'src/app/ajaxReceivers/checkLoginEmail.php',
+                        data: {
+                            type: 'email'
+                        }
                     }
                 }
             },
@@ -39,6 +71,13 @@ $(document).ready(function () {
                         min: 5,
                         max: 100,
                         message: 'O login deve ter entre 5 e 100 caracteres'
+                    },
+                    remote :{
+                        message: 'Login já em uso',
+                        url : templateRoot + 'src/app/ajaxReceivers/checkLoginEmail.php',
+                        data: {
+                            type: 'login'
+                        }
                     }
                 }
             },

@@ -7,8 +7,6 @@ require_once '../model/entities/Telefone.class.php';
 require_once '../util/EncryptPassword.php';
 require_once '../util/Queries.php';
 
-//require_once '../../../pages/index.php';
-
 function recieveForm($param) {
     return strip_tags(addslashes($param));
 }

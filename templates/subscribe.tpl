@@ -10,7 +10,7 @@
         <div class="form-group">
             <input type="text" name="nome" class="form-control" placeholder="Nome Completo" required/>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="emailDiv">
             <input type="email" name="email" class="form-control" placeholder="Email" required/>
         </div>
 

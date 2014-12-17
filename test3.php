@@ -47,8 +47,14 @@ $dao = new Dao();
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
 
 
-session_start();
-var_dump($_SESSION);
+
+//
+//session_start();
+//var_dump($_SESSION);
+//
+
+
+
 //
 //$params['latitude'] = -6.889079;
 //$params['longitude'] = -38.5481574;
@@ -66,3 +72,13 @@ var_dump($_SESSION);
 //$r = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RESTAURANTE_BY_ID_PRODUTO, $params);
 //
 //var_dump($r);
+
+$params['email'] = 'fernandodof@gmail.com';
+$emailCount = $dao->getArrayResultOfNativeQueryWithParameters(Queries::CHECK_EMAIL_EXISTS_N, $params);
+$isAvailable = true;
+
+if ($emailCount['count']){
+    $isAvailable = false;
+}
+
+var_dump($isAvailable);
