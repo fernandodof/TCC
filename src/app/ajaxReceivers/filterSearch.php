@@ -118,7 +118,7 @@ if (count($restaurants) == 0) {
     $i = 0;
         foreach ($restaurants as $restaurante){
             echo "<div class='well closed col-xs-12'>";
-                echo "<h4 id='nameRestaurante' class='col-sm-8'>" .$restaurante->getNome() . "<small>" . $restaurante->getTipo()->getNome()."</small></h4>";
+                echo "<h4 id='nameRestaurante' class='col-sm-8'>" .$restaurante->getNome() . "<small> " . $restaurante->getTipo()->getNome()."</small></h4>";
                 echo "<div class='row col-xs-12 enderecoDiv'>";
                     echo "<span class='fa fa-map-marker fa-2x pull-left'> </span>";
                     echo "<address class='col-xs-10'>" . $restaurante->getEndereco()->getLogradouro() . ", " . $restaurante->getEndereco()->getNumero() . ", Bairro: " . $restaurante->getEndereco()->getBairro() . ",  CEP: ";

@@ -2,7 +2,7 @@
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
 <link href="{$templateRoot}css/search.css" rel="stylesheet">
 <link href="{$templateRoot}css/nearBy.css" rel="stylesheet">
-<link href="{$templateRoot}hoverCSS/hover.min.css" rel="stylesheet">
+<link href="{$templateRoot}libs/hoverCSS/hover.min.css" rel="stylesheet">
 <script src="{$templateRoot}libs/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
