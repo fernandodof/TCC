@@ -79,7 +79,7 @@ if(count($pedidos)>0){
                             echo "<h4 data-toggle='collapse' data-target='#enderecoNovosPedidos" . $i . "' class='elementToggle verEndereco'>Detalhes do cliente <i class='fa fa-chevron-circle-down'></i></h4>";
                             echo "<div class='collapse' id='enderecoNovosPedidos" . $i . "'>";
                             foreach ($pedido->getCliente()->getTelefones() as $telefone){
-                                echo "<h5>Telefone: (" . $telefone->getDDD() . ")" . $telefone->getNumero() . "</h5>";
+                                echo "<h5>Telefone: " . $telefone->getNumero() . "</h5>";
                             }
                             echo "<h4>Endereço <span class='fa fa-map-marker enderecoMarker'></span></h4>";
                             foreach ($pedido->getCliente()->getEnderecos() as $endereco) {

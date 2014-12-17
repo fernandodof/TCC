@@ -82,3 +82,7 @@ if ($emailCount['count']){
 }
 
 var_dump($isAvailable);
+
+echo json_encode(array(
+    'valid' => $isAvailable,
+));

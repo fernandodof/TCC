@@ -59,10 +59,10 @@
 
                             <div class="collapse" id="enderecoNovosPedidos{$i}">
                                 {foreach from=$pedido->getCliente()->getTelefones() item= telefone}
-                                    <h5>Telefone: ({$telefone->getDDD()}){$telefone->getNumero()}</h5>
+                                    <h5>Telefone: {$telefone->getNumero()}</h5>
                                 {/foreach}
                                 <h4>Endereço <span class="fa fa-map-marker enderecoMarker"></span></h4>
-                                {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                    {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                     <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
                                     <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
                                     <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
@@ -116,10 +116,10 @@
                             <h4  data-toggle="collapse" data-target="#enderecoCozinha{$i}" class="elementToggle verEndereco">Detalhes do cliente <i class="fa fa-chevron-circle-down"></i></h4>
                             <div class="collapse" id="enderecoCozinha{$i}">
                                 {foreach from=$pedido->getCliente()->getTelefones() item= telefone}
-                                    <h5>Telefone: ({$telefone->getDDD()}){$telefone->getNumero()}</h5>
+                                    <h5>Telefone:{$telefone->getNumero()}</h5>
                                 {/foreach}
                                 <h4>Endereço <span class="fa fa-map-marker enderecoMarker"></span></h4>
-                                {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                    {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                     <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
                                     <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
                                     <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
@@ -174,10 +174,10 @@
                             <h4  data-toggle="collapse" data-target="#enderecoEntrega{$i}" class="elementToggle verEndereco">Detalhes do cliente <i class="fa fa-chevron-circle-down"></i></h4>
                             <div class="collapse" id="enderecoEntrega{$i}">
                                 {foreach from=$pedido->getCliente()->getTelefones() item= telefone}
-                                    <h5>Telefone: ({$telefone->getDDD()}){$telefone->getNumero()}</h5>
+                                    <h5>Telefone: {$telefone->getNumero()}</h5>
                                 {/foreach}
                                 <h4>Endereço <span class="fa fa-map-marker enderecoMarker"></span></h4>
-                                {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
+                                    {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                     <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
                                     <p>{$endereco->getBairro()}, {$endereco->getCidade()}</p>
                                     <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
@@ -247,6 +247,9 @@
                                                 <div class="modal-footer">
                                                     <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>
                                                     <div class="col-xs-12">
+                                                        {foreach from=$pedido->getCliente()->getTelefones() item= telefone}
+                                                            <h5>Telefone: {$telefone->getNumero()}</h5>
+                                                        {/foreach}
                                                         <h4>Cliente: {$pedido->getCliente()->getNome()}</h4>
                                                         {foreach from = $pedido->getCliente()->getEnderecos() item = endereco} 
                                                             <p>{$endereco->getLogradouro()}, {$endereco->getNumero()}</p>
