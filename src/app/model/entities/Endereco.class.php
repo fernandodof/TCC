@@ -19,10 +19,10 @@ class Endereco {
     private $id;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      * 
      * * */
-    private $descricao;
+    private $descricao = null;
 
     /**
      * @Column(type="string")
@@ -30,9 +30,9 @@ class Endereco {
     private $logradouro;
 
     /**
-     * @Column(type="string")
+     * @Column(type="string", nullable=true)
      * * */
-    private $numero;
+    private $numero = 'Sem numero';
 
     /**
      * @Column(type="string")

@@ -1,4 +1,9 @@
-<link href="../css/subscribe.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}css/subscribe.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
+<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/jqueryMaskedInput/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}js/subscribe.js" type="text/javascript"></script>
 <div class="container">
     <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="../src/app/processes/ProcessCliente.php" method="post">
         <h2>Cadastro</h2>
@@ -8,19 +13,13 @@
         <div class="form-group">
             <input type="email" name="email" class="form-control" placeholder="Email" required/>
         </div>
-        
+
         <div class="form-group">
             <input type="text" name="login" class="form-control" placeholder="Login" required/>
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-3" id="dddDiv">
-                <input type="text" name="ddd" id="ddd" class="form-control" placeholder="DDD" required/>
-            </div>
-
-            <div class="col-sm-8 col-xs-12 pull-right" id="telefoneDiv">
-                <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Número do Telefone" required/>
-            </div>
+        <div class="form-group col-sm-6" id="telefoneDiv">
+            <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Número do Telefone"/>
         </div>
         <div class="form-group col-sm-6" id="senha1Div">
             <input type="password" name="senha1" id="senha1" class="form-control" placeholder="Senha" required/>
@@ -32,7 +31,7 @@
 
         <h3 class="pull-left" id="enrececoLabel">Endereço</h3>
         <div class="form-group">
-            <input type="text" name="descricaoEndereco" class="form-control" placeholder="Descrição para o endereço (ex: casa, escritório, etc)" required/>
+            <input type="text" name="descricaoEndereco" class="form-control" placeholder="Descrição para o endereço (ex: casa, escritório, etc)"/>
         </div>
         <div class="form-group">
             <input type="text" name="logradouro" class="form-control" placeholder="Logradouro (ex: Rua, Avenida, etc.)" required/>
@@ -44,7 +43,7 @@
             <input type="text" name="numero" class="form-control" placeholder="Número" required/>
         </div>
         <div class="form-group">
-            <input type="text" name="cep" class="form-control" placeholder="CEP" required/>
+            <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP" required/>
         </div>
         <div class="form-group">
             <input type="text" name="cidade" class="form-control" placeholder="Cidade" required/>

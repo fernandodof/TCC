@@ -17,12 +17,6 @@ class Telefone {
      * @GeneratedValue
      * * */
     private $id;
-    
-    /**
-     * @Column(type="integer")
-     * **/
-    private $ddd;
-
     /**
      * @Column(type="string")
      * * */
@@ -32,20 +26,12 @@ class Telefone {
         return $this->id;
     }
 
-    public function getDdd() {
-        return $this->ddd;
-    }
-
     public function getNumero() {
         return $this->numero;
     }
 
     public function setId($id) {
         $this->id = $id;
-    }
-
-    public function setDdd($ddd) {
-        $this->ddd = $ddd;
     }
 
     public function setNumero($numero) {

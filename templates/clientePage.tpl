@@ -2,8 +2,11 @@
 <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/hoverCSS/hover.min.css" rel="stylesheet">
+<link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
 <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/clientPageFunctions.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 <div class="container">
     <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
         <div class="row input-group col-md-12 pull-left search">
@@ -36,7 +39,7 @@
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">
         <li class="active"><a href="#tab_a" data-toggle="pill" class="button glow">Principal<span class="glyphicon glyphicon-user"></span></a></li>
         <li><a href="#tab_b" data-toggle="pill" class="button glow">Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-        <li><a href="#tab_c" data-toggle="pill" class="button glow">Endereços <span class="glyphicon glyphicon-map-marker"></span></a></li>
+        <li><a href="#tab_c" data-toggle="pill" class="button glow">Perfil <span class="glyphicon glyphicon-user"></span></a></li>
     </ul>
     <div class="tab-content col-md-10">
         <div class="tab-pane active" id="tab_a">
@@ -141,7 +144,7 @@
 
         </div>
         <div class="tab-pane" id="tab_c">
-            <h4>Endereços</h4>
+            <h4>Perfil</h4>
             <p></p>
         </div>
     </div>

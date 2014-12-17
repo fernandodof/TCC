@@ -1,24 +1,19 @@
-#telefoneDiv, #dddDiv{
-    padding: 0;    
-}
-
-#dddDiv{
-    margin-bottom: 15px;
-}
-
-#senha1Div, #senha2Div{
+#senha1Div, #senha2Div, #telefoneDiv{
     padding: 0;
     clear: left;
+    z-index: 10;
 }
 
 #enrececoLabel{
     clear: left;    
 }
 
-/*
-@media (max-width: 768px) {
-    *{
-        padding: 0;
-    }
+#paisDiv *{
+    display: none;
 }
-*/
+/*
+{*        <div id="paisDiv">
+            <select class="form-control" name="countrySelectBox" id="pais">
+                <option value="BR" selected>Brasil</option>
+            </select>
+        </div>    *} */

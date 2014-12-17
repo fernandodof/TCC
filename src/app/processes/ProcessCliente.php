@@ -39,7 +39,6 @@ function cadastrarCLiente() {
 
     //Telefone
     $telefone = new Telefone();
-    $telefone->setDdd(filter_input(INPUT_POST, 'ddd'));
     $telefone->setNumero(filter_input(INPUT_POST, 'telefone'));
 
     //Clience <<- Telefone
