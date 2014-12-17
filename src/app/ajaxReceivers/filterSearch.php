@@ -116,52 +116,60 @@ if (count($restaurants) == 0) {
     echo "</div>";
 } else {
     $i = 0;
-    foreach ($restaurants as $restaurante) {
-        echo "<div class='well closed col-xs-12'>";
-        echo "<h4 id='nameRestaurante' class='col-sm-8'>" . $restaurante->getNome() . " <small>" . $restaurante->getTipo()->getNome() . "</small></h4>";
-        echo "<div class='row col-xs-12 enderecoDiv'>";
-        echo "<span class='fa fa-map-marker fa-2x pull-left'> </span>";
-        echo "<address class='col-xs-10'>" . $restaurante->getEndereco()->getLogradouro() . ", " . $restaurante->getEndereco()->getNumero() . ", Bairro: " . $restaurante->getEndereco()->getBairro() . ", CEP: " .
-        $restaurante->getEndereco()->getCep() . ", " . $restaurante->getEndereco()->getCidade() . ", " . $restaurante->getEndereco()->getEstado() . " " .
-        $restaurante->getEndereco()->getComplemento() .
-        "</address>";
-        echo "</div>";
-        echo "<div class='row col-xs-12 pull-right formaPagamentoDiv'>";
-        foreach ($restaurante->getFormasPagamento() as $forma) {
-            if ($forma->getNome() == 'Dinheiro') {
-                echo "<img class='img pull-right moneyImg' alt='Dinheiro' title='Dinheiro' src='" . $templateRoot . "images/icons/money59.png'/>";
-            }
-            if ($forma->getNome() == 'Cartao') {
-                echo "<img class='img pull-right moneyImg' alt='Dinheiro' title='Dinheiro' src='" . $templateRoot . "images/icons/card25.png'/>";
-            }
-        }
-        echo "<p class='pull-right'>Formas de Pagamento: </p>";
-        echo "</div>";
-        echo "<div class='row buttons pull-left col-md-12'>";
-        echo "<div class='col-md-6 col-sm-8 col-xs-12'>";
-        echo "<input class='rateInputs pull-left' data-show-clear='false' value='" . $avgRating[$i] . "'>";
-        echo "</div>";
-        if (isset($idsRestaurantesComprados)) {
-            if (in_array($restaurante->getId(), $idsRestaurantesComprados)) {
-                echo "<a class='btn btn-default btn-sm pull-left' href='" . $templateRoot . "pages/rate/" . $restaurante->getId() . "'>Avaliar estabelecimento</a>";
-            }
-        }
-        echo "<a class='btn btn-info btn-sm pull-right btVerCardapio visible-lg visible-md' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
-        echo "<a class='btn btn-primary btn-xs pull-right commentButton visible-lg visible-md'";
-        if (count($restaurante->getComentarios()) == 0) {
-            echo "disabled ";
-        } echo "href='" . $templateRoot . "pages/comments/" . $restaurante->getId() . "'><span class='fa fa-comment fa-2x commentIcon'></span> " .
-        "<span class='badge commentCountBadge'> " . count($restaurante->getComentarios()) . "</span></a>";
+        foreach ($restaurants as $restaurante){
+            echo "<div class='well closed col-xs-12'>";
+                echo "<h4 id='nameRestaurante' class='col-sm-8'>" .$restaurante->getNome() . "<small>" . $restaurante->getTipo()->getNome()."</small></h4>";
+                echo "<div class='row col-xs-12 enderecoDiv'>";
+                    echo "<span class='fa fa-map-marker fa-2x pull-left'> </span>";
+                    echo "<address class='col-xs-10'>" . $restaurante->getEndereco()->getLogradouro() . ", " . $restaurante->getEndereco()->getNumero() . ", Bairro: " . $restaurante->getEndereco()->getBairro() . ",  CEP: ";
+                        echo $restaurante->getEndereco()->getCep() . ", " . $restaurante->getEndereco()->getCidade() . ", " . $restaurante->getEndereco()->getEstado() ." "; 
+                        echo $restaurante->getEndereco()->getComplemento();
+                    echo "</address>";
+                echo "</div>";
+                echo "<div class='row col-xs-12 pull-right formaPagamentoDiv'>";
+                    foreach ($restaurante->getFormasPagamento() as $forma){
+                        if ($forma->getNome()=='Dinheiro'){
+                            echo "<img class='img pull-right moneyImg' alt='Dinheiro' title='Dinheiro' src='". $templateRoot . "images/icons/money59.png'/>";
+                        }
+                        if ($forma->getNome()=='Cartao'){
+                            echo "<img class='img pull-right cardImg' alt='Cartão' title='Cartão' src='" . $templateRoot . "images/icons/card25.png'/>";
+                        }
+                    }
+                    echo "<p class='pull-right'>Formas de Pagamento: </p>";
+                echo "</div>";
+                if (isset($idsRestaurantesComprados) && in_array($restaurante->getId(), $idsRestaurantesComprados)){
+                    echo "<div class='row'>";
+                        echo "<a class='btn btn-default btn-sm pull-left btAvaliar visible-lg visible-md' href='" .$templateRoot . "pages/rate/". $restaurante->getId(). "'>Avaliar estabelecimento</a>";
+                    echo "</div>";
+                }
 
-        echo "<a class='btn btn-info btn-sm pull-right btVerCardapioSm visible-xs visible-sm btn-block' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
-        echo "<a class='btn btn-primary btn-xs pull-right commentButtonSm visible-xs visible-sm btn-block'";
-        if (count($restaurante->getComentarios()) == 0) {
-            echo "disabled ";
-        } echo "href='" . $templateRoot . "pages/comments/" . $restaurante->getId() . "'><span class='fa fa-comment fa-2x commentIcon'></span> " .
-        "<span class='badge commentCountBadge'> " . count($restaurante->getComentarios()) . "</span></a>";
+            echo "<div class='row buttons pull-left col-md-12'>"; 
+                            echo "<div class='col-md-6 col-sm-8 col-xs-12'>";
+                                echo "<input class='rateInputs pull-left' data-show-clear='false' value='".$avgRating[$i]."'>";
+                            echo "</div>";
+                            echo "<a class='btn btn-info btn-sm pull-right btVerCardapio visible-lg visible-md' href='".$templateRoot ."pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
+                echo "<a class='btn btn-primary btn-xs pull-right commentButton visible-lg visible-md'";
+                    if (count($restaurante->getComentarios()) == 0){  
+                        echo " disabled"; 
+                    } 
+                    echo "href='" . $templateRoot . "pages/comments/" . $restaurante->getId() . "'><span class='fa fa-comment fa-2x commentIcon'></span> ";
+                    echo "<span class='badge commentCountBadge'>" . count($restaurante->getComentarios()) . "</span>";
+                echo "</a>"; 
+                echo "<a class='btn btn-info btn-sm pull-right btVerCardapioSm visible-xs visible-sm btn-block' href='" . $templateRoot. "pages/restaurant/" . $restaurante->getId() ."'>Visualizar Cardápio</a>";
+                echo "<a class='btn btn-primary btn-xs pull-right commentButtonSm visible-xs visible-sm btn-block'"; 
+                    if (count($restaurante->getComentarios()) == 0){ 
+                        echo " disabled"; 
+                    }
+                    echo "href='". $templateRoot . "pages/comments/" . $restaurante->getId() ."'><span class='fa fa-comment fa-2x commentIcon'></span> "; 
+                    echo "<span class='badge commentCountBadge'>" . count($restaurante->getComentarios()) . "</span> Comentários"; 
+                echo "</a>";
+                    if (isset($idsRestaurantesComprados) and in_array($restaurante->getId(), $idsRestaurantesComprados)){
+                        echo "<a class='btn btn-default btn-sm pull-left btAvaliar visible-xs visible-sm btn-block' href='" . $templateRoot . "pages/rate/" . $restaurante->getId() . "'>Avaliar estabelecimento</a>";
+                    }
 
-        echo "</div>";
+            echo "</div>";
         echo "</div>";
         $i++;
+        }
     }
-}
+

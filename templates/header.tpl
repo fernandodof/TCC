@@ -2,6 +2,9 @@
 <html>
     <head>
         <title>{$title}</title>
+        <meta http-equiv="cache-control" content="max-age=0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="expires" content="0" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link href= "{$templateRoot}bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +21,7 @@
         <link href="{$templateRoot}alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="{$templateRoot}alertify.js-0.3.11/lib/alertify.min.js"></script>
         <link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
-{*        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>*}
+        {*        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>*}
     </head>
     <body>
         <header>

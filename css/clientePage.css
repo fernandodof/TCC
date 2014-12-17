@@ -57,7 +57,8 @@
 }
 
 .tab-content #tab_a .pedidoDiv table{
-    background: #D1D1E1;
+    /*background: #D1D1E1;*/
+    background: white;
 }
 
 .tab-content #tab_a .pedidoDiv .restaurant{

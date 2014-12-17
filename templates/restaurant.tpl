@@ -21,8 +21,8 @@
 <div class="container">
     <img src="{$templateRoot}images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
     <div class="visible-sm visible-xs">
-        <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target=".restaurant">
-            <span class="glyphicon glyphicon-chevron-left"></span>
+        <button class="btn btn-primary btn" data-toggle="collapse" data-target=".restaurant">
+            <span class="fa fa-bars"></span>
         </button>
     </div>
 

@@ -1,7 +1,7 @@
 <link href="{$templateRoot}bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/sidebar.css" rel="stylesheet">
-<link href="{$templateRoot}css/search.css" rel="stylesheet">
 <link href="{$templateRoot}hoverCSS/hover.min.css" rel="stylesheet">
+<link href="{$templateRoot}css/search.css" rel="stylesheet">
 <script src="{$templateRoot}bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/jquery.query-object.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/searchFunctions.js" type="text/javascript"></script>
@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <h4>Filtrar por tipo</h4>
             <div class="visible-xs sidebarToggleButton">
-                <button class="btn btn-primary btn-lg" data-toggle="collapse" data-target=".sidebarCollapse">
+                <button class="btn btn-primary" data-toggle="collapse" data-target=".sidebarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
             </div>
