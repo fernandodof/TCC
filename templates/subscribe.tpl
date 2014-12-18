@@ -40,7 +40,7 @@
             <input type="text" name="bairro" class="form-control" placeholder="Bairro" required/>
         </div>
         <div class="form-group">
-            <input type="text" name="numero" class="form-control" placeholder="Número" required/>
+            <input type="text" name="numero" class="form-control" placeholder="Número"/>
         </div>
         <div class="form-group">
             <input type="text" name="cep" id="cep" class="form-control" placeholder="CEP" required/>

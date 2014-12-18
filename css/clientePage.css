@@ -65,14 +65,16 @@
     font-weight: bold;
 }
 
-#subscribeForm #edit{
-    margin-top: 10px;
-}
 
 #subscribeForm .editField:disabled { 
     background-color: #EEEEEE;
     cursor: not-allowed;
     color: darkgray;
+    outline: #2C3E50;
+}
+
+#changePassword #subPass{
+    margin-right: -15px;
 }
 
 @media only screen and (max-width: 768px){

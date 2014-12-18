@@ -148,20 +148,20 @@
         </div>
         <div class="tab-pane" id="tab_c">
             <h4>Perfil</h4>
-            <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="../src/app/processes/ProcessCliente.php" method="post">
+            <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="javascript:void(0)" method="post">
 
                 <a id="edit" onclick="edit();" value="CadastrarCliente" type="button" class="btn btn-default pull-right">Editar <span class="fa fa-edit"></span></a>
                 <h2>Cadastro</h2>
 
                 <div class="form-group">
-                    <input type="text" name="nome" class="form-control editField" placeholder="Nome Completo" value="{$cliente->getNome()}" required/>
+                    <input type="text" name="nome" id="nome" class="form-control editField" placeholder="Nome Completo" value="{$cliente->getNome()}" required/>
                 </div>
                 <div class="form-group" id="emailDiv">
-                    <input type="email" name="email" class="form-control editField" placeholder="Email" required value="{$cliente->getEmail()}"/>
+                    <input type="email" name="email" id="email" class="form-control editField" placeholder="Email" required value="{$cliente->getEmail()}"/>
                 </div>
 
                 <div class="form-group">
-                    <input type="text" name="login" class="form-control editField" placeholder="Login" required value="{$cliente->getLogin()}"/>
+                    <input type="text" name="login" id="login" class="form-control editField" placeholder="Login" required value="{$cliente->getLogin()}"/>
                 </div>
                 {foreach from=$cliente->getTelefones() item=telefone} 
                     <div class="form-group col-sm-6" id="telefoneDiv">
@@ -169,41 +169,31 @@
                     </div>
 
                 {/foreach}
-
                 <div class="form-group col-sm-6" id="senhaAtualDiv">
                     <input type="password" name="senhaAtual" id="senhaAtual" class="form-control editField" placeholder="Senha Atual"/>
                 </div>
-
-                <div class="form-group col-sm-6" id="senha1Div">
-                    <input type="password" name="senha1" id="senha1" class="form-control editField"  placeholder="Senha" required/>
-                </div>
-
-                <div class="form-group col-sm-6" id="senha2Div">
-                    <input type="password" name="senha2" id="senha2" class="form-control editField" placeholder="Confirme a Senha" required/>
-                </div>
-
                 {foreach from=$cliente->getEnderecos() item=endereco}
                     <h3 class="pull-left" id="enrececoLabel">Endereço</h3>
                     <div class="form-group">
-                        <input type="text" name="descricaoEndereco" class="form-control editField" placeholder="Descrição para o endereço (ex: casa, escritório, etc)" value="{$endereco->getDescricao()}"/>
+                        <input type="text" name="descricaoEndereco" id="descricaoEndereco" class="form-control editField" placeholder="Descrição para o endereço (ex: casa, escritório, etc)" value="{$endereco->getDescricao()}"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="logradouro" class="form-control editField" placeholder="Logradouro (ex: Rua, Avenida, etc.)" required value="{$endereco->getLogradouro()}"/>
+                        <input type="text" name="logradouro" id="logradouro" class="form-control editField" placeholder="Logradouro (ex: Rua, Avenida, etc.)" required value="{$endereco->getLogradouro()}"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="bairro" class="form-control editField" placeholder="Bairro" required value="{$endereco->getLogradouro()}"/>
+                        <input type="text" name="bairro" id="bairro" class="form-control editField" placeholder="Bairro" required value="{$endereco->getBairro()}"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="numero" class="form-control editField" placeholder="Número" required value="{$endereco->getNumero()}"/>
+                        <input type="text" name="numero" id="numero" class="form-control editField" placeholder="Número" value="{$endereco->getNumero()}"/>
                     </div>
                     <div class="form-group">
                         <input type="text" name="cep" id="cep" class="form-control editField" placeholder="CEP" required value="{$endereco->getCep()}"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="cidade" class="form-control editField" placeholder="Cidade" required value="{$endereco->getCidade()}"/>
+                        <input type="text" name="cidade" id="cidade" class="form-control editField" placeholder="Cidade" required value="{$endereco->getCidade()}"/>
                     </div>
                     <div class="form-group">
-                        <select name="estado" class="form-control editField" required>
+                        <select name="estado" id="estado" class="form-control editField" required>
                             <option value="">Estado</option>
                             <option value="Ácre" {if $endereco->getEstado() == 'Ácre'} selected{/if}>Ácre</option>
                             <option value="Alagoas" {if $endereco->getEstado() == 'Ácre'} selected{/if}>Alagoas</option>
@@ -235,11 +225,28 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="complemento" class="form-control editField" placeholder="Complemento" value="{$endereco->getComplemento()}"/>
+                        <input type="text" name="complemento" id="complemento" class="form-control editField" placeholder="Complemento" value="{$endereco->getComplemento()}"/>
                     </div>
                 {/foreach}
                 <button type="submit" id="sub" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Salvar</button>
             </form>
+
+            <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="changePassword" action="javascript:void(0)" method="post">
+                <h3>Alterar Senha</h3>
+                <div class="form-group col-sm-6" id="senhaAtualDiv">
+                    <input type="password" name="senhaAtual" id="senhaAtual1" class="form-control" placeholder="Senha Atual"/>
+                </div>
+
+                <div class="form-group col-sm-6" id="senha1Div">
+                    <input type="password" name="senha1" id="senha1" class="form-control"  placeholder="Nova senha"/>
+                </div>
+
+                <div class="form-group col-sm-6" id="senha2Div">
+                    <input type="password" name="senha2" id="senha2" class="form-control" placeholder="Confirme a senha"/>
+                </div>
+                <button type="submit" id="subPass" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Salvar</button>
+            </form>
+
         </div>
     </div>
 </div>

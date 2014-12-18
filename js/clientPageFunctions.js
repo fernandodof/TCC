@@ -22,7 +22,68 @@ function reOrder(idPedido, idRestaurante, btn) {
 }
 
 function edit() {
-    $('.editField').prop('disabled', function(i,oldVal) { return !oldVal; });
+    $('.editField').prop('disabled', function (i, oldVal) {
+        return !oldVal;
+    });
+}
+
+function editSubscription() {
+    var nome = $('#nome').val();
+    var email = $('#email').val();
+    var login = $('#login').val();
+    var telefone = $('#telefone').val();
+    var senha = $('#senhaAtual').val();
+    var descricaoEndereco = $('#descricaoEndereco').val();
+    var logradouro = $('#logradouro').val();
+    var bairro = $('#bairro').val();
+    var numero = $('#numero').val();
+    var cep = $('#cep').val();
+    var cidade = $('#cidade').val();
+    var estado = $('#estado').val();
+    var complemento = $('#complemento').val();
+
+    var data = {nome: nome, email: email, login: login, telefone: telefone, senha: senha, descricaoEndereco: descricaoEndereco,
+        logradouro: logradouro, bairro: bairro, numero: numero, cep: cep, cidade: cidade, estado: estado, complemento: complemento};
+    var url = templateRoot + 'src/app/ajaxReceivers/editSubscription.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('body').append(serverResponse);
+            alertify.success('Cadastro atualizado');
+            $('#subscribeForm').data('bootstrapValidator').resetForm();
+            edit();
+        },
+        error: function (data) {
+            alert("Error");
+        }
+    });
+}
+
+
+function editPassword() {
+    var senha = $('#senha1').val();
+    var data = {senha: senha};
+    var url = templateRoot + 'src/app/ajaxReceivers/editPassword.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('body').append(serverResponse);
+            alertify.success('Senha atualizada');
+            $('#senhaAtual1').val('');
+            $('#senha1').val('');
+            $('#senha2').val('');
+            $('#changePassword').data('bootstrapValidator').resetForm();
+        },
+        error: function (data) {
+            alert("Error");
+        }
+    });
 }
 
 function centerModal() {
@@ -165,38 +226,6 @@ $(document).ready(function () {
 
                 }
             },
-            senha1: {
-                validators: {
-                    notEmpty: {
-                        message: 'A senha não pode ser vazia'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        message: 'A senha deve ter entre 6 e 30 caracteres'
-                    },
-                    identical: {
-                        field: 'senha2',
-                        message: 'As senhas são diferentes'
-                    }
-                }
-            },
-            senha2: {
-                validators: {
-                    notEmpty: {
-                        message: 'A confirmação de senha não pode ser vazia'
-                    },
-                    stringLength: {
-                        min: 6,
-                        max: 30,
-                        message: 'A senha deve ter entre 6 e 30 caracteres'
-                    },
-                    identical: {
-                        field: 'senha1',
-                        message: 'As senhas são diferentes'
-                    }
-                }
-            },
             descricaoEndereco: {
                 message: 'Descrição inválida',
                 notEmpty: {
@@ -252,6 +281,76 @@ $(document).ready(function () {
                 }
             }
         }
-    });
+    })
+            .on('success.form.bv', function (e) {
+                // Prevent form submission
+                e.preventDefault();
+                editSubscription();
 
+            });
+
+    $('#changePassword').bootstrapValidator({
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            senhaAtual: {
+                validators: {
+                    notEmpty: {
+                        message: 'A senha não pode ser vazia'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'A senha deve ter entre 6 e 30 caracteres'
+                    },
+                    remote: {
+                        message: 'Senha não confere',
+                        url: templateRoot + 'src/app/ajaxReceivers/validateEdit.php',
+                        data: {
+                            type: 'senhaAtual'
+                        }
+                    }
+                }
+            },
+            senha1: {
+                validators: {
+                    notEmpty: {
+                        message: 'Nova senha não pode ser vazia'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'A senha deve ter entre 6 e 30 caracteres'
+                    },
+                    identical: {
+                        field: 'senha2',
+                        message: 'As senhas são diferentes'
+                    }
+                }
+            },
+            senha2: {
+                validators: {
+                    notEmpty: {
+                        message: 'Confirmação de senha não pode ser vazia'
+                    },
+                    stringLength: {
+                        min: 6,
+                        max: 30,
+                        message: 'A senha deve ter entre 6 e 30 caracteres'
+                    },
+                    identical: {
+                        field: 'senha1',
+                        message: 'As senhas são diferentes'
+                    }
+                }
+            }
+        }
+    }).on('success.form.bv', function (e) {
+        // Prevent form submission
+        e.preventDefault();
+        editPassword();
+    });
 });
