@@ -228,7 +228,7 @@
                         <input type="text" name="complemento" id="complemento" class="form-control editField" placeholder="Complemento" value="{$endereco->getComplemento()}"/>
                     </div>
                 {/foreach}
-                <button type="submit" id="sub" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Salvar</button>
+                <button type="submit" id="sub" name="formSubmit" value="EditarCliente" class="btn btn-success pull-right editField">Salvar</button>
             </form>
 
             <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="changePassword" action="javascript:void(0)" method="post">
@@ -244,7 +244,7 @@
                 <div class="form-group col-sm-6" id="senha2Div">
                     <input type="password" name="senha2" id="senha2" class="form-control" placeholder="Confirme a senha"/>
                 </div>
-                <button type="submit" id="subPass" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Salvar</button>
+                <button type="submit" id="subPass" name="formSubmit" class="btn btn-success pull-right">Salvar</button>
             </form>
 
         </div>
