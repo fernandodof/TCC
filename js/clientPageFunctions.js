@@ -28,6 +28,8 @@ function edit() {
 }
 
 function editSubscription() {
+    $('#saveButton').show();
+    $('body').dimBackground();
     var nome = $('#nome').val();
     var email = $('#email').val();
     var login = $('#login').val();
@@ -52,9 +54,12 @@ function editSubscription() {
         data: data,
         success: function (serverResponse) {
             $('body').append(serverResponse);
-            alertify.success('Cadastro atualizado');
             $('#subscribeForm').data('bootstrapValidator').resetForm();
             edit();
+            $('#senhaAtual').val('');
+            $('body').undim();
+            $('#saveButton').hide();
+            alertify.success('Cadastro atualizado');
         },
         error: function (data) {
             alert("Error");
@@ -62,8 +67,9 @@ function editSubscription() {
     });
 }
 
-
 function editPassword() {
+    $('#savePassword').show();
+    $('body').dimBackground();
     var senha = $('#senha1').val();
     var data = {senha: senha};
     var url = templateRoot + 'src/app/ajaxReceivers/editPassword.php';
@@ -74,11 +80,13 @@ function editPassword() {
         data: data,
         success: function (serverResponse) {
             $('body').append(serverResponse);
-            alertify.success('Senha atualizada');
             $('#senhaAtual1').val('');
             $('#senha1').val('');
             $('#senha2').val('');
             $('#changePassword').data('bootstrapValidator').resetForm();
+            $('#savePassword').hide();
+            $('body').undim();
+            alertify.success('Senha atualizada');
         },
         error: function (data) {
             alert("Error");
@@ -143,7 +151,7 @@ $(document).ready(function () {
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
+            validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
         },
         fields: {
             nome: {
@@ -293,7 +301,7 @@ $(document).ready(function () {
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
+            validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
         },
         fields: {
             senhaAtual: {

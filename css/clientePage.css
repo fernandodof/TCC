@@ -77,6 +77,38 @@
     margin-right: -15px;
 }
 
+#loading{
+    float: left;
+    z-index: 100;
+    margin-left: 450px;
+    margin-top: 200px;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin 1.2s infinite linear;
+    -webkit-animation: spin2 1.2s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+
+
+#sub .glyphicon-refresh-animate, #subPass .glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+form .buttonLoadingIcon{
+    display: none;
+}
+
 @media only screen and (max-width: 768px){
     .tab-content #tab_a .pedidoDiv .addCart{
         display: block;
