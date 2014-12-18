@@ -83,6 +83,8 @@ function login() {
 
     session_start();
     $_SESSION['nome'] = $cliente->getNome();
+    $_SESSION['login'] = $cliente->getLogin();
+    $_SESSION['email'] = $cliente->getEmail();
     $_SESSION['id'] = $cliente->getId();
     $_SESSION['tipo'] = 'cliente';
     $_SESSION['logged_in'] = true;

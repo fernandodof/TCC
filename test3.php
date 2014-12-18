@@ -1,8 +1,10 @@
 <?php
+
 require_once './src/app/model/persistence/Dao.class.php';
 require_once './src/app/model/entities/Categoria.class.php';
 require_once './src/app/util/Queries.php';
 require_once './src/app/util/Spherical-geometry.class.php';
+require_once './src/app/util/EncryptPassword.php';
 
 $dao = new Dao();
 
@@ -14,7 +16,6 @@ $dao = new Dao();
 //$categoria1 = new Categoria();
 //$categoria1->setNome('Bebida');
 //$dao->save($categoria1);
-
 //$params['id'] = '2';
 //$params['dataHora'] = new \DateTime();
 //$pedidos =  $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_RESTAURANTE_EM_ABERTO_DATA, $params);
@@ -24,10 +25,8 @@ $dao = new Dao();
 //foreach ($pedidos as $p){
 //    echo $p->getDataHora()->format('d/m/Y - H:i:s').'<br>';
 //}
-
 //$params['id'] = '37';
 //$dao->executeQueryWithParameters(Queries::SET_PEDIDO_ENCAMINHADO, $params);
-
 //$params['id_cliente'] = '2';
 //$idRestauratesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params);
 //var_dump($idRestauratesComprados);
@@ -39,22 +38,15 @@ $dao = new Dao();
 //
 //
 //var_dump($nota);
-
 //$params['id'] = '2';
 //$params['dataHora'] = new \DateTime();
 //$params['status'] = Pedido::PEDIDO_COZINHA;
 //
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
-
-
-
 //
-//session_start();
-//var_dump($_SESSION);
+session_start();
+var_dump($_SESSION);
 //
-
-
-
 //
 //$params['latitude'] = -6.889079;
 //$params['longitude'] = -38.5481574;
@@ -67,22 +59,21 @@ $dao = new Dao();
 //
 //var_dump($restaurantes)
 //;
-
 //$params['id_produto'] = 19;
 //$r = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RESTAURANTE_BY_ID_PRODUTO, $params);
 //
 //var_dump($r);
 
-$params['email'] = 'fernandodof@gmail.com';
-$emailCount = $dao->getArrayResultOfNativeQueryWithParameters(Queries::CHECK_EMAIL_EXISTS_N, $params);
-$isAvailable = true;
+$params['id'] = 1;
+$senha = EncryptPassword::encrypt('123456');
+$senhaDB = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_SENHA_ATUAL, $params);
 
-if ($emailCount['count']){
-    $isAvailable = false;
+if ($senha == $senhaDB['senha']) {
+    $isValid = true;
+} else {
+    $isValid = false;
 }
 
-var_dump($isAvailable);
-
 echo json_encode(array(
-    'valid' => $isAvailable,
+    'valid' => $isValid,
 ));

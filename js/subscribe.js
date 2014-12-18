@@ -54,7 +54,7 @@ $(document).ready(function () {
                     },
                     remote :{
                         message: 'Email já em uso',
-                        url : templateRoot + 'src/app/ajaxReceivers/checkLoginEmail.php',
+                        url : templateRoot + 'src/app/ajaxReceivers/validateSubscription.php',
                         data: {
                             type: 'email'
                         }
@@ -68,13 +68,13 @@ $(document).ready(function () {
                         message: 'O login é obrigatório e não pode ser vazio'
                     },
                     stringLength: {
-                        min: 5,
+                        min: 3,
                         max: 100,
                         message: 'O login deve ter entre 5 e 100 caracteres'
                     },
                     remote :{
                         message: 'Login já em uso',
-                        url : templateRoot + 'src/app/ajaxReceivers/checkLoginEmail.php',
+                        url : templateRoot + 'src/app/ajaxReceivers/validateSubscription.php',
                         data: {
                             type: 'login'
                         }
@@ -100,7 +100,7 @@ $(document).ready(function () {
                     stringLength: {
                         min: 6,
                         max: 30,
-                        message: 'O login deve ter entre 5 e 30 caracteres'
+                        message: 'A senha deve ter entre 6 e 30 caracteres'
                     },
                     identical: {
                         field: 'senha2',
@@ -111,12 +111,12 @@ $(document).ready(function () {
             senha2: {
                 validators: {
                     notEmpty: {
-                        message: 'A senha não pode ser vazia'
+                        message: 'A confirmação de senha não pode ser vazia'
                     },
                     stringLength: {
                         min: 6,
                         max: 30,
-                        message: 'O login deve ter entre 5 e 30 caracteres'
+                        message: 'A senha deve ter entre 6 e 30 caracteres'
                     },
                     identical: {
                         field: 'senha1',

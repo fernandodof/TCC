@@ -83,7 +83,7 @@
         <div class="form-group">
             <input type="text" name="complemento" class="form-control" placeholder="Complemento"/>
         </div>
-        <button type="submit" name="formSubmit" value="CadastrarCliente" class="btn btn-lg btn-success pull-right">Cadastrar</button>
+        <button type="submit" id="sub" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Cadastrar</button>
     </form>
 
 </div>

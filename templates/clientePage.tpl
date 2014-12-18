@@ -3,10 +3,13 @@
 <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/hoverCSS/hover.min.css" rel="stylesheet">
 <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
+<link href="{$templateRoot}css/subscribe.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/clientPageFunctions.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/jqueryMaskedInput/jquery.maskedinput.min.js" type="text/javascript"></script>
+
 <div class="container">
     <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
         <div class="row input-group col-md-12 pull-left search">
@@ -73,7 +76,7 @@
                     </table>
                     <h5 class="restaurant">{$pedido->getRestaurante()->getNome()}</h5>
                 </div>
-            {$i=$i+1}
+                {$i=$i+1}
             {/foreach}
 
         </div>
@@ -145,7 +148,98 @@
         </div>
         <div class="tab-pane" id="tab_c">
             <h4>Perfil</h4>
-            <p></p>
+            <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="../src/app/processes/ProcessCliente.php" method="post">
+
+                <a id="edit" onclick="edit();" value="CadastrarCliente" type="button" class="btn btn-default pull-right">Editar <span class="fa fa-edit"></span></a>
+                <h2>Cadastro</h2>
+
+                <div class="form-group">
+                    <input type="text" name="nome" class="form-control editField" placeholder="Nome Completo" value="{$cliente->getNome()}" required/>
+                </div>
+                <div class="form-group" id="emailDiv">
+                    <input type="email" name="email" class="form-control editField" placeholder="Email" required value="{$cliente->getEmail()}"/>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="login" class="form-control editField" placeholder="Login" required value="{$cliente->getLogin()}"/>
+                </div>
+                {foreach from=$cliente->getTelefones() item=telefone} 
+                    <div class="form-group col-sm-6" id="telefoneDiv">
+                        <input type="text" name="telefone" id="telefone" class="form-control editField" placeholder="Número do Telefone" value="{$telefone->getNumero()}"/>
+                    </div>
+
+                {/foreach}
+
+                <div class="form-group col-sm-6" id="senhaAtualDiv">
+                    <input type="password" name="senhaAtual" id="senhaAtual" class="form-control editField" placeholder="Senha Atual"/>
+                </div>
+
+                <div class="form-group col-sm-6" id="senha1Div">
+                    <input type="password" name="senha1" id="senha1" class="form-control editField"  placeholder="Senha" required/>
+                </div>
+
+                <div class="form-group col-sm-6" id="senha2Div">
+                    <input type="password" name="senha2" id="senha2" class="form-control editField" placeholder="Confirme a Senha" required/>
+                </div>
+
+                {foreach from=$cliente->getEnderecos() item=endereco}
+                    <h3 class="pull-left" id="enrececoLabel">Endereço</h3>
+                    <div class="form-group">
+                        <input type="text" name="descricaoEndereco" class="form-control editField" placeholder="Descrição para o endereço (ex: casa, escritório, etc)" value="{$endereco->getDescricao()}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="logradouro" class="form-control editField" placeholder="Logradouro (ex: Rua, Avenida, etc.)" required value="{$endereco->getLogradouro()}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="bairro" class="form-control editField" placeholder="Bairro" required value="{$endereco->getLogradouro()}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="numero" class="form-control editField" placeholder="Número" required value="{$endereco->getNumero()}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="cep" id="cep" class="form-control editField" placeholder="CEP" required value="{$endereco->getCep()}"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="cidade" class="form-control editField" placeholder="Cidade" required value="{$endereco->getCidade()}"/>
+                    </div>
+                    <div class="form-group">
+                        <select name="estado" class="form-control editField" required>
+                            <option value="">Estado</option>
+                            <option value="Ácre" {if $endereco->getEstado() == 'Ácre'} selected{/if}>Ácre</option>
+                            <option value="Alagoas" {if $endereco->getEstado() == 'Ácre'} selected{/if}>Alagoas</option>
+                            <option value="Amapá" {if $endereco->getEstado() == 'Alagoas'} selected{/if}>Amapá</option>              
+                            <option value="Amazonas" {if $endereco->getEstado() == 'Amazonas'} selected{/if}>Amazonas</option>
+                            <option value="Bahia" {if $endereco->getEstado() == 'Bahia'} selected{/if}>Bahia</option>
+                            <option value="Ceará" {if $endereco->getEstado() == 'Ceará'} selected{/if}>Ceará</option>
+                            <option value="Distrito Federal" {if $endereco->getEstado() == 'Distrito Federal'} selected{/if}>Distrito Federal</option>
+                            <option value="Espírito Santo" {if $endereco->getEstado() == 'Espírito Santo'} selected{/if}>Espírito Santo</option>
+                            <option value="Goiás" {if $endereco->getEstado() == 'Goiás'} selected{/if}>Goiás</option>
+                            <option value="Maranhão" {if $endereco->getEstado() == 'Maranhão'} selected{/if}>Maranhão</option>
+                            <option value="Mato Gorsso" {if $endereco->getEstado() == 'Mato Gorsso'} selected{/if}>Mato Gorsso</option>
+                            <option value="Mato Grosso do Sul" {if $endereco->getEstado() == 'Mato Grosso do Sul'} selected{/if}>Mato Grosso do Sul</option>
+                            <option value="Minas Gerais" {if $endereco->getEstado() == 'Minas Gerais'} selected{/if}>Minas Gerais</option>
+                            <option value="Pará" {if $endereco->getEstado() == 'Pará'} selected{/if}>Pará</option>              
+                            <option value="Paraíba" {if $endereco->getEstado() == 'Paraíba'} selected{/if}>Paraíba</option>
+                            <option value="Paraná" {if $endereco->getEstado() == 'Paraná'} selected{/if}>Paraná</option>
+                            <option value="Pernambuco" {if $endereco->getEstado() == 'Pernambuco'} selected{/if}>Pernambuco</option>
+                            <option value="Piauí" {if $endereco->getEstado() == 'Piauí'} selected{/if}>Piauí</option>
+                            <option value="Rio de Janeiro" {if $endereco->getEstado() == 'Rio de Janeiro'} selected{/if}>Rio de Janeiro</option>
+                            <option value="Rio Grande Do Norte" {if $endereco->getEstado() == 'Rio Grande Do Norte'} selected{/if}>Rio Grande Do Norte</option>
+                            <option value="Rio Grande do Sul" {if $endereco->getEstado() == 'Rio Grande do Sul'} selected{/if}>Rio Grande do Sul</option>
+                            <option value="Rondônia" {if $endereco->getEstado() == 'Rondônia'} selected{/if}>Rondônia</option>
+                            <option value="Roraima" {if $endereco->getEstado() == 'Roraima'} selected{/if}>Roraima</option>
+                            <option value="Santa Catarina" {if $endereco->getEstado() == 'Santa Catarina'} selected{/if}>Santa Catarina</option>
+                            <option value="São Paulo" {if $endereco->getEstado() == 'São Paulo'} selected{/if}>São Paulo</option>
+                            <option value="Sergipe" {if $endereco->getEstado() == 'Sergipe'} selected{/if}>Sergipe</option>
+                            <option value="Tocantins" {if $endereco->getEstado() == 'Tocantins'} selected{/if}>Tocantins</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="complemento" class="form-control editField" placeholder="Complemento" value="{$endereco->getComplemento()}"/>
+                    </div>
+                {/foreach}
+                <button type="submit" id="sub" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Salvar</button>
+            </form>
         </div>
     </div>
 </div>

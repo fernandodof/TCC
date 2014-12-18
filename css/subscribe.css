@@ -1,4 +1,4 @@
-#senha1Div, #senha2Div, #telefoneDiv{
+#senha1Div, #senha2Div, #telefoneDiv, #senhaAtualDiv{
     padding: 0;
     clear: left;
     z-index: 10;
@@ -11,9 +11,11 @@
 #paisDiv *{
     display: none;
 }
-/*
-{*        <div id="paisDiv">
-            <select class="form-control" name="countrySelectBox" id="pais">
-                <option value="BR" selected>Brasil</option>
-            </select>
-        </div>    *} */
+
+#subscribeForm h2,h3{
+    margin-left: -15px;
+}
+
+#subscribeForm #sub, #edit{
+    margin-right: -15px;
+}
