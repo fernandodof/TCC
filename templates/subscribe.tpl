@@ -1,6 +1,9 @@
 <link href="{$templateRoot}css/subscribe.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
 <script src="{$templateRoot}libs/jqueryMaskedInput/jquery.maskedinput.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/subscribe.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 <div class="container">
     <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="../src/app/processes/ProcessCliente.php" method="post">
         <h2>Cadastro</h2>
