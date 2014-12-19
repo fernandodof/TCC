@@ -76,6 +76,16 @@
     margin-top: 10px;
 }
 
-.btn{
-    
+#loginErrorMsg{
+    margin-left: 15px;
+    margin-top: 6px;
+}
+
+.helpTextLogin{
+    text-align: center;
+    display: none;
+}
+
+.inputLoginError, .inputLoginError:focus{
+    border-color: red;
 }

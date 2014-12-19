@@ -50,8 +50,7 @@
                                 <li class="dropdown" id="menuLogin">
                                     <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
                                     <div class="dropdown-menu">
-                                        <form class="form-horizontal"  nanme="loginForm" id="loginForm" method="POST" onSubmit="javascript: validateLogin();
-                                                return false;" action="{$templateRoot}src/app/processes/ProcessCliente.php">
+                                        <form class="form-horizontal"  nanme="loginForm" id="loginForm" method="POST" action="javascript:void(0)">
                                             <div class="form-group loginFormGroup">
                                                 <div class="col-lg-12">
                                                     <input type="text" name="emailLogin" id="emailLogin" class="form-control" placeholder="Email ou login" required> 
@@ -65,7 +64,7 @@
                                                 <small id="loginErrorMsg" class="helpTextLogin help-block">Email ou senha inválidos</small>
                                             </div>
                                             <input type="hidden" name="formSubmit" value="Login">
-                                            <button type="submit" data-loading-text="Login..." id="btnLogin" class="btn btn-info pull-right">Login</button>
+                                            <button type="submit" data-loading-text="Login..." onclick="validateLogin()" id="btnLogin" class="btn btn-info pull-right">Login</button>
                                         </form>
                                     </div>
                                 </li>
