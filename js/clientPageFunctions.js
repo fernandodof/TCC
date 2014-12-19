@@ -44,7 +44,7 @@ function editSubscription() {
     var estado = $('#estado').val();
     var complemento = $('#complemento').val();
 
-    var data = {nome: nome, email: email, login: login, telefone: telefone, senha: senha, descricaoEndereco: descricaoEndereco,
+    var data = {nome: nome, em1ail: email, login: login, telefone: telefone, senha: senha, descricaoEndereco: descricaoEndereco,
         logradouro: logradouro, bairro: bairro, numero: numero, cep: cep, cidade: cidade, estado: estado, complemento: complemento};
     var url = templateRoot + 'src/app/ajaxReceivers/editSubscription.php';
     $.ajax({

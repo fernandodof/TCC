@@ -157,6 +157,10 @@
     margin-left: 0px;
 }
 
+.produto .nameP{
+    margin-top: 12px
+}
+
 @media only screen and (max-width: 768px){ 
     .produto .btAvaliar{
         margin-top: 10px;

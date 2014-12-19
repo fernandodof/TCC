@@ -1,6 +1,11 @@
 <?php
-
 require_once './pathVars.php';
+require_once $path . 'src/app/util/CheckLoggedIn.php';
+require_once $path . 'src/app/util/UserTypes.php';
+
+if (!CheckLoggedIn::checkPermission(UserTypes::CLIENTE)) {
+    header('Location: ../pages/index');
+}
 
 require_once $path . 'pages/smartyHeader.php';
 require_once $path . 'src/app/model/entities/Restaurante.class.php';
@@ -8,8 +13,13 @@ require_once $path . 'src/app/util/Queries.php';
 require_once $path . 'src/app/model/persistence/Dao.class.php';
 require_once $path . 'src/app/model/VO/PedidoVO.class.php';
 
-session_start();
 $dao = new Dao();
+
+$slashCount = substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/');
+
+if($slashCount<4){
+    header("Location: ../error");
+}
 
 list(,,,, $idProuto) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 

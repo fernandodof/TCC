@@ -11,6 +11,12 @@ require_once $path . 'src/app/util/Queries.php';
 
 session_start();
 
+$slashCount = substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/');
+
+if($slashCount<4){
+    header("Location: ../error");
+}
+
 list(,,,, $res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
 
 $dao = new Dao();

@@ -1,4 +1,8 @@
 <?php
+if(!isset($email)){
+    header('Location: index');
+}
+
 require_once './smartyHeader.php';
 include_once '../pages/header.php';
 

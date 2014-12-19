@@ -1,6 +1,12 @@
 <?php
 require_once 'pathVars.php';
-//var_dump($path);
+
+// basename(__FILE__, '.php'); 
+
+//list(,,,$resquestPage) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));
+//if(strtolower($resquestPage) == strtolower(basename(__FILE__, '.php'))){
+//    header("Location: index");
+//}
 
 require_once $path.'pages/smartyHeader.php';
 require_once $path.'src/app/model/VO/PedidoVO.class.php';

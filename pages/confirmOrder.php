@@ -1,5 +1,13 @@
 <?php
 
+require_once '../pages/pathVars.php';
+require_once $path . 'src/app/util/CheckLoggedIn.php';
+require_once $path . 'src/app/util/UserTypes.php';
+
+if (!CheckLoggedIn::checkPermission(UserTypes::CLIENTE) || !($_SESSION['pedido'])) {
+    header('Location: ../pages/index');
+}
+
 include_once '../pages/header.php';
 
 require_once $path . 'pages/smartyHeader.php';
