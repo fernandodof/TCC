@@ -2,13 +2,10 @@
 <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/hoverCSS/hover.min.css" rel="stylesheet">
-<link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
 <link href="{$templateRoot}css/subscribe.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}js/jquery.dim-background.js" rel="stylesheet"></script>
 <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/clientPageFunctions.js" type="text/javascript"></script>
-<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
-<script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/jqueryMaskedInput/jquery.maskedinput.min.js" type="text/javascript"></script>
 
 <div class="container">

@@ -11,6 +11,7 @@ function recieveForm($param) {
     return strip_tags(addslashes($param));
 }
 
+//var_dump($_POST);
 switch (recieveForm(filter_input(INPUT_POST, 'formSubmit'))) {
     case "CadastrarCliente": {
             cadastrarCLiente();
@@ -27,7 +28,6 @@ switch (recieveForm(filter_input(INPUT_POST, 'formSubmit'))) {
 }
 
 function cadastrarCLiente() {
-
     //Cliente
     $cliente = new Cliente();
     $cliente->setNome(filter_input(INPUT_POST, 'nome'));
@@ -53,24 +53,18 @@ function cadastrarCLiente() {
     $endereco->setCidade(filter_input(INPUT_POST, 'cidade'));
     $endereco->setEstado(filter_input(INPUT_POST, 'estado'));
     $endereco->setComplemento(filter_input(INPUT_POST, 'complemento'));
-    echo filter_input(INPUT_POST, 'ddd') . '</br>';
-    echo filter_input(INPUT_POST, 'telefone1') . '</br>';
-    echo filter_input(INPUT_POST, 'cidade') . '</br>';
 
     //Cliente <<- Endereco
     $enderecos[] = $endereco;
     $cliente->setEnderecos($enderecos);
-
     $dao = new Dao();
     $dao->save($cliente);
-
     header("Location: ../../../pages/subscriptionConfirmation");
     exit();
 }
 
 function login() {
     $dao = new Dao();
-
     $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'senhaLogin'));
     $emailLogin = filter_input(INPUT_POST, 'emailLogin');
     if (isEmail($emailLogin)) {
@@ -90,7 +84,6 @@ function login() {
     $_SESSION['logged_in'] = true;
     $_SESSION['last_activity'] = time();
     $_SESSION['expire_time'] = 30 * 60;
-
     header("Location: ../../../pages/clientePage");
     exit();
 }

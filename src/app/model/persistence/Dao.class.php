@@ -4,6 +4,7 @@ require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\NoResultException;
 
 class Dao {
 
@@ -79,9 +80,16 @@ class Dao {
     }
 
     public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
-        $query = $this->em->createQuery($queryInstruction);
-        $query->setParameters($params);
-        return $query->getSingleResult();
+        try {
+            $query = $this->em->createQuery($queryInstruction);
+            $query->setParameters($params);
+            return $query->getSingleResult();
+        } catch (NoResultException $ex){
+            return null;
+        }
+        catch (Exception $ex) {
+            return null;
+        }
     }
 
     public function getListResultOfNamedQuery($queryInstruction) {

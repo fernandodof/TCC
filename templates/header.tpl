@@ -11,16 +11,19 @@
         <meta charset="UTF-8">
         <link href="{$templateRoot}css/header.css" rel="stylesheet">
         <link href= "{$templateRoot}css/styles.css" rel="stylesheet">
+        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
+        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
+        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
+        <link href="{$templateRoot}libs/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
         {* Move this script tags *}
         <script src="{$templateRoot}bootstrap/js/jquery.min.js"></script>
         <script src="{$templateRoot}bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{$templateRoot}js/jquery.dim-background.js"></script>
-
-        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
-        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
-        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.min.js"></script>
-        <link href="{$templateRoot}libs/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
+        <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
+        <script src="{$templateRoot}js/header.js" type="text/javascript"></script>
         {*        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>*}
     </head>
     <body>
@@ -47,18 +50,22 @@
                                 <li class="dropdown" id="menuLogin">
                                     <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login <b class="caret"></b></a>
                                     <div class="dropdown-menu">
-                                        <form class="form-horizontal" id="loginForm" method="POST" action="{$templateRoot}src/app/processes/ProcessCliente">
-                                            <div class="form-group">
+                                        <form class="form-horizontal"  nanme="loginForm" id="loginForm" method="POST" onSubmit="javascript: validateLogin();
+                                                return false;" action="{$templateRoot}src/app/processes/ProcessCliente.php">
+                                            <div class="form-group loginFormGroup">
                                                 <div class="col-lg-12">
-                                                    <input name="emailLogin" id="emailLogin" class="form-control" placeholder="Email ou login" required> 
+                                                    <input type="text" name="emailLogin" id="emailLogin" class="form-control" placeholder="Email ou login" required> 
                                                 </div>
+                                                <small id="loginErrorMsg" class="helpTextLogin help-block">Email ou senha inválidos</small>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group loginFormGroup">
                                                 <div class="col-lg-12">
                                                     <input name="senhaLogin" id="senhaLogin" class="form-control" type="password" placeholder="Senha" required>
                                                 </div>
+                                                <small id="loginErrorMsg" class="helpTextLogin help-block">Email ou senha inválidos</small>
                                             </div>
-                                            <button type="submit" name="formSubmit" value="Login" class="btn btn-info pull-right">Login</button>
+                                            <input type="hidden" name="formSubmit" value="Login">
+                                            <button type="submit" data-loading-text="Login..." id="btnLogin" class="btn btn-info pull-right">Login</button>
                                         </form>
                                     </div>
                                 </li>

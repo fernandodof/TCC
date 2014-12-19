@@ -28,7 +28,9 @@ function login() {
     $funcionario = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_FUNCIONARIO, $params);
 
     session_start();
-
+    session_destroy();
+    
+    session_start();
     $_SESSION['nome'] = $funcionario->getNome();
     $_SESSION['id'] = $funcionario->getId();
     $_SESSION['funcRestaurante'] = $funcionario->getRestaurante()->getNome();

@@ -1,10 +1,19 @@
 <?php
-require_once './smartyHeader.php';
-require_once '../src/app/model/persistence/Dao.class.php';
-require_once '../src/app/model/entities/Restaurante.class.php';
-require_once '../src/app/model/entities/Produto.class.php';
-require_once '../src/app/util/Queries.php';
-include_once '../pages/header.php';
+
+require_once '../pages/pathVars.php';
+require_once $path . 'src/app/util/CheckLoggedIn.php';
+require_once $path . 'src/app/util/UserTypes.php';
+
+if (!CheckLoggedIn::checkPermission(UserTypes::FUNCIONARIO)) {
+    header('Location: ../pages/index');
+}
+
+require_once $path . 'pages/smartyHeader.php';
+require_once $path . 'src/app/model/persistence/Dao.class.php';
+require_once $path . 'src/app/model/entities/Restaurante.class.php';
+require_once $path . 'src/app/model/entities/Produto.class.php';
+require_once $path . 'src/app/util/Queries.php';
+include_once $path . 'pages/header.php';
 
 $dao = new Dao();
 
@@ -33,7 +42,7 @@ $params['id'] = $restaurante->getId();
 
 //unset 
 unset($_SESSION['pedidosNovosCarregados']);
-unset($_SESSION['pedidosCozinhaCarregados'] );
+unset($_SESSION['pedidosCozinhaCarregados']);
 unset($_SESSION['pedidosEntregaCarregados']);
 unset($_SESSION['pedidosHistorioCarregados']);
 

@@ -113,6 +113,19 @@
   color: #877d7d;
 }*/
 
+#loginErrorMsg{
+    margin-left: 15px;
+    margin-top: 6px;
+}
+
+.helpTextLogin{
+    display: none;
+}
+
+#btnLogin{
+    margin-bottom: 10px;
+}
+
 #loginForm{
     padding: 12px;
     width: 300px;
@@ -160,3 +173,4 @@
 #messageContact {
     resize: none;
 }
+
