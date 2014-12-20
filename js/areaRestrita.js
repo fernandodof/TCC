@@ -1,30 +1,39 @@
 var templateRoot;
 
 function validateLogin() {
-    var emailLogin = $('#emailLogin').val();
-    var senhaLogin = $('#senhaLogin').val(); 
-    
-    var data = {emailLogin: emailLogin, senhaLogin: senhaLogin};
+    var funcLogin = $('#funcLogin').val();
+    var funcSenha = $('#funcSenha').val();
+
+    var data = {funcLogin: funcLogin, funcSenha: funcSenha, type: 'funcionario'};
     var url = templateRoot + 'src/app/ajaxReceivers/validateLogin.php';
+
     $('#btnLogin').button('loading');
-    $('.loginFormGroup').removeClass('has-error');
-    $('.helpTextLogin').hide();
+    $('.inputLogin').removeClass('inputLoginError');
+    $('.profile-img').removeClass('errorImg');
+    $('.profile-img').removeClass('animated rubberBand')
+    $('#loginErrorMsg').hide();
+
     $.ajax({
         type: "POST",
         url: url,
         async: true,
         data: data,
         success: function (serverResponse) {
-            if(serverResponse === '1'){
-                document.forms["loginForm"].submit();
-            }else{
-                $('.loginFormGroup').addClass('has-error');
+            if (serverResponse === '1') {
+                window.location.replace(templateRoot + 'pages/funcionarioPage');
+            } else {
+                $('.inputLogin').addClass('inputLoginError');
+                $('.profile-img').addClass('errorImg');
+                $('.profile-img').addClass('animated rubberBand');
                 $('#btnLogin').button('reset');
-                $('.helpTextLogin').show();
+                $('#loginErrorMsg').show();
             }
         },
-        error: function (data) {
-            alert("Error");
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            alert(textStatus);
+            alert(jqXHR);
+        }, complete: function (jqXHR, textStatus) {
         }
     });
 

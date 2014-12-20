@@ -1,4 +1,5 @@
 <?php
+
 require_once '../../../pages/pathVars.php';
 require_once '../model/persistence/Dao.class.php';
 require_once '../util/Queries.php';
@@ -40,7 +41,29 @@ switch (filter_input(INPUT_POST, 'type')) {
         echo $isValid;
         break;
     case 'funcionario':
+        $isValid = true;
 
+        $params['login'] = filter_input(INPUT_POST, 'funcLogin');
+        $params['senha'] = EncryptPassword::encrypt(filter_input(INPUT_POST, 'funcSenha'));
+        $funcionario = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_FUNCIONARIO, $params);
+
+        if ($funcionario == null) {
+            $isValid = false;
+        } else {
+            session_start();
+            session_destroy();
+
+            session_start();
+            $_SESSION['nome'] = $funcionario->getNome();
+            $_SESSION['id'] = $funcionario->getId();
+            $_SESSION['funcRestaurante'] = $funcionario->getRestaurante()->getNome();
+            $_SESSION['idRestaurante'] = $funcionario->getRestaurante()->getId();
+            $_SESSION['tipo'] = 'funcionario';
+            $_SESSION['logged_in'] = true;
+            $_SESSION['last_activity'] = time();
+            $_SESSION['expire_time'] = 30 * 60;
+        }
+        echo $isValid;
         break;
 }
 

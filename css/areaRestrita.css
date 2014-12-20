@@ -66,6 +66,15 @@
     background: #3BB9FF;
     padding: 8px;
 }
+
+.errorImg{
+    background: #E41B17;
+    animation-duration: 1s;
+    animation-delay: 0s;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 0s;
+}
+
 .need-help
 {
     margin-top: 10px;
@@ -77,13 +86,13 @@
 }
 
 #loginErrorMsg{
-    margin-left: 15px;
-    margin-top: 6px;
+    display: none;
+    margin-left: 30px;
+    color: red;
 }
 
-.helpTextLogin{
-    text-align: center;
-    display: none;
+#btnLogin{
+
 }
 
 .inputLoginError, .inputLoginError:focus{
