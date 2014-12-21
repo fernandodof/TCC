@@ -172,15 +172,15 @@ h1{
 
 @media only screen and (max-width: 768px){ 
     .jumbotron, #jumbotronContent{
-        min-height: 400px;
+        min-height: 435px;
     }
 
     #jumbotronContent{
-        min-height: 400px;
+        min-height: 435px;
     }
 
     h1{
-        top:-350px;
+        top:-380px;
         margin-left:15px;
         padding-left: 0px;
         position:relative;
@@ -199,7 +199,7 @@ h1{
 
 }
 
-.jumbotron #indexButtons #starIcon{
+.jumbotron #indexButtons .starIcon{
     color: #FDE16D;
 }
 
