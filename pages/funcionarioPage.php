@@ -101,6 +101,17 @@ foreach ($historicoPedidos as $pedido) {
     $idsPedidosHistorico[] = $pedido->getId();
 }
 
+$tamanhosComida = new \Doctrine\Common\Collections\ArrayCollection();
+$tamanhosBebida = new \Doctrine\Common\Collections\ArrayCollection();
+
+foreach ($tamanhos as $tamanho) {
+    if ($tamanho->getCategoria()->getNome() == 'Comida') {
+       $tamanhosComida->add($tamanho);
+    } else if ($tamanho->getCategoria()->getNome() == 'Bebida') {
+        $tamanhosBebida->add($tamanho);
+    }
+}
+
 $smarty->assign('historicoPedidos', $historicoPedidos);
 
 $smarty->assign('pedidosRecebidos', $pedidosRecebidos);
@@ -109,6 +120,9 @@ $smarty->assign('pedidosEntrega', $pedidosEntrega);
 $smarty->assign('produtosComida', $produtosComida);
 $smarty->assign('produtosBebida', $produtosBebida);
 $smarty->assign('categorias', $categorias);
+$smarty->assign('tamanhosComida', $tamanhosComida);
+$smarty->assign('tamanhosBebida',$tamanhosBebida);
+
 $smarty->display('../templates/funcionarioPage.tpl');
 
 include_once '../pages/footer.php';

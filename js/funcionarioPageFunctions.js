@@ -1,53 +1,90 @@
-function callFilter(str) {
-    filter(str);
-}
+//function callFilter(str) {
+//    filter(str);
+//}
+//
+//function filter(str) {
+//    $('#wait').show();
+//
+//    var data = {cat: str};
+//    var url = '../src/app/ajaxReceivers/tamanhosProduto.php';
+//
+//
+//    if (str === '1') {
+//        $('#ingDiv').show();
+//        $('#addProduto').bootstrapValidator('addField', $('#ingredientes'));
+//    }
+//    else if (str === '2') {
+//        $('#ingDiv').hide();
+//        $('#addProduto').bootstrapValidator('removeField', $('#ingredientes'));
+//    }
+//
+//    var checkBoxes = $('.checkboxTamanho');
+//    for (var i = 0; i < checkBoxes.length; i++) {
+//        $('#addProduto').bootstrapValidator('removeField', $('#' + checkBoxes[i].id));
+//    }
+//
+//    $.ajax({
+//        type: "GET",
+//        url: url,
+//        async: true,
+//        data: data,
+//        success: function (server) {
+//            $('#tamanhosDiv').html(server);
+//            $('#lbTamanho').removeClass("invisible").addClass("visilble");
+//            $('#wait').hide();
+//        }, complete: function (jqXHR, textStatus) {
+//            var checkBoxes = $('.checkboxTamanho');
+//            for (var i = 0; i < checkBoxes.length; i++) {
+//                $('#addProduto').bootstrapValidator('addField', $('#' + checkBoxes[i].id));
+//                alert(i);
+//            }
+//
+//        },
+//        error: function (data) {
+//            alert("Erro");
+//        }
+//    });
+//    setUpFormValidation();
+//}
 
-function filter(str) {
-    if (str === '') {
-        $('#lbTamanho').removeClass("visible").addClass("invisible");
-        $('#ingredientes').remove();
-        $('.checkboxes').remove();
-        return;
-    }
 
-    if (str === '2') {
-        $('#ingredientes').remove();
-    } else {
-        $('#ingDiv').append("<textarea class='form-control' rows='3' name='ingredientes' id='ingredientes' placeholder='Ingredientes'></textarea>");
-    }
-    $('#wait').show();
-
-    var data = {cat: str};
-    var url = '../src/app/ajaxReceivers/tamanhosProduto.php';
-
-    $.ajax({
-        type: "GET",
-        url: url,
-        async: true,
-        data: data,
-        success: function (server) {
-            $('#tamanhosDiv').html(server);
-            $('#lbTamanho').removeClass("invisible").addClass("visilble");
-            $('#wait').hide();
-        },
-        error: function (data) {
-            alert("Erro");
-        }
-    });
-}
-
-
-function checkCreatePrice(checkbox) {
+function checkCreatePriceComida(checkbox) {
     var checkboxVal = checkbox.value;
     if (checkbox.checked) {
-        $(checkbox).parent().append("<input type='text' class='price' name='price[]' required placeholder='Preço' value='000' id='price" + checkboxVal + "'/>");
+        $(checkbox).parent().after("<div id=priceDiv" + checkboxVal + "' class='form-group priceDiv col-xs-7'><input type='text' class='price form-control input-sm' name='price[]' required placeholder='Preço' value='000' id='price" + checkboxVal + "'/>");
+        $('#addComidaForm').bootstrapValidator('addField', $('#price' + checkboxVal));
     } else {
-        $("#price" + checkboxVal).remove();
+        $("#price" + checkboxVal).parent().remove();
+        $('#addComidaForm').bootstrapValidator('removeField', $('#price' + checkboxVal));
     }
     formatPrices();
 }
 
+function checkCreatePriceBebida(checkbox) {
+    var checkboxVal = checkbox.value;
+    if (checkbox.checked) {
+        $(checkbox).parent().after("<div id=priceDiv" + checkboxVal + "' class='form-group priceDiv col-xs-7'><input type='text' class='price form-control input-sm' name='price[]' required placeholder='Preço' value='000' id='price" + checkboxVal + "'/>");
+        $('#addBebidaForm').bootstrapValidator('addField', $('#price' + checkboxVal));
+    } else {
+        $("#price" + checkboxVal).parent().remove();
+        $('#addBebidaForm').bootstrapValidator('removeField', $('#price' + checkboxVal));
+    }
+    formatPrices();
+}
+
+function resetMyForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+}
+
+function callResetForm(formId) {
+    resetMyForm($('#' + formId));
+    formatPrices();
+    $('#' + formId).data('bootstrapValidator').resetForm();
+}
+
 function formatPrices() {
+    $('.price').val('000');
     $('.price').priceFormat({
         prefix: 'R$ ',
         centsSeparator: ',',
@@ -313,6 +350,105 @@ function  setUpTable() {
             });
 }
 
+function setUpFormValidation() {
+
+    $.fn.bootstrapValidator.validators.invalidPrice = {
+        validate: function (validator, $field, options) {
+            var value = $field.val();
+            value = value.replace('R$ ', '');
+
+            if (parseFloat(value.replace(/,/g, '')) <= 0) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+
+    $('#addComidaForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: '',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
+        },
+        fields: {
+            nomeProduto: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, informe um nome para o produto'
+                    }
+                }
+            },
+            ingredientes: {
+                message: 'Por favor, infome os ingredientes',
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, infome os ingredientes'
+                    },
+                    stringLength: {
+                        max: 250,
+                        message: 'Os Ingredientes devem tem menes de 200 caracteres'
+                    }
+
+                }
+            },
+            'tamanhos[]': {
+                message: 'Escolha um tamanho',
+                validators: {
+                    choice: {
+                        min: 1,
+                        message: 'Escolha pelo menos um tamanho'
+                    }
+                }
+            },
+            'price[]': {
+                message: 'Por favor, informe o preço',
+                validators: {
+                    invalidPrice: {
+                        message: 'Por favor, informe o preço'
+                    }
+                }
+            }
+        }
+    });
+
+    //
+    $('#addBebidaForm').bootstrapValidator({
+        feedbackIcons: {
+            valid: '',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
+        },
+        fields: {
+            nomeProduto: {
+                validators: {
+                    notEmpty: {
+                        message: 'Por favor, informe um nome para o produto'
+                    }
+                }
+            },
+            'tamanhos[]': {
+                message: 'Escolha um tamanho',
+                validators: {
+                    choice: {
+                        min: 1,
+                        message: 'Escolha pelo menos um tamanho'
+                    }
+                }
+            },
+            'price[]': {
+                message: 'Por favor, informe o preço',
+                validators: {
+                    invalidPrice: {
+                        message: 'Por favor, informe o preço'
+                    }
+                }
+            }
+        }
+    });
+
+}
+
 $(document).ready(function () {
     setInterval("updateOrdersList()", 3000);
     activate('img[src*=".svg"]');
@@ -320,6 +456,12 @@ $(document).ready(function () {
     setUpTable();
 
     formatPrices();
+    setUpFormValidation();
+
+    $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+        $("#success-alert").alert('close');
+    });
+
 });
 
 

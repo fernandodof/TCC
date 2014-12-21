@@ -1,26 +1,29 @@
 <head>
-    <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
-    <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
-    <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <link href="{$templateRoot}css/funcionarioPage.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}libs/hoverCSS/hover.min.css" rel="stylesheet">
+    <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
+    <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
+    <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
+    <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
+    <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 </head>
 
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-3 sidebar">
-        <li class=""><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
+        <li class="{if !isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
         <li class=""><a href="#tab_b" data-toggle="pill">Pedidos na Cozinha <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/chef16.svg" alt="Cozinha"></a></li>
         <li class=""><a href="#tab_c" data-toggle="pill">Pedidos em entrega <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/logistics3.svg" alt="Cozinha"></a></li>
         <li class=""><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
         <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
     <div class="tab-content col-md-9">
-        <div class="tab-pane" id="tab_a">
+        <div class="tab-pane {if !isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_a">
             <h4 class="col-xs-12 pull-left novosPedidosLb">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidosRecebidos">
                 {$i=0}
@@ -270,8 +273,14 @@
                 </table>
             </div>
         </div>
-
+        {if isset($smarty.get.produtoCadastrado)}
+            <div class="alert alert-success alert-dismissible col-xs-12 col-xs-offset-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                Produto cadastrado com sucesso.
+            </div>
+        {/if}
         <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_e">
+
             <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle" id="openCardapio">Cardápio <b class="caret"></b></h4>
             <div id="cardapio" class="collapse">
                 <ul class="nav nav-tabs nav-justified" data-tabs="tabs" role="tablist">
@@ -315,39 +324,76 @@
                     </div>
                 </div>
             </div>
-            <h4 data-toggle="collapse" data-target="#addProduto" class="elementToggle" id="openInserir">Inserir Novo Produto <b class="caret"></b></h4>
-                {if isset($success)}
-                <div class="alert alert-success alert-dismissible col-md-10" role="alert">
-                    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
-                    Produto cadastrado com sucesso
-                </div>
-            {/if}
-            <form class="form-horizontal col-md-10 collapse" method="POST" name="addProduto" id="addProduto" action="../src/app/processes/ProcessProduto.php">
-                <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
-                <div class="form-group">
-                    <select name="categoria" class="form-control" onchange="window.callFilter(this.value);" required>
-                        <option value="">Escolha a categria</option>
-                        {foreach from = $categorias item = categoria}
-                            <option value="{$categoria->getId()}">{$categoria->getNome()}</option>
-                        {/foreach}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="text" placeholder="Nome do produto" name="nomeProduto" class="form-control"/>
-                </div>
+            <h4 data-toggle="collapse" data-target="#produtos" class="elementToggle" id="openInserir">Inserir Novo Produto <b class="caret"></b></h4>
 
-                <div class="form-group" id="ingDiv">
-                    {*                    <textarea class="form-control" rows="3" name="ingredientes" id="ingredientes" placeholder="Ingredientes"></textarea>*}
-                </div>
+            <div id="produtos" class="collapse">
+                <ul class="nav nav-tabs nav-justified" data-tabs="tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#addComida" data-toggle="tab">Comida</a></li>
+                    <li role="presentation"><a href="#addBebida" data-toggle="tab">Bebida</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="addComida" class="tab-pane active fade in">
+                        <form class="form-horizontal col-xs-10 col-xs-offset-1" method="POST" id="addComidaForm" class="addProduto" action="{$templateRoot}src/app/processes/ProcessProduto.php">
+                            <h4 class="formLegend">Novo item</h4>
+                            <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
+                            <input type="hidden" name="categoria" id="categoria" value="1"/>
+                            <div class="form-group">
+                                <input type="text" placeholder="Nome do produto" name="nomeProduto" class="form-control"/>
+                            </div>
 
-                <div class="form-group">   
-                    <label id="lbTamanho" class="invisible col-sm-2">Tamanho(s):</label>
-                    <span id="wait" style="display: none;"><img src="../images/ajax-loader1.gif" alt = "Aguarde..."></span>
-                    <div id="tamanhosDiv" class="col-xs-12 form-group">
+                            <div class="form-group" id="ingDiv">
+                                <textarea class='form-control' rows='3' name='ingredientes' id='ingredientes' placeholder='Ingredientes' required></textarea>
+                            </div>
+
+                            <div class="form-group">   
+                                <label id="lbTamanho" class="col-sm-2">Tamanho(s):</label>
+
+                                <div id="tamanhosDiv" class="col-xs-12 form-group">
+                                    <div class= 'checkboxes'>
+                                        {foreach $tamanhosComida as $tamanho}
+                                            <div class='checkboxDiv col-xs-12 checkbox'>
+                                                <label class='labelTamanho'>
+                                                    <input class='checkboxTamanho' type='checkbox' name='tamanhos[]' onchange='checkCreatePriceComida(this);' value='{$tamanho->getId()}' id= '{$tamanho->getId()}'/> {$tamanho->getDescricao()}
+                                                </label>
+                                            </div>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                            <button  type="button" onclick="callResetForm('addComidaForm');" class="btn btn-default btn-sm">Limpar</button>        
+                            <button type="submit" class="btn btn-success pull-right" name="formSubmit" value="cadastrarProduto"> Cadastrar </button>
+                        </form>
+                    </div>
+                    <div id="addBebida" class="tab-pane fade">
+                        <form class="form-horizontal col-xs-10 col-xs-offset-1" method="POST" id="addBebidaForm" class="addProduto" action="{$templateRoot}src/app/processes/ProcessProduto.php">
+                            <h4 class="formLegend">Novo item</h4>
+                            <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
+                            <input type="hidden" name="categoria" id="categoria" value="2"/>
+                            <div class="form-group">
+                                <input type="text" placeholder="Nome do produto" name="nomeProduto" class="form-control"/>
+                            </div>
+
+                            <div class="form-group">   
+                                <label id="lbTamanho" class="col-sm-2">Tamanho(s):</label>
+
+                                <div id="tamanhosDiv" class="col-xs-12 form-group">
+                                    <div class= 'checkboxes'>
+                                        {foreach $tamanhosBebida as $tamanho}
+                                            <div class='checkboxDiv col-xs-12 checkbox'>
+                                                <label class='labelTamanho'>
+                                                    <input class='checkboxTamanho' type='checkbox' name='tamanhos[]' onchange='checkCreatePriceBebida(this);' value='{$tamanho->getId()}' id='{$tamanho->getId()}'/> {$tamanho->getDescricao()}
+                                                </label>
+                                            </div>
+                                        {/foreach}
+                                    </div>
+                                </div>
+                            </div>
+                            <button  type="button" onclick="callResetForm('addBebidaForm');" class="btn btn-default btn-sm">Limpar</button>        
+                            <button type="submit" class="btn btn-success pull-right" name="formSubmit" value="cadastrarProduto"> Cadastrar </button>
+                        </form>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-lg btn-success pull-right" name="formSubmit" value="cadastrarProduto"> Cadastrar </button>
-            </form>
+            </div>
         </div>
-    </div>
-</div> <!-- tab content -->
+    </div> <!-- tab content -->
+</div>
