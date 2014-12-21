@@ -61,8 +61,15 @@ h3{
 }
 
 .priceDiv{
-    padding-left: 35px;
+    padding-left: 25px;
     padding-bottom: 15px;
+}
+
+@media only screen and (max-width: 768px){ 
+    .priceDiv{
+        float: right;
+        width: 110px;
+    }
 }
 
 .pedidoDiv .obs, .obs small{

@@ -388,7 +388,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button  type="button" onclick="callResetForm('addBebidaForm');" class="btn btn-default btn-sm">Limpar</button>        
+                            <button  type="button" onclick="callResetForm('addBebidaForm');" class="btn btn-default btn">Limpar</button>        
                             <button type="submit" class="btn btn-success pull-right" name="formSubmit" value="cadastrarProduto"> Cadastrar </button>
                         </form>
                     </div>
