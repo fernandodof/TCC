@@ -10,62 +10,6 @@
 
     <div class="menu col-md-10 col-md-offset-1 col-sm-12">
         <h2>Melhores itens</h2>
-        {*     <div id="cardapioHeader" class="row col-md-12">
-                 
-        <ul>
-
-        <li class="dropdown" id="pedidoDropdown">
-        {if isset($smarty.session.pedido)}
-
-        <a href="#" class="dropdown-toggle btn btn-primary pull-left" id="togglePedido" data-toggle="dropdown">Resumo do Pedido 
-        <span class="badge" id="badgePedido">{$smarty.session.pedido->getItensPedido()|@count}</span> <b class="caret"></b></a>
-        <form action="{$templateRoot}pages/confirmOrder" method="POST" id="formProseguir" class="pull-left">
-        <button type="submit" class="dropdown-toggle btn btn-success" id="proseguirPedido">Proseguir Pedido
-        <img class="img" src='{$templateRoot}images/icons/hotPot.png'/> <span class="glyphicon glyphicon-arrow-right"></span></button>
-        <input type="hidden" name="idRestaurantePedido" id="idRestaurantePedido" value="{$restaurantePedido->getId()}">
-        </form>
-
-        <ul class="dropdown-menu col-xs-12 col-sm-6">
-        <li id="liNomeRetaurantePedido">
-        <h5 id="nomeRestaurnatePedido">{$restaurantePedido->getNome()}</h5>
-        </li>
-        <li class="divider firstDivider"></li>
-        {$count1=0}
-        {foreach from=$smarty.session.pedido->getItensPedido() item=it}
-        {$count1=$count1+1}
-        <li>
-        <div class="row produtoDropdown">
-        <p class="pull-left noreProdutoDropdown">{$it->getProduto()->getNome()}</p>
-        <p class="pull-right">R$ {$it->getTamanho()->getPreco()}</p>
-        </div>
-        <div class="row qutidadeDropdown">
-        <p class="pull-left">Quantidade</p>
-        <p class="pull-right">{$it->getQuantidade()}</p> 
-        </div>
-        <div class="row tamanhoDropdown">
-        <p class ="pull-left">Tamanho:</p>
-        <p class = "pull-right">{$it->getTamanho()->getDescricao()} </p>
-        </div>
-        <div class="row subtotalDropdown">
-        <p class="pull-left subtotal">Subtotal</p>
-        <p class="pull-right">{$it->getSubtotal()}</p> 
-        </div>
-        </li>
-        {if ($count1 < $smarty.session.pedido->getItensPedido()|@count)}
-        <li class="divider"></li>
-        {/if}
-        {/foreach}
-        <li class="totalLi">
-        <div class="row totalDropdown">
-        <p class="pull-left total">TOTAL</p>
-        <p class="pull-right">R$ {$smarty.session.pedido->getValorTotal()}</p> 
-        </div>
-        </li>
-        {/if}
-        </ul>
-        </li>
-        </ul>
-        </div>*}
 
         <div id="comida" class="tab-pane active fade in">
             {$count=0}

@@ -45,11 +45,12 @@
 .imgDiv{
     border: none;
     background: #EF6D31;
-    /*background: #6B7784;*/
-    /*background: #E74C3C;*/
-    /*background: #C85A17;*/
-    /*background: #F88017;*/
-    /*background: #18BC9C;*/
+    
+}
+
+.imgDiv img{
+    height: 150px;
+    width: 100%;
 }
 
 #destaques{

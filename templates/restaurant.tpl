@@ -2,6 +2,7 @@
 <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/restaurantColumn.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet">
 <script src="{$templateRoot}libs/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
@@ -103,8 +104,7 @@
                 {$count=0}
                 {$i = 0}
                 {foreach from=$produtosComida item=produto}
-                    <div class="produto">
-
+                    <div class="produto" id="{$produto->getNome()|replace:' ':''}">
                         {if isset($idsProdutosComprados) and in_array($produto->getId(), $idsProdutosComprados)}
                             <p class="nome pull-left col-sm-10 nameP">{$produto->getNome()}</p>
                             <div class="row btAvaliarDiv">

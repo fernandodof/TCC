@@ -47,16 +47,16 @@
     <h3 id="destaques">Destaques</h3>
     <div class="col-lg-12" id="destaquesDiv">
         {$count=0}
-        {foreach from = $highlights key = dishName item = img}
+        {foreach from = $products item = produto}
 
             <div class="col-sm-3 colunaDestaque">
-                <h4 class="dishName">{$dishName}</h4>
+                <h4 class="dishName">{$produto->getNome()}</h4>
                 <div class="well well-sm col-xs-12 imgDiv pull-left">
-                    <img src="{$img}" class="img img-responsive">
+                    <img src="{$produto->getImagem()}" class="img-responsive">
                 </div>
                 <div class="info">
-                    <a class="restaurantName pull-left" href="{$links[$count]}">{$restaurants[$count]}</a>
-                    <a heref="#" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
+                    <a class="restaurantName pull-left" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}">{$restaurants->get($count)->getNome()}</a>
+                    <a href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}#{$produto->getNome()|replace:' ':''}" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
                 </div>
             </div> 
             {$count = $count+1}

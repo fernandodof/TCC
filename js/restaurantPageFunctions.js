@@ -231,7 +231,14 @@ function initIputs() {
 
 }
 
+function highlightAnchor(){
+    var url = window.location.href;
+    var anchor = url.split('#')[1];
+    $('#'+anchor).addClass('animated pulse');
+}
+
 $(document).ready(function () {
     templateRoot = $('#templateRoot').val();
     initIputs();
+    highlightAnchor();
 });
