@@ -48,7 +48,9 @@ class Queries {
     
     const GET_RESTAURANTE_BY_ID_PRODUTO = 'SELECT r FROM restaurante r JOIN r.produtos p WHERE p.id = :id_produto';
     
-    const GET_PRODUTOS_ORDER_BY_DATE = 'SELECT p FROM Pedido ORDER BY p.dataHora';
+    const GET_PEDIDO_ORDER_BY_DATE = 'SELECT p FROM Pedido ORDER BY p.dataHora';
+    
+    const GET_PRODUTOS_BY_NOME = 'SELECT FROM produto WHERE p.nome';
 
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante 

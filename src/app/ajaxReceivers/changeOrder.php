@@ -100,8 +100,8 @@ if (isset($_SESSION['pedido'])) {
                     echo "</div>";
                 echo "</div>";
                 echo "</td>";
-                    echo "<td data-th='Price'>R$ " . $it->getTamanho()->getPreco() . "</td>";
-                    echo "<td data-th='Quantity'>";
+                    echo "<td data-th='Preço: '>R$ " . $it->getTamanho()->getPreco() . "</td>";
+                    echo "<td data-th='Quantidade: '>";
                     echo "<input type='number' class='form-control' min='1' max='99' id='quantidade" . $i . "' value='" . $it->getQuantidade() . "'>";
                 echo "</td>";
                     echo "<td data-th='Subtotal' class='text-center'>R$ " . $it->getSubtotal() . "</td>";
