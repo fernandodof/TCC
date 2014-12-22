@@ -1,21 +1,13 @@
-<link href="{$templateRoot}bootstrap-modal-master/css/bootstrap-modal.css">
 <link href="{$templateRoot}css/restaurant.css" rel="stylesheet" type="text/css">
-<link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/restaurantColumn.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}libs/bootstrap-star-rating/css/star-rating.min.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}libs/bootstrap-star-rating/js/star-rating.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="{$templateRoot}js/bootbox.min.js"></script>
 <script type="text/javascript" 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
 </script>
 <script type="text/javascript" src="{$templateRoot}js/restaurantPageFunctions.js"></script>
 <script type="text/javascript" src="{$templateRoot}js/mapFunctions.js"></script>
-<script type="text/javascript">
-    {literal}
-
-    {/literal}
-</script>
 <div class="container">
     <img src="{$templateRoot}images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
     <div class="visible-sm visible-xs">

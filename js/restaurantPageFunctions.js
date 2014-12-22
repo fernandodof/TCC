@@ -95,6 +95,79 @@ function checkCurrentOrder(idForm) {
     });
 }
 
+function addProduto1(idForm, orderAction, idRestarant) {
+    var form = document.getElementById('add' + idForm);
+    var idProduto1 = form.getElementsByClassName('idProduto')[0].value;
+    var idTamanho1 = form.getElementsByClassName('idTamanho')[0].value;
+    var quantidade1 = form.getElementsByClassName('quantidade')[0].value;
+    var idRestaurantePedido1 = idRestarant;
+    var data = {idProduto: idProduto1, idTamanho: idTamanho1, quantidade: quantidade1, idRestaurantePedido: idRestaurantePedido1, orderAction: orderAction};
+    var url = templateRoot + 'src/app/ajaxReceivers/addToCart.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse === 'Erro') {
+                alertify.alert("Por favor faça o login para poder realizar o pedido");
+                undimPageAndEnableComponents();
+            }
+            else {
+//                undimPageAndEnableComponents();
+                alertify.success('Novo Item Adicionado');
+                createCartCount(idRestaurantePedido1);
+                window.location.replace(templateRoot + 'pages/restaurant/'+idRestarant);
+            }
+        },
+        error: function (data) {
+            alert("Erro ");
+        }
+    });
+}
+
+
+function checkCurrentOrder1(idForm, idRestaurant) {
+    $('body').dimBackground();
+    $('#loader').show();
+    $("body").find("input,button,textarea").attr("disabled", "disabled");
+    var idRestaurante = idRestaurant;
+    var data = {idRestaurantePedido: idRestaurante};
+
+    var url = templateRoot + 'src/app/ajaxReceivers/checkCurrentOrder.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse === 'login') {
+                alertify.alert("Por favor faça o login para poder realizar o pedido");
+                undimPageAndEnableComponents();
+            }
+            else if (serverResponse === 'currentOrder') {
+
+                resetAlertify();
+                alertify.confirm("Você já tem uma compra em andamento com outro estabelecimento " +
+                        "se você continuar, essa compra será cancelada. Deseja continuar?", function (e) {
+                            if (e) {
+                                addProduto1(idForm, 1, idRestaurant);
+                                alertify.success('Pedido redefinido');
+                            } else {
+                                alertify.log('Pedido não alterado');
+                            }
+                        });
+                undimPageAndEnableComponents();
+            } else if (serverResponse === 'noCurrentOrder') {
+                addProduto1(idForm, 0, idRestaurant);
+            }
+        },
+        error: function (data) {
+            alert("Erro");
+        }
+    });
+}
+
 function getItemCount() {
     var url = templateRoot + 'src/app/ajaxReceivers/itemCount.php';
     var count;

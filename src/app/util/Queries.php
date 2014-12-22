@@ -115,19 +115,27 @@ class Queries {
     
     const GET_SENHA_ATUAL = 'SELECT c.senha as senha FROM Cliente c WHERE c.id = :id';
     
-    const GET_PRODUTO_ORDER_BY_AVALIACAO_RAIO = 'SELECT r.id, rp.id_produto, AVG (a.nota), (6371 * acos(cos(radians(-6.8890597)) * 
-                                                 cos(radians(e.latitude)) * cos(radians(e.longitude) - radians(-38.5482582)) + 
-                                                 sin(radians(-6.8890597)) * sin(radians(e.latitude)))) AS distance 
+    const GET_PRODUTO_ORDER_BY_AVALIACAO_RAIO = "SELECT r.id AS id_restaurante, rp.id_produto AS id_produto, AVG (a.nota) AS nota, (6371 * acos(cos(radians(:latitude)) * 
+                                                 cos(radians(e.latitude)) * cos(radians(e.longitude) - radians(:longitude)) + 
+                                                 sin(radians(:latitude)) * sin(radians(e.latitude)))) AS distance 
                                                  FROM restaurante R 
                                                  INNER JOIN endereco E ON r.id_endereco = e.id 
-                                                 INNER JOIN restaurante_produto rp ON rp.id_restaurante = r.id 
-                                                 LEFT JOIN avaliacao a on rp.id_produto = a.id_produto 
-                                                 GROUP BY rp.id_produto ORDER BY AVG (a.nota) DESC, distance LIMIT 10';
+                                                 INNER JOIN restaurante_produto rp ON rp.id_restaurante = r.id
+                                                 INNER JOIN produto p ON p.id = rp.id_produto
+                                                 INNER JOIN categoria c ON c.id = p.id_categoria
+                                                 LEFT JOIN avaliacao a on rp.id_produto = a.id_produto
+                                                 WHERE c.nome like 'comida'
+                                                 GROUP BY rp.id_produto ORDER BY AVG (a.nota) DESC, distance LIMIT 10";
     
-    const GET_PRODUTO_ORDER_BY_AVALIACAO = 'SELECT r.id AS id_restaurante, rp.id_produto as id_produto, AVG (a.nota) as nota
+    const GET_PRODUTO_ORDER_BY_AVALIACAO =  "SELECT r.id AS id_restaurante, rp.id_produto as id_produto, AVG (a.nota) as nota
                                             FROM restaurante R 
                                             INNER JOIN restaurante_produto rp ON rp.id_restaurante = r.id
+                                            INNER JOIN produto p ON p.id = rp.id_produto
+                                            INNER JOIN categoria c ON c.id = p.id_categoria
                                             LEFT JOIN avaliacao a on rp.id_produto = a.id_produto
-                                            GROUP BY rp.id_produto ORDER BY AVG (a.nota) DESC LIMIT 10';
+                                            WHERE c.nome like 'comida'
+                                            GROUP BY rp.id_produto ORDER BY AVG (a.nota) DESC LIMIT 10";
+    
+    
     
 }
