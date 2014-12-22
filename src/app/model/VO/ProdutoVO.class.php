@@ -11,6 +11,7 @@ class ProdutoVO {
     private $nome;
     private $ingredientes;
     private $categoria;
+    private $imagem;
 
     public function getId() {
         return $this->id;
@@ -42,6 +43,14 @@ class ProdutoVO {
 
     public function setCategoria($categoria) {
         $this->categoria = $categoria;
+    }
+
+    public function getImagem() {
+        return $this->imagem;
+    }
+
+    public function setImagem($imagem) {
+        $this->imagem = $imagem;
     }
 
 }

@@ -35,8 +35,8 @@ include_once '../pages/header.php';
 
 $produtos = $restaurante->getProdutos();
 
-$produtosComida;
-$produtosBebida;
+$produtosComida = array();
+$produtosBebida = array();
 
 foreach ($produtos as $p) {
     if ($p->getCategoria()->getNome() == 'Comida') {

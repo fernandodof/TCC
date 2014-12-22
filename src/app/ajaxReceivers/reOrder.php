@@ -49,7 +49,7 @@ if (!isset($_SESSION['id'])) {
         $tamanhoVO->setId($tamanho->getId());
         $tamanhoVO->setDescricao($tamanho->getDescricao());
         $tamanhoVO->setPreco($tamanho->getPreco());
-       
+
         $categoriaVO = new CategoriaVO();
         $categoriaVO->setId($produto->getCategoria()->getId());
         $categoriaVO->setId($produto->getCategoria()->getId());
@@ -59,6 +59,7 @@ if (!isset($_SESSION['id'])) {
         $produtoVO->setId($produto->getId());
         $produtoVO->setNome($produto->getNome());
         $produtoVO->setIngredientes($produto->getIngredientes());
+        $produtoVO->setImagem($produto->getImagem());
         $produtoVO->setCategoria($categoriaVO);
 
         $itemPedidoVO = new ItemPedidoVO();

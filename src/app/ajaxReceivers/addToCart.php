@@ -53,6 +53,7 @@ if (!isset($_SESSION['id'])) {
     $produtoVO->setId($produto->getId());
     $produtoVO->setNome($produto->getNome());
     $produtoVO->setIngredientes($produto->getIngredientes());
+    $produtoVO->setImagem($produto->getImagem());
     $produtoVO->setCategoria($categoriaVO);
 
     $itemPedidoVO = new ItemPedidoVO();

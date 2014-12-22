@@ -13,6 +13,7 @@ require_once $path.'src/app/model/VO/PedidoVO.class.php';
 require_once $path.'src/app/model/VO/ItemPedidoVO.class.php';
 require_once $path.'src/app/model/VO/ProdutoVO.class.php';
 require_once $path.'src/app/model/VO/TamanhoVO.class.php';
+require_once '../src/app/model/VO/PedidoVO.class.php';
 
 if(!isset($_SESSION)){
     session_start();

@@ -52,7 +52,7 @@
             <div class="col-sm-3 colunaDestaque">
                 <h4 class="dishName">{$produto->getNome()}</h4>
                 <div class="well well-sm col-xs-12 imgDiv pull-left">
-                    <img src="{$produto->getImagem()}" class="img-responsive">
+                    <img src="{$templateRoot}{$produto->getImagem()}" class="img-responsive">
                 </div>
                 <div class="info">
                     <a class="restaurantName pull-left" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}">{$restaurants->get($count)->getNome()}</a>

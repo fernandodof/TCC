@@ -26,10 +26,22 @@
                                 <td data-th="Item">
                                     <div class="row">
                                         {if ($it->getProduto()->getIngredientes() == null)}
-                                            <div class="col-sm-2 hidden-xs"><img src="{$templateRoot}images/icons/drink.png" alt="Bebida" class="img-responsive"/></div>
-                                            {else}
-                                            <div class="col-sm-2 hidden-xs"><img src="{$templateRoot}images/icons/food.png" alt="Comida" class="img-responsive"/></div>
-                                            {/if}
+                                            <div class="col-sm-2 hidden-xs">
+                                                {if $it->getProduto()->getImagem() != null}
+                                                    <img src="{$templateRoot}{$it->getProduto()->getImagem()}" alt="Bebida" class="img-responsive"/>
+                                                {else}    
+                                                    <img src="{$templateRoot}images/icons/drink.png" alt="Bebida" class="img-responsive"/>
+                                                {/if}
+                                            </div>
+                                        {else}
+                                            <div class="col-sm-2 hidden-xs">
+                                                {if $it->getProduto()->getImagem() != null}
+                                                    <img src="{$templateRoot}{$it->getProduto()->getImagem()}" alt="Bebida" class="img-responsive"/>
+                                                {else}    
+                                                    <img src="{$templateRoot}images/icons/food.png" alt="Comida" class="img-responsive"/>
+                                                {/if}
+                                            </div>
+                                        {/if}
                                         <div class="col-sm-10">
                                             <h4 class="nomargin nomeProduto">{$it->getProduto()->getNome()} <span class="tamanho"> - {$it->getTamanho()->getDescricao()}</span></h4>
                                             <p>{$it->getProduto()->getIngredientes()}</p>

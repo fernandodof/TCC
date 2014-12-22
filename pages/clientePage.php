@@ -3,6 +3,7 @@
 require_once '../pages/pathVars.php';
 require_once $path . 'src/app/util/CheckLoggedIn.php';
 require_once $path . 'src/app/util/UserTypes.php';
+require_once '../src/app/model/VO/PedidoVO.class.php';
 
 if (!CheckLoggedIn::checkPermission(UserTypes::CLIENTE)) {
     header('Location: ../pages/index');

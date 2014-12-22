@@ -46,6 +46,8 @@ $dao = new Dao();
 //
 session_start();
 var_dump($_SESSION);
+
+print_r($_SESSION);
 //
 //
 //$params['latitude'] = -6.889079;
@@ -64,16 +66,16 @@ var_dump($_SESSION);
 //
 //var_dump($r);
 
-$params['id'] = 1;
-$senha = EncryptPassword::encrypt('123456');
-$senhaDB = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_SENHA_ATUAL, $params);
-
-if ($senha == $senhaDB['senha']) {
-    $isValid = true;
-} else {
-    $isValid = false;
-}
-
-echo json_encode(array(
-    'valid' => $isValid,
-));
+//$params['id'] = 1;
+//$senha = EncryptPassword::encrypt('123456');
+//$senhaDB = $dao->getArrayResultOfNativeQueryWithParameters(Queries::GET_SENHA_ATUAL, $params);
+//
+//if ($senha == $senhaDB['senha']) {
+//    $isValid = true;
+//} else {
+//    $isValid = false;
+//}
+//
+//echo json_encode(array(
+//    'valid' => $isValid,
+//));
