@@ -1,14 +1,15 @@
-.colunaDestaque{
-}
+******************
+//FIX THIS CSS LATER
+******************
 
 .restaurantName{
     height: 20px;
     width: 100%;
 }
-
+/*
 .imgDiv{
     position: relative;
-}
+}*/
 
 .imgDiv img{
     width: 100%;
@@ -16,16 +17,35 @@
 }
 
 .main{
-    margin-bottom: -55px;
+    margin-bottom: -60px;
+}
+
+#indexTabs{
+    margin-top: 40px;
+}
+
+#indexTabs li a{
+    background-color: #F1F1F1;
+}
+
+#indexTabs li:hover a{
+    background-color: #2C3E50;
+    color: #18BC9C;
+}
+
+#indexTabs .active:hover a{
+    background-color: #aab1b9;
+    color: white;
+}
+
+#indexTabs .active a{
+    background-color:#aab1b9;
+    color: white;
 }
 
 @media screen and (max-width: 992px){
     .main{
-        margin-bottom: -40px;
-    }
-
-    #destaquesDiv{
-
+        margin-bottom: 20px;
     }
 
     .colunaDestaque{
@@ -79,10 +99,10 @@
 }
 
 h1{
-    top:-180px;
+    top:-230px;
     margin-left: 40px;
     position:relative;
-    font-size: 60px;
+    font-size: 50px;
 }
 
 .jumbotron{
@@ -94,20 +114,27 @@ h1{
     background-repeat: no-repeat;
     /*background-attachment: fixed;*/
     background-position: center; 
-    min-height: 250px;
+    min-height: 265px;
     width: 100%;
     margin-bottom: -80px;
     z-index: 5;
     margin-top: -22px;
 }
 
-.jumbotron form{
-    margin-top: 80px;
+.jumbotron .searchForm, .jumbotron .searchProduct{
     z-index: 10;
 }
 
+.jumbotron .searchFieldProduct{
+    width: 945px;
+}
+
+.jumbotron .btSearchDivProduct{
+    margin-left: 27px;
+}
+
 #jumbotronContent{
-    min-height: 250px;
+    min-height: 265px;
     width: 100%;
     opacity: 0.7;
     background:rgba(255,255,255,0.8);
@@ -120,23 +147,29 @@ h1{
     /*position: absolute;*/
 }
 
-@media screen and (max-width: 992px){
+@media only screen and (max-width : 1200px) {
+    .jumbotron .searchFieldProduct{
+        width: 765px;
+    }
+}
+
+@media only screen and (max-width : 992px) {
     .jumbotron{
-        padding-bottom: 180px;
-        min-height: 360px;
+        height: 350px;
     }
 
     #jumbotronContent{
-        min-height: 360px;
-        margin-bottom: -480px;
+        height: 350px;
     }
 
     h1{
-        top:-280px;
+        top:-380px;
         margin-left: 55px;
-        position:relative;
         font-size: 30px;
         width: 100%;
+        color: blue;
+        padding-left: 75px;
+        margin-left: -15px;
     }
 
     .kindOfFoodSelect{
@@ -158,6 +191,32 @@ h1{
     #indexButtons .btn{
         margin-top: 10px;
     }
+
+    .jumbotron .searchFieldProduct, .jumbotron .searchForm, .jumbotron .btSearchProduct{
+        width: 105%;
+    }
+
+    .jumbotron .searchForm, .jumbotron .btSearchDivProduct{
+        margin-left: -15px;
+    }
+
+    .jumbotron #indexButtons{
+        margin-left: 0px;
+    }
+
+    .jumbotron #indexTabs{
+        margin-top: 10px;
+    }
+
+    /*    .jumbotron .tab-content{
+            min-height: 210px;
+        }*/
+
+
+    .secondTabActice{
+        height: 270px;
+    }
+
 }
 
 @media screen and (min-width: 992px){
@@ -166,7 +225,7 @@ h1{
     }
 }
 
-@media (max-width: 991px) {
+/*@media (max-width: 991px) {
     h1{
         font-size: 30px;
         padding-left: 75px;
@@ -174,14 +233,10 @@ h1{
         top:-310px;
     }
 
-}
+}*/
 
 @media only screen and (max-width: 768px){ 
     .jumbotron, #jumbotronContent{
-        min-height: 435px;
-    }
-
-    #jumbotronContent{
         min-height: 435px;
     }
 
@@ -201,7 +256,12 @@ h1{
     #indexButtons .btn{
         margin-top: 10px;
         display: block;
+        width: 103%;
     } 
+
+    .jumbotron #indexTabs{
+        margin-top: -20px;
+    }
 
 }
 

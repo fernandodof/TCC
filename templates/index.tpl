@@ -1,46 +1,70 @@
 <link href= "{$templateRoot}css/index.css" rel="stylesheet">
-<script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
+<script src="{$templateRoot}js/index.js"></script>
+<script src="{$templateRoot}js/locationInfo.js"></script>
 <div class="container main">
     <div id="jumbotronContent" class="col-xs-12">
     </div>
     <div class="jumbotron">
-        <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
-            <div class="row input-group col-md-12 pull-left search">
-                <div class="col-md-7 col-xs-12 searchDiv pull-left">
-                    <input type="text" class="form-control input-lg pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
-                </div>
-                <div class="row col-md-5 col-xs-12">
-                    <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
-                        <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
-                            <option class="" value="">Tipo de cozinha (todas)</option>
-                            {foreach from = $kindsOfFood kind}
-                                <option class="" value='{$kind.nome}'>{$kind.nome}</option>
-                            {/foreach}
-                        </select>
-                    </div>
-                    <div class="col-md-1 visible-lg visible-md btSearchDiv">        
-                        <div class="input-group-btn">
-                            <button type="submit" name="formSubmit" value="SearchRestaurante" class="btn btn-lg btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
+
+        <div class="row input-group col-md-12 pull-left search">
+            <ul class="nav nav-tabs" id="indexTabs" data-tabs="tabs" role="tablist">
+                <li role="presentation" id="firstTab" class="active indexTab"><a href="#searchRestaurant" data-toggle="tab">Restaurantes</a></li>
+                <li role="presentation" id="secondTab" class="indexTab"><a href="#searchProduct" data-toggle="tab">Pratos</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="searchRestaurant" class="tab-pane active fade in">
+                    <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
+                        <div class="col-md-7 col-xs-12 searchDiv pull-left">
+                            <input type="text" class="form-control input-lg pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
                         </div>
-                    </div>
+                        <div class="row col-md-5 col-xs-12">
+                            <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
+                                <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
+                                    <option class="" value="">Tipo de cozinha (todas)</option>
+                                    {foreach from = $kindsOfFood kind}
+                                        <option class="" value='{$kind.nome}'>{$kind.nome}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <div class="col-md-1 visible-lg visible-md btSearchDiv">        
+                                <div class="input-group-btn">
+                                    <button type="submit" name="formSubmit" value="SearchRestaurante" class="btn btn-lg btn-success btSearch"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-xs-12 visible-sm visible-xs btSearchDiv">        
+                            <div class="input-group-btn">
+                                <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="row col-xs-12 visible-sm visible-xs btSearchDiv">        
-                    <div class="input-group-btn">
-                        <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
-                    </div>
-                </div>
-                <div id="indexButtons">        
-                    <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/nearBy">Locais próximos <img id="gpsIcon" src="{$templateRoot}images/icons/svg/gps13.svg"></a>
-                    <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestRate">Melhores locais <span class="starIcon glyphicon glyphicon-star"></span></a>
-                    <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestItemRate">Melhores Ítens <span class="starIcon glyphicon glyphicon-star"></span></a>
-  {*                  <a class="btn btn-sm btn-success visible-xs" href="{$templateRoot}pages/nearBy">Locais próximos</a>
-                    <a class="btn btn-sm btn-success visible-xs" href="{$templateRoot}pages/bestRate">Melhores locais <span id="starIcon" class="glyphicon glyphicon-star"></span></a>
-*}
+                <div id="searchProduct" class="tab-pane fade in">
+                    <form method="GET" class="form-horizontal searchProduct" action="">
+                        <div class="form-group col-md-11 col-xs-12">
+                            <input type="text" class="form-control input-lg pull-left searchFieldProduct" placeholder="Digite o nome de um prato" id="searchProduct" name="productName">
+                        </div> 
+                        <div class="col-md-1 visible-lg visible-md btSearchDivProduct">        
+                            <div class="input-group-btn">
+                                <button type="submit" name="formSubmit" value="SearchProduct" class="col-xs-12 btn btn-lg btn-success btSearchProduct"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                        <div class="row col-xs-12 visible-sm visible-xs btSearchDivProduct">
+                            <div class="input-group-btn">
+                                <button type="submit" name="formSubmit" value="SearchProduct" class="col-xs-12 btn btn-lg btn-success btSearchProduct">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+            <div id="indexButtons">        
+                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/nearBy">Locais próximos <img id="gpsIcon" src="{$templateRoot}images/icons/svg/gps13.svg"></a>
+                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestRate">Melhores locais <span class="starIcon glyphicon glyphicon-star"></span></a>
+                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestItemRate">Melhores Ítens <span class="starIcon glyphicon glyphicon-star"></span></a>
+            </div>
+        </div>
     </div>
-    <h1>Bem vindo ao SaborVirtual</h1>
+    <h1 class="hidden-sm hidden-xs">Bem vindo ao SaborVirtual</h1>
 </div>
 
 <div class="container">
