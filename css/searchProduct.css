@@ -1,0 +1,40 @@
+#faces{
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#faces #imgFace {
+    width: 100px;
+    width: 100px;
+}
+
+#term{
+    font-weight: bold;
+    color: #18BC9C;
+    font-size:x-large; 
+}
+
+.searchProduct{
+    margin-top: 15px;
+    margin-bottom: 30px;
+    float: left;
+}
+
+.searchProduct .searchFieldProduct{
+    width: 827px;
+    border-radius: 15px 0px 0px 15px;
+}
+
+@media only screen and (max-width : 1200px) {
+    .searchProduct .searchFieldProduct{
+        width: 675px;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .searchProduct .searchFieldProduct, .searchProduct .btSearchDivProduct{
+        width: 105%;
+    }
+}

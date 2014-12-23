@@ -40,9 +40,11 @@
                     </form>
                 </div>
                 <div id="searchProduct" class="tab-pane fade in">
-                    <form method="GET" class="form-horizontal searchProduct" action="">
+                    <form method="GET" class="form-horizontal searchProduct" action="{$templateRoot}pages/searchProduct">
                         <div class="form-group col-md-11 col-xs-12">
-                            <input type="text" class="form-control input-lg pull-left searchFieldProduct" placeholder="Digite o nome de um prato" id="searchProduct" name="productName">
+                            {literal}
+                                <input type="text" class="form-control input-lg pull-left searchFieldProduct" placeholder="Digite o nome de um prato" id="searchProduct" name="productName" pattern=".{3,}" required title="Informe pelo menos 3 caracteres">
+                            {/literal}
                         </div> 
                         <div class="col-md-1 visible-lg visible-md btSearchDivProduct">        
                             <div class="input-group-btn">

@@ -50,7 +50,7 @@ class Queries {
     
     const GET_PEDIDO_ORDER_BY_DATE = 'SELECT p FROM Pedido ORDER BY p.dataHora';
     
-    const GET_PRODUTOS_BY_NOME = 'SELECT FROM produto WHERE p.nome';
+    const GET_PRODUTOS_BY_NOME = 'SELECT p FROM produto p WHERE p.nome LIKE :nome';
 
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante 
@@ -138,6 +138,9 @@ class Queries {
                                             WHERE c.nome like 'comida'
                                             GROUP BY rp.id_produto ORDER BY AVG (a.nota) DESC LIMIT 10";
     
+    const GET_ID_RESTAURANTE_BY_ID_PRODUTO = 'SELECT id_restaurante FROM restaurante_produto WHERE id_produto = :id_produto';
     
-    
+    const GET_NOTA_PRODUTO_BY_ID = 'SELECT AVG(a.nota) as nota FROM produto p
+                                    INNER JOIN avaliacao a ON p.id = a.id_produto 
+                                    WHERE p.id = :id_produto';
 }
