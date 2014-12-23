@@ -12,6 +12,7 @@ require_once '../model/VO/ItemPedidoVO.class.php';
 require_once '../model/VO/ProdutoVO.class.php';
 require_once '../model/VO/CategoriaVO.class.php';
 require_once '../model/VO/TamanhoVO.class.php';
+require_once '../util/SendEmail.class.php';
 
 session_start();
 if(!isset($_SESSION['idRestauranteDoPedidoAtual'])){
@@ -61,10 +62,14 @@ if(!isset($_SESSION['idRestauranteDoPedidoAtual'])){
     
     $cliente->addPedido($pedido);
     $restaurante->addPedido($pedido);
-
+    echo 'TESTE';
     $dao->update($cliente);
     $dao->update($restaurante);
-
-    unset($_SESSION['pedido']);
-    unset($_SESSION['idRestauranteDoPedidoAtual']);
+    
+    $sendEmail = new SendEmail();
+    
+    $sendEmail->sendOrderConfirmation($cliente->getNome(), $pedidoVO, $restaurante->getNome(), $pedido->getDataHora()->format('d/m/Y - H:i:s'), $cliente->getEmail());
+    
+//    unset($_SESSION['pedido']);
+//    unset($_SESSION['idRestauranteDoPedidoAtual']);
 }
