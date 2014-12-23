@@ -5,6 +5,8 @@ require_once './src/app/model/entities/Categoria.class.php';
 require_once './src/app/util/Queries.php';
 require_once './src/app/util/Spherical-geometry.class.php';
 require_once './src/app/util/EncryptPassword.php';
+require_once './src/app/util/SendEmail.class.php';
+
 
 $dao = new Dao();
 
@@ -44,10 +46,18 @@ $dao = new Dao();
 //
 //$r = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_PEDIDOS_POR_STATUS_RESTAURANTE_DATA, $params);
 //
-session_start();
-var_dump($_SESSION);
 
-print_r($_SESSION);
+
+//*************************
+
+//session_start();
+//var_dump($_SESSION);
+//
+//print_r($_SESSION);
+
+//*************************
+
+
 //
 //
 //$params['latitude'] = -6.889079;
@@ -79,3 +89,6 @@ print_r($_SESSION);
 //echo json_encode(array(
 //    'valid' => $isValid,
 //));
+
+$sendEmail = new SendEmail();
+$sendEmail->sendSubscribeConfirmation('Fernando de Olvieira Fereria', 'fernandodof@gmail.com');

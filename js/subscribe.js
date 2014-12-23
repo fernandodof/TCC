@@ -39,7 +39,7 @@ $(document).ready(function () {
                         message: 'O nome é obrigatório e não pode ser vazio'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]*$/,
+                        regexp: /^[A-zÀ-ú\s]*$/,
                         message: 'O nome deve conter apenas letras'
                     }
                 }
@@ -52,9 +52,9 @@ $(document).ready(function () {
                     emailAddress: {
                         message: 'Endereço de email inválido'
                     },
-                    remote :{
+                    remote: {
                         message: 'Email já em uso',
-                        url : templateRoot + 'src/app/ajaxReceivers/validateSubscription.php',
+                        url: templateRoot + 'src/app/ajaxReceivers/validateSubscription.php',
                         data: {
                             type: 'email'
                         }
@@ -72,9 +72,9 @@ $(document).ready(function () {
                         max: 100,
                         message: 'O login deve ter entre 5 e 100 caracteres'
                     },
-                    remote :{
+                    remote: {
                         message: 'Login já em uso',
-                        url : templateRoot + 'src/app/ajaxReceivers/validateSubscription.php',
+                        url: templateRoot + 'src/app/ajaxReceivers/validateSubscription.php',
                         data: {
                             type: 'login'
                         }
@@ -125,57 +125,71 @@ $(document).ready(function () {
                 }
             },
             descricaoEndereco: {
-                message: 'Descrição inválida',
-                notEmpty: {
-                    message: 'A descrição não pode ser vazia'
-                },
-                stringLength: {
-                    min: 2,
-                    max: 40,
-                    message: 'A descrição deve ter entre 2 e 40 caracteres'
+                validators: {
+                    message: 'Descrição inválida',
+                    notEmpty: {
+                        message: 'A descrição não pode ser vazia'
+                    },
+                    stringLength: {
+                        min: 2,
+                        max: 40,
+                        message: 'A descrição deve ter entre 2 e 40 caracteres'
+                    }
                 }
             },
             logradouro: {
-                message: 'Logadouro inválido',
-                notEmpty: {
-                    message: 'O logradouro não pode ser vazio'
+                validators: {
+                    message: 'Logadouro inválido',
+                    notEmpty: {
+                        message: 'O logradouro não pode ser vazio'
+                    }
                 }
             },
             bairro: {
-                message: 'Bairro inválido',
-                notEmpty: {
-                    message: 'O barrio não pode ser vazio'
+                validators: {
+                    message: 'Bairro inválido',
+                    notEmpty: {
+                        message: 'O barrio não pode ser vazio'
+                    }
                 }
             },
             numero: {
-                message: 'Numéro inválido, se não existir número deixe o campo vazio',
-                regexp: {
-                    regexp: /^\s*\d*\s*$/,
-                    message: 'Número inválido'
+                validators: {
+                    message: 'Numéro inválido, se não existir número deixe o campo vazio',
+                    regexp: {
+                        regexp: /^\s*\d*\s*$/,
+                        message: 'Número inválido'
+                    }
                 }
             },
             cep: {
-                notEmpty: {
-                    message: 'O CEP não pode ser vazio'
-                },
-                regexp: {
-                    regexp: /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/,
-                    message: 'CEP inválido'
+                validators: {
+                    notEmpty: {
+                        message: 'O CEP não pode ser vazio'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/,
+                        message: 'CEP inválido'
+                    }
                 }
             },
             cidade: {
-                message: 'Nome da Cidade inválido',
-                notEmpty: {
-                    message: 'O Nome da cidade não pode ser vazio'
-                },
-                regexp: {
-                    regexp: /^[a-zA-Z]+$/,
-                    message: 'O nome da cidade deve conter apenas números'
+                validators: {
+                    message: 'Nome da Cidade inválido',
+                    notEmpty: {
+                        message: 'O Nome da cidade não pode ser vazio'
+                    },
+                    regexp: {
+                        regexp: /^[A-zÀ-ú\s]*$/,
+                        message: 'O nome da cidade deve conter apenas números'
+                    }
                 }
             },
             estado: {
-                notEmpty: {
-                    message: 'Escolha um estado'
+                validators: {
+                    notEmpty: {
+                        message: 'Escolha um estado'
+                    }
                 }
             }
         }

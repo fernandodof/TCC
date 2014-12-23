@@ -6,6 +6,7 @@ require_once '../model/entities/Endereco.class.php';
 require_once '../model/entities/Telefone.class.php';
 require_once '../util/EncryptPassword.php';
 require_once '../util/Queries.php';
+require_once '../util/SendEmail.class.php';
 
 function recieveForm($param) {
     return strip_tags(addslashes($param));
@@ -59,6 +60,11 @@ function cadastrarCLiente() {
     $cliente->setEnderecos($enderecos);
     $dao = new Dao();
     $dao->save($cliente);
+    
+    $sendEmail = new SendEmail();
+    
+    $sendEmail->sendSubscribeConfirmation($cliente->getNome(), $cliente->getEmail());
+    
     header("Location: ../../../pages/subscriptionConfirmation");
     exit();
 }
