@@ -63,6 +63,7 @@
                                                     <input name="senhaLogin" id="senhaLogin" class="form-control" type="password" placeholder="Senha" required>
                                                 </div>
                                                 <small id="loginErrorMsg" class="helpTextLogin help-block">Email ou senha inválidos</small>
+                                                <a href="{$templateRoot}pages/forgotPassword" id="forgortPassword">Esqueci a senha</a>
                                             </div>
                                             <input type="hidden" name="formSubmit" value="Login">
                                             <button type="submit" data-loading-text="Login..." onclick="validateLogin();" id="btnLogin" class="btn btn-info pull-right">Login</button>

@@ -132,6 +132,17 @@
     height: 180px;
 }
 
+@media only screen and (max-width: 768px){ 
+    #loginForm{
+        height: 240px;
+    }
+}
+
+#forgortPassword{
+    margin-left: 15px;
+    display: block;
+}
+
 #contactForm label{
     text-align: left;
 }

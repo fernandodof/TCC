@@ -89,3 +89,6 @@ print_r($_SESSION);
 //echo json_encode(array(
 //    'valid' => $isValid,
 //));
+
+
+echo date("Y-m-d h:i:sa", time()+(60*60)*5);

@@ -143,4 +143,7 @@ class Queries {
     const GET_NOTA_PRODUTO_BY_ID = 'SELECT AVG(a.nota) as nota FROM produto p
                                     INNER JOIN avaliacao a ON p.id = a.id_produto 
                                     WHERE p.id = :id_produto';
+
+    
+    
 }
