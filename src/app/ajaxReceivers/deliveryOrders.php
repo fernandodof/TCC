@@ -73,13 +73,16 @@ if (isset($_SESSION['pedidosEntregaCarregados'])) {
                     echo "<h4 data-toggle='collapse' data-target='#endereco" . $i . "' class='elementToggle verEndereco'>Detalhes do cliente <i class='fa fa-chevron-circle-down'></i></h4>";
                     echo "<div class='collapse' id='endereco" . $i . "'>";
                         foreach ($pedido->getCliente()->getTelefones() as $telefone){
-                            echo "<h5>Telefone: (" . $telefone->getDDD() . ")" . $telefone->getNumero() . "</h5>";
+                            echo "<h5>Telefone: ". $telefone->getNumero() . "</h5>";
                         }
                         echo "<h4>Endereço <span class='fa fa-map-marker enderecoMarker'></span></h4>";
                         foreach ($pedido->getCliente()->getEnderecos() as $endereco) {
                             echo "<p>" . $endereco->getLogradouro() . ", " . $endereco->getNumero() . "</p>";
                             echo "<p>" . $endereco->getBairro() . ", " . $endereco->getCidade() . "</p>";
                             echo "<p>" . $endereco->getEstado() . ", " . $endereco->getCep() . "</p>";
+                        }
+                        if ($pedido->getLatitude() != null){
+                            echo "<a href='#myMapModal' data-toggle='modal' onclick='initialize(" . $pedido->getLatitude() . ",". $pedido->getLongitude() . ");' class='btn btn-info btn-xs'>Mapa</a>";
                         }
                         echo "</div>";
                     echo "</div>";

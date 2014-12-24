@@ -81,6 +81,9 @@ if(count($pedidos)>0){
                             echo "<p>" . $endereco->getBairro() . ", " . $endereco->getCidade() . "</p>";
                             echo "<p>" . $endereco->getEstado() . ", " . $endereco->getCep() . "</p>";
                         }
+                        if ($pedido->getLatitude() != null){
+                            echo "<a href='#myMapModal' data-toggle='modal' onclick='initialize(" . $pedido->getLatitude() . ",". $pedido->getLongitude() . ");' class='btn btn-info btn-xs'>Mapa</a>";
+                        }
                     echo "</div>";
                     echo "</div>";
                     if ($pedido->getObservacoes() != null) {
