@@ -59,10 +59,15 @@ if(!isset($_SESSION['idRestauranteDoPedidoAtual'])){
     $pedido->setCliente($cliente);
     $pedido->setRestaurante($restaurante);
     $pedido->setStatus(Pedido::PEDIDO_RECEBIDO);
+
+    if($_SESSION['latLong']){
+       $latLong = explode(',', $_SESSION['latLong']);
+       $pedido->setLatitude($latLong[0]);
+       $pedido->setLongitude($latLong[1]);
+    }
     
     $cliente->addPedido($pedido);
     $restaurante->addPedido($pedido);
-    echo 'TESTE';
     $dao->update($cliente);
     $dao->update($restaurante);
     

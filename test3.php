@@ -5,7 +5,7 @@ require_once './src/app/model/entities/Categoria.class.php';
 require_once './src/app/util/Queries.php';
 require_once './src/app/util/Spherical-geometry.class.php';
 require_once './src/app/util/EncryptPassword.php';
-require_once './src/app/util/SendEmail.class.php';
+//require_once './src/app/util/SendEmail.class.php';
 
 
 $dao = new Dao();
@@ -50,10 +50,10 @@ $dao = new Dao();
 
 //*************************
 
-//session_start();
-//var_dump($_SESSION);
-//
-//print_r($_SESSION);
+session_start();
+var_dump($_SESSION);
+
+print_r($_SESSION);
 
 //*************************
 
@@ -89,6 +89,3 @@ $dao = new Dao();
 //echo json_encode(array(
 //    'valid' => $isValid,
 //));
-
-$sendEmail = new SendEmail();
-$sendEmail->sendSubscribeConfirmation('Elis', 'oelisiany@gmail.com');

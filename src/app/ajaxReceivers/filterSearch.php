@@ -167,7 +167,7 @@ if (count($restaurants) == 0) {
         echo "<a class='btn btn-info btn-sm pull-right btVerCardapio visible-lg visible-md' href='" . $templateRoot . "pages/restaurant/" . $restaurante->getId() . "'>Visualizar Cardápio</a>";
         echo "<a class='btn btn-primary btn-xs pull-right commentButton visible-lg visible-md'";
         if (count($restaurante->getComentarios()) == 0) {
-            echo " disabled";
+            echo " disabled ";
         }
         echo "href='" . $templateRoot . "pages/comments/" . $restaurante->getId() . "'><span class='fa fa-comment fa-2x commentIcon'></span> ";
         echo "<span class='badge commentCountBadge'>" . count($restaurante->getComentarios()) . "</span>";

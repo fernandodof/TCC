@@ -59,11 +59,21 @@ class Pedido {
      * @JoinColumn(name="id_restaurante", referencedColumnName="id")
      * */
     private $restaurante;
-    
+
     /**
      * @Column(type="integer")
-     * **/
-    private $status = false;
+     * * */
+    private $status = 1;
+
+    /**
+     * @Column(type="float",nullable=true)
+     * * */
+    private $latitude = null;
+
+    /**
+     * @Column(type="float", nullable=true)
+     * * */
+    private $longitude = null;
 
     public function __construct() {
         $this->itensPedido = new Doctrine\Common\Collections\ArrayCollection();
@@ -137,6 +147,22 @@ class Pedido {
 
     public function setStatus($status) {
         $this->status = $status;
+    }
+    
+    public function getLatitude() {
+        return $this->latitude;
+    }
+
+    public function getLongitude() {
+        return $this->longitude;
+    }
+
+    public function setLatitude($latitude) {
+        $this->latitude = $latitude;
+    }
+
+    public function setLongitude($longitude) {
+        $this->longitude = $longitude;
     }
 
 }
