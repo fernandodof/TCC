@@ -16,6 +16,7 @@
         <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
         <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
         <link href="{$templateRoot}libs/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
         {* Move this script tags *}
         <script src="{$templateRoot}bootstrap/js/jquery.min.js"></script>
         <script src="{$templateRoot}bootstrap/js/bootstrap.min.js"></script>
@@ -109,7 +110,7 @@
             <div class="modal" id="contact" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form class="form-horizontal" id="contactForm" method="POST" action="#">
+                        <form class="form-horizontal" id="contactForm" method="POST" action="javascript:void(0)">
                             <div class="modal-header">
                                 <h4>Fale conosco</h4>
                             </div>
@@ -118,26 +119,26 @@
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="nameContact">Nome:</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" name="nameContact" id="nameContact" placeholder="Nome completo">
+                                        <input type="text" class="form-control" name="nameContact" id="nameContact" placeholder="Nome completo" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="emailContact">Email: </label>
                                     <div class="col-lg-10">
-                                        <input type="email" class="form-control" name="nameContact" id="emailContact" placeholder="você@exemplo.com">
+                                        <input type="email" class="form-control" name="emailContact" id="emailContact" placeholder="você@exemplo.com" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-lg-2 control-label" for="messageContact">Mensagem:</label>
                                     <div class="col-lg-10">
-                                        <textarea class="form-control" name="messageContact" id="messageContact" rows="8" placeholder="Insira a sua mensagem aqui"></textarea>
+                                        <textarea class="form-control" name="messageContact" id="messageContact" rows="8" placeholder="Insira a sua mensagem aqui" required></textarea>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
                                 <a class="btn btn-default" data-dismiss="modal">Cancelar</a>
-                                <button class="btn btn-primary" type="submit">Enviar <span class="glyphicon glyphicon-send"></span></button>
+                                <button class="btn btn-primary" type="submit" id="sendEmailContact" data-loading-text="Enviando...">Enviar <span class="glyphicon glyphicon-send"></span></button>
                             </div>
                         </form>
                     </div>

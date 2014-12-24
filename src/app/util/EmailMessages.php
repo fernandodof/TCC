@@ -41,7 +41,7 @@ class EmailMessages {
         return "Olá " . $personName . ", O seu cadastro no Sabor Virtual foi realizado com sucesso !";
     }
 
-    public static function orderConfirmationHtml($personName, $pedidoVO, $restaurantName, $date) {
+    public static function orderConfirmationHTML($personName, $pedidoVO, $restaurantName, $date) {
         $strHtml = "<!DOCTYPE html>
                     <html>
                         <head>
@@ -64,7 +64,7 @@ class EmailMessages {
                                 <table style='margin-top: 15px; background-color='#F1F1F1' border='1' cellspacing='0' cellpadding='7' align='center'>
                                     <thead>
                                         <tr>
-                                            <th>Itens</th>
+                                            <th>Ítem</th>
                                             <th>Tamanho</th>
                                             <th>Quantidade</th>
                                             <th>Subtotal</th>
@@ -91,6 +91,35 @@ class EmailMessages {
     
     public static function orderConfirmationNormal($personName, $restaurantName, $date){
         return "Olá ".$personName.", O seu pedido foi confirmado (".$restaurantName." - ". $date. ")";
+    }
+    
+    
+    public static function contactMessageHTML($name, $email, $message){
+        return "<!DOCTYPE html>
+                    <html>
+                        <head>
+                             <title>Confirmaçao de cadastro</title>
+                                <meta charset='UTF-8'>
+                                <meta name='viewport' content='width=device-width', initial-scale=1.0>
+                            </head>
+                        <body>
+                            <div style='text-align: center; margin: 0 auto;'>
+                                <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
+                                    <h4 style='margin-top: 40px;
+                                                   width: 100%;
+                                                   clear: left;
+                                                   float: left;'>
+                                        Menssagem Recebida</h4>
+                             <h4>".$name. " - ". $email."</h4>
+                              <h4>Menssagem:</h4>
+                             <p>. $message .</p>
+                          </div>
+                       </body>
+                </html>";
+    }
+    
+    public static function contactMessageNormal($name, $email, $message){
+        return $name." - (". $email . ") Mensagem: " . $message;
     }
 
 }

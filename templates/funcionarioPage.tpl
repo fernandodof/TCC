@@ -5,12 +5,9 @@
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}libs/hoverCSS/hover.min.css" rel="stylesheet">
-    <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
     <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
     <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
-    <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 </head>
 
 <div class="container" id="page">

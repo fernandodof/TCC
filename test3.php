@@ -91,4 +91,4 @@ $dao = new Dao();
 //));
 
 $sendEmail = new SendEmail();
-$sendEmail->sendSubscribeConfirmation('Elis', 'oelisiany@gmail.com', EmailMessageTypes::CONFIRMATION);
+$sendEmail->sendSubscribeConfirmation('Elis', 'oelisiany@gmail.com');

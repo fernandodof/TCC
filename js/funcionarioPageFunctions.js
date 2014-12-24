@@ -386,7 +386,7 @@ function setUpFormValidation() {
                         message: 'Por favor, infome os ingredientes'
                     },
                     stringLength: {
-                        max: 250,
+                        max: 200,
                         message: 'Os Ingredientes devem tem menes de 200 caracteres'
                     }
 

@@ -7,7 +7,6 @@
  */
 require_once 'PHPMailer-5.2.8/PHPMailerAutoload.php';
 require_once 'EmailMessages.php';
-require_once 'EmailMessageTypes.php';
 
 class SendEmail {
 
@@ -49,8 +48,21 @@ class SendEmail {
 
     public function sendOrderConfirmation($personName, $pedidoVO, $restaurantName, $date, $address) {
         $this->mail->Subject = 'Confirmação de pedido - Sabor Virtual';
-        $this->mail->Body = EmailMessages::orderConfirmationHtml($personName, $pedidoVO, $restaurantName, $date);
+        $this->mail->Body = EmailMessages::orderConfirmationHTML($personName, $pedidoVO, $restaurantName, $date);
         $this->mail->AltBody = EmailMessages::orderConfirmationNormal($personName, $restaurantName, $date);
+        $this->mail->addAddress($address);
+        if (!$this->mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $this->mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+    }
+
+    public function sendContactEmail($name, $email, $message, $address = 'contato.saborvitual@gmail.com') {
+        $this->mail->Subject = 'Contato';
+        $this->mail->Body = EmailMessages::contactMessageHTML($name, $email, $message);
+        $this->mail->AltBody = EmailMessages::contactMessageNormal($name, $email, $message);
         $this->mail->addAddress($address);
         if (!$this->mail->send()) {
             echo 'Message could not be sent.';

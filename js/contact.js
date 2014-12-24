@@ -1,35 +1,34 @@
+var templateRoot;
+
 function sendContactMessage() {
-    $('#confirmar').button('loading');
-    $('body').dimBackground();
-    $("body").find("input,button,textarea").attr("disabled", "disabled");
-    var obs = $('#observacoes').val();
-    var data = {obs: obs};
-    var url = templateRoot+'src/app/ajaxReceivers/submitOrder.php';
+    $('#sendEmailContact').button('loading');
+//    var name = $('#nameContact').val();
+//    var email = $('#emailContact').val();
+//    var message = $('#messageContact').val();
+//    var data = {name: name, email:email, message: message};
+    var url = templateRoot+'src/app/ajaxReceivers/sendContactEmail.php';
     $.ajax({
         type: "POST",
         url: url,
         async: true,
-        data: data,
+        data: $("#contactForm").serialize(),
         success: function (serverResponse) {
-            if (serverResponse === 'Erro') {
-                alertify.alert("Ocorreu um erro ao fazer o seu pedido");
-            } else {
-                $('#orderInfo').addClass('animated bounceOutRight');
-                setTimeout(function () {
-                    $('#orderInfo').remove();
-                }, 1300);
-                $('body').undim();
-                $("body").find("input,button,textarea").removeAttr("disabled");
-                $('#confirmation').html("<h2>Pedido realizado com sucesso</h2>" +
-                        "<div id='faces'>" +
-                        "<img id = 'imgFace' src = '"+templateRoot+"images/icons/svg/happyFace.svg'/>" +
-                        "</div>");
-                $('#confirmation').show();
-                $('#liGotoCart').empty();
-            }
+            alertify.alert('Messagem Enviada, Obrigado pelo seu contato');
+            resetMyForm($('#contactForm'));
+            $('#sendEmailContact').button('reset');
+            alertify.alert(serverResponse);
         },
-        error: function (data) {
-            alertify.alert("Ocorreu um erro ao fazer o seu pedido");
+        error: function (serverResponse) {
+            alertify.alert('Ocorreu um erro no processamento da sua mensagem, por favor tente mais tarde');
         }
     });
 }
+
+function resetMyForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+}
+
+$(document).ready(function () {
+    templateRoot = $('#templateRoot').val();
+});

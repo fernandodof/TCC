@@ -70,6 +70,6 @@ if(!isset($_SESSION['idRestauranteDoPedidoAtual'])){
     
     $sendEmail->sendOrderConfirmation($cliente->getNome(), $pedidoVO, $restaurante->getNome(), $pedido->getDataHora()->format('d/m/Y - H:i:s'), $cliente->getEmail());
     
-//    unset($_SESSION['pedido']);
-//    unset($_SESSION['idRestauranteDoPedidoAtual']);
+    unset($_SESSION['pedido']);
+    unset($_SESSION['idRestauranteDoPedidoAtual']);
 }
