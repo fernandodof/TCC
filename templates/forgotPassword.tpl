@@ -5,9 +5,9 @@
         <div class="panel-heading">
             <h3 class="panel-title">Recuperar senha</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" id="recoverPasswordPanelBody">
             <p class="text-info">Enviaremos um email para você com instruções para recuperar a sua senha.</p>
-            
+
             <form id="forgotPasswordForm">
                 <div class="form-group">
                     <label class="control-label" for="email">Email:</label>
@@ -15,6 +15,7 @@
                 </div>
                 <input type="submit" value="Enviar" name="formSubmit" class="btn btn-success pull-right">
             </form>
+
         </div>
     </div>
 </div>

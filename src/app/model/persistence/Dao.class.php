@@ -26,29 +26,10 @@ class Dao {
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
 
-        $conn = \Doctrine\DBAL\DriverManager::getConnection($dbParams);
-
-        $schema = new \Doctrine\DBAL\Schema\Schema();
-        $tabelaRecuperaSenha = $schema->createTable("recupera_senha");
-        $tabelaRecuperaSenha->addColumn("id", "integer", array("unsigned" => true));
-        $tabelaRecuperaSenha->addColumn("id_pessoa", "integer");
-        $tabelaRecuperaSenha->addColumn("codigo", "float");
-        $tabelaRecuperaSenha->addColumn("usado", "boolean");
-        $tabelaRecuperaSenha->addColumn("expira", "datetime");
-        $tabelaRecuperaSenha->setPrimaryKey(array("id"));
-
-        $platform = $conn->getDatabasePlatform();
-
-        $queries = $schema->toSql($platform);
-       
-        var_dump($queries);
-        
-
         $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
         
         if (!empty($metadata)) {
             $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($entityManager);
-          
             $schemaTool->updateSchema($metadata);
         }
         $this->em = $entityManager;

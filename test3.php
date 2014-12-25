@@ -49,11 +49,11 @@ $dao = new Dao();
 
 
 //*************************
-
-session_start();
-var_dump($_SESSION);
-
-print_r($_SESSION);
+//
+//session_start();
+//var_dump($_SESSION);
+//
+//print_r($_SESSION);
 
 //*************************
 
@@ -90,5 +90,6 @@ print_r($_SESSION);
 //    'valid' => $isValid,
 //));
 
-
-echo date("Y-m-d h:i:sa", time()+(60*60)*5);
+$date = new \DateTime();
+$date->modify('+5 Hours');
+echo date("Y-m-d h:i:sa", $date->getTimestamp());

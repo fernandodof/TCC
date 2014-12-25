@@ -8,7 +8,7 @@ function requestPasswordRecovery() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            $('')
+            $('#recoverPasswordPanelBody').html("<div class='alert alert-success' id='emailRecoverSuccess'> <p>Um email foi enviado para que você possa recuperar a senha</p> </div>");
         },
         error: function (data) {
             alert("Error");
