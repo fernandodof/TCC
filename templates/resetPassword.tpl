@@ -5,17 +5,20 @@
         <div class="panel-heading">
             <h3 class="panel-title">Redefinir senha</h3>
         </div>
-        <div class="panel-body" id="recoverPasswordPanelBody">
-            <p class="text-info">Redefnia a sua senha abaixo</p>
+        <div class="panel-body" id="resetPasswordPanelBody">
+            <input type="hidden" value="{$codigo}" id="codigo">
+            <p class="text-info">Redefina a sua senha abaixo</p>
 
             <form id="resetPasswordForm" method="POST">
                 <div class="form-group">
                     <label class="control-label" for="pass1">Nova senha:</label>
                     <input type="password" name="pass1" id="pass1" class="form-control" required placeholder="Nova senha">
+                </div>
+                <div class="form-group">
                     <label class="control-label" for="pass2">Confirme a senha:</label>
                     <input type="password" name="pass2" id="pass2" class="form-control" required placeholder="Confirme a senha">
                 </div>
-                <input type="submit" value="Enviar" data-loading-text="Redefinindo..." id="Redefinir" name="formSubmit" class="btn btn-success pull-right">
+                <input type="submit" value="Redefinir" data-loading-text="Redefinindo..." id="redefinir" name="formSubmit" class="btn btn-success pull-right">
             </form>
         </div>
     </div>

@@ -1,3 +1,5 @@
+var templateRoot;
+
 function requestPasswordRecovery() {
     $('#enviar').button('loading');
     var email = $('#email').val();
@@ -19,6 +21,7 @@ function requestPasswordRecovery() {
 }
 
 $(document).ready(function () {
+    templateRoot = $('#templateRoot').val();
     $('#forgotPasswordForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',

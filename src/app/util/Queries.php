@@ -53,6 +53,8 @@ class Queries {
     const GET_PRODUTOS_BY_NOME = 'SELECT p FROM produto p WHERE p.nome LIKE :nome';
     
     const GET_CLIENTE_BY_EMAIL = 'SELECT c FROM cliente c WHERE c.email LIKE :email';
+    
+    const UPDATE_SENHA_REDEFINIDA = 'UPDATE recuperarSenha r SET r.usado = true WHERE r.id = :id';
 
     //Native Queries
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante 
@@ -146,5 +148,6 @@ class Queries {
                                     INNER JOIN avaliacao a ON p.id = a.id_produto 
                                     WHERE p.id = :id_produto';    
     
-    const GET_ID_PESSOA_CODIGO_BY_PASSWORD_CODE = 'SELECT r.id, r.pessoa_id, r.codigo FROM recuperarSenha r WHERE UNIX_TIMESTAMP(r.expira) > UNIX_TIMESTAMP(CURRENT_TIMESTAMP) and r.usado = false and r.codigo LIKE :codigo';
+    const GET_ID_PESSOA_CODIGO_BY_PASSWORD_CODE = 'SELECT r.id AS id, r.pessoa_id AS pessoa_id, r.codigo AS codigo FROM recuperarSenha r WHERE UNIX_TIMESTAMP(r.expira) > UNIX_TIMESTAMP(CURRENT_TIMESTAMP) and r.usado = false and r.codigo LIKE :codigo';
+      
 }

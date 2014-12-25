@@ -25,6 +25,7 @@ if (!$recuperar) {
 
 include_once $path . 'pages/header.php';
 
+$smarty->assign('codigo',$codigo);
 $smarty->display('../templates/resetPassword.tpl');
 
 include_once '../pages/footer.php';
