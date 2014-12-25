@@ -8,12 +8,12 @@
         <div class="panel-body" id="recoverPasswordPanelBody">
             <p class="text-info">Enviaremos um email para você com instruções para recuperar a sua senha.</p>
 
-            <form id="forgotPasswordForm">
+            <form id="forgotPasswordForm" method="POST">
                 <div class="form-group">
                     <label class="control-label" for="email">Email:</label>
                     <input type="email" name="email" id="email" class="form-control" required placeholder="Email cadastrado">
                 </div>
-                <input type="submit" value="Enviar" name="formSubmit" class="btn btn-success pull-right">
+                <input type="submit" value="Enviar" data-loading-text="Enviando..." id="enviar" name="formSubmit" class="btn btn-success pull-right">
             </form>
 
         </div>

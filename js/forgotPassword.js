@@ -1,4 +1,5 @@
 function requestPasswordRecovery() {
+    $('#enviar').button('loading');
     var email = $('#email').val();
     var data = {email: email};
     var url = templateRoot + 'src/app/ajaxReceivers/resquestPasswordRecovery.php';
@@ -8,7 +9,8 @@ function requestPasswordRecovery() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            $('#recoverPasswordPanelBody').html("<div class='alert alert-success' id='emailRecoverSuccess'> <p>Um email foi enviado para que você possa recuperar a senha</p> </div>");
+            $('#enviar').button('reset');
+            $('#recoverPasswordPanelBody').html("<div class='alert alert-success' id='successMessage'> <p>Um email foi enviado para que você possa recuperar a senha</p> </div>");
         },
         error: function (data) {
             alert("Error");
@@ -42,5 +44,9 @@ $(document).ready(function () {
                 }
             }
         }
+    }).on('success.form.bv', function (e) {
+        // Prevent form submission
+        e.preventDefault();
+        requestPasswordRecovery();
     });
 });

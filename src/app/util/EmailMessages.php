@@ -26,11 +26,11 @@ class EmailMessages {
                         <body>
                             <div style='text-align: center; margin: 0 auto;'>
                                 <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
-                                    <h4 style='margin-top: 40px;
+                                    <h3 style='margin-top: 40px;
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>
-                                        Sabor Virtual - Cadastro realizado com sucesso</h4>
+                                        Sabor Virtual - Cadastro realizado com sucesso</h3>
                              <h4>Olá <strong>" . $personName . "</strong>, O seu cadastro no Sabor Virtual foi realizado com sucesso !</h4>
                           </div>
                        </body>
@@ -52,14 +52,14 @@ class EmailMessages {
                         <body>
                             <div style='text-align: center; margin: 0 auto;'>
                                 <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
-                                    <h4 style='margin-top: 40px;
+                                    <h3 style='margin-top: 40px;
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>
-                                        Sabor Virtual - Confirmação de pedido</h4>
+                                        Sabor Virtual - Confirmação de pedido</h3>
                             <h4>Olá <strong>" . $personName . "</strong>, Este email é a confirmação do seu pedido</h4>
-                            <p>Data ".$date."<p>
-                            <p>".$restaurantName."<p>
+                            <p>Data " . $date . "<p>
+                            <p>" . $restaurantName . "<p>
                             <center>
                                 <table style='margin-top: 15px; background-color='#F1F1F1' border='1' cellspacing='0' cellpadding='7' align='center'>
                                     <thead>
@@ -71,30 +71,29 @@ class EmailMessages {
                                         </tr>
                                     </thead>
                                     <tbody>";
-                                        foreach ($pedidoVO->getItensPedido() as $it){
-                                            $strHtml .= "<tr >";
-                                                $strHtml .= "<td>". $it->getProduto()->getNome() . "</td>";
-                                                $strHtml .= "<td>". $it->getTamanho()->getDescricao() . "</td>";
-                                                $strHtml .= "<td>" .$it->getQuantidade() ."</td>";
-                                                $strHtml .= "<td>" . $it->getSubtotal() . "</td>";
-                                            $strHtml .= "</tr>";
-                                        }
-                                    $strHtml .= "</tbody>
+        foreach ($pedidoVO->getItensPedido() as $it) {
+            $strHtml .= "<tr >";
+            $strHtml .= "<td>" . $it->getProduto()->getNome() . "</td>";
+            $strHtml .= "<td>" . $it->getTamanho()->getDescricao() . "</td>";
+            $strHtml .= "<td>" . $it->getQuantidade() . "</td>";
+            $strHtml .= "<td>" . $it->getSubtotal() . "</td>";
+            $strHtml .= "</tr>";
+        }
+        $strHtml .= "</tbody>
                                 </table>
-                                <h4> Valor Total: R$".$pedidoVO->getValorTotal(). "</h4>
+                                <h4> Valor Total: R$" . $pedidoVO->getValorTotal() . "</h4>
                             </center>
                           </div>
                        </body>
                 </html>";
-        return $strHtml; 
+        return $strHtml;
     }
-    
-    public static function orderConfirmationNormal($personName, $restaurantName, $date){
-        return "Olá ".$personName.", O seu pedido foi confirmado (".$restaurantName." - ". $date. ")";
+
+    public static function orderConfirmationNormal($personName, $restaurantName, $date) {
+        return "Olá " . $personName . ", O seu pedido foi confirmado (" . $restaurantName . " - " . $date . ")";
     }
-    
-    
-    public static function contactMessageHTML($name, $email, $message){
+
+    public static function contactMessageHTML($name, $email, $message) {
         return "<!DOCTYPE html>
                     <html>
                         <head>
@@ -110,16 +109,43 @@ class EmailMessages {
                                                    clear: left;
                                                    float: left;'>
                                         Menssagem Recebida</h4>
-                             <h4>".$name. " - ". $email."</h4>
+                             <h4>" . $name . " - " . $email . "</h4>
                               <h4>Menssagem:</h4>
                              <p>. $message .</p>
                           </div>
                        </body>
                 </html>";
     }
+
+    public static function contactMessageNormal($name, $email, $message) {
+        return $name . " - (" . $email . ") Mensagem: " . $message;
+    }
+
+    public static function recoverPasswordHTML($personName, $link) {
+        return "<!DOCTYPE html>
+                    <html>
+                        <head>
+                             <title>Confirmaçao de cadastro</title>
+                                <meta charset='UTF-8'>
+                                <meta name='viewport' content='width=device-width', initial-scale=1.0>
+                            </head>
+                        <body>
+                            <div style='text-align: center; margin: 0 auto;'>
+                                <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
+                                    <h4 style='margin-top: 40px;
+                                                   width: 100%;
+                                                   clear: left;
+                                                   float: left;'>
+                                        Sabor Virtual - Cadastro realizado com sucesso</h4>
+                             <h4>Olá <strong>" . $personName . "</strong>, Com este link você poderá redefinir a sua senha:</h4>
+                             <a href='". $link. "'>Clique aqui</a>    
+                          </div>
+                       </body>
+                </html>";
+    }
     
-    public static function contactMessageNormal($name, $email, $message){
-        return $name." - (". $email . ") Mensagem: " . $message;
+    public static function recoverPasswordNormal($pesonName, $link){
+        return "Olá "+ $pesonName + ", Você pode redefinir a sua senha por este link: " + $link;
     }
 
 }

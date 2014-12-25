@@ -19,7 +19,7 @@ class RecuperarSenha {
     private $id;
 
     /**
-     * @OneToMany(targetEntity="Pessoa", mappedBy="pessoa", fetch="EXTRA_LAZY")
+     * @ManyToOne(targetEntity="Pessoa", fetch="EXTRA_LAZY")
      * * */
     private $pessoa;
 

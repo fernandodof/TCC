@@ -72,4 +72,17 @@ class SendEmail {
         }
     }
 
+    public function sendPasswordRecoverEmail($personName, $link, $address) {
+        $this->mail->Subject = $personName;
+        $this->mail->Body = EmailMessages::recoverPasswordHTML($personName, $link);
+        $this->mail->AltBody = EmailMessages::recoverPasswordNormal($personName, $link);
+        $this->mail->addAddress($address);
+        if (!$this->mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $this->mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+    }
+
 }
