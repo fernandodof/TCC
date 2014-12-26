@@ -72,7 +72,7 @@
                                 </li>
                             {/if}
                             {* Creating Dropdown menu and form *}
-                            <li><a href="#">Sobre</a></li>
+                            <li><a href="{$templateRoot}pages/about">Sobre</a></li>
                             <li><a href="#contact" data-toggle="modal">Contato</a></li>
                                 {if isset($smarty.session.id)}
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">

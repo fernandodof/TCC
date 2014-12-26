@@ -137,7 +137,7 @@ class EmailMessages {
                                                    clear: left;
                                                    float: left;'>
                                         Sabor Virtual - Cadastro realizado com sucesso</h4>
-                             <h4>Olá <strong>" . $personName . "</strong>, Com este link você poderá redefinir a sua senha:</h4>
+                             <h4>Olá <strong>" . $personName . "</strong>, Com este link você poderá redefinir a sua senha (expira em 5 horas): </h4>
                              <a href='". $link. "'>Clique aqui</a>    
                           </div>
                        </body>
@@ -145,7 +145,7 @@ class EmailMessages {
     }
     
     public static function recoverPasswordNormal($pesonName, $link){
-        return "Olá "+ $pesonName + ", Você pode redefinir a sua senha por este link: " + $link;
+        return "Olá "+ $pesonName + ", Você pode redefinir a sua senha por este link (expira em 5 horas): " + $link;
     }
 
 }

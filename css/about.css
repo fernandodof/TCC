@@ -1,0 +1,11 @@
+.jumbotron #aboutText{
+    margin-top: 35px;
+}
+
+.jumbotron{
+    background-color: #D2D5D8;
+    margin-top: 40px;
+    -webkit-box-shadow: inset 5px 5px 106px 25px rgba(24,188,156,1);
+    -moz-box-shadow: inset 5px 5px 106px 25px rgba(24,188,156,1);
+    box-shadow: inset 5px 5px 106px 25px rgba(24,188,156,1);
+}
