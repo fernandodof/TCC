@@ -1,6 +1,10 @@
 <?php
 
-require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
+//
+//require_once 'C:\wamp\www\Restaurantes\vendor\autoload.php';
+//echo str_replace("\\", '/',  dirname(__DIR__).'/');
+//require_once "localhost/Restaurantes/vendor/autoload.php";
+require_once $_SERVER["DOCUMENT_ROOT"].'/Restaurantes/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -23,11 +27,12 @@ class Dao {
             'driver' => 'pdo_mysql',
         );
 
+
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
 
         $metadata = $entityManager->getMetadataFactory()->getAllMetadata();
-        
+
         if (!empty($metadata)) {
             $schemaTool = new \Doctrine\ORM\Tools\SchemaTool($entityManager);
             $schemaTool->updateSchema($metadata);

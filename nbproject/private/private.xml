@@ -11,20 +11,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/NetBeansProjects/Restaurantes/js/forgotPassword.js</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/js/resetPassword.js</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/templates/resetPassword.tpl</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/templates/forgotPassword.tpl</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/pages/resetPassword.php</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/src/app/processes/ProcessFuncionario.php</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/pages/forgotPassword.php</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/src/app/util/Queries.php</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/js/clientPageFunctions.js</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/src/app/ajaxReceivers/changeOrderStatus.php</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/templates/header.tpl</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/src/app/ajaxReceivers/resetPassword.php</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/css/forgotPassword.css</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
