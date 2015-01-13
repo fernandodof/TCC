@@ -206,3 +206,7 @@ h4 i{
 #map-canvas {
     background: transparent url(../images/gif-load.gif) no-repeat center center;
 }
+
+#close-modal{
+    margin-right: -10px;
+}

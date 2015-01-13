@@ -18,7 +18,7 @@ function initialize(lat, long) {
         infowindow.setContent(contentString);
         infowindow.open(map, marker);
     });
-
+    resizeMap();
 
 }
 ;

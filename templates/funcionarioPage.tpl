@@ -4,9 +4,9 @@
     <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
     <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
-{*    <script type="text/javascript" 
+    <script type="text/javascript" 
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvaKdbwG_GgsyhMXSQLUQ6cu9Vhn657B8&sensor=TRUE">
-    </script>*}
+    </script>
     <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
     <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/showOrderMap.js" type="text/javascript"></script>
@@ -418,7 +418,7 @@
                 <div id="map-canvas" class="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" id="close-modal" class="btn btn-default" data-dismiss="modal">Fechar</button>
                 </div>
             </div>
             <!-- /.modal-content -->
