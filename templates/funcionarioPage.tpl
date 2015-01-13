@@ -4,9 +4,9 @@
     <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
     <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
-    <script type="text/javascript" 
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
-    </script>
+{*    <script type="text/javascript" 
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvaKdbwG_GgsyhMXSQLUQ6cu9Vhn657B8&sensor=TRUE">
+    </script>*}
     <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
     <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/showOrderMap.js" type="text/javascript"></script>

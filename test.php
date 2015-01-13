@@ -1,4 +1,5 @@
 <?php
+
 require_once './bootstrap.php';
 require_once './src/app/model/entities/Pessoa.class.php';
 require_once './src/app/model/entities/Cliente.class.php';
@@ -43,7 +44,6 @@ $dao = new Dao();
 //$cliente->setEnderecos($enderecos);
 //
 //$dao->save($cliente);
-
 //$params['email'] = 'fernandodof@gmail.com';
 //$params['senha'] = EncryptPassword::encrypt("123456");
 //
@@ -53,5 +53,6 @@ $dao = new Dao();
 $c = $dao->findByKey('Cliente', 1);
 
 echo $c->getNome();
+
 //echo EncryptPassword::encrypt("123456");
 //print_r ($cliente->getTelefones()->getValues());

@@ -60,12 +60,12 @@ class Endereco {
     private $complemento = null;
 
     /**
-     * @Column(type="float",nullable=true)
+     * @Column(type="string",nullable=true)
      * * */
     private $latitude;
 
     /**
-     * @Column(type="float", nullable=true)
+     * @Column(type="string", nullable=true)
      * * */
     private $longitude;
 

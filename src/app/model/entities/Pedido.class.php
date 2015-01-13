@@ -66,12 +66,12 @@ class Pedido {
     private $status = 1;
 
     /**
-     * @Column(type="float",nullable=true)
+     * @Column(type="string",nullable=true)
      * * */
     private $latitude = null;
 
     /**
-     * @Column(type="float", nullable=true)
+     * @Column(type="string", nullable=true)
      * * */
     private $longitude = null;
 

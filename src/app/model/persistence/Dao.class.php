@@ -40,7 +40,7 @@ class Dao {
         $this->em = $entityManager;
     }
 
-    public function findByKey($entity, $id) {
+   public function findByKey($entity, $id) {
         return $this->em->find($entity, $id);
     }
 
@@ -84,6 +84,87 @@ class Dao {
         return $query->getResult();
     }
 
+    public function getListResultOfNamedQueryWithParametersAndLimit($queryInstruction, $params, $start, $amount = 10) {
+        $query = $this->em->createQuery($queryInstruction)->setFirstResult($start)->setMaxResults($amount);
+
+        foreach ($params as $key => $value) {
+            $query->setParameter($key, $value);
+        }
+        return $query->getResult();
+    }
+
+    public function getListResultOfQueryBuilderWithParameters($qbArray, $params) {
+
+        $query1 = new Doctrine\ORM\QueryBuilder($this->em);
+
+        $select = $qbArray['select'];
+        $query1->select($select);
+        foreach ($qbArray['from'] as $key => $value) {
+            $query1->from($key, $value);
+        }
+
+        $query1->where($qbArray['where']);
+
+        foreach ($params as $key => $value) {
+            $query1->setParameter($key, $value);
+        }
+
+        return $query1->getQuery()->getArrayResult();
+    }
+
+    public function getListResultOfQueryBuilderWithParametersAndLimit($qbArray, $params, $start = null, $amount = null, $extraOrderBy = null, $keyword = null) {
+        $query = new Doctrine\ORM\QueryBuilder($this->em);
+
+        $select = $qbArray['select'];
+        $query->select($select);
+        foreach ($qbArray['from'] as $key => $value) {
+            $query->from($key, $value);
+        }
+
+        foreach ($params as $key => $value) {
+            $query->setParameter($key, $value);
+        }
+
+        if (isset($qbArray['orderby'])) {
+            foreach ($qbArray['orderby'] as $key => $value) {
+                $query->addOrderBy($key, $value);
+            }
+        }
+
+        if ($extraOrderBy != null) {
+            foreach ($extraOrderBy as $key => $value) {
+                $query->addOrderBy($key, $value);
+            }
+        }
+
+        if ($keyword !== null) {
+            $keyword = '%' . $keyword . '%';
+            $selectArray = array_map('trim', explode(',', $qbArray['select']));
+
+            $i = 0;
+            foreach ($selectArray as $s) {
+                $i++;
+
+                if (!strpos($s, 'id')) {
+                    $query->orWhere($s . ' LIKE ?' . $i);
+                    $query->setParameter($i, $keyword);
+                }
+            }
+        }
+
+        $query->andWhere($qbArray['where']);
+
+        if ($start !== null) {
+            $query->setFirstResult($start);
+        }
+
+        if ($amount !== null) {
+            $query->setMaxResults($amount);
+        }
+
+        return $query->getQuery()->getArrayResult();
+    }
+
     public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
         try {
             $query = $this->em->createQuery($queryInstruction);
@@ -121,6 +202,12 @@ class Dao {
     public function getArrayResultOfNativeQueryWithParameters($queryInstruction, $params) {
         $stmt = $this->em->getConnection()->prepare($queryInstruction);
         $stmt->execute($params);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function getArrayResultOfNativeQuery($queryInstruction) {
+        $stmt = $this->em->getConnection()->prepare($queryInstruction);
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

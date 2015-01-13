@@ -125,7 +125,7 @@ class EmailMessages {
         return "<!DOCTYPE html>
                     <html>
                         <head>
-                             <title>Confirmaçao de cadastro</title>
+                             <title>Redefinir Senha</title>
                                 <meta charset='UTF-8'>
                                 <meta name='viewport' content='width=device-width', initial-scale=1.0>
                             </head>
@@ -136,7 +136,7 @@ class EmailMessages {
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>
-                                        Sabor Virtual - Cadastro realizado com sucesso</h4>
+                                        Sabor Virtual - Redefinir senha</h4>
                              <h4>Olá <strong>" . $personName . "</strong>, Com este link você poderá redefinir a sua senha (expira em 5 horas): </h4>
                              <a href='". $link. "'>Clique aqui</a>    
                           </div>
