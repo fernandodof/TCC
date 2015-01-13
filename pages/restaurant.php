@@ -8,12 +8,13 @@ require_once $path . 'src/app/model/VO/ItemPedidoVO.class.php';
 require_once $path . 'src/app/model/VO/ProdutoVO.class.php';
 require_once $path . 'src/app/model/VO/TamanhoVO.class.php';
 require_once $path . 'src/app/util/Queries.php';
+require_once $path . 'src/app/util/UserTypes.php';
 
 session_start();
 
 $slashCount = substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/');
 
-if($slashCount<4){
+if ($slashCount < 4) {
     header("Location: ../error");
 }
 
@@ -86,7 +87,7 @@ if (isset($avgRatingP)) {
     $smarty->assign('avgRatingP', $avgRatingP);
 }
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && $_SESSION['tipo'] === UserTypes::CLIENTE) {
     $params1['id_cliente'] = $_SESSION['id'];
     $idsProdutosComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_PRODUTOS_CLIENTE_COMPROOU, $params1);
     $smarty->assign('idsProdutosComprados', $idsProdutosComprados);

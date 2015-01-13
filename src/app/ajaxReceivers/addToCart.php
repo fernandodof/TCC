@@ -12,6 +12,8 @@ require_once '../model/VO/ItemPedidoVO.class.php';
 require_once '../model/VO/ProdutoVO.class.php';
 require_once '../model/VO/CategoriaVO.class.php';
 require_once '../model/VO/TamanhoVO.class.php';
+require_once '../util/CheckLoggedIn.php';
+require_once '../util/UserTypes.php';
 
 require_once '../util/Queries.php';
 
@@ -24,7 +26,7 @@ if ($orderAction == true) {
     unset($_SESSION['idRestauranteDoPedidoAtual']);
 }
 
-if (!isset($_SESSION['id'])) {
+if (!CheckLoggedIn::checkPermission(UserTypes::CLIENTE)) {
     echo 'Erro';
 } else {
     $dao = new Dao();
