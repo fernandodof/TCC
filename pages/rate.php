@@ -13,7 +13,10 @@ require_once $path.'src/app/util/Queries.php';
 require_once $path.'src/app/model/persistence/Dao.class.php';
 require_once $path . 'src/app/model/VO/PedidoVO.class.php';
 
-session_start();
+if (!session_id()) {
+    session_start();
+}
+
 $dao = new Dao();
 
 list(,,,, $res) = explode('/', filter_input(INPUT_SERVER, 'REQUEST_URI'));

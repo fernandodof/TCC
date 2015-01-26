@@ -13,6 +13,10 @@ require_once $path . 'src/app/util/Queries.php';
 require_once $path . 'src/app/model/persistence/Dao.class.php';
 require_once $path . 'src/app/model/VO/PedidoVO.class.php';
 
+if (!session_id()) {
+    session_start();
+}
+
 $dao = new Dao();
 
 $slashCount = substr_count(filter_input(INPUT_SERVER, 'REQUEST_URI'), '/');

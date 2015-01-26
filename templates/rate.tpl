@@ -3,7 +3,7 @@
 <link href="{$templateRoot}css/restaurantColumn.css" rel="stylesheet" type="text/css">
 <link href="{$templateRoot}css/rate.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrV71CPZi1AWL4oTCwtJ1B1Km5BKPXu9I&sensor=TRUE">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvaKdbwG_GgsyhMXSQLUQ6cu9Vhn657B8&sensor=TRUE">
 </script>
 <script type="text/javascript" src="{$templateRoot}js/mapFunctions.js"></script>
 <script type="text/javascript" src="{$templateRoot}js/rateFunctions.js"></script>
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <textarea id="commentBox" rows="5" class="form-control" name="comment" required placeholder="Insira seu comentário aqui"></textarea>
                 </div>
-                <button class="btn btn-primary pull-right" data-loading-text="Enviando....." id="send" onclick="sendComment()">Enviar comentário</button>
+                <button class="btn btn-primary pull-right" data-loading-text="Enviando....." id="send" onclick="sendComment();">Enviar comentário</button>
             </form>
         </div>
     </div>

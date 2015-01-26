@@ -58,7 +58,7 @@ function sendComment() {
     var idRestaurante = $('#idRestaurante').val();
     var data = {comment: comment, idRestaurante: idRestaurante};
 
-    var url = templateRoot + 'src/app/ajaxReceivers/saveCommentItem.php';
+    var url = templateRoot + 'src/app/ajaxReceivers/saveComment.php';
 
     $.ajax({
         type: "POST",
@@ -69,6 +69,7 @@ function sendComment() {
             $('#commentBox').next().html('300');
             $('#commentBox').val('');
             alertify.alert("Comentário recebido");
+            alertify.alert(serverResponse);
             $('#send').button('reset');
         },
         error: function (jqXHR, textStatus, errorThrown) {
