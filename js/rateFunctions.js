@@ -69,7 +69,6 @@ function sendComment() {
             $('#commentBox').next().html('300');
             $('#commentBox').val('');
             alertify.alert("Comentário recebido");
-            alertify.alert(serverResponse);
             $('#send').button('reset');
         },
         error: function (jqXHR, textStatus, errorThrown) {
