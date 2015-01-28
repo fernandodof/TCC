@@ -337,9 +337,20 @@ function setUpFormValidation() {
                     },
                     stringLength: {
                         max: 200,
-                        message: 'Os Ingredientes devem tem menes de 200 caracteres'
+                        message: 'Os Ingredientes devem ter menos de 200 caracteres'
                     }
 
+                }
+            },
+            image: {
+                message: 'Por favor escolha uma imagem',
+                validators: {
+                    file: {
+                        extension: 'jpeg,jpg,png,',
+                        type: 'image/jpeg,image/png',
+                        maxSize: 1048576, // 1024 * 1024
+                        message: 'Arquivo inválido'
+                    }
                 }
             },
             'tamanhos[]': {
@@ -408,8 +419,12 @@ $(document).ready(function () {
     formatPrices();
     setUpFormValidation();
 
-    $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+    $(".alert-success").fadeTo(3000, 1000).slideUp(500, function () {
         $("#success-alert").alert('close');
+    });
+
+    $(".alert-danger").fadeTo(4000, 1500).slideUp(1500, function () {
+        $("#erro-alert").alert('close');
     });
 
 });

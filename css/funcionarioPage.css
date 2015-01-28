@@ -210,3 +210,11 @@ h4 i{
 #close-modal{
     margin-right: -10px;
 }
+
+
+#imageSize{
+    margin-left: -10px;
+    margin-top: -15px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

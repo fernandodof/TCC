@@ -15,14 +15,14 @@
 <div class="container" id="page">
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-3 sidebar">
-        <li class="{if !isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
+        <li class="{if !isset($smarty.get.produtoCadastrado) && !isset($smarty.get.error)}active{/if}"><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
         <li class=""><a href="#tab_b" data-toggle="pill">Pedidos na Cozinha <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/chef16.svg" alt="Cozinha"></a></li>
         <li class=""><a href="#tab_c" data-toggle="pill">Pedidos em entrega <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/logistics3.svg" alt="Cozinha"></a></li>
         <li class=""><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
-        <li class="{if isset($smarty.get.produtoCadastrado)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
+        <li class="{if isset($smarty.get.produtoCadastrado) || isset($smarty.get.error)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
     </ul>
     <div class="tab-content col-md-9">
-        <div class="tab-pane {if !isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_a">
+        <div class="tab-pane {if !isset($smarty.get.produtoCadastrado) && !isset($smarty.get.error)}active{/if}" id="tab_a">
             <h4 class="col-xs-12 pull-left novosPedidosLb">Novos Pedidos <i class="fa fa-refresh fa-spin fa-2x pull-right"></i></h4>
             <div class="col-xs-12" id="pedidosRecebidos">
                 {$i=0}
@@ -288,7 +288,15 @@
                 Produto cadastrado com sucesso.
             </div>
         {/if}
-        <div class="tab-pane {if isset($smarty.get.produtoCadastrado)}active{/if}" id="tab_e">
+
+        {if isset($smarty.get.error)}
+            <div class="alert alert-danger alert-dismissible col-xs-12 col-xs-offset-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fechar</span></button>
+                {$smarty.get.error} 
+            </div>
+        {/if}
+
+        <div class="tab-pane {if isset($smarty.get.produtoCadastrado) || isset($smarty.get.error)}active{/if}" id="tab_e">
 
             <h4 data-toggle="collapse" data-target="#cardapio" class="elementToggle" id="openCardapio">Cardápio <b class="caret"></b></h4>
             <div id="cardapio" class="collapse">
@@ -342,7 +350,7 @@
                 </ul>
                 <div class="tab-content">
                     <div id="addComida" class="tab-pane active fade in">
-                        <form class="form-horizontal col-xs-10 col-xs-offset-1" method="POST" id="addComidaForm" class="addProduto" action="{$templateRoot}src/app/processes/ProcessProduto.php">
+                        <form class="form-horizontal col-xs-10 col-xs-offset-1" method="POST" id="addComidaForm" class="addProduto" action="{$templateRoot}src/app/processes/ProcessProduto.php" enctype="multipart/form-data">
                             <h4 class="formLegend">Novo item</h4>
                             <input type="hidden" name="idRestaurante" id="idRestaurante" value="{$smarty.session.idRestaurante}"/>
                             <input type="hidden" name="categoria" id="categoria" value="1"/>
@@ -353,6 +361,11 @@
                             <div class="form-group" id="ingDiv">
                                 <textarea class='form-control' rows='3' name='ingredientes' id='ingredientes' placeholder='Ingredientes' required></textarea>
                             </div>
+
+                            <div class="form-group">
+                                <input type="file" name="image" class="form-control" required>
+                            </div>
+                            <p id="imageSize">Maxímo: 1MB</p>
 
                             <div class="form-group">   
                                 <label id="lbTamanho" class="col-sm-2">Tamanho(s):</label>

@@ -17,6 +17,14 @@
         <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
         <link href="{$templateRoot}libs/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
+
+
+        <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. --> 
+        <link rel="apple-touch-icon-precomposed" href="{$templateRoot}images/icons/favico.png">
+
+        <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 196x196 pixels in size. -->
+        <link rel="icon" href="{$templateRoot}images/icons/favico.png">
+
         {* Move this script tags *}
         <script src="{$templateRoot}bootstrap/js/jquery.min.js"></script>
         <script src="{$templateRoot}bootstrap/js/bootstrap.min.js"></script>
