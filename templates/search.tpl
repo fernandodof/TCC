@@ -44,7 +44,9 @@
                 <div class="panel-body">
                     <div id="results">
                         {if empty($restaurants)}
-                            <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado.</h3>
+                            <h3 class="no-result-search">Desculpe, a pesquisa não retornou nenhum resultado para: <small id="term">"{$term}"</smalL>
+                                {if $kindOfFood != ''} em <span id="type">{$kindOfFood}</span>{/if}
+                            </h3>
                             <div id='faces'> 
                                 <img id = "imgFace" src = '{$templateRoot}images/icons/svg/sadFace.svg'/>
                             </div>

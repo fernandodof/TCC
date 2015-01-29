@@ -39,7 +39,7 @@
             <div class="panel panel-default">
                 <div class="row">   
                     <div class="page-header row col-xs-12">
-                        <h3 class="col-xs-11">Resultados da pesquisa</h3><img id="circleLoader" class="img img-responsive" src="{$templateRoot}images/icons/circleLoader.gif" alt="Carregando..." title="Carregando...">
+                        <h3 class="col-xs-11">Resultados da pesquisa <small>Locais Próximos</small></h3><img id="circleLoader" class="img img-responsive" src="{$templateRoot}images/icons/circleLoader.gif" alt="Carregando..." title="Carregando...">
                         {*                            <div class="well well-sm closed col-xs-2 statusIndicatioClosed"><p>Aberto</p></div>
                         <div class="well well-sm opened col-xs-2 pull-right statusIndicationOpened"><p>Fechado</p></div>*}
                     </div>

@@ -60,6 +60,8 @@ if (isset($avgRating)) {
     $smarty->assign('avgRating', $avgRating);
 }
 
+$smarty->assign('term', trim(filter_input(INPUT_GET, 'search')));
+$smarty->assign('kindOfFood', trim(filter_input(INPUT_GET, 'kindOfFood')));
 $smarty->assign('restaurants', $restaurants);
 $smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->display($path . 'templates/search.tpl');

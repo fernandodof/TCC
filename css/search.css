@@ -41,8 +41,14 @@ h3{
 }
 
 .no-result-search{
-    text-align: center;
+/*    text-align: center;*/
     color: #228AAD;
+}
+
+.no-result-search #term, #type{
+    font-weight: bold;
+    color: #18BC9C;
+    font-size:x-large; 
 }
 
 #faces{

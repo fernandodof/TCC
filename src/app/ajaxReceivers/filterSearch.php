@@ -127,7 +127,12 @@ if (isset($_SESSION['id'])) {
 //}
 
 if (count($restaurants) == 0) {
-    echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado.</h3>";
+    
+    if($tipo !== ''){
+        $tipo = "em <span id='type'>" . $tipo . "</span>";
+    }
+    
+    echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: <small id='term'>\"" . trim(filter_input(INPUT_POST, 'search')) . "\"</smalL> " . $tipo . "</h3>";
     echo "<div id='faces'>";
     echo "<img id='imgFace' src = '../images/icons/svg/sadFace.svg'/>";
     echo "</div>";
