@@ -4,6 +4,9 @@ require '../../../pages/pathVars.php';
 require_once '../model/persistence/Dao.class.php';
 require_once '../util/Queries.php';
 require_once '../model/entities/Restaurante.class.php';
+require_once '../../app/util/CheckLoggedIn.php';
+require_once '../../app/util/UserTypes.php';
+
 session_start();
 
 $dao = new Dao();
@@ -27,7 +30,6 @@ if (filter_input(INPUT_POST, 'location') === 'true') {
     $raio = 0.5;
     if (filter_input(INPUT_POST, 'raio') !== null && filter_input(INPUT_POST, 'raio') !== '') {
         $raio = floatval(filter_input(INPUT_POST, 'raio'));
-//        var_dump(filter_input(INPUT_POST, 'raio'));
     } else if (isset($_SESSION['raio'])) {
         $raio = $_SESSION['raio'];
     }
@@ -41,7 +43,6 @@ if (filter_input(INPUT_POST, 'location') === 'true') {
     foreach ($nearByrestaurants as $r) {
         $restaurants->add($dao->findByKey('Restaurante', $r['id']));
     }
-//    var_dump($params1);
 } else {
     if (filter_input(INPUT_POST, 'location') === 'false') {
 
@@ -110,21 +111,10 @@ foreach ($restaurants as $r) {
     $avgRating[] = $avg;
 }
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['id']) && CheckLoggedIn::checkPermission(UserTypes::CLIENTE) )  {
     $params2['id_cliente'] = $_SESSION['id'];
     $idsRestaurantesComprados = $dao->getListResultOfNativeQueryWithParameters(Queries::GET_IDS_RESTAURANTES_CLIENTE_COMPROU, $params2);
 }
-
-//if (filter_input(INPUT_POST, 'location') != null) {
-//    echo "<form class='col-xs-12'>";
-//    echo "<h4 class='pull-left'>Raio de: </h4>";
-//    echo "<div class='input-group pull-left'>";
-//    echo "<input class='form-control input-sm pull-left' name='raio' value='" . $_SESSION['raio'] . "' id='raio' />";
-//    echo "<span class='input-group-addon input-sm pull-left' id='kmAddon'>Km</span>";
-//    echo "</div>";
-//    echo "<button class='btn btn-sm btn-success pull-left' id='search' onclick='filterRestaurante(null,null,this.form.raio.value);'><span class='glyphicon glyphicon-search'></span></button>";
-//    echo "</form>";
-//}
 
 if (count($restaurants) == 0) {
     
