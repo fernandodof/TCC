@@ -231,6 +231,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                     <h5>{$pedido->getDataHora()->format('d/m/Y - H:i:s')}</h5>
                                                     <h4>Itens</h4>
                                                 </div>
