@@ -211,7 +211,7 @@
             <button class="btn btn-info btn-sm" data-loading-text="Atualizando ...." onclick="updateHitorico();" id="update">Atualizar Historio</button>
             <h4 class="col-xs-12 pull-left">Historico <img id="historyIcon" class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/history.svg"/></h4>
             <div id="historico">
-                <table id="historicoPedidos" class="display table-striped">
+                <table id="historicoPedidos" class="table table-responsive display table-striped">
                     <thead>
                         <tr>
                             <th>#</th>

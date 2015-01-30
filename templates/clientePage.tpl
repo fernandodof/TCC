@@ -84,83 +84,83 @@
         </div>
         <div class="tab-pane" id="tab_b">
             <h4>Pedidos</h4>
-
-            <table id="pedidos" class="display table-striped">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Data</th>
-                        <th>Valor</th>
-                        <th>Estabelecimento</th>
-                        <th>Itens</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {$i=0}
-                    {foreach from=$pedidos item=pedido}
+            <div>
+                <table id="pedidos" class="table table-responsive display table-striped">
+                    <thead>
                         <tr>
-                            <td>{$pedido->getId()}</td>
-                            <td>{$pedido->getDataHora()}</td>
-                            <td>R$ {$pedido->getValorTotal()}</td>
-                            <td>{$pedido->getRestaurante()->getNome()}</td>
-                            <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle verItem">Ver Itens <span class="fa fa-eye"></span></label>
+                            <th>#</th>
+                            <th>Data</th>
+                            <th>Valor</th>
+                            <th>Estabelecimento</th>
+                            <th>Itens</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {$i=0}
+                        {foreach from=$pedidos item=pedido}
+                            <tr>
+                                <td>{$pedido->getId()}</td>
+                                <td>{$pedido->getDataHora()}</td>
+                                <td>R$ {$pedido->getValorTotal()}</td>
+                                <td>{$pedido->getRestaurante()->getNome()}</td>
+                                <td <label data-toggle="collapse" data-target="#item{$i}" class="elementToggle verItem">Ver Itens <span class="fa fa-eye"></span></label>
 
-                                <div class="modal" id="item{$i}" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4>Itens</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <table class="table table-hover table-responsive table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Nome</th>
-                                                            <th>Tamanho</th>
-                                                            <th>Quantidade</th>
-                                                            <th>Subtotal</th>
-                                                        <tr>
-                                                    </thead>
-                                                    {foreach from=$pedido->getItensPedido() item=it}
-                                                        <tbody>
+                                    <div class="modal" id="item{$i}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4>Itens</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-hover table-responsive table-condensed">
+                                                        <thead>
                                                             <tr>
-                                                                <td>{$it->getProduto()->getNome()}</td>
-                                                                <td>{$it->getTamanho()->getDescricao()}</td>
-                                                                <td>{$it->getQuantidade()}</td>
-                                                                <td>{$it->getSubtotal()}</td>
-                                                            </tr>
-                                                        <tbody>
-                                                        {/foreach}
-                                                </table>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>
-                                            </div>
+                                                                <th>Nome</th>
+                                                                <th>Tamanho</th>
+                                                                <th>Quantidade</th>
+                                                                <th>Subtotal</th>
+                                                            <tr>
+                                                        </thead>
+                                                        {foreach from=$pedido->getItensPedido() item=it}
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{$it->getProduto()->getNome()}</td>
+                                                                    <td>{$it->getTamanho()->getDescricao()}</td>
+                                                                    <td>{$it->getQuantidade()}</td>
+                                                                    <td>{$it->getSubtotal()}</td>
+                                                                </tr>
+                                                            <tbody>
+                                                            {/foreach}
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>
+                                                </div>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        {$i=$i+1}
-                    {/foreach}
-                </tbody>
-            </table>
-
+                                </td>
+                            </tr>
+                            {$i=$i+1}
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="tab-pane" id="tab_c">
             <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="setRadiusForm" action="javascript:void(0)" method="post">
-                
+
                 <h4>Preferência de raio <img id="radiusImage" class="pull-right" src="{$templateRoot}images/icons/svg/distance.svg"></h4>
                 <h5>Defina aqui um raio em kilômetros em que você deseja fazer a pesquisa por estabelecimentos próximos</h5>
                 <div class="form-group input-group">
                     <input class="form-control" type="text" id="km" name="km" value="{$smarty.session.raio}">
                     <span class="input-group-addon" id="kmAddon">Km</span>
                     <a id="setRadius" onclick="setRadius();" class="btn btn-success pull-left">Salvar <span id="mapMarker" class="fa fa-fw fa-map-marker"></span> 
-                    <span id="saveRadius" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></a>
+                        <span id="saveRadius" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></a>
                 </div>
-                    <small class="help-block" id="helpKm">Insira um valor entre 0.5 e 30</small>
+                <small class="help-block" id="helpKm">Insira um valor entre 0.5 e 30</small>
             </form>
 
             <div class="divider1 col-sm-6 col-sm-offset-3 pull-left"></div>
