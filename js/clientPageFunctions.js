@@ -1,5 +1,36 @@
 var templateRoot;
 
+function activate(string) {
+    jQuery(string).each(function () {
+        var $img = jQuery(this);
+        var imgID = $img.attr('id');
+        var imgClass = $img.attr('class');
+        var imgURL = $img.attr('src');
+
+        jQuery.get(imgURL, function (data) {
+            // Get the SVG tag, ignore the rest
+            var $svg = jQuery(data).find('svg');
+
+            // Add replaced image's ID to the new SVG
+            if (typeof imgID !== 'undefined') {
+                $svg = $svg.attr('id', imgID);
+            }
+            // Add replaced image's classes to the new SVG
+            if (typeof imgClass !== 'undefined') {
+                $svg = $svg.attr('class', imgClass + ' replaced-svg');
+            }
+
+            // Remove any invalid XML tags as per http://validator.w3.org
+            $svg = $svg.removeAttr('xmlns:a');
+
+            // Replace image with new SVG
+            $img.replaceWith($svg);
+
+        }, 'xml');
+    });
+}
+
+
 function reOrder(idPedido, idRestaurante, btn) {
     $('#reOrder' + btn).button('loading');
     var data = {idPedido: idPedido, idRestaurante: idRestaurante};
@@ -94,6 +125,41 @@ function editPassword() {
     });
 }
 
+function setRadius() {
+    var km = $('#km').val();
+
+    if (isNaN(km) || km < 0.5 || km > 30) {
+        $('#helpKm').addClass('red');
+        return;
+    }
+
+    $('#helpKm').removeClass('red');
+    $('#saveRadius').show();
+    var data = {km: km};
+    var url = templateRoot + 'src/app/ajaxReceivers/setRadiusPref.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse === '1') {
+                alertify.alert('Raio de pesquisa atualizados');
+                $('#saveRadius').hide();
+            } else {
+                $('#saveRadius').hide();
+                alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
+            }
+        },
+        error: function (data) {
+            $('#saveRadius').hide();
+            alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
+        }
+    });
+
+
+}
+
 function centerModal() {
     $(this).css('display', 'block');
     var $dialog = $(this).find(".modal-dialog");
@@ -108,6 +174,7 @@ $(window).on("resize", function () {
 
 $(document).ready(function () {
     edit();
+    activate('img[src*=".svg"]');
     $('#pedidos').DataTable(
             {
                 language: {
@@ -312,11 +379,6 @@ $(document).ready(function () {
             });
 
     $('#changePassword').bootstrapValidator({
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
-        },
         fields: {
             senhaAtual: {
                 validators: {
@@ -375,4 +437,5 @@ $(document).ready(function () {
         e.preventDefault();
         editPassword();
     });
+
 });

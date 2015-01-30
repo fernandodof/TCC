@@ -33,6 +33,7 @@ switch (filter_input(INPUT_POST, 'type')) {
             $_SESSION['login'] = $cliente->getLogin();
             $_SESSION['email'] = $cliente->getEmail();
             $_SESSION['id'] = $cliente->getId();
+            $_SESSION['raio'] = $cliente->getRaioPref();
             $_SESSION['tipo'] = 'cliente';
             $_SESSION['logged_in'] = true;
             $_SESSION['last_activity'] = time();

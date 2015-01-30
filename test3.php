@@ -90,6 +90,9 @@ $dao = new Dao();
 //    'valid' => $isValid,
 //));
 
-$date = new \DateTime();
-$date->modify('+5 Hours');
-echo date("Y-m-d h:i:sa", $date->getTimestamp());
+//$date = new \DateTime();
+//$date->modify('+5 Hours');
+//echo date("Y-m-d h:i:sa", $date->getTimestamp());
+
+session_start();    
+var_dump($_SESSION);

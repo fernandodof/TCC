@@ -23,6 +23,11 @@ class Cliente extends Pessoa {
     private $email;
 
     /**
+     * @Column(type="float")
+     * * */
+    private $raioPref = 0.5;
+
+    /**
      * @ManyToMany(targetEntity="Telefone", cascade={"all"})
      * @JoinTable(name="Pessoa_Telefone",
      *      joinColumns={@JoinColumn(name="id_pessoa", referencedColumnName="id")},
@@ -172,4 +177,11 @@ class Cliente extends Pessoa {
         parent::setLogin($login);
     }
 
+    public function getRaioPref() {
+        return $this->raioPref;
+    }
+
+    public function setRaioPref($raioPref) {
+        $this->raioPref = $raioPref;
+    }
 }

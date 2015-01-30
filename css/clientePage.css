@@ -77,6 +77,48 @@
     margin-right: -15px;
 }
 
+#setRadius{
+    margin-left: 10px;
+}
+
+#setRadiusForm{
+    margin-bottom: 10px;
+}
+
+#mapMarker{
+    color: #2C3E50;
+}
+
+#helpKm{
+    margin-left: -10px;
+    margin-top: -14px;
+}
+
+#setRadiusForm h4, #setRadiusForm h5{
+    margin-left: -15px;
+}
+
+.red{
+    color: red;
+}
+
+
+.divider1{
+    border-bottom: 1px solid #18BC9C;
+    margin-bottom: 25px;
+    margin-top: 15px;
+}
+
+#radiusImage{
+    width: 60px;
+    height: 60px;
+    fill: #257B6A;
+}
+
+#kmAddon{
+    border-radius: 0px 5px 5px 0px;
+}
+
 #loading{
     float: left;
     z-index: 100;

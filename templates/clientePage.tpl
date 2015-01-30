@@ -40,7 +40,7 @@
     </form>
 
     <ul class="nav nav-pills nav-stacked col-md-2 sidebar">
-        <li class="active"><a href="#tab_a" data-toggle="pill" class="button glow">Principal<span class="glyphicon glyphicon-user"></span></a></li>
+        <li class="active"><a href="#tab_a" data-toggle="pill" class="button glow">Principal<span class="fa fa-fw fa-bars"></span></a></li>
         <li><a href="#tab_b" data-toggle="pill" class="button glow">Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></li>
         <li><a href="#tab_c" data-toggle="pill" class="button glow">Perfil <span class="glyphicon glyphicon-user"></span></a></li>
     </ul>
@@ -148,7 +148,21 @@
 
         </div>
         <div class="tab-pane" id="tab_c">
-            <h4>Perfil</h4>
+            <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="setRadiusForm" action="javascript:void(0)" method="post">
+                
+                <h4>Preferência de raio <img id="radiusImage" class="pull-right" src="{$templateRoot}images/icons/svg/distance.svg"></h4>
+                <h5>Defina aqui um raio em kilômetros em que você deseja fazer a pesquisa por estabelecimentos próximos</h5>
+                <div class="form-group input-group">
+                    <input class="form-control" type="text" id="km" name="km" value="{$smarty.session.raio}">
+                    <span class="input-group-addon" id="kmAddon">Km</span>
+                    <a id="setRadius" onclick="setRadius();" class="btn btn-success pull-left">Salvar <span id="mapMarker" class="fa fa-fw fa-map-marker"></span> 
+                    <span id="saveRadius" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></a>
+                </div>
+                    <small class="help-block" id="helpKm">Insira um valor entre 0.5 e 30</small>
+            </form>
+
+            <div class="divider1 col-sm-6 col-sm-offset-3 pull-left"></div>
+
             <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="javascript:void(0)" method="post">
 
                 <a id="edit" onclick="edit();" value="CadastrarCliente" type="button" class="btn btn-default pull-right">Editar <span class="fa fa-edit"></span></a>
@@ -229,8 +243,10 @@
                         <input type="text" name="complemento" id="complemento" class="form-control editField" placeholder="Complemento" value="{$endereco->getComplemento()}"/>
                     </div>
                 {/foreach}
-                <button type="submit" id="sub" name="formSubmit" value="EditarCliente" class="btn btn-success pull-right editField">Salvar <span id="saveButton" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></button>
+                <button type="submit" id="sub" name="formSubmit" value="EditarCliente" class="btn btn-success pull-right editField">Salvar <span class="fa fa-fw fa-save"></span> <span id="saveButton" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></button>
             </form>
+
+            <div class="divider1 col-sm-6 col-sm-offset-3 pull-left"></div>
 
             <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="changePassword" action="javascript:void(0)" method="post">
                 <h3>Alterar Senha</h3>
@@ -245,9 +261,8 @@
                 <div class="form-group col-sm-6" id="senha2Div">
                     <input type="password" name="senha2" id="senha2" class="form-control" placeholder="Confirme a senha"/>
                 </div>
-                <button type="submit" id="subPass" name="formSubmit" class="btn btn-success pull-right">Salvar <span id="savePassword" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></button>
+                <button type="submit" id="subPass" name="formSubmit" class="btn btn-success pull-right">Salvar <span class="fa fa-fw fa-save"></span> <span id="savePassword" class="glyphicon glyphicon-refresh glyphicon-refresh-animate buttonLoadingIcon"></span></button>
             </form>
-
         </div>
     </div>
 </div>
