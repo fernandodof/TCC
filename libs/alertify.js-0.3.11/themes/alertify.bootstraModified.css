@@ -1,0 +1,136 @@
+/**
+ * Twitter Bootstrap Look and Feel
+ * Based on http://twitter.github.com/bootstrap/
+ */
+.alertify,
+.alertify-log {
+    font-family: sans-serif;
+}
+.alertify {
+    background: #FFF;
+    border: 1px solid #8E8E8E; /* browsers that don't support rgba */
+    border: 1px solid rgba(0,0,0,.3);
+    border-radius: 6px;
+    box-shadow: 0 3px 7px rgba(0,0,0,.3);
+    -webkit-background-clip: padding;     /* Safari 4? Chrome 6? */
+    -moz-background-clip: padding;     /* Firefox 3.6 */
+    background-clip: padding-box; /* Firefox 4, Safari 5, Opera 10, IE 9 */
+    margin-top: 10%;
+}
+.alertify-dialog {
+    padding: 0;
+    -webkit-box-shadow: 10px 10px 76px 19px rgba(44,62,80,1);
+    -moz-box-shadow: 10px 10px 76px 19px rgba(44,62,80,1);
+    box-shadow: 10px 10px 76px 19px rgba(44,62,80,1);
+    border-radius: 8px;
+}
+.alertify-inner {
+    text-align: left;
+}
+.alertify-message {
+    padding: 15px;
+    margin: 0;
+}
+.alertify-text-wrapper {
+    padding: 0 15px;
+}
+.alertify-text {
+    color: #555;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+.alertify-text:focus {
+    border-color: rgba(82,168,236,.8);
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6);
+}
+
+.alertify-buttons {
+    padding: 14px 15px 15px;
+    background: #D2D5D8;
+    border-top: 1px solid #2C3E50;
+    border-radius: 0 0 6px 6px;
+    box-shadow: inset 0 1px 0 #FFF;
+    text-align: right;
+}
+.alertify-button,
+.alertify-button:hover,
+.alertify-button:focus,
+.alertify-button:active {
+    margin-left: 10px;
+    border-radius: 4px;
+    font-weight: normal;
+    padding: 4px 12px;
+    text-decoration: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image:    -moz-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image:     -ms-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image:      -o-linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+    background-image:         linear-gradient(top, rgba(255,255,255,.3), rgba(255,255,255,0));
+}
+.alertify-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #2B72D5;
+}
+.alertify-button:active {
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05);
+}
+.alertify-button-cancel,
+.alertify-button-cancel:hover,
+.alertify-button-cancel:focus,
+.alertify-button-cancel:active {
+    text-shadow: 0 -1px 0 rgba(255,255,255,.75);
+    background-color: #E41B17;
+    border: 1px solid #BBB;
+    color: #FFF;
+    background-image: -webkit-linear-gradient(top, #E41B17, #E41B17);
+    background-image:    -moz-linear-gradient(top, #E41B17, #E41B17);
+    background-image:     -ms-linear-gradient(top, #E41B17, #E41B17);
+    background-image:      -o-linear-gradient(top, #E41B17, #E41B17);
+    background-image:         linear-gradient(top, #E41B17, #E41B17);
+}
+.alertify-button-cancel:hover,
+.alertify-button-cancel:focus,
+.alertify-button-cancel:active {
+    background: #9F000F;
+}
+.alertify-button-ok,
+.alertify-button-ok:hover,
+.alertify-button-ok:focus,
+.alertify-button-ok:active {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    background-color: #18BC9C;
+    border: 1px solid  #18BC9C;
+    border-color:  #18BC9C #18BC9C #18BC9C;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFF;
+}
+.alertify-button-ok:hover,
+.alertify-button-ok:focus,
+.alertify-button-ok:active {
+    background: #128F76;
+}
+
+.alertify-log {
+    background: #3498DB;
+    padding: 8px 14px;
+    border-radius: 4px;
+    color: #FFF;
+    /*text-shadow: 0 1px 0 rgba(255,255,255,.5);*/
+    border: 1px solid #BCE8F1;
+}
+.alertify-log-error {
+    color: #FFF;
+    background: #E41B17;
+    border: 1px solid #EED3D7;
+}
+.alertify-log-success {
+    color: #FFF;
+    background: #18BC9C;
+    border: 1px solid #D6E9C6;
+}

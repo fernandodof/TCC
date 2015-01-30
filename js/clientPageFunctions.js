@@ -210,7 +210,18 @@ $(document).ready(function () {
                     {"bSortable": false}
                 ]
             });
-
+            
+//    $('.sorting').append("<span class='fa fa-fw fa-sort sortIcon'></span>");
+//    $('.sorting_desc').append("<span class='fa fa-fw fa-sort-desc sortIcon'></span>");
+//    $('.sorting_asc').append("<span class='fa fa-fw fa-sort-desc sortIcon'></span>");
+//    
+//    $('#pedidos th').click(function (){
+//        $(this).find('.sortIcon').removeClass('fa-sort');
+//        $('.sorting_desc').find('.sortIcon').addClass('fa-sort-desc');
+//        $('.sorting_asc').find('.sortIcon').addClass('fa-sort-asc');
+//        $('.sorting').find('.sortIcon').addClass('fa-sort');
+//    });
+ 
     templateRoot = $('#templateRoot').val();
 
     $("#cep").mask("99.999-999");

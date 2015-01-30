@@ -79,7 +79,7 @@ function checkCurrentOrder(idForm) {
                         "se você continuar, essa compra será cancelada. Deseja continuar?", function (e) {
                             if (e) {
                                 addProduto(idForm, 1);
-                                alertify.success('Pedido redefinido');
+                                alertify.log('Pedido redefinido');
                             } else {
                                 alertify.log('Pedido não alterado');
                             }
@@ -235,6 +235,8 @@ function highlightAnchor(){
     var url = window.location.href;
     var anchor = url.split('#')[1];
     $('#'+anchor).addClass('animated pulse');
+    $('#'+anchor).addClass('highlightedItem');
+    
 }
 
 $(document).ready(function () {

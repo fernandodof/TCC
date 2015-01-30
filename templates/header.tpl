@@ -13,7 +13,8 @@
         <link href= "{$templateRoot}css/styles.css" rel="stylesheet">
         <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
         <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
-        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
+{*        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">*}
+        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstraModified.css" type="text/css" rel="stylesheet">
         <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
         <link href="{$templateRoot}libs/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
@@ -83,8 +84,8 @@
                             <li><a href="{$templateRoot}pages/about">Sobre</a></li>
                             <li><a href="#contact" data-toggle="modal">Contato</a></li>
                                 {if isset($smarty.session.id)}
-                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">
-                                        </span> Minha Conta <span class="caret"></span></a>
+                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-fw fa-user">
+                                </span> Minha Conta <span class="caret"></span></a>
 
                                     <ul class="dropdown-menu" id="dropdownBar" role="menu">
                                         {if {$smarty.session.tipo == 'funcionario'}}

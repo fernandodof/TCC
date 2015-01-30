@@ -98,7 +98,7 @@
 }
 
 #cardapioHeader ul .dropdown ul .totalLi{
-    background: black;
+    background: #2C3E50;
     padding: 0;
     margin-top: 10px;
     height: 35px;
@@ -185,4 +185,8 @@
 .produto .commentButton{
     margin-left: 8px;
     margin-top: 10px;
+}
+
+.highlightedItem .nameP{
+    color: #18BC9C;
 }

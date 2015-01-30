@@ -1,7 +1,8 @@
 <head>
     <link href="{$templateRoot}css/funcionarioPage.css" rel="stylesheet" type="text/css">
-    <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+{*    <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">*}
     <link href="{$templateRoot}libs/dataTables/media/css/jquery.dataTables_themeroller.css" rel="stylesheet" type="text/css">
+    <link href="{$templateRoot}libs/dataTables/bootstrapDatatableTheme/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
     <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
     <script type="text/javascript" 
@@ -9,6 +10,7 @@
     </script>
     <script src="{$templateRoot}js/funcionarioPageFunctions.js" type="text/javascript"></script>
     <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="{$templateRoot}libs/dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/showOrderMap.js" type="text/javascript"></script>
 </head>
 
