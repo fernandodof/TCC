@@ -12,8 +12,6 @@
         <link href="{$templateRoot}css/header.css" rel="stylesheet">
         <link href= "{$templateRoot}css/styles.css" rel="stylesheet">
         <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
-        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
-{*        <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">*}
         <link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstraModified.css" type="text/css" rel="stylesheet">
         <link href="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/css/bootstrapValidator.min.css" rel="stylesheet">
         <link href="{$templateRoot}libs/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -30,7 +28,7 @@
         <script src="{$templateRoot}bootstrap/js/jquery.min.js"></script>
         <script src="{$templateRoot}bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{$templateRoot}js/jquery.dim-background.js"></script>
-        <script type="text/javascript" src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.min.js"></script>
+        <script type="text/javascript" src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.js"></script>
         <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
         <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
         <script src="{$templateRoot}js/header.js" type="text/javascript"></script>

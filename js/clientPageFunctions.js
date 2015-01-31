@@ -217,6 +217,7 @@ $(document).ready(function () {
 //    
 //    $('#pedidos th').click(function (){
 //        $(this).find('.sortIcon').removeClass('fa-sort');
+      
 //        $('.sorting_desc').find('.sortIcon').addClass('fa-sort-desc');
 //        $('.sorting_asc').find('.sortIcon').addClass('fa-sort-asc');
 //        $('.sorting').find('.sortIcon').addClass('fa-sort');

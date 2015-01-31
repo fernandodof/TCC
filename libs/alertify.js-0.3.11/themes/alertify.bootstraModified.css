@@ -134,3 +134,15 @@
     background: #18BC9C;
     border: 1px solid #D6E9C6;
 }
+
+.alertify-log-custom{
+    background: #2C3E50;
+}
+
+.alertify-log-yellow{
+    background: #FBB117;
+}
+
+.alertify-log-green{
+    background: #348017;
+}

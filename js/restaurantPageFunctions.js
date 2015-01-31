@@ -51,7 +51,7 @@ function resetAlertify() {
         },
         delay: 5000,
         buttonReverse: false,
-        buttonFocus: "ok"
+        buttonFocus: "none"
     });
 }
 
@@ -81,7 +81,9 @@ function checkCurrentOrder(idForm) {
                                 addProduto(idForm, 1);
                                 alertify.log('Pedido redefinido');
                             } else {
-                                alertify.log('Pedido não alterado');
+                                alertify.custom = alertify.extend("custom");
+                                alertify.custom("Pedido não alterado");
+
                             }
                         });
                 undimPageAndEnableComponents();
@@ -117,7 +119,7 @@ function addProduto1(idForm, orderAction, idRestarant) {
 //                undimPageAndEnableComponents();
                 alertify.success('Novo Item Adicionado');
                 createCartCount(idRestaurantePedido1);
-                window.location.replace(templateRoot + 'pages/restaurant/'+idRestarant);
+                window.location.replace(templateRoot + 'pages/restaurant/' + idRestarant);
             }
         },
         error: function (data) {
@@ -231,12 +233,12 @@ function initIputs() {
 
 }
 
-function highlightAnchor(){
+function highlightAnchor() {
     var url = window.location.href;
     var anchor = url.split('#')[1];
-    $('#'+anchor).addClass('animated pulse');
-    $('#'+anchor).addClass('highlightedItem');
-    
+    $('#' + anchor).addClass('animated pulse');
+    $('#' + anchor).addClass('highlightedItem');
+
 }
 
 $(document).ready(function () {

@@ -151,7 +151,9 @@ function enviarPedidoCozinha(checkbox) {
                     data: data,
                     success: function (serverResponse) {
                         $('#pedidosRecebidos').prepend(serverResponse);
-                        alertify.log('Pedido enviado para cozinha');
+                        alertify.yellow = alertify.extend("yellow");
+                        alertify.yellow("Pedido enviado para cozinha");
+
                     },
                     error: function (serverResponse) {
                         $('#pedidosRecebidos').prepend(serverResponse);
@@ -182,7 +184,8 @@ function enviarPedidoEntrega(checkbox) {
                     data: data,
                     success: function (serverResponse) {
                         $('#pedidosCozinha').prepend(serverResponse);
-                        alertify.log('Pedido enviado para entrega');
+                        alertify.green = alertify.extend("green");
+                        alertify.green("Pedido enviado para entrega");
                     },
                     error: function (serverResponse) {
                         alert(serverResponse);
@@ -214,7 +217,7 @@ function finalizarPedido(checkbox) {
                     data: data,
                     success: function (serverResponse) {
                         $('#pedidosEntrega').prepend(serverResponse);
-                        alertify.success('Pedido enviado para entrega');
+                        alertify.success('Pedido finalizado');
                     },
                     error: function (serverResponse) {
                         alert(serverResponse);
