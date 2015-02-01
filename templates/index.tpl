@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div id="indexButtons">        
-                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/nearBy">Locais próximos <img id="gpsIcon" src="{$templateRoot}images/icons/svg/gps13.svg"></a>
+                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/nearBy">Locais próximos <img id="gpsIcon" src="{$templateRoot}images/icons/gps13.png"></a>
                 <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestRate">Melhores locais <span class="starIcon glyphicon glyphicon-star"></span></a>
                 <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestItemRate">Melhores Ítens <span class="starIcon glyphicon glyphicon-star"></span></a>
             </div>
