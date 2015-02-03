@@ -74,15 +74,16 @@
     <div class="col-lg-12" id="destaquesDiv">
         {$count=0}
         {foreach from = $products item = produto}
-
+            
             <div class="col-sm-3 colunaDestaque">
                 <h4 class="dishName">{$produto->getNome()}</h4>
-                <div class="well well-sm col-xs-12 imgDiv pull-left">
-                    <img src="{$templateRoot}{$produto->getImagem()}" class="img-responsive">
+                <div id="prod{$count}" onmouseover="highlightItem({$count});" onmouseout="highlightItem({$count});" class="well well-sm col-xs-12 imgDiv pull-left">
+                    <a onmouseover="highlightItem({$count});" onmouseout="highlightItem({$count});" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}#{$produto->getNome()|replace:' ':''}">
+                        <img id="prod{$count}" onmouseover="highlightItem({$count});" onmouseout="highlightItem({$count});" src="{$templateRoot}{$produto->getImagem()}" class="img-responsive"></a>
                 </div>
                 <div class="info">
                     <a class="restaurantName pull-left" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}">{$restaurants->get($count)->getNome()}</a>
-                    <a href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}#{$produto->getNome()|replace:' ':''}" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
+                    <a id="prod{$count}" onmouseover="highlightItem({$count});" onmouseout="highlightItem({$count});" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}#{$produto->getNome()|replace:' ':''}" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
                 </div>
             </div> 
             {$count = $count+1}

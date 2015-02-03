@@ -24,7 +24,17 @@ var templateRoot;
 
 $(document).ready(function () {
     templateRoot = $('#templateRoot').val();
-    $("#cep").mask("99.999-999");
+    $("#cep").mask("00.000-000");
+
+    $.fn.bootstrapValidator.validators.invalidCep = {
+        validate: function (validator, $field, options) {
+            var value = $field.val();
+            var regex =  /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/;
+            return regex.test(value);
+            
+        }
+    };
+
     $('#subscribeForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -164,11 +174,7 @@ $(document).ready(function () {
             },
             cep: {
                 validators: {
-                    notEmpty: {
-                        message: 'O CEP não pode ser vazio'
-                    },
-                    regexp: {
-                        regexp: /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/,
+                    invalidCep: {
                         message: 'CEP inválido'
                     }
                 }

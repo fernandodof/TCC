@@ -75,15 +75,33 @@
 
 .imgDiv{
     border: none;
-    background: #EF6D31;
+    background: #E74C3C;
 
 }
+
+.highlightedItem{
+    transition: background 0.5s ease;
+    /*background: #FFA982;*/
+    background: #E18728;
+}
+
 #destaques{
     color: crimson;
 }
 
 .pecaAgora{
     margin-bottom: 15px;
+}
+
+.pecaAgora:hover{
+    transition: background 0.5s ease;
+    /*
+        -webkit-transition-timing-function: ease-in-out;
+        -moz-transition-timing-function: ease-in-out;
+        -o-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out;*/
+    background: #E18728;
+    border-color: #D2D5D8;
 }
 
 .dishName{

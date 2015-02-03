@@ -1,5 +1,5 @@
 <link href="{$templateRoot}css/subscribe.css" rel="stylesheet" type="text/css">
-<script src="{$templateRoot}libs/jqueryMaskedInput/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/jquery.mask.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/subscribe.js" type="text/javascript"></script>
 <div class="container">
     <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="../src/app/processes/ProcessCliente.php" method="post">
