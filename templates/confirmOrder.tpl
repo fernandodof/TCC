@@ -3,6 +3,7 @@
 <link href="{$templateRoot}css/conformOrder.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}js/updateOrder.js" type="text/javascript"></script>
 <div class="container">
+    {*<span id="sumitingOrder" class="fa fa-fw fa-facebook fa-spin fa-5x"></span>*}
     {if isset($smarty.session.pedido)}
         <input type="hidden" id="idRestaurante" value="{$smarty.session.idRestauranteDoPedidoAtual}">
         <h2>{$restaurante->getNome()}</h2>
@@ -100,5 +101,8 @@
             <script>location.href = "../pages/clientePage";</script>
         {/literal}
     {/if}
-
+    <div id="sumitingOrderDiv">
+        <img id="sumitingOrder" class="rotating" src="{$templateRoot}images/icons/plate.svg">
+        <h4 class="center">Aguarde...</h4>
+    </div>
 </div>

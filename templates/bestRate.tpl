@@ -35,12 +35,13 @@
 
     <div class="row">
         <div class="col-sm-8">
-            <div class="panel panel-default">
+            <div class="panel panel-default panel-search">
                 <div class="row">   
                     <div class="page-header row col-xs-12">
-                        <h3 class="col-xs-11">Resultados da pesquisa <small>Melhores locais</small></h3><img id="circleLoader" class="img img-responsive" src="{$templateRoot}images/icons/circleLoader.gif" alt="Carregando..." title="Carregando...">
-                        {*                            <div class="well well-sm closed col-xs-2 statusIndicatioClosed"><p>Aberto</p></div>
-                        <div class="well well-sm opened col-xs-2 pull-right statusIndicationOpened"><p>Fechado</p></div>*}
+                        <div class="col-xs-12">
+                            <h3 class="pull-left">Resultados da pesquisa</h3>
+                            <img id="circleLoader" class="img img-responsive rotating pull-right" src="{$templateRoot}images/icons/plate.svg" alt="Carregando..." title="Carregando...">
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body">

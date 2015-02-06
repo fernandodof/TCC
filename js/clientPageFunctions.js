@@ -210,22 +210,22 @@ $(document).ready(function () {
                     {"bSortable": false}
                 ]
             });
-            
+
 //    $('.sorting').append("<span class='fa fa-fw fa-sort sortIcon'></span>");
 //    $('.sorting_desc').append("<span class='fa fa-fw fa-sort-desc sortIcon'></span>");
 //    $('.sorting_asc').append("<span class='fa fa-fw fa-sort-desc sortIcon'></span>");
 //    
 //    $('#pedidos th').click(function (){
 //        $(this).find('.sortIcon').removeClass('fa-sort');
-      
+
 //        $('.sorting_desc').find('.sortIcon').addClass('fa-sort-desc');
 //        $('.sorting_asc').find('.sortIcon').addClass('fa-sort-asc');
 //        $('.sorting').find('.sortIcon').addClass('fa-sort');
 //    });
- 
+
     templateRoot = $('#templateRoot').val();
 
-    $("#cep").mask("99.999-999");
+    $("#cep").mask("00.000-000");
     $('#subscribeForm').bootstrapValidator({
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -254,8 +254,7 @@ $(document).ready(function () {
                         message: 'Endereço de email inválido'
                     },
                     remote: {
-                        message: 'Email já em uso',
-                        url: templateRoot + 'src/app/ajaxReceivers/validateEdit.php',
+                        message: 'Email já em uso', url: templateRoot + 'src/app/ajaxReceivers/validateEdit.php',
                         data: {
                             type: 'email'
                         }
@@ -274,8 +273,7 @@ $(document).ready(function () {
                         message: 'O login deve ter entre 5 e 100 caracteres'
                     },
                     remote: {
-                        message: 'Login já em uso',
-                        url: templateRoot + 'src/app/ajaxReceivers/validateEdit.php',
+                        message: 'Login já em uso', url: templateRoot + 'src/app/ajaxReceivers/validateEdit.php',
                         data: {
                             type: 'login'
                         }
@@ -336,8 +334,7 @@ $(document).ready(function () {
             },
             bairro: {
                 validators: {
-                    message: 'Bairro inválido',
-                    notEmpty: {
+                    message: 'Bairro inválido', notEmpty: {
                         message: 'O barrio não pode ser vazio'
                     }
                 }
@@ -382,13 +379,12 @@ $(document).ready(function () {
                 }
             }
         }
-    })
-            .on('success.form.bv', function (e) {
-                // Prevent form submission
-                e.preventDefault();
-                editSubscription();
+    }).on('success.form.bv', function (e) {
+        // Prevent form submission
+        e.preventDefault();
+        editSubscription();
 
-            });
+    });
 
     $('#changePassword').bootstrapValidator({
         fields: {
@@ -412,10 +408,8 @@ $(document).ready(function () {
                 }
             },
             senha1: {
-                validators: {
-                    notEmpty: {
-                        message: 'Nova senha não pode ser vazia'
-                    },
+                validators: {notEmpty: {
+                        message: 'Nova senha não pode ser vazia'},
                     stringLength: {
                         min: 6,
                         max: 30,
@@ -428,8 +422,7 @@ $(document).ready(function () {
                 }
             },
             senha2: {
-                validators: {
-                    notEmpty: {
+                validators: {notEmpty: {
                         message: 'Confirmação de senha não pode ser vazia'
                     },
                     stringLength: {

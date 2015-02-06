@@ -127,3 +127,34 @@ textarea[name=observacoes] {
     width: 200px;
     width: 200px;
 }
+
+#sumitingOrderDiv{
+    top: 50%;
+    left: 50%;
+    margin-top: -170px;
+    margin-left: -70px;
+    display: none;
+    position: fixed; 
+    z-index: 999999;
+    width: 180px;
+    /*background: white;*/
+}
+
+#sumitingOrderDiv h4{
+    text-align: center;
+    position: static;
+    width: 100%;
+    color: white;
+}
+
+
+#sumitingOrderDiv img{
+    width: 100%;
+    position: static;
+}
+
+.rotating{
+    /*background: white;*/
+
+
+}

@@ -20,16 +20,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/NetBeansProjects/Restaurantes/js/restaurantPageFunctions.js</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/templates/clientePage.tpl</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/js/funcionarioPageFunctions.js</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/js/clientPageFunctions.js</file>
             <file>file:/E:/NetBeansProjects/Restaurantes/templates/index.tpl</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/libs/alertify.js-0.3.11/themes/alertify.default.css</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/css/clientePage.css</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/libs/alertify.js-0.3.11/themes/alertify.bootstraModified.css</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/css/styles.css</file>
-            <file>file:/E:/NetBeansProjects/Restaurantes/pages/rateItem.php</file>
+            <file>file:/E:/NetBeansProjects/Restaurantes/css/funcionarioPage.css</file>
+            <file>file:/E:/NetBeansProjects/Restaurantes/js/index.js</file>
+            <file>file:/E:/NetBeansProjects/Restaurantes/css/index.css</file>
         </group>
     </open-files>
 </project-private>

@@ -189,7 +189,7 @@ function enviarPedidoEntrega(checkbox) {
                     },
                     error: function (serverResponse) {
                         alert(serverResponse);
-                    }
+                    },
                 });
             } else {
                 checkbox.checked = false;

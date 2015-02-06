@@ -64,10 +64,13 @@ h3{
 }
 
 #circleLoader{
-    width: 30px;
-    width: 30px;
+    width: 55px;
     margin-top: 15px;
     display: none;
+}
+
+.panel-search .page-header{
+    height: 55px;
 }
 
 .rateInputs{

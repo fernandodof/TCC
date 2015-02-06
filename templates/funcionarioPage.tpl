@@ -72,7 +72,7 @@
                                     <p>{$endereco->getEstado()}, {$endereco->getCep()}</p>
                                 {/foreach}
                                 {if $pedido->getLatitude() != null}
-                                    <a href="#myMapModal"  data-toggle="modal" class="btn btn-info btn-xs">Mapa</a>
+                                    <a href="#myMapModal"  data-toggle="modal" onclick="initialize({$pedido->getLatitude()},{$pedido->getLongitude()});" class="btn btn-info btn-xs">Mapa</a>
                                 {/if}
                             </div>
                         </div>

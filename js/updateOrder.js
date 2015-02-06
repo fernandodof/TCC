@@ -3,9 +3,10 @@ var templateRoot;
 function removeProduct(indexProduto) {
     $('body').dimBackground();
     $('#loader').show();
+    $('#sumitingOrderDiv').show();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var data = {indexProduto: indexProduto, command: "remove"};
-    var url = templateRoot+'src/app/ajaxReceivers/changeOrder.php';
+    var url = templateRoot + 'src/app/ajaxReceivers/changeOrder.php';
     $.ajax({
         type: "POST",
         url: url,
@@ -19,7 +20,7 @@ function removeProduct(indexProduto) {
                 $('#orderInfo').remove();
                 $('#confirmation').html("<h2>Sua Bandeja Está Vazia</h2>" +
                         "<div id='faces'>" +
-                        "<img id = 'imgFace' src = '"+templateRoot+"images/icons/svg/sadFace.svg'/>" +
+                        "<img id = 'imgFace' src = '" + templateRoot + "images/icons/svg/sadFace.svg'/>" +
                         "</div>");
                 $('#confirmation').show();
             }
@@ -28,7 +29,7 @@ function removeProduct(indexProduto) {
             }
             $('body').undim();
             $("body").find("input,button,textarea").removeAttr("disabled");
-            $('#loader').hide();
+            $('#sumitingOrderDiv').hide();
             $('#cart').html(serverResponse);
         },
         error: function (data) {
@@ -41,8 +42,8 @@ function removeProduct(indexProduto) {
 function createCartCount(idRestaurante) {
     var itemCount = getItemCount();
     $('#liGotoCart').html(
-            "<form method='post' action='"+templateRoot+"pages/confirmOrder' id='goToCart'>" +
-            "<button class='btn' type='submit'><img src='"+templateRoot+"images/icons/cartIcon2.png' title='Pedido' alt='Pedido'>" +
+            "<form method='post' action='" + templateRoot + "pages/confirmOrder' id='goToCart'>" +
+            "<button class='btn' type='submit'><img src='" + templateRoot + "images/icons/cartIcon2.png' title='Pedido' alt='Pedido'>" +
             "<span class='badge' id='badgePedido'>" + itemCount + "</span></button>" +
             "<input type='hidden' name='idRestaurantePedido' id='" + idRestaurante + "'" +
             "value='" + idRestaurante + "'>" +
@@ -53,11 +54,11 @@ function createCartCount(idRestaurante) {
 
 function updateQuantity(indexProduto) {
     $('body').dimBackground();
-    $('#loader').show();
+    $('#sumitingOrderDiv').show();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var quantidade = $('#quantidade' + indexProduto).val();
     var data = {indexProduto: indexProduto, quantidade: quantidade, command: "update"};
-    var url = templateRoot+'src/app/ajaxReceivers/changeOrder.php';
+    var url = templateRoot + 'src/app/ajaxReceivers/changeOrder.php';
     $.ajax({
         type: "POST",
         url: url,
@@ -65,7 +66,7 @@ function updateQuantity(indexProduto) {
         data: data,
         success: function (serverResponse) {
             if (serverResponse === 'Erro') {
-                $('#loader').hide();
+                $('#sumitingOrderDiv').hide();
                 alert('Ocorreu um erro com a sua solicitação');
                 $('body').undim();
                 $("body").find("input,button,textarea").removeAttr("disabled");
@@ -73,7 +74,7 @@ function updateQuantity(indexProduto) {
             else {
                 $('body').undim();
                 $("body").find("input,button,textarea").removeAttr("disabled");
-                $('#loader').hide();
+                $('#sumitingOrderDiv').hide();
                 $('#cart').html(serverResponse);
             }
         },
@@ -85,11 +86,12 @@ function updateQuantity(indexProduto) {
 
 function checkout() {
     $('#confirmar').button('loading');
+    $('#sumitingOrderDiv').show();
     $('body').dimBackground();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var obs = $('#observacoes').val();
     var data = {obs: obs};
-    var url = templateRoot+'src/app/ajaxReceivers/submitOrder.php';
+    var url = templateRoot + 'src/app/ajaxReceivers/submitOrder.php';
     $.ajax({
         type: "POST",
         url: url,
@@ -97,6 +99,7 @@ function checkout() {
         data: data,
         success: function (serverResponse) {
             if (serverResponse === 'Erro') {
+                $('#sumitingOrderDiv').hide();
                 alertify.alert("Ocorreu um erro ao fazer o seu pedido");
             } else {
                 $('#orderInfo').addClass('animated bounceOutRight');
@@ -107,8 +110,9 @@ function checkout() {
                 $("body").find("input,button,textarea").removeAttr("disabled");
                 $('#confirmation').html("<h2>Pedido realizado com sucesso</h2>" +
                         "<div id='faces'>" +
-                        "<img id = 'imgFace' src = '"+templateRoot+"images/icons/svg/happyFace.svg'/>" +
+                        "<img id = 'imgFace' src = '" + templateRoot + "images/icons/svg/happyFace.svg'/>" +
                         "</div>");
+                $('#sumitingOrderDiv').hide();
                 $('#confirmation').show();
                 $('#liGotoCart').empty();
             }
@@ -120,7 +124,7 @@ function checkout() {
 }
 
 function getItemCount() {
-    var url = templateRoot+'src/app/ajaxReceivers/itemCount.php';
+    var url = templateRoot + 'src/app/ajaxReceivers/itemCount.php';
     var count;
     $.ajax({
         type: "POST",

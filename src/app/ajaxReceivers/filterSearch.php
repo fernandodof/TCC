@@ -19,7 +19,7 @@ if (trim(filter_input(INPUT_POST, 'kind')) !== null) {
     $tipo = str_replace("+", " ", $tipo);
 }
 
-if (filter_input(INPUT_POST, 'location') === 'true') {
+if ((filter_input(INPUT_POST, 'location') === 'true') && isset($_SESSION['latLong'])) {
 
     $latLong = explode(',', $_SESSION['latLong']);
 

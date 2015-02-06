@@ -10,7 +10,11 @@
 <script type="text/javascript" src="{$templateRoot}js/restaurantPageFunctions.js"></script>
 <script type="text/javascript" src="{$templateRoot}js/mapFunctions.js"></script>
 <div class="container">
-    <img src="{$templateRoot}images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
+    <div id="addingItemDiv">
+        <img id="sumitingOrder" class="rotating" src="{$templateRoot}images/icons/plate.svg">
+        <h4>Adicionando...</h4>
+    </div>
+
     <div class="visible-sm visible-xs">
         <button class="btn btn-primary btn" data-toggle="collapse" data-target=".restaurant">
             <span class="fa fa-bars"></span>

@@ -82,7 +82,7 @@
 .highlightedItem{
     transition: background 0.5s ease;
     /*background: #FFA982;*/
-    background: #E18728;
+    background-color: #C92918;
 }
 
 #destaques{
@@ -94,13 +94,13 @@
 }
 
 .pecaAgora:hover{
-    transition: background 0.5s ease;
+    transition: background 2s ease;
     /*
         -webkit-transition-timing-function: ease-in-out;
         -moz-transition-timing-function: ease-in-out;
         -o-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;*/
-    background: #E18728;
+    background-color: #C92918;
     border-color: #D2D5D8;
 }
 

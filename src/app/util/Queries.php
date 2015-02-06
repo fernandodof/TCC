@@ -10,7 +10,7 @@ class Queries {
                             FROM Cliente c WHERE c.email = :email AND c.senha = :senha';
     
     const LOGIN_COM_LOGIN = 'SELECT c 
-            `                FROM Cliente c WHERE c.login = :login AND c.senha = :senha';
+                             FROM Cliente c WHERE c.login = :login AND c.senha = :senha';
     
     const SEARCH_REST_NOME = 'SELECT r 
                               FROM restaurante r WHERE r.nome LIKE :nome';

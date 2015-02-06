@@ -113,7 +113,6 @@ foreach ($tamanhos as $tamanho) {
 }
 
 $smarty->assign('historicoPedidos', $historicoPedidos);
-
 $smarty->assign('pedidosRecebidos', $pedidosRecebidos);
 $smarty->assign('pedidosCozinha', $pedidosCozinha);
 $smarty->assign('pedidosEntrega', $pedidosEntrega);

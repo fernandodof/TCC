@@ -20,7 +20,6 @@ function getLocation() {
     
 }
 
-
 function obtainLocation(pos) {
     var latLong = pos.coords.latitude + "," + pos.coords.longitude;
     var data = {latLong: latLong};

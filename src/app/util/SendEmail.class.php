@@ -44,6 +44,7 @@ class SendEmail {
         } else {
             echo 'Message has been sent';
         }
+        return '';
     }
 
     public function sendOrderConfirmation($personName, $pedidoVO, $restaurantName, $date, $address) {

@@ -57,7 +57,7 @@ function resetAlertify() {
 
 function checkCurrentOrder(idForm) {
     $('body').dimBackground();
-    $('#loader').show();
+    $('#addingItemDiv').show();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var idRestaurante = $('#idRestaurantePedidoInicial').val();
     var data = {idRestaurantePedido: idRestaurante};
@@ -131,7 +131,7 @@ function addProduto1(idForm, orderAction, idRestarant) {
 
 function checkCurrentOrder1(idForm, idRestaurant) {
     $('body').dimBackground();
-    $('#loader').show();
+    $('#addingItemDiv').show();
     $("body").find("input,button,textarea").attr("disabled", "disabled");
     var idRestaurante = idRestaurant;
     var data = {idRestaurantePedido: idRestaurante};
@@ -188,7 +188,7 @@ function getItemCount() {
 }
 
 function undimPageAndEnableComponents() {
-    $('#loader').hide();
+    $('#addingItemDiv').hide();
     $('body').undim();
     $("body").find("input,button,textarea").removeAttr("disabled");
 }

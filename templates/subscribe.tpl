@@ -2,6 +2,11 @@
 <script src="{$templateRoot}libs/jquery.mask.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/subscribe.js" type="text/javascript"></script>
 <div class="container">
+
+    <div id="subscribingDiv">
+        <img id="sumitingOrder" class="rotating" src="{$templateRoot}images/icons/plate.svg">
+        <h4 class="center">Aguarde...</h4>
+    </div>
     <form role="form" class="form-horizontal col-sm-6 col-sm-offset-3" id="subscribeForm" action="../src/app/processes/ProcessCliente.php" method="post">
         <h2>Cadastro</h2>
         <div class="form-group">
@@ -82,5 +87,9 @@
         </div>
         <button type="submit" id="sub" name="formSubmit" value="CadastrarCliente" class="btn btn-success pull-right">Cadastrar</button>
     </form>
+
+    <div id="confirmation" class="jumbotron">
+        <h2>O Seu cadastro foi efetuado com sucesso.</h2>
+    </div>
 
 </div>

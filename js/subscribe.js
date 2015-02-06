@@ -22,6 +22,32 @@ var templateRoot;
 //
 //}
 
+function subscribe() {
+    $('body').dimBackground();
+    $('#subscribingDiv').show();
+    var url = templateRoot + 'src/app/ajaxReceivers/subscribe.php';
+    var data = $('#subscribeForm').serialize();
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse[0] === '1') {
+                $('#confirmation').show();
+                $('#subscribeForm').hide();
+            } else {
+                alertify.error('Erro ao enviar os dados');
+            }
+            $('body').undim();
+            $('#subscribingDiv').hide();
+        },
+        error: function (data) {
+            alertify.error('Erro ao enviar os dados');
+        }
+    });
+}
+
 $(document).ready(function () {
     templateRoot = $('#templateRoot').val();
     $("#cep").mask("00.000-000");
@@ -29,16 +55,14 @@ $(document).ready(function () {
     $.fn.bootstrapValidator.validators.invalidCep = {
         validate: function (validator, $field, options) {
             var value = $field.val();
-            var regex =  /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/;
+            var regex = /^[0-9]{2}.[0-9]{3}-[0-9]{3}$/;
             return regex.test(value);
-            
+
         }
     };
 
     $('#subscribeForm').bootstrapValidator({
         feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
         },
         fields: {
@@ -199,6 +223,11 @@ $(document).ready(function () {
                 }
             }
         }
-    });
+    }).on('success.form.bv', function (e) {
+        e.preventDefault();
+        subscribe();
+    }).on('erro.form.bv', function (e) {
+        alertify.alert("<span class='error'>Por favor confira os seus dados</span>");
+    });;
 });
 

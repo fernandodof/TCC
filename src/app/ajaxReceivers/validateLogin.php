@@ -68,11 +68,6 @@ switch (filter_input(INPUT_POST, 'type')) {
         break;
 }
 
-//echo json_encode(array(
-//    'valid' => $isValid,
-//));
-
-
 function isEmail($str) {
     if (filter_var($str, FILTER_VALIDATE_EMAIL)) {
         return true;
