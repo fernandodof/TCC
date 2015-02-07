@@ -108,10 +108,7 @@ function checkout() {
                 }, 1300);
                 $('body').undim();
                 $("body").find("input,button,textarea").removeAttr("disabled");
-                $('#confirmation').html("<h2>Pedido realizado com sucesso</h2>" +
-                        "<div id='faces'>" +
-                        "<img id = 'imgFace' src = '" + templateRoot + "images/icons/svg/happyFace.svg'/>" +
-                        "</div>");
+                $('#confirmation').show();
                 $('#sumitingOrderDiv').hide();
                 $('#confirmation').show();
                 $('#liGotoCart').empty();

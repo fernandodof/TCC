@@ -86,14 +86,17 @@ table thead tr #ButtonsTh{
 
 #confirmation{
     text-align: center;
-    height: 50px;
     display: none;
+}
+
+#confirmation .success-msg{
+    color: #18BC9C;
 }
 
 #confirmation h2{
     text-align: center;
     width: 100%;
-    margin-top:100px;
+    margin-top:55px;
     font-size: xx-large;
 }
 
@@ -120,12 +123,12 @@ textarea[name=observacoes] {
 #faces{
     width: 100%;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 #faces #imgFace {
-    width: 200px;
-    width: 200px;
+    width: 180px;
+    margin-bottom: 30px;
 }
 
 #sumitingOrderDiv{
@@ -153,8 +156,8 @@ textarea[name=observacoes] {
     position: static;
 }
 
-.rotating{
-    /*background: white;*/
 
-
+#confirmation a{
+    clear: left;
+    text-align: center;
 }

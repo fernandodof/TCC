@@ -118,11 +118,15 @@ if (isset($_SESSION['id']) && CheckLoggedIn::checkPermission(UserTypes::CLIENTE)
 
 if (count($restaurants) == 0) {
     
-    if($tipo !== ''){
+    if($tipo !== '' && filter_input(INPUT_POST, 'search') !== null){
         $tipo = "em <span id='type'>" . $tipo . "</span>";
     }
     
-    echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: <small id='term'>\"" . trim(filter_input(INPUT_POST, 'search')) . "\"</smalL> " . $tipo . "</h3>";
+    if(filter_input(INPUT_POST, 'search') !== null){
+        echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: <small id='term'>\"" . trim(filter_input(INPUT_POST, 'search')) . "\"</smalL> " . $tipo . "</h3>";
+    }else{
+        echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: " . $tipo . "</h3>";
+    }
     echo "<div id='faces'>";
     echo "<img id='imgFace' src = '../images/icons/svg/sadFace.svg'/>";
     echo "</div>";

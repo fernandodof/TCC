@@ -60,6 +60,7 @@ function edit() {
 
 function editSubscription() {
     $('#saveButton').show();
+    $('#clienteLoadingDiv').show();
     $('body').dimBackground();
     var nome = $('#nome').val();
     var email = $('#email').val();
@@ -90,6 +91,7 @@ function editSubscription() {
             $('#senhaAtual').val('');
             $('body').undim();
             $('#saveButton').hide();
+            $('#clienteLoadingDiv').hide();
             alertify.success('Cadastro atualizado');
         },
         error: function (data) {
@@ -100,6 +102,7 @@ function editSubscription() {
 
 function editPassword() {
     $('#savePassword').show();
+    $('#clienteLoadingDiv').show();
     $('body').dimBackground();
     var senha = $('#senha1').val();
     var data = {senha: senha};
@@ -116,6 +119,7 @@ function editPassword() {
             $('#senha2').val('');
             $('#changePassword').data('bootstrapValidator').resetForm();
             $('#savePassword').hide();
+            $('#clienteLoadingDiv').hide();
             $('body').undim();
             alertify.success('Senha atualizada');
         },
@@ -134,7 +138,9 @@ function setRadius() {
     }
 
     $('#helpKm').removeClass('red');
+    $('body').dimBackground();
     $('#saveRadius').show();
+    $('#clienteLoadingDiv').show();
     var data = {km: km};
     var url = templateRoot + 'src/app/ajaxReceivers/setRadiusPref.php';
     $.ajax({
@@ -144,15 +150,18 @@ function setRadius() {
         data: data,
         success: function (serverResponse) {
             if (serverResponse === '1') {
-                alertify.alert('Raio de pesquisa atualizados');
-                $('#saveRadius').hide();
+                alertify.alert('Raio de pesquisa atualizado');
             } else {
-                $('#saveRadius').hide();
                 alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
             }
+            $('#clienteLoadingDiv').hide();
+            $('#saveRadius').hide();
+            $('body').undim();
         },
         error: function (data) {
+            $('#clienteLoadingDiv').hide();
             $('#saveRadius').hide();
+            $('body').undim();
             alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
         }
     });

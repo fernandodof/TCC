@@ -13,6 +13,10 @@
 <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 <div class="container">
+    <div id="clienteLoadingDiv">
+        <img id="sumitingOrder" class="rotating" src="{$templateRoot}images/icons/plate.svg">
+        <h4 class="center">Aguarde...</h4>
+    </div>
     <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
         <div class="row input-group col-md-12 pull-left search">
             <div class="col-md-7 col-xs-12 searchDiv pull-left">

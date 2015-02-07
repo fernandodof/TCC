@@ -1,13 +1,19 @@
 <link href="{$templateRoot}font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="{$templateRoot}css/animate.css-master/animate.min.css" rel="stylesheet" type="text/css">
-<link href="{$templateRoot}css/conformOrder.css" rel="stylesheet" type="text/css">
+<link href="{$templateRoot}css/confirmOrder.css" rel="stylesheet" type="text/css">
 <script src="{$templateRoot}js/updateOrder.js" type="text/javascript"></script>
 <div class="container">
     {*<span id="sumitingOrder" class="fa fa-fw fa-facebook fa-spin fa-5x"></span>*}
     {if isset($smarty.session.pedido)}
         <input type="hidden" id="idRestaurante" value="{$smarty.session.idRestauranteDoPedidoAtual}">
         <h2>{$restaurante->getNome()}</h2>
-        <div id="confirmation"></div>
+        <div id="confirmation">
+            <h2 class="success-msg">Pedido realizado com sucesso</h2>
+            <div id='faces'>
+                <img id = 'imgFace' src ='{$templateRoot}images/icons/svg/happyFace.svg'/>
+            </div>
+            <a href='{$templateRoot}pages/index' class='btn btn-primary btn-lg'><span class='glyphicon glyphicon-home'></span> Página inicial</a>
+        </div>
         {if isset($smarty.session.pedido)}
             <div id="orderInfo">
                 <table id="cart" class="table table-hover table-condensed">
