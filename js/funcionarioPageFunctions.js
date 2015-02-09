@@ -267,6 +267,7 @@ function updateOrdersList() {
 }
 
 function  setUpTable() {
+    $.fn.dataTable.ext.pager.numbers_length = 5;
     $('#historicoPedidos').DataTable(
             {
                 language: {
