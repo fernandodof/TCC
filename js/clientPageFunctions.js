@@ -184,7 +184,6 @@ $(window).on("resize", function () {
 $(document).ready(function () {
     edit();
     activate('img[src*=".svg"]');
-    $.fn.dataTable.ext.pager.numbers_length = 5;
     $('#pedidos').DataTable(
             {
                 language: {
@@ -220,7 +219,8 @@ $(document).ready(function () {
                     {"bSortable": false}
                 ]
             });
-
+            
+    $('.dataTables_paginate').parent().removeClass('col-sm-6').addClass('col-xs-12');
     templateRoot = $('#templateRoot').val();
 
     $("#cep").mask("00.000-000");

@@ -76,13 +76,14 @@
 .imgDiv{
     border: none;
     background: #E74C3C;
+    transition: background 1.5s ease;
 
 }
 
 .highlightedItem{
-    transition: background 0.5s ease;
+    /*transition: background 0.5s ease;*/
     /*background: #FFA982;*/
-    background-color: #C92918;
+    background-color:#A01507;
 }
 
 #destaques{
@@ -91,16 +92,17 @@
 
 .pecaAgora{
     margin-bottom: 15px;
+    transition: background 1.5s ease;
 }
 
 .pecaAgora:hover{
-    transition: background 2s ease;
+    /*transition: background 2s ease;*/
     /*
         -webkit-transition-timing-function: ease-in-out;
         -moz-transition-timing-function: ease-in-out;
         -o-transition-timing-function: ease-in-out;
         transition-timing-function: ease-in-out;*/
-    background-color: #C92918;
+    background-color: #A01507;
     border-color: #D2D5D8;
 }
 

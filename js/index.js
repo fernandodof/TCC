@@ -1,5 +1,6 @@
 function highlightItem(divId){
     $('#prod'+divId).toggleClass('highlightedItem');
+    $('#btProd'+divId).toggleClass('highlightedItem');
     
 }
 

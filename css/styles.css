@@ -33,6 +33,11 @@ body {
     box-shadow: 10px 10px 76px 19px rgba(44,62,80,1);
 }
 
+/*.pagitate-wrapper{
+    width: 100%;
+    border: 1px solid red;
+}*/
+
 .pagination li a{
     background: #2C3E50;
 }
@@ -42,7 +47,7 @@ body {
 }
 
 .pagination .active a, .pagination .active a:hover{
-    background: #0C2032;
+    background: #03121E;
 }
 
 .pagination .disabled a, .pagination .disabled a:hover{

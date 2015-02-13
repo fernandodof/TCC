@@ -1,6 +1,6 @@
 <link href= "{$templateRoot}css/index.css" rel="stylesheet">
 <script src="{$templateRoot}js/index.js"></script>
-<script src="{$templateRoot}js/locationInfo.js"></script>
+
 <div class="container main">
     <div id="jumbotronContent" class="col-xs-12">
     </div>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="info">
                     <a class="restaurantName pull-left" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}">{$restaurants->get($count)->getNome()}</a>
-                    <a id="prod{$count}" onmouseover="highlightItem({$count});" onmouseout="highlightItem({$count});" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}#{$produto->getNome()|replace:' ':''}" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
+                    <a id="btProd{$count}" onmouseover="highlightItem({$count});" onmouseout="highlightItem({$count});" href="{$templateRoot}pages/restaurant/{$restaurants->get($count)->getId()}#{$produto->getNome()|replace:' ':''}" class="btn btn-danger btn-block pull-left pecaAgora">Peça agora</a>
                 </div>
             </div> 
             {$count = $count+1}

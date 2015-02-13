@@ -27,6 +27,7 @@
         {* Move this script tags *}
         <script src="{$templateRoot}bootstrap/js/jquery.min.js"></script>
         <script src="{$templateRoot}bootstrap/js/bootstrap.min.js"></script>
+        <script src="{$templateRoot}js/locationInfo.js"></script>
         <script type="text/javascript" src="{$templateRoot}js/jquery.dim-background.js"></script>
         <script type="text/javascript" src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.js"></script>
         <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>

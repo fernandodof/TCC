@@ -302,6 +302,7 @@ function  setUpTable() {
                     {"bSortable": false, "bSearchable": false}
                 ]
             });
+    $('.dataTables_paginate').parent().removeClass('col-sm-6').addClass('col-xs-12');
 }
 
 function setUpFormValidation() {
