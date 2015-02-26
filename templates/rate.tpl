@@ -11,7 +11,7 @@
 <div class="container">
     <div class="visible-sm visible-xs">
         <button class="btn btn-primary btn-sm" data-toggle="collapse" data-target=".restaurant">
-            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="fa fa-bars"></span>
         </button>
     </div>
 
@@ -29,8 +29,8 @@
                 <div id="map">
                 </div>
             </div>
-        </div>
         <a onclick="expandMap();" class="elementToggle">Expandir Mapa</a>
+        </div>
         <input type="hidden" id="latitude" value="{$restaurante->getEndereco()->getLatitude()}">
         <input type="hidden" id="longitude" value="{$restaurante->getEndereco()->getLongitude()}">
         <input type="hidden" id="idRestaurante" value="{$restaurante->getId()}">

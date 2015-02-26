@@ -35,17 +35,17 @@
                                         {if ($it->getProduto()->getIngredientes() == null)}
                                             <div class="col-sm-2 hidden-xs">
                                                 {if $it->getProduto()->getImagem() != null}
-                                                    <img src="{$templateRoot}{$it->getProduto()->getImagem()}" alt="Bebida" class="img-responsive"/>
+                                                    <img src="{$templateRoot}{$it->getProduto()->getImagem()}" alt="Bebida" class="img-responsive productImg"/>
                                                 {else}    
-                                                    <img src="{$templateRoot}images/icons/drink.png" alt="Bebida" class="img-responsive"/>
+                                                    <img src="{$templateRoot}images/icons/drink.png" alt="Bebida" class="img-responsive productImg"/>
                                                 {/if}
                                             </div>
                                         {else}
                                             <div class="col-sm-2 hidden-xs">
                                                 {if $it->getProduto()->getImagem() != null}
-                                                    <img src="{$templateRoot}{$it->getProduto()->getImagem()}" alt="Bebida" class="img-responsive"/>
+                                                    <img src="{$templateRoot}{$it->getProduto()->getImagem()}" alt="Bebida" class="img-responsive productImg"/>
                                                 {else}    
-                                                    <img src="{$templateRoot}images/icons/food.png" alt="Comida" class="img-responsive"/>
+                                                    <img src="{$templateRoot}images/icons/food.png" alt="Comida" class="img-responsive productImg"/>
                                                 {/if}
                                             </div>
                                         {/if}

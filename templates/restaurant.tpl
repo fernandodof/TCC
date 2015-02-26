@@ -34,8 +34,8 @@
                 <div id="map">
                 </div>
             </div>
+            <a onclick="expandMap();" class="elementToggle">Expandir Mapa</a>
         </div>
-        <a onclick="expandMap();" class="elementToggle">Expandir Mapa</a>
         <input type="hidden" id="latitude" value="{$restaurante->getEndereco()->getLatitude()}">
         <input type="hidden" id="longitude" value="{$restaurante->getEndereco()->getLongitude()}">
         <input type="hidden" id="nomeRestauranteMap" value="{$restaurante->getNome()}">
@@ -109,6 +109,9 @@
                 {$i = 0}
                 {foreach from=$produtosComida item=produto}
                     <div class="produto" id="{$produto->getNome()|replace:' ':''}">
+                        {*  <a href="#" class="btn btn-default productImg" id="{$produto->getNome()|replace:' ':''}Hover" 
+                        onmouseover="showProductImageOnHover('{$produto->getNome()|replace:' ':''}Hover', '{$produto->getNome()}', '{$produto->getImagem()}');"
+                        onmouseout="hideProductOnLeave('{$produto->getNome()|replace:' ':''}Hover');">Imagem</a>*}
                         {if isset($idsProdutosComprados) and in_array($produto->getId(), $idsProdutosComprados)}
                             <p class="nome pull-left col-sm-10 nameP">{$produto->getNome()}</p>
                             <div class="row btAvaliarDiv">
@@ -124,6 +127,9 @@
                                 <input class="rateInputs pull-right" data-show-clear="false" value="{$avgRatingP[$i]}">  
                             </div>
                         </div>
+                        <a href="#" class="btn productImg" id="{$produto->getNome()|replace:' ':''}Img" aria-describedby="{$produto->getNome()|replace:' ':''}Img" data-toggle="popover" data-trigger="focus"
+                           title="{$produto->getNome()}" data-content="<img class='img img-responsive' src='{$templateRoot}{$produto->getImagem()}'/>"><img class='img img-responsive' src='{$templateRoot}{$produto->getImagem()}'/></a>
+
                         {foreach from = $produto->getTamanhos() item=tamanho}
                             <div class="tamanho row col-xs-12">
                                 <div class="tam">

@@ -112,6 +112,8 @@ function checkout() {
                 $('#sumitingOrderDiv').hide();
                 $('#confirmation').show();
                 $('#liGotoCart').empty();
+//                alertify.alert('TESTE');
+//                alertify.alert(serverResponse);
             }
         },
         error: function (data) {
