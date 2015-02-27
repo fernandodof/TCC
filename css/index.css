@@ -43,7 +43,7 @@
     color: white;
 }
 
-.colunaDestaque{
+.destaquesDiv{
     float: left;
 }
 
@@ -73,8 +73,11 @@
     }
 
     .imgDiv img{
-        height: 250px;
+       height: auto;
+        
     }
+   
+    
 }
 
 .imgDiv{
@@ -116,9 +119,8 @@
 
 .dishName{
     height: 55px;
-    display : table-cell;
     vertical-align : middle;
-    float:none;
+    float:left;
 }
 
 

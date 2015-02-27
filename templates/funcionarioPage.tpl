@@ -366,6 +366,7 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Imagem do ítem</label>
                                 <input type="file" name="image" class="form-control" required>
                             </div>
                             <p id="imageSize">Maxímo: 1MB</p>

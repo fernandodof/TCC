@@ -1,6 +1,12 @@
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
+
+.actions .btn{
+    margin-bottom: 5px;
+    width: 40px;
+}
+
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
         width:20%;
@@ -20,7 +26,7 @@
 
     table#cart thead { display: none; }
     table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
-    table#cart tbody tr td:first-child { background: #333; color: #fff; }
+    table#cart tbody tr td:first-child { background: #2C3E50; color: #fff; }
     table#cart tbody td:before {
         content: attr(data-th); font-weight: bold;
         display: inline-block; width: 8rem;
@@ -32,7 +38,7 @@
 }
 
 table#cart tbody tr{
-    border-bottom: 1px solid #C1C1C1; 
+    border-bottom: 1px solid #2C3E50; 
 }
 
 table#cart tbody#quantidade{
