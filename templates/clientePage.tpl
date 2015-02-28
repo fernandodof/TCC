@@ -9,7 +9,7 @@
 <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>
 <script src="{$templateRoot}js/clientPageFunctions.js" type="text/javascript"></script>
-<script src="{$templateRoot}libs/jqueryMaskedInput/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="{$templateRoot}libs/jquery.mask.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
 <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
 <div class="container">
@@ -62,24 +62,26 @@
                                 onclick="reOrder({$pedido->getId()},{$pedido->getRestaurante()->getId()},{$i});">Refazer Pedido
                         </button>
                     </div>
-                    <table class="table table-condensed table-responsive table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Item</th>
-                                <th>Quantidade</th>
-                                <th>Tamanho</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {foreach from=$pedido->getItensPedido() item=it}
+                    <div class="table-condensed">
+                        <table class="table table-responsive table-bordered">
+                            <thead>
                                 <tr>
-                                    <td>{$it->getProduto()->getNome()}</td>
-                                    <td>{$it->getQuantidade()}</td>
-                                    <td>{$it->getTamanho()->getDescricao()}</td>
+                                    <th>Item</th>
+                                    <th>Quantidade</th>
+                                    <th>Tamanho</th>
                                 </tr>
-                            {/foreach}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {foreach from=$pedido->getItensPedido() item=it}
+                                    <tr>
+                                        <td>{$it->getProduto()->getNome()}</td>
+                                        <td>{$it->getQuantidade()}</td>
+                                        <td>{$it->getTamanho()->getDescricao()}</td>
+                                    </tr>
+                                {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
                     <h5 class="restaurant">{$pedido->getRestaurante()->getNome()}</h5>
                 </div>
                 {$i=$i+1}
@@ -117,26 +119,28 @@
                                                     <h4>Itens</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <table class="table table-hover table-responsive table-condensed">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Nome</th>
-                                                                <th>Tamanho</th>
-                                                                <th>Quantidade</th>
-                                                                <th>Subtotal</th>
-                                                            <tr>
-                                                        </thead>
-                                                        {foreach from=$pedido->getItensPedido() item=it}
-                                                            <tbody>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover table-condensed">
+                                                            <thead>
                                                                 <tr>
-                                                                    <td>{$it->getProduto()->getNome()}</td>
-                                                                    <td>{$it->getTamanho()->getDescricao()}</td>
-                                                                    <td>{$it->getQuantidade()}</td>
-                                                                    <td>{$it->getSubtotal()}</td>
-                                                                </tr>
-                                                            <tbody>
-                                                            {/foreach}
-                                                    </table>
+                                                                    <th>Nome</th>
+                                                                    <th>Tamanho</th>
+                                                                    <th>Quantidade</th>
+                                                                    <th>Subtotal</th>
+                                                                <tr>
+                                                            </thead>
+                                                            {foreach from=$pedido->getItensPedido() item=it}
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>{$it->getProduto()->getNome()}</td>
+                                                                        <td>{$it->getTamanho()->getDescricao()}</td>
+                                                                        <td>{$it->getQuantidade()}</td>
+                                                                        <td>{$it->getSubtotal()}</td>
+                                                                    </tr>
+                                                                <tbody>
+                                                                {/foreach}
+                                                        </table>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <label class="pull-right">Valor Total: R$ {$pedido->getValorTotal()}</label>

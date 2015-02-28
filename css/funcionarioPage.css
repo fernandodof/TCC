@@ -72,6 +72,10 @@ h3{
     }
 }
 
+.pedidoDiv .tableOrders{
+    width: 100%;
+}
+
 .pedidoDiv .obs, .obs small{
     color: #11BA9A;
 }

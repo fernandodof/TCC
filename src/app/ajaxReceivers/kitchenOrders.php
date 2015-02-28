@@ -47,26 +47,28 @@ if(count($pedidos)>0){
                         echo "<input type='checkBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='enviarPedidoEntrega(this)';>";
                         echo "<label for='pedido" . $i . "'><span class='lbEncaminharEntrega'>Encaminhar para entrega</span></label>";
                     echo "</div>";
-                    echo "<table class='table table-condensed table-responsive table-striped'>";
-                        echo "<thead>";
-                            echo "<tr>";
-                            echo "<th>Item</th>";
-                            echo "<th>Quantidade</th>";
-                            echo "<th>Tamanho</th>";
-                            echo "<th>Subtotal</th>";
-                            echo "</tr>";
-                        echo "</thead>";
-                        echo "<tbody>";
-                            foreach ($pedido->getItensPedido() as $it) {
+                    echo "<div class='table-responsive tableOrders'>";
+                        echo "<table class='table table-condensed table-responsive table-striped'>";
+                            echo "<thead>";
                                 echo "<tr>";
-                                    echo "<td>" . $it->getProduto()->getNome() . "</td>";
-                                    echo "<td>" . $it->getQuantidade() . "</td>";
-                                    echo "<td>" . $it->getTamanho()->getDescricao() . "</td>";
-                                    echo "<td>R$ " . $it->getSubtotal() . "</td>";
+                                echo "<th>Item</th>";
+                                echo "<th>Quantidade</th>";
+                                echo "<th>Tamanho</th>";
+                                echo "<th>Subtotal</th>";
                                 echo "</tr>";
-                            }
-                        echo "</tbody>";
-                    echo "</table>";
+                            echo "</thead>";
+                            echo "<tbody>";
+                                foreach ($pedido->getItensPedido() as $it) {
+                                    echo "<tr>";
+                                        echo "<td>" . $it->getProduto()->getNome() . "</td>";
+                                        echo "<td>" . $it->getQuantidade() . "</td>";
+                                        echo "<td>" . $it->getTamanho()->getDescricao() . "</td>";
+                                        echo "<td>R$ " . $it->getSubtotal() . "</td>";
+                                    echo "</tr>";
+                                }
+                            echo "</tbody>";
+                        echo "</table>";
+                    echo "</div>";
                     echo "<label class='pull-right valorTotal'>TOTAL: R$ " . $pedido->getValorTotal() . "</label>";
                     echo "<div class='infoCliente'>";
                         echo "<h4 class='nomeCliente'><span>Cliente: </span>" . $pedido->getCliente()->getNome() . "</h4>";

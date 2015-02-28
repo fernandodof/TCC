@@ -65,26 +65,28 @@ if(count($pedidos)>0){
                                             echo "<h4>Itens</h4>";
                                         echo "</div>";
                                         echo "<div class='modal-body'>";
-                                            echo "<table class='table table-hover table-responsive table-condensed'>";
-                                                echo "<thead>";
-                                                    echo "<tr>";
-                                                        echo "<th>Nome</th>";
-                                                        echo "<th>Tamanho</th>";
-                                                        echo "<th>Quantidade</th>";
-                                                        echo "<th>Subtotal</th>";
-                                                    echo "<tr>";
-                                                echo "</thead>";
-                                                    foreach ($pedido->getItensPedido() as $it){
-                                                        echo "<tbody>";
-                                                            echo "<tr>";
-                                                                echo "<td>". $it->getProduto()->getNome() . "</td>";
-                                                                echo "<td>". $it->getTamanho()->getDescricao() ."</td>";
-                                                                echo "<td>". $it->getQuantidade() . "</td>";
-                                                                echo "<td>". $it->getSubtotal() . "</td>";
-                                                            echo "</tr>";
-                                                        echo "<tbody>";
-                                                    }
-                                            echo "</table>";
+                                            echo "<div class='table-responsive tableOrders'>";
+                                                echo "<table class='table table-hover table-condensed'>";
+                                                    echo "<thead>";
+                                                        echo "<tr>";
+                                                            echo "<th>Nome</th>";
+                                                            echo "<th>Tamanho</th>";
+                                                            echo "<th>Quantidade</th>";
+                                                            echo "<th>Subtotal</th>";
+                                                        echo "<tr>";
+                                                    echo "</thead>";
+                                                        foreach ($pedido->getItensPedido() as $it){
+                                                            echo "<tbody>";
+                                                                echo "<tr>";
+                                                                    echo "<td>". $it->getProduto()->getNome() . "</td>";
+                                                                    echo "<td>". $it->getTamanho()->getDescricao() ."</td>";
+                                                                    echo "<td>". $it->getQuantidade() . "</td>";
+                                                                    echo "<td>". $it->getSubtotal() . "</td>";
+                                                                echo "</tr>";
+                                                            echo "<tbody>";
+                                                        }
+                                                echo "</table>";
+                                            echo "</div>";
                                         echo "</div>";
                                         echo "<div class='modal-footer'>";
                                             echo "<label class='pull-right'>Valor Total: R$ ".$pedido->getValorTotal() . "</label>";

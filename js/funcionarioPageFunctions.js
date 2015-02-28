@@ -293,6 +293,7 @@ function  setUpTable() {
                     }
                 },
                 "iDisplayLength": 10,
+                responsive: true,
                 "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Tudo"]],
                 "order": [[1, "desc"]],
                 "aoColumns": [
