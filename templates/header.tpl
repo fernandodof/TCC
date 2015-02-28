@@ -31,7 +31,7 @@
         <script type="text/javascript" src="{$templateRoot}js/jquery.dim-background.js"></script>
         <script type="text/javascript" src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.js"></script>
         <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
-        <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
+        <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/dist/js/language/pt_BR.js" type="text/javascript"></script>
         <script src="{$templateRoot}js/header.js" type="text/javascript"></script>
         {*        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>*}
     </head>
