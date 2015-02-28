@@ -47,13 +47,32 @@
     float: left;
 }
 
-@media screen and (max-width: 992px){
+@media only screen and (max-width: 992px){
     .main{
         margin-bottom: 20px;
     }
 
     .colunaDestaque{
         margin-right: 0;
+        height: 260px;
+    }
+
+    .pecaAgora{
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        bottom: 0;
+        margin-left: -12px;
+        width: 97%;
+    }
+
+    .restaurantName{
+        margin-top: -10px;
+    }
+
+    .dishName{
+        height: 35px;
     }
 
     .imgDiv img{
@@ -70,14 +89,29 @@
 
     .colunaDestaque{
         margin-left:0px;
+        height: auto;
     }
 
     .imgDiv img{
-       height: auto;
-        
+        height: auto;
+
     }
-   
     
+    .pecaAgora{
+        position: static;
+        bottom: 0;
+        margin-bottom: 0px;
+        margin-top: 20px;
+        bottom: 0;
+        margin-left: 0px;
+        width: 100%;
+    }
+    
+    .dishName{
+        margin-top: 20px;
+        margin-bottom: -10px;
+    }
+
 }
 
 .imgDiv{
@@ -118,7 +152,7 @@
 }
 
 .dishName{
-    height: 55px;
+    font-size: medium;
     vertical-align : middle;
     float:left;
 }
