@@ -1,7 +1,6 @@
 <?php
 
 include_once '../pages/header.php';
-
 require_once $path . 'pages/smartyHeader.php';
 require_once $path . '/src/app/model/entities/Restaurante.class.php';
 require_once $path . 'src/app/util/Queries.php';
@@ -15,7 +14,7 @@ $dao = new Dao();
 $params['nome'] = trim(filter_input(INPUT_GET, 'search'));
 $tipo = trim(filter_input(INPUT_GET, 'kindOfFood'));
 
-if (is_numeric($params['nome'])) {
+if (is_numeric($params['nome']) || preg_match('/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/', $params['nome'])) {
     $params['nome'] = '%' . $params['nome'] . '%';
     if ($tipo == "") {
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_CEP, $params); //Correct
