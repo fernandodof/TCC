@@ -35,7 +35,7 @@
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
                             <input type="hidden" value="{$pedido->getId()}" id="idPedidoRecebido{$i}">
-                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoRecebido{$i}" onchange="enviarPedidoCozinha(this);">
+                            <input type="checkBox" class="fwdCheckBox" name="pedidos[]" value="{$i}" id="pedidoRecebido{$i}" onchange="enviarPedidoCozinha(this);">
                             <label for="pedidoRecebido{$i}"><span class="lbEncaminharCozinha">Encaminhar para cozinha</span></label>
                         </div>
                         <div class="table-responsive tableOrders">
@@ -99,7 +99,7 @@
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
                             <input type="hidden" value="{$pedido->getId()}" id="idPedidoCozinha{$i}">
-                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoCozinha{$i}" onchange="enviarPedidoEntrega(this);">
+                            <input type="checkBox" class="fwdCheckBox" name="pedidos[]" value="{$i}" id="pedidoCozinha{$i}" onchange="enviarPedidoEntrega(this);">
                             <label for="pedidoCozinha{$i}"><span class="lbEncaminharEntrega">Encaminhar para entrega</span></label>
                         </div>
                         <div class="table-responsive tableOrders">
@@ -162,7 +162,7 @@
                         <label class="idPedido">#{$pedido->getId()}</label>
                         <div class="pull-right checkboxPedidoDiv">
                             <input type="hidden" value="{$pedido->getId()}" id="idPedidoEntrega{$i}">
-                            <input type="checkBox" name="pedidos[]" value="{$i}" id="pedidoEntrega{$i}" onchange="finalizarPedido(this);">
+                            <input type="checkBox" class="fwdCheckBox" name="pedidos[]" value="{$i}" id="pedidoEntrega{$i}" onchange="finalizarPedido(this);">
                             <label for="pedidoEntrega{$i}"><span class="lbFinalizar">Finalizar pedido</span></label>
                         </div>
                         <div class="table-responsive tableOrders">

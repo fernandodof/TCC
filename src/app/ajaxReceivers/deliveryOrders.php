@@ -44,7 +44,7 @@ if (isset($_SESSION['pedidosEntregaCarregados'])) {
                     echo "<label class='idPedido'>#" . $pedido->getId() . "</label>";
                     echo "<div class='pull-right checkboxPedidoDiv'>";
                         echo "<input type='hidden' value='" . $pedido->getId() . "' id='idPedidoEntrega". $i . "'>";
-                        echo "<input type='checkBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='finalizarPedido(this)';>";
+                        echo "<input type='checkBox' class='fwdCheckBox' name='pedidos[]' value='" . $i . "' id='pedido" . $i . "' onchange='finalizarPedido(this)';>";
                         echo "<label for='pedido" . $i . "'><span class='lbEFinalizar'>Finalizar pedido</span></label>";
                     echo "</div>";
                     echo "<div class='table-responsive tableOrders'>";
