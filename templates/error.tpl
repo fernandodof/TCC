@@ -7,11 +7,11 @@
 </script>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 col-md-offset-1">
+        <div class="col-md-6 col-md-offset-2">
             <div class="error-template">
                 <h1>Oops!</h1>
                 <h2>
-                    404 Página não encontrada
+                    404 - Página não encontrada
                 </h2>
                 <div class="error-details">
                     Desculpe, a página requisitada não foi encontrada

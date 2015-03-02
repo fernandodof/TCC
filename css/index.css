@@ -96,7 +96,7 @@
         height: auto;
 
     }
-    
+
     .pecaAgora{
         position: static;
         bottom: 0;
@@ -106,7 +106,7 @@
         margin-left: 0px;
         width: 100%;
     }
-    
+
     .dishName{
         margin-top: 20px;
         margin-bottom: -10px;
@@ -222,6 +222,10 @@ h1{
         height: 350px;
     }
 
+    #destaques{
+        margin-top: 60px;
+    }
+
     #jumbotronContent{
         height: 350px;
     }
@@ -287,6 +291,7 @@ h1{
     .searchDiv{
         padding: 0px;
     }
+
 }
 
 /*@media (max-width: 991px) {
@@ -301,7 +306,12 @@ h1{
 
 @media only screen and (max-width: 768px){ 
     .jumbotron, #jumbotronContent{
-        min-height: 435px;
+        min-height: 355px;
+        margin-top: 40px;
+    }
+
+    #destaques{
+        margin-top: 40px;
     }
 
     h1{
@@ -313,7 +323,7 @@ h1{
     }
 
     #indexButtons{
-        margin-top: 225px;
+        margin-top: 185px;
         padding-right: 15px;
     }
 

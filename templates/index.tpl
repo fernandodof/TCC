@@ -15,11 +15,18 @@
                 <div id="searchRestaurant" class="tab-pane active fade in">
                     <form method="GET" class="form-horizontal searchForm" action="{$templateRoot}pages/search">
                         <div class="col-md-7 col-xs-12 searchDiv pull-left">
-                            <input type="text" class="form-control input-lg pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
+                            <input type="text" class="form-control input-lg hidden-xs pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
+                            <input type="text" class="form-control input visible-xs pull-left searchField" placeholder="Digite seu cep ou o nome do restaurante" id="search" name="search">
                         </div>
                         <div class="row col-md-5 col-xs-12">
                             <div class="form-group col-md-11 col-xs-12 pull-left kindOfFoodDiv">
-                                <select class="form-control input-lg kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
+                                <select class="form-control input-lg hidden-xs kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
+                                    <option class="" value="">Tipo de cozinha (todas)</option>
+                                    {foreach from = $kindsOfFood kind}
+                                        <option class="" value='{$kind.nome}'>{$kind.nome}</option>
+                                    {/foreach}
+                                </select>
+                                <select class="form-control input visible-xs kindOfFoodSelect col-md-11 col-xs-12" name="kindOfFood">
                                     <option class="" value="">Tipo de cozinha (todas)</option>
                                     {foreach from = $kindsOfFood kind}
                                         <option class="" value='{$kind.nome}'>{$kind.nome}</option>
@@ -34,7 +41,7 @@
                         </div>
                         <div class="row col-xs-12 visible-sm visible-xs btSearchDiv">        
                             <div class="input-group-btn">
-                                <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn-lg btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                                <button type="submit" name="formSubmit" value="SearchRestaurante" class="col-xs-12 btn btn btn-success btSearch">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
                             </div>
                         </div>
                     </form>
@@ -43,7 +50,8 @@
                     <form method="GET" class="form-horizontal searchProduct" action="{$templateRoot}pages/searchProduct">
                         <div class="form-group col-md-11 col-xs-12">
                             {literal}
-                                <input type="text" class="form-control input-lg pull-left searchFieldProduct" placeholder="Digite o nome de um prato" id="searchProduct" name="productName" pattern=".{3,}" required title="Informe pelo menos 3 caracteres">
+                                <input type="text" class="form-control input-lg pull-left searchFieldProduct hidden-xs" placeholder="Digite o nome de um prato" id="searchProduct" name="productName" pattern=".{3,}" required title="Informe pelo menos 3 caracteres">
+                                <input type="text" class="form-control input pull-left searchFieldProduct visible-xs" placeholder="Digite o nome de um prato" id="searchProduct" name="productName" pattern=".{3,}" required title="Informe pelo menos 3 caracteres">
                             {/literal}
                         </div> 
                         <div class="col-md-1 visible-lg visible-md btSearchDivProduct">        
@@ -53,7 +61,7 @@
                         </div>
                         <div class="row col-xs-12 visible-sm visible-xs btSearchDivProduct">
                             <div class="input-group-btn">
-                                <button type="submit" name="formSubmit" value="SearchProduct" class="col-xs-12 btn btn-lg btn-success btSearchProduct">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
+                                <button type="submit" name="formSubmit" value="SearchProduct" class="col-xs-12 btn btn btn-success btSearchProduct">Pesqusar <span class="glyphicon glyphicon-search"></span></button>
                             </div>
                         </div>
                     </form>
@@ -62,7 +70,7 @@
             <div id="indexButtons">        
                 <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/nearBy">Locais próximos <img id="gpsIcon" src="{$templateRoot}images/icons/gps13.png"></a>
                 <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestRate">Melhores locais <span class="starIcon glyphicon glyphicon-star"></span></a>
-                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestItemRate">Melhores Ítens <span class="starIcon glyphicon glyphicon-star"></span></a>
+                <a class="btn btn-sm btn-primary" href="{$templateRoot}pages/bestItemRate">Melhores pratos <span class="starIcon glyphicon glyphicon-star"></span></a>
             </div>
         </div>
     </div>
