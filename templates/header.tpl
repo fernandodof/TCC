@@ -48,7 +48,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{$templateRoot}pages/index">{$siteName}</a>
+                        <a class="navbar-brand" id="brand" href="{$templateRoot}pages/index"></a>
                     </div>
                     <div class="collapse navbar-collapse custonNavHeaderCollapse">
                         {* Creating list for Navigation bar options *} 

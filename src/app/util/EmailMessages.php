@@ -25,8 +25,8 @@ class EmailMessages {
                             </head>
                         <body>
                             <div style='text-align: center; margin: 0 auto;'>
-                                <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
-                                    <h3 style='margin-top: 40px;
+                                <img style='width: 250px;' src='http://i57.tinypic.com/27zhh92.png' alt='logo'>
+                                    <h3 style='margin-top: 30px;
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>
@@ -51,8 +51,8 @@ class EmailMessages {
                             </head>
                         <body>
                             <div style='text-align: center; margin: 0 auto;'>
-                                <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
-                                    <h3 style='margin-top: 40px;
+                                <img style='width: 250px;' src='http://i57.tinypic.com/27zhh92.png' alt='logo'>
+                                    <h3 style='margin-top: 30px;
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>
@@ -103,8 +103,8 @@ class EmailMessages {
                             </head>
                         <body>
                             <div style='text-align: center; margin: 0 auto;'>
-                                <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
-                                    <h4 style='margin-top: 40px;
+                                <img style='width: 250px;' src='http://i57.tinypic.com/27zhh92.png' alt='logo'>
+                                    <h4 style='margin-top: 30px;
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>
@@ -131,8 +131,8 @@ class EmailMessages {
                             </head>
                         <body>
                             <div style='text-align: center; margin: 0 auto;'>
-                                <img style='width: 150px; width: 150px;' src='http://i62.tinypic.com/3093c02.png' alt='logo'>
-                                    <h4 style='margin-top: 40px;
+                                <img style='width: 250px;' src='http://i57.tinypic.com/27zhh92.png' alt='logo'>
+                                    <h4 style='margin-top: 30px;
                                                    width: 100%;
                                                    clear: left;
                                                    float: left;'>

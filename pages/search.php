@@ -13,8 +13,18 @@ $dao = new Dao();
 
 $params['nome'] = trim(filter_input(INPUT_GET, 'search'));
 $tipo = trim(filter_input(INPUT_GET, 'kindOfFood'));
+//if(filter_input(INPUT_GET, 'kindOfFood1')!=null){
+//
+//}
+//else{
+//    $tipo = trim(filter_input(INPUT_GET, 'kindOfFood2'));
+//}
 
 if (is_numeric($params['nome']) || preg_match('/^[0-9]{2}.[0-9]{3}-[0-9]{3}$/', $params['nome'])) {
+    
+    $params['nome'] = str_replace('.', '', $params['nome']);
+    $params['nome'] = str_replace('-', '', $params['nome']);
+    
     $params['nome'] = '%' . $params['nome'] . '%';
     if ($tipo == "") {
         $restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_CEP, $params); //Correct
@@ -69,4 +79,3 @@ $smarty->assign('kindsOfFood', $kindsOfFood);
 $smarty->display($path . 'templates/search.tpl');
 
 include_once $path . 'pages/footer.php';
-

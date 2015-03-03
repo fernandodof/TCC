@@ -102,3 +102,16 @@ body {
 /*h2,h3,h4{
     color: #18BC9C;
 }*/
+
+#brand{
+    width: 150px;
+    margin-left: 5px;
+    background-image: url('../images/logos/logo2.png');
+    background-repeat: no-repeat;
+    margin-top: 2px;
+}
+
+
+#brand:hover{
+    background-image: url('../images/logos/logo3.png');
+}
