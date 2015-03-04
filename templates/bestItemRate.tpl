@@ -6,7 +6,10 @@
 <script src="{$templateRoot}js/locationInfo.js" rel="stylesheet"></script>
 
 <div class="container">
-    <img src="{$templateRoot}images/loader.GIF" title="Carregando" alt="Carregando" class="img img-responsive" id="loader">
+    <div id="addingItemDiv">
+        <img id="sumitingOrder" class="rotating" src="{$templateRoot}images/icons/plate.svg">
+        <h4>Adicionando...</h4>
+    </div>
 
     <div class="menu col-md-10 col-md-offset-1 col-sm-12">
         <h2>Melhores itens</h2>
