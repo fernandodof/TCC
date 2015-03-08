@@ -416,6 +416,44 @@ function setUpFormValidation() {
 
 }
 
+
+function getOrderMap() {
+    var idRestaurante = $('#idRestaurante').val();
+    var start = $('#start').val();
+    var end = $('#end').val();
+
+    if (start === '' || end === '') {
+        return;
+    }
+
+    $('body').dimBackground();
+    $('#addingItemDiv').show();
+
+    var data = {idRestaurante : idRestaurante, start: start, end: end};
+    var url = '../src/app/ajaxReceivers/ordersMap.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            //alertify.alert(serverResponse);
+            $('body').undim();
+            $('#addingItemDiv').hide();
+            var orders = JSON.parse(serverResponse);
+            $('#orderMapCount').html(orders.length +" pedidos encontrados");
+            if(orders.length>0){
+                initializeOrders(orders);
+            }
+        },
+        error: function (serverResponse) {
+            alertify.alert(serverResponse);
+            $('body').undim();
+            $('#addingItemDiv').hide();
+        }
+    });
+}
+
 $(document).ready(function () {
     setInterval("updateOrdersList()", 3000);
     activate('img[src*=".svg"]');
@@ -431,6 +469,17 @@ $(document).ready(function () {
 
     $(".alert-danger").fadeTo(4000, 1500).slideUp(1500, function () {
         $("#erro-alert").alert('close');
+    });
+
+
+    $('.dates').datepicker({
+        format: "dd/mm/yyyy",
+        endDate: "today",
+        language: "pt-BR",
+        clearBtn: true,
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true
     });
 
 });

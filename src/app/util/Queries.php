@@ -150,4 +150,7 @@ class Queries {
     
     const GET_ID_PESSOA_CODIGO_BY_PASSWORD_CODE = 'SELECT r.id AS id, r.pessoa_id AS pessoa_id, r.codigo AS codigo FROM recuperarSenha r WHERE UNIX_TIMESTAMP(r.expira) > UNIX_TIMESTAMP(CURRENT_TIMESTAMP) and r.usado = false and r.codigo LIKE :codigo';
       
+    const GET_PEDIDOS_FINALIZADOS_POR_RESTAURANTE_DATA = "SELECT p.latitude, p.longitude, DATE_FORMAT(p.dataHora, '%d/%m/%Y %h:%i %p') as data
+                                                         FROM pedido p 
+                                                         WHERE p.id_restaurante = :id and p.status = 4 and (p.dataHora BETWEEN :start and :end)";
 }

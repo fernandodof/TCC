@@ -21,7 +21,6 @@ function initialize(lat, long) {
     resizeMap();
 
 }
-;
 //google.maps.event.addDomListener(window, 'load', initialize);
 
 google.maps.event.addDomListener(window, "resize", resizingMap());

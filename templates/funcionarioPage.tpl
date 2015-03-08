@@ -5,6 +5,10 @@
     <link href="{$templateRoot}libs/dataTables/bootstrapDatatableTheme/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
     <link href="{$templateRoot}libs/dataTables/extensions/Responsive/css/dataTables.responsive.css">
     <link href="{$templateRoot}css/cardapio.css" rel="stylesheet" type="text/css">
+    {*    <link href="{$templateRoot}libs/bootstrap-date-picker/css/datepicker.min.css" type="text/css">
+    <link href="{$templateRoot}libs/bootstrap-date-picker/css/datepicker3.min.css" type="text/css">*}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
     <script src="{$templateRoot}js/jquery.priceFormat.min.js" type="text/javascript"></script>
     <script type="text/javascript" 
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvaKdbwG_GgsyhMXSQLUQ6cu9Vhn657B8&sensor=TRUE">
@@ -13,10 +17,18 @@
     <script src="{$templateRoot}libs/dataTables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="{$templateRoot}libs/dataTables/bootstrapDatatableTheme/dataTables.bootstrap.js" type="text/javascript"></script>
     <script src="{$templateRoot}libs/dataTables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{$templateRoot}libs/bootstrap-date-picker/locales/bootstrap-datepicker.pt-BR.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/showOrderMap.js" type="text/javascript"></script>
+    <script src="{$templateRoot}js/showAllOrdersMap.js" type="text/javascript"></script>
+
 </head>
 
 <div class="container" id="page">
+    <div id="addingItemDiv">
+        <img id="sumitingOrder" class="rotating" src="{$templateRoot}images/icons/plate.svg">
+        <h4 class="center">Aguarde...</h4>
+    </div>
     <h3>{$smarty.session.funcRestaurante}</h3>
     <ul class="nav nav-pills nav-stacked col-md-3 sidebar">
         <li class="{if !isset($smarty.get.produtoCadastrado) && !isset($smarty.get.error)}active{/if}"><a href="#tab_a" data-toggle="pill">Novos Pedidos <span class="glyphicon glyphicon-shopping-cart"></span></a></a></li>
@@ -24,6 +36,8 @@
         <li class=""><a href="#tab_c" data-toggle="pill">Pedidos em entrega <img class="img img-responsive pull-right" src="{$templateRoot}images/icons/svg/logistics3.svg" alt="Cozinha"></a></li>
         <li class=""><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
         <li class="{if isset($smarty.get.produtoCadastrado) || isset($smarty.get.error)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
+        <li class=""><a href="#tab_f" data-toggle="pill">Mapa de Pedidos <span class="fa fa-map-marker"></span></a></li>
+
     </ul>
     <div class="tab-content col-md-9">
         <div class="tab-pane {if !isset($smarty.get.produtoCadastrado) && !isset($smarty.get.error)}active{/if}" id="tab_a">
@@ -431,6 +445,44 @@
                 </div>
             </div>
         </div>
+
+        <div class="tab-pane" id="tab_f">
+
+            <form method="POST" class="col-xs-6 col-xs-offset-3" id="orderMapForm" action="javascript:void(0)">
+                <label>Datas: </label>
+                <div class="input-daterange input-group col-xs-12" id="datepicker">
+                    <input type="text" class="dates input-sm form-control" id="start" placeholder="Início" required name="start" />
+                    <span class="input-group-addon input-sm">até</span>
+                    <input type="text" class="dates input-sm form-control" id="end" placeholder="Fim" required name="end" />
+                </div>
+
+                <button type="submit" class="btn btn-success pull-right" id="getMap" onclick="getOrderMap();">Buscar</button>
+            </form>
+
+            <h3 id="orderMapCount" class="col-xs-12"></h3>
+
+            <div id="map-wrapper">
+                <div id="map-order-canvas" class="pull-left"></div>
+            </div>
+
+        </div>
+
+
+        <div class="tab-pane" id="tab_g">
+
+            <form method="POST" class="col-xs-6 col-xs-offset-3" id="orderMapForm" action="javascript:void(0)">
+                <label>Datas: </label>
+                <div class="input-daterange input-group col-xs-12" id="datepicker">
+                    <input type="text" class="dates input-sm form-control" id="start" placeholder="Início" required name="start" />
+                    <span class="input-group-addon input-sm">até</span>
+                    <input type="text" class="dates input-sm form-control" id="end" placeholder="Fim" required name="end" />
+                </div>
+
+                <button type="submit" class="btn btn-success pull-right" id="getChart" onclick="">Buscar</button>
+            </form>
+        </div>
+
+
     </div> <!-- tab content -->
 </div>
 <div class="modal fade" id="myMapModal">
