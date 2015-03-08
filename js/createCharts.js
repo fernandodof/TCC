@@ -27,20 +27,20 @@ function createTop5Chart(top5){
             enabled: false
         },
         tooltip: {
-            pointFormat: 'Vendas: <b>{point.y:.1f}</b>'
+            pointFormat: 'Vendas: <b>{point.y}</b>'
         },
         series: [{
             name: 'Vendas',
             data: top5,
             dataLabels: {
                 enabled: true,
-                rotation: -90,
+                rotation: 1,
                 color: '#42586E',
                 align: 'right',
-                format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
+                format: '{point.y}', // one decimal
+                y: 20, // 10 pixels down from the top
                 style: {
-                    fontSize: '13px',
+                    fontSize: '14px',
                     fontFamily: 'Verdana, sans-serif'
                 }
             }

@@ -428,6 +428,7 @@ function getOrderMap() {
 
     $('body').dimBackground();
     $('#addingItemDiv').show();
+    $('#map-order-canvas').empty();
 
     var data = {idRestaurante: idRestaurante, start: start, end: end};
     var url = '../src/app/ajaxReceivers/ordersMap.php';
@@ -459,7 +460,6 @@ function getTop5Chart() {
 
     $('body').dimBackground();
     $('#addingItemDiv').show();
-
     var data = {idRestaurante: idRestaurante};
     var url = '../src/app/ajaxReceivers/top5Chart.php';
     $.ajax({
