@@ -21,7 +21,9 @@
     <script src="{$templateRoot}libs/bootstrap-date-picker/locales/bootstrap-datepicker.pt-BR.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/showOrderMap.js" type="text/javascript"></script>
     <script src="{$templateRoot}js/showAllOrdersMap.js" type="text/javascript"></script>
-
+    <script src="{$templateRoot}js/createCharts.js" type="text/javascript"></script>
+    <script src="{$templateRoot}libs/Highcharts-4.1.3/js/highcharts.js" type="text/javascript"></script>
+    <script src="{$templateRoot}libs/Highcharts-4.1.3/js/modules/exporting.js" type="text/javascript"></script>        
 </head>
 
 <div class="container" id="page">
@@ -37,6 +39,7 @@
         <li class=""><a href="#tab_d" data-toggle="pill">Histórico de Pedidos <span class="fa fa-history"></span></a></li>
         <li class="{if isset($smarty.get.produtoCadastrado) || isset($smarty.get.error)}active{/if}"><a href="#tab_e" data-toggle="pill">Cardápio <span class="glyphicon glyphicon-list-alt"></span></a></li>
         <li class=""><a href="#tab_f" data-toggle="pill">Mapa de Pedidos <span class="fa fa-map-marker"></span></a></li>
+        <li class=""><a href="#tab_g" data-toggle="pill">Gráficos <span class="fa fa-bar-chart"></span></a></li>
 
     </ul>
     <div class="tab-content col-md-9">
@@ -469,17 +472,8 @@
 
 
         <div class="tab-pane" id="tab_g">
-
-            <form method="POST" class="col-xs-6 col-xs-offset-3" id="orderMapForm" action="javascript:void(0)">
-                <label>Datas: </label>
-                <div class="input-daterange input-group col-xs-12" id="datepicker">
-                    <input type="text" class="dates input-sm form-control" id="start" placeholder="Início" required name="start" />
-                    <span class="input-group-addon input-sm">até</span>
-                    <input type="text" class="dates input-sm form-control" id="end" placeholder="Fim" required name="end" />
-                </div>
-
-                <button type="submit" class="btn btn-success pull-right" id="getChart" onclick="">Buscar</button>
-            </form>
+            <button type="submit" class="btn btn-info pull-left" id="getTop5Chart" onclick="getTop5Chart();">Mais Vendidos</button>
+            <div id="chartContaier"></div>
         </div>
 
 

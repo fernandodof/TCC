@@ -57,6 +57,9 @@ class Queries {
     const UPDATE_SENHA_REDEFINIDA = 'UPDATE recuperarSenha r SET r.usado = true WHERE r.id = :id';
 
     //Native Queries
+    //Native Queries
+    //Native Queries
+    
     const GET_IDS_RESTAURANTES_CLIENTE_COMPROU = 'SELECT DISTINCT p.id_restaurante as id_restaurante 
                                                   FROM pedido p WHERE p.id_cliente = :id_cliente';
     
@@ -153,4 +156,14 @@ class Queries {
     const GET_PEDIDOS_FINALIZADOS_POR_RESTAURANTE_DATA = "SELECT p.latitude, p.longitude, DATE_FORMAT(p.dataHora, '%d/%m/%Y %h:%i %p') as data
                                                          FROM pedido p 
                                                          WHERE p.id_restaurante = :id and p.status = 4 and (p.dataHora BETWEEN :start and :end)";
+    
+    const GET_TOP_5_PRODUTOS_VENDIDOS_POR_RESTAURANTE = "SELECT p.nome, count(*) as vendas 
+                                                        FROM produto p 
+                                                        JOIN itemPedido ip ON p.id = ip.id_produto 
+                                                        JOIN restaurante_produto rp ON rp.id_produto = p.id 
+                                                        JOIN categoria c ON p.id_categoria = c.id 
+                                                        WHERE rp.id_produto = ip.id_produto AND c.nome = 'comida' AND rp.id_restaurante = :id_restaurante
+                                                        GROUP BY p.id 
+                                                        ORDER BY count(*) DESC
+                                                        LIMIT 5";
 }

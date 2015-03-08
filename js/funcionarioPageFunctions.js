@@ -429,7 +429,7 @@ function getOrderMap() {
     $('body').dimBackground();
     $('#addingItemDiv').show();
 
-    var data = {idRestaurante : idRestaurante, start: start, end: end};
+    var data = {idRestaurante: idRestaurante, start: start, end: end};
     var url = '../src/app/ajaxReceivers/ordersMap.php';
     $.ajax({
         type: "POST",
@@ -441,10 +441,36 @@ function getOrderMap() {
             $('body').undim();
             $('#addingItemDiv').hide();
             var orders = JSON.parse(serverResponse);
-            $('#orderMapCount').html(orders.length +" pedidos encontrados");
-            if(orders.length>0){
+            $('#orderMapCount').html(orders.length + " pedidos encontrados");
+            if (orders.length > 0) {
                 initializeOrders(orders);
             }
+        },
+        error: function (serverResponse) {
+            alertify.alert(serverResponse);
+            $('body').undim();
+            $('#addingItemDiv').hide();
+        }
+    });
+}
+
+function getTop5Chart() {
+    var idRestaurante = $('#idRestaurante').val();
+
+    $('body').dimBackground();
+    $('#addingItemDiv').show();
+
+    var data = {idRestaurante: idRestaurante};
+    var url = '../src/app/ajaxReceivers/top5Chart.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('body').undim();
+            $('#addingItemDiv').hide();
+            createTop5Chart(JSON.parse(serverResponse));
         },
         error: function (serverResponse) {
             alertify.alert(serverResponse);

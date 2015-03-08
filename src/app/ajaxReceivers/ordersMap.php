@@ -4,8 +4,6 @@ require_once '../model/persistence/Dao.class.php';
 require_once '../util/Queries.php';
 require_once '../model/entities/Pedido.class.php';
 
-session_start();
-
 $params['id'] = filter_input(INPUT_POST, 'idRestaurante');
 
 $startArray = explode('/', filter_input(INPUT_POST, 'start'));

@@ -236,20 +236,30 @@ h4 i{
     right: -15px;
 }
 
+#tab_f, #tab_g{
+    margin-top: 15px;
+}
+
 #tab_f #getMap{
     margin-top: 10px;
 }
 
 #tab_f #orderMapForm{
-    margin-bottom: 35px;
+    margin-bottom: 15px;
 }
 
 #tab_f #map-wrapper {
     height: 400px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 #tab_f #map-order-canvas {
     width: 100%;
     height: 100%;
+}
+
+#tab_f #chartContaier{
+    min-width: 300px;
+    height: 400px; 
+    margin: 0 auto
 }

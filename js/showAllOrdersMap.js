@@ -20,13 +20,13 @@ function initializeOrders(orders) {
         ordersMap.fitBounds(bounds);
     }
 
-    var boundsListener = google.maps.event.addListener((ordersMap), 'bounds_changed', function(event) {
-        this.setZoom(15);
-        google.maps.event.removeListener(boundsListener);
-    });
+//    var boundsListener = google.maps.event.addListener((ordersMap), 'bounds_changed', function(event) {
+//        this.setZoom(14);
+//        google.maps.event.removeListener(boundsListener);
+//    });
 
 //
-//    resizeOrdersMap();
+    resizeOrdersMap();
 
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
