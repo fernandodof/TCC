@@ -166,4 +166,16 @@ class Queries {
                                                         GROUP BY p.id 
                                                         ORDER BY count(*) DESC
                                                         LIMIT 5";
+    
+    const GET_TOP_5_PRODUTOS_VENDIDOS_PEDIDO_FINALIZADO_POR_RESTAURANTE =  "SELECT p.nome, count(*) as vendas 
+                                                                            FROM produto p 
+                                                                            JOIN itemPedido ip ON p.id = ip.id_produto 
+                                                                            JOIN restaurante_produto rp ON rp.id_produto = p.id 
+                                                                            JOIN categoria c ON p.id_categoria = c.id
+                                                                            JOIN pedido_itempedido pi ON pi.id_itemPedido = ip.id
+                                                                            JOIN pedido ped ON ped.id = pi.id_pedido
+                                                                            WHERE rp.id_produto = ip.id_produto AND c.nome = 'comida' AND rp.id_restaurante = :id_restaurante AND ped.status = 4
+                                                                            GROUP BY p.id 
+                                                                            ORDER BY count(*) DESC
+                                                                            LIMIT 5";
 }

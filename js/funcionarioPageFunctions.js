@@ -455,11 +455,12 @@ function getOrderMap() {
     });
 }
 
-function getTop5Chart() {
+function getTop5Chart(type) {
     var idRestaurante = $('#idRestaurante').val();
 
     $('body').dimBackground();
     $('#addingItemDiv').show();
+    $('#chartMsg').empty();
     var data = {idRestaurante: idRestaurante};
     var url = '../src/app/ajaxReceivers/top5Chart.php';
     $.ajax({
@@ -470,7 +471,20 @@ function getTop5Chart() {
         success: function (serverResponse) {
             $('body').undim();
             $('#addingItemDiv').hide();
-            createTop5Chart(JSON.parse(serverResponse));
+            var top5 = JSON.parse(serverResponse);
+            if (top5.length === 0) {
+                $('#chartMsg').html('Não foram entrados resultados');
+            } else {
+                switch (type) {
+                    case 'bar':
+                        createTop5Chart(top5);
+                        break;
+                    case 'pie':
+                        createTop5PieChart(top5);
+                        break;
+                }
+            }
+
         },
         error: function (serverResponse) {
             alertify.alert(serverResponse);

@@ -472,7 +472,9 @@
 
 
         <div class="tab-pane" id="tab_g">
-            <button type="submit" class="btn btn-info pull-left" id="getTop5Chart" onclick="getTop5Chart();">Mais Vendidos</button>
+            <button type="submit" class="btn btn-info pull-left chartBtn" id="getTop5Chart" onclick="getTop5Chart('bar');">Mais Vendidos <span class="fa fa-bar-chart-o"></span></button>
+            <button type="submit" class="btn btn-info pull-left chartBtn" id="getTop5Chart" onclick="getTop5Chart('pie');">Mais Vendidos <span class="fa fa-pie-chart"></span></button>
+            <h3 id="chartMsg" class="col-xs-12"></h3>
             <div id="chartContaier"></div>
         </div>
 

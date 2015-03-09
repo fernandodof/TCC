@@ -7,9 +7,9 @@ $params['id_restaurante'] = filter_input(INPUT_POST, 'idRestaurante');
 
 $dao = new Dao();
 
-$resutlt = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_TOP_5_PRODUTOS_VENDIDOS_POR_RESTAURANTE, $params);
+$resutlt = $dao->getListAssocResultOfNativeQueryWithParameters(Queries::GET_TOP_5_PRODUTOS_VENDIDOS_PEDIDO_FINALIZADO_POR_RESTAURANTE, $params);
 
-$top5;
+$top5 = '';
 
 foreach ($resutlt as $r){
     $auxArray[] = $r['nome'];

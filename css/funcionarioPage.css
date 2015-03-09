@@ -258,8 +258,20 @@ h4 i{
     height: 100%;
 }
 
-#tab_f #chartContaier{
+#tab_g #chartContaier{
     min-width: 300px;
     height: 400px; 
     margin: 0 auto
+}
+
+#tab_g .chartBtn{
+    margin-right: 10px;
+}
+
+#tab_g .chartBtn span{
+    color: #ACE63C;
+}
+
+#tab_g #chartMsg{
+    margin-top: 20px;
 }
