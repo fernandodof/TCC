@@ -10,9 +10,8 @@ require_once '../../app/util/UserTypes.php';
 session_start();
 
 $dao = new Dao();
-//
-//
-//$params['nome'] = trim(filter_input(INPUT_POST, 'search'));
+
+$term = str_replace('%2B', ' ', str_replace('+', ' ',trim(filter_input(INPUT_POST, 'search'))));
 
 if (trim(filter_input(INPUT_POST, 'kind')) !== null) {
     $tipo = trim(filter_input(INPUT_POST, 'kind'));
@@ -71,7 +70,7 @@ if ((filter_input(INPUT_POST, 'location') === 'true') && isset($_SESSION['latLon
         }
     } else {
         //$restaurants = $dao->getListResultOfNamedQueryWithParameters(Queries::SEARCH_REST_NOME_TIPO, $params);
-        $params['nome'] = trim(filter_input(INPUT_POST, 'search'));
+        $params['nome'] = $term;
 
         if (is_numeric($params['nome'])) {
             $params['nome'] = '%' . $params['nome'] . '%';
@@ -118,12 +117,12 @@ if (isset($_SESSION['id']) && CheckLoggedIn::checkPermission(UserTypes::CLIENTE)
 
 if (count($restaurants) == 0) {
     
-    if($tipo !== '' && filter_input(INPUT_POST, 'search') !== null){
+    if($tipo !== '' && $term !== null){
         $tipo = "em <span id='type'>" . $tipo . "</span>";
     }
     
-    if(filter_input(INPUT_POST, 'search') !== null){
-        echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: <small id='term'>\"" . trim(filter_input(INPUT_POST, 'search')) . "\"</smalL> " . $tipo . "</h3>";
+    if($term !== null){
+        echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: <small id='term'>\"" . $term . "\"</smalL> " . $tipo . "</h3>";
     }else{
         echo "<h3 class='no-result-search'>Desculpe, a pesquisa não retornou nenhum resultado para: " . $tipo . "</h3>";
     }
